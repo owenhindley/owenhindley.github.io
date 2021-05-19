@@ -1,24 +1,24 @@
 <!DOCTYPE html>
-<!-- saved from url=(0021)http://harpapong.com/ -->
-<html class=" js websockets audio no-devicemotion no-deviceorientation"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html>
+<head>
 	<title>HarpaPONG</title>
 
-	
+	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="HarpaPONG">
 
 	<meta name="description" content="HarpaPONG">
-	<meta property="og:title" content="HarpaPONG">
-	<meta property="og:type" content="games">
-	<meta property="og:url" content="http://www.harpapong.com">
-	<meta property="og:site_name" content="Harpa PONG">
-	<meta property="og:description" content="Harpa PONG">
-	<meta property="og:image" content="http://www.harpapong.com/files/images/sharing.jpg">
+	<meta property="og:title" content="HarpaPONG" />
+	<meta property="og:type" content="games" />
+	<meta property="og:url" content="http://www.harpapong.com" />
+	<meta property="og:site_name" content="Harpa PONG" />
+	<meta property="og:description" content="Harpa PONG" />
+	<meta property="og:image" content="http://www.harpapong.com/files/images/sharing.jpg" />
 
 
-    <link href="./index_files/bootstrap.css" rel="stylesheet">
+    <link href="libs/bootstrap/css/bootstrap.css" rel="stylesheet">
 
     
     <!-- <link href="libs/bootstrap/css/modern-business.css" rel="stylesheet">
@@ -26,22 +26,22 @@
     <!-- 
     <link href='http://fonts.googleapis.com/css?family=Quicksand:400,700' rel='stylesheet' type='text/css'> -->
 
-    <link href="./index_files/fonts.css" rel="stylesheet">
-    <link href="./index_files/main.css" rel="stylesheet">
+    <link href="css/fonts.css" rel='stylesheet'/>
+    <link href="css/main.css" rel='stylesheet'/>
 
-	<script src="./index_files/jquery-2.0.3.min.js"></script>
-	<script src="./index_files/modernizr.custom.92177.js"></script>
+	<script src="js/libs/jquery-2.0.3.min.js"></script>
+	<script src="js/libs/modernizr.custom.92177.js"></script>
 	<script>
 		var _supportedBrowser = true;
 		_supportedBrowser = _supportedBrowser && Modernizr.websockets;
 		_supportedBrowser = _supportedBrowser && (Modernizr.devicemotion || Modernizr.deviceorientation);
 
 	</script>
-	<script src="./index_files/bootstrap.js"></script>
+	<script src="libs/bootstrap/js/bootstrap.js"></script>
 
-	<script src="./index_files/Utils.js"></script>
-	<script src="./index_files/PongLanguageSelect.js"></script>
-	<script src="./index_files/QueueKeeper.js"></script>
+	<script src="../common/Utils.js"></script>
+	<script src="js/PongLanguageSelect.js"></script>
+	<script src="js/QueueKeeper.js"></script>
 	
 
 	<script>
@@ -133,7 +133,7 @@
 	</script>
 
 </head>
-<body class="lang-en" style="">
+<body class="lang-is">
 
 <div id="background" style="position:fixed;">
 	&nbsp;
@@ -141,35 +141,35 @@
 
 <div id="langContainer">
 
-<div class="languageSelect"><div class="selectLanguage is"></div><div class="selectLanguage en"></div></div></div>
+</div>
 
-<section id="headline" style="display: block;">
+<section id="headline">
 
 	
-		<img src="./index_files/logo.svg">
+		<img src="images/logo.svg"/>
 		<h1 style="display:none;">Harpa PONG</h1>
 	
 </section>
 
-<section id="intro" style="display: block;">
+<section id="intro">
 
 
 		<p>
 			<span class="lang-is">
-			Hugmynd og framkvæmd: <br>Atli Bollason<br><br>
-			Hönnun og forritun: <br>Owen Hindley<br><br>
+			Hugmynd og framkvæmd: <br/>Atli Bollason<br/><br/>
+			Hönnun og forritun: <br/>Owen Hindley<br/><br/>
 			</span>
 			<span class="lang-en">
-			Concept and Production: <br>Atli Bollason<br><br>
-			Programming and Design: <br>Owen Hindley<br><br>
+			Concept and Production: <br/>Atli Bollason<br/><br/>
+			Programming and Design: <br/>Owen Hindley<br/><br/>
 			</span>
 		</p>
 
 		<div class="highlight" style="width:800px; height:auto; padding:2em; text-align:center; margin-left:auto; margin-right:auto;">
-			<iframe src="./index_files/122900808.html" width="100%" height="412" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+			<iframe src="https://player.vimeo.com/video/122900808?color=ffffff&title=0&byline=0&portrait=0" width="100%" height="412" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 		</div>
-		<br>
-		<br>
+		<br/>
+		<br/>
 
 		<!-- <p>
 			<span class="lang-en">Play PONG on Harpa!</span>
@@ -182,7 +182,7 @@
 		</p> -->
 
 		<div class="highlight" style="width:800px; height:auto; padding:2em; text-align:center; margin-left:auto; margin-right:auto;">
-			<iframe width="100%" height="412" src="./index_files/R3_OSTtyfSw.html" frameborder="0" allowfullscreen=""></iframe>
+			<iframe width="100%" height="412" src="https://www.youtube.com/embed/R3_OSTtyfSw?rel=0" frameborder="0" allowfullscreen></iframe>
 		</div>
 
 		<div id="support" class="highlight red" style="display:none">
@@ -204,14 +204,14 @@
 
 		</div>
 
-		<div id="unsupported" class="highlight red" style="display: block;">
+		<div id="unsupported" class="highlight red" style="display:none">
 
 			<p class="small">
-				<span class="lang-en">Please note, PONG will not work on this device or browser.<br><br>Please use a modern mobile phone or tablet to play the game.
+				<span class="lang-en">Please note, PONG will not work on this device or browser.<br/><br/>Please use a modern mobile phone or tablet to play the game.
 				</span>
 
 				<span class="lang-is">
-				Athugaðu að þú getur ekki spilað PONG á þessu tæki eða í þessum vafra.<br><br>Vinsamlegast tengdu þig netinu með snjallsíma eða spjaldtölvu.
+				Athugaðu að þú getur ekki spilað PONG á þessu tæki eða í þessum vafra.<br/><br/>Vinsamlegast tengdu þig netinu með snjallsíma eða spjaldtölvu.
 				</span>
 			</p>
 
@@ -245,49 +245,49 @@
 		</p>
 
 		</div>-->
-		<br>
+		<br/>
 
-		<br>
+		<br/>
 
 
 		<p>
-			Visuals:<br><br>
-			Nick Gains | <a href="http://www.nickgains.com/">www.nickgains.com</a> | @nickgains<br>
-			FIELD | <a href="http://www.field.io/">http://www.field.io</a> | @field_io<br> 
-			Yi-Wen Lin | <a href="http://blog.bongiovi.tw/">http://blog.bongiovi.tw/</a> | @yiwen_lin<br> 
-			Jonas Johansson | <a href="http://jonasjohansson.se/">jonasjohansson.se</a><br> 
-			Christian Persson | <a href="http://christianpers.com/">christianpers.com</a><br>
-			Jacob Andersson | <a href="http://yousirnejm.com/">yousirnejm.com</a> | @hellotherejacob<br>
-			Liam Viney | <a href="http://liamviney.co.uk/">http://liamviney.co.uk/</a> | @liamviney<br>
-			Edu Prats Molner | <a href="http://www.jocabola.com/">http://www.jocabola.com/</a> | @jocabola<br>
-			<br><br>
-			Audio Analysis:<br><br>
-			Ragnar Hrafnkelsson | <a href="http://reactifymusic.com/">reactifymusic.com</a> | @ragnaringi<br>
+			Visuals:<br/><br/>
+			Nick Gains | <a href="http://www.nickgains.com/">www.nickgains.com</a> | @nickgains<br />
+			FIELD | <a href="http://www.field.io/">http://www.field.io</a> | @field_io<br /> 
+			Yi-Wen Lin | <a href="http://blog.bongiovi.tw/">http://blog.bongiovi.tw/</a> | @yiwen_lin<br /> 
+			Jonas Johansson | <a href="http://jonasjohansson.se/">jonasjohansson.se</a><br /> 
+			Christian Persson | <a href="http://christianpers.com/">christianpers.com</a><br />
+			Jacob Andersson | <a href="http://yousirnejm.com/">yousirnejm.com</a> | @hellotherejacob<br />
+			Liam Viney | <a href="http://liamviney.co.uk/">http://liamviney.co.uk/</a> | @liamviney<br />
+			Edu Prats Molner | <a href="http://www.jocabola.com/">http://www.jocabola.com/</a> | @jocabola<br />
+			<br/><br/>
+			Audio Analysis:<br/><br/>
+			Ragnar Hrafnkelsson | <a href="http://reactifymusic.com">reactifymusic.com</a> | @ragnaringi<br />
 		</p>
 
 		<p class="small">
 			<span class="lang-is">	
-			Unnið í samstarfi við Hörpu<br>
-			<br>
-			Sérstakar þakkir til:<br>
-			Ólafur Elíasson<br>
-			Sónar Reykjavik<br>
-			Macland<br>
-			Hljóð-X.<br>
-			Retropi<br>
-			B-REEL<br>
+			Unnið í samstarfi við Hörpu<br/>
+			<br/>
+			Sérstakar þakkir til:<br/>
+			Ólafur Elíasson<br/>
+			Sónar Reykjavik<br/>
+			Macland<br/>
+			Hljóð-X.<br/>
+			Retropi<br/>
+			B-REEL<br/>
 			</span>
 			
 			<span class="lang-en">
-			Produced in co-operation with Harpa<br>
-			<br>
-			Special thanks to:<br>
-			Ólafur Elíasson<br>
-			Sónar Reykjavik<br>
-			Macland<br>
-			Hljóð-X.<br>
-			Retropi<br>
-			B-REEL<br>
+			Produced in co-operation with Harpa<br/>
+			<br/>
+			Special thanks to:<br/>
+			Ólafur Elíasson<br/>
+			Sónar Reykjavik<br/>
+			Macland<br/>
+			Hljóð-X.<br/>
+			Retropi<br/>
+			B-REEL<br/>
 			</span>
 		</p>
 		
@@ -300,5 +300,5 @@
 </div>
 
 
-
-</body></html>
+</body>
+</html>
