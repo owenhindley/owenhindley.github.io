@@ -4,10 +4,14 @@ body {
   color: #dbdad8;
 }
 
+
+
 h1, h2, h3 {
   font-family: "futura_ltcn_btlight", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: normal;
   letter-spacing: 0.01em;
+  text-shadow: #ffbf7f 0px 1px 2px;
+ 
 }
 
 h4, h5, h6 {
@@ -270,4 +274,12 @@ a:hover {
 .story .storyBody h4 a, .story .storyBody h3 a {
   color: #e3ddd1;
   border-bottom: none;
+}
+
+.links {
+  font-size: 110%;
+  line-height: 155%;
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 1rem;
+  border-radius: 1rem;
 }
