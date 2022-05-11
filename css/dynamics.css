@@ -1,0 +1,13 @@
+/* Always visible */
+article header {
+	display: block;
+}
+
+article section:first-of-type {
+	display: none;
+}
+
+article.expanded section:first-of-type {
+	display: block;
+}
+
