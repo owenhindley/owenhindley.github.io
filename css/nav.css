@@ -1,0 +1,17 @@
+main article {
+  display: none; }
+
+main.all .collaboration, main.all .works, main.all .talks {
+  display: block; }
+
+main.collaboration .collaboration {
+  display: block; }
+
+main.works .works {
+  display: block; }
+
+main.talks .talks {
+  display: block; }
+
+main.about .about {
+  display: block; }

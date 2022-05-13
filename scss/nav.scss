@@ -1,0 +1,37 @@
+
+main article {
+    display: none;	
+}
+
+
+main.all {
+    .collaboration, .works, .talks{
+        display: block;
+    }    
+}
+
+main.collaboration {
+    .collaboration{
+        display: block;
+    }    
+}
+
+main.works {
+    .works{
+        display: block;
+    }    
+}
+
+main.talks {
+    .talks{
+        display: block;
+    }    
+}
+
+main.about {
+    .about{
+        display: block;
+    }    
+}
+
+
