@@ -172,6 +172,7 @@ article {
 
 	padding-top: 1em;
 	border-top: 1px solid darken($textColor, 0.5);
+	overflow: hidden;
 
 	input[type="checkbox"].showContent {
 		appearance: none;
@@ -205,6 +206,7 @@ article {
 			}
 
 			~section {
+				display: inline-block;
 				max-height: 100vh;				
 			}
 		}
@@ -214,6 +216,7 @@ article {
 
 		width: auto;
 		position: relative;
+		margin-bottom: 1em;
 
 		h3 {
 			display: block;
@@ -239,11 +242,11 @@ article {
 
 	&>section {
 
-		display: inline-block;
+		display: none;
 		max-height: 0px;		
 		overflow: hidden;
 		transition: max-height 0.2s ease-out;
-
+		
 		
 
 		>section {

@@ -201,7 +201,8 @@ main {
 
 article {
   padding-top: 1em;
-  border-top: 1px solid #1b1b1b; }
+  border-top: 1px solid #1b1b1b;
+  overflow: hidden; }
   article input[type="checkbox"].showContent {
     appearance: none;
     width: 100%;
@@ -222,10 +223,12 @@ article {
       transform: rotate(-90deg);
       opacity: 0.5; }
     article input[type="checkbox"].showContent:checked ~ section {
+      display: inline-block;
       max-height: 100vh; }
   article header {
     width: auto;
-    position: relative; }
+    position: relative;
+    margin-bottom: 1em; }
     article header h3 {
       display: block;
       text-transform: uppercase; }
@@ -240,7 +243,7 @@ article {
         list-style-type: none;
         font-size: 1em; }
   article > section {
-    display: inline-block;
+    display: none;
     max-height: 0px;
     overflow: hidden;
     transition: max-height 0.2s ease-out; }
