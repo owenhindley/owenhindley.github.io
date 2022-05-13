@@ -7,8 +7,6 @@
 // $textColor: #dbdad8;
 
 
-
-
 body {
 	background: $backgroundColor;
 	font-family: "Open Sans", Verdana, Geneva, sans-serif;
@@ -207,7 +205,7 @@ article {
 			}
 
 			~section {
-				max-height: 100vh;
+				max-height: 100vh;				
 			}
 		}
 	}
@@ -242,11 +240,11 @@ article {
 	&>section {
 
 		display: inline-block;
-		max-height: 0px;
+		max-height: 0px;		
 		overflow: hidden;
 		transition: max-height 0.2s ease-out;
 
-		margin-top: 1em;
+		
 
 		>section {
 			width: 40%;

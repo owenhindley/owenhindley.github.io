@@ -1,1 +1,2 @@
-node-sass -w scss/main.scss -o css/
+node-sass -w scss/main.scss -o .site/css/
+npx @11ty/eleventy --serve --input=site-source/ --output=.site/
