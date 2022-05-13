@@ -74,7 +74,10 @@ a {
 main article {
   display: none; }
 
-main.all .collaboration, main.all .works, main.all .talks {
+main.all .collaboration, main.all .recent, main.all .works, main.all .talks {
+  display: block; }
+
+main.recent .recent {
   display: block; }
 
 main.collaboration .collaboration {
@@ -90,32 +93,30 @@ main.about .about {
   display: block; }
 
 body {
-  background: #1c1c1c;
+  background: #f5f5f5;
   font-family: "Open Sans", Verdana, Geneva, sans-serif;
-  color: #dbdad8;
-  background-image: repeating-linear-gradient(299deg, #343434 0%, #1c1c1c 50%, black 75%, #0b1320 100%);
+  color: #1c1c1c;
   background-repeat: repeat;
   background-attachment: scroll;
   margin: 4rem;
-  max-width: 1920px;
+  max-width: 1096px;
   margin-left: 8vw;
   height: 100%;
   position: absolute; }
 
 nav label span {
   cursor: pointer;
-  background-color: #dbdad8;
   border-radius: 0.1em;
-  padding: 0.2em;
-  color: #1c1c1c; }
+  padding: 0.2em 0.5em 0.2em 0.5em;
+  border: 1px solid #8668ff; }
 
 nav label input {
   appearance: none; }
 
 nav label input:checked + span {
-  background-color: #1c1c1c;
-  border: 1px solid #dbdad8;
-  color: #dbdad8; }
+  background-color: #f5f5f5;
+  border: 2px solid #3502ff;
+  color: #1c1c1c; }
 
 .projectsHeader {
   margin-top: 1em;
@@ -200,7 +201,7 @@ main {
 
 article {
   padding-top: 1em;
-  border-top: 1px solid #dad9d7; }
+  border-top: 1px solid #1b1b1b; }
   article input[type="checkbox"].showContent {
     appearance: none;
     width: 100%;
@@ -211,7 +212,7 @@ article {
     z-index: 1000; }
     article input[type="checkbox"].showContent:hover::after {
       content: "⇢";
-      color: #dbdad8;
+      color: #1c1c1c;
       position: absolute;
       left: -2em;
       top: 1.5em;
@@ -247,7 +248,8 @@ article {
     article > section > section {
       width: 40%;
       float: left; }
-      article > section > section img, article > section > section iframe {
+      article > section > section img,
+      article > section > section iframe {
         width: 90%; }
       article > section > section p {
         margin-top: 0;

@@ -5,7 +5,12 @@ main article {
 
 
 main.all {
-    .collaboration, .works, .talks{
+    .collaboration, .recent, .works, .talks{
+        display: block;
+    }    
+}
+main.recent {
+    .recent{
         display: block;
     }    
 }
