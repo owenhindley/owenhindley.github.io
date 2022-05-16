@@ -39,33 +39,35 @@
 <body>
 
     <header>
-        <h1>OWEN HINDLEY</h1>
-        <a id="twitter-link" href="http://twitter.com/owen_hindley" target="_blank">t</a>
+        <!-- <h1>Owen Hindley</h1> -->
+        <h1>O</h1>
+        <p>✋Hi! I'm Owen, and I create experiences for VR, theatre, installations, games,
+            performance and the web using software, electronics and sometimes sound.</p>       
+            <a id="twitter-link" href="http://twitter.com/owen_hindley" target="_blank">t</a>
         <a id="github-link" href="http://github.com/owenhindley" target="_blank">g</a>
         <h6>
             owenhindley at hotmail dot com<br>
             +354 762 0292<br>
-        </h6>
-        <p>✋Hi! I'm Owen, and I create experiences for VR, theatre, installations, games,
-            performance and the web using software, electronics and sometimes sound.</p>                
+        </h6>         
         <!-- <p>I'm co-founder of <a href="http://huldufugl.is/" target="_blank">Huldufugl</a>, creating
             immersive theatrical environments in both the real world
             and the&nbsp;virtual.</p>			 -->
+        <p>Here's the story so far..</p>
     </header>
 
 
     <nav>
         <label onclick="OnNavChange('all')">
-            <input type="radio" name="nav" id="check-all"></input>
-            <span>All Projects</span>
+            <input type="radio" name="nav" id="check-all" checked></input>
+            <span>All</span>
         </label>	
         <label onclick="OnNavChange('recent')">
-            <input type="radio" name="nav" id="check-recent" checked></input>
+            <input type="radio" name="nav" id="check-recent"></input>
             <span>Recent</span>
         </label>	
         <label onclick="OnNavChange('works')">
             <input type="radio" name="nav" id="check-works"></input>
-            <span>Works</span>
+            <span>Works &amp; Performances</span>
         </label>		
         <label onclick="OnNavChange('collaboration')">
             <input type="radio" name="nav" id="check-collaboration"></input>
@@ -82,23 +84,125 @@
         </label>		
     </nav>
 
-    <main class="recent">
+    <main class="all">
 
-        {% for article in collections.article -%}
-        <article id="{{article.data.id}}" class="{{article.data.class}}">
-            <input class="showContent" type="checkbox"></input>
-            <header>
-                <h3>{{article.data.title}}</h3>
-                <summary>{{article.data.summary}}</summary>
-                <ol>
-                    <li>{{article.data.when}}</li>
-                    <li>{{article.data.role}}</li>
-                    <li>{{article.data.skills}}</li>
-                </ol>
-            </header>
-                 {{ article.templateContent }}
-        </article>
-        {% endfor -%}
+        {% assign works = collections.article | where : "data.class", "works" | sort: 'data.endDate' | reverse %}
+        {% assign performances = collections.article | where : "data.class", "performance" | sort: 'data.endDate' | reverse %}
+        {% assign collaboration = collections.article | where : "data.class", "collaboration" | sort: 'data.endDate' | reverse %}
+        {% assign talks = collections.article | where : "data.class", "talks" | sort: 'data.endDate' | reverse  %}        
+
+        <section class="works">
+            <h6>Works &amp; Performances</h6>
+            {% for article in works %}
+            <article id="{{article.data.id}}" class="{{article.data.class}} {% if article.data.recent %}recent{%endif%}">
+                <input class="showContent" type="checkbox"></input>
+                <header>
+                    <h3>{{article.data.title}}</h3>
+                    <summary>{{article.data.summary}}</summary>
+                    <ol>
+                        <li>{{article.data.when}}</li>
+                        <li>{{article.data.role}}</li>
+                        <li>{{article.data.skills}}</li>
+                    </ol>
+                </header>
+                    {{ article.templateContent }}
+            </article>
+            {% endfor %}
+
+            <!-- <h6>Performances</h6>
+            {% for article in performances %}
+            <article id="{{article.data.id}}" class="{{article.data.class}} {% if article.data.recent %}recent{%endif%}">
+                <input class="showContent" type="checkbox"></input>
+                <header>
+                    <h3>{{article.data.title}}</h3>
+                    <summary>{{article.data.summary}}</summary>
+                    <ol>
+                        <li>{{article.data.when}}</li>
+                        <li>{{article.data.role}}</li>
+                        <li>{{article.data.skills}}</li>
+                    </ol>
+                </header>
+                    {{ article.templateContent }}
+            </article>
+            {% endfor %} -->
+
+        </section>
+
+        <section class="collaboration">
+            <h6>Collaborations</h6>
+            {% for article in collaboration %}
+            <article id="{{article.data.id}}" class="{{article.data.class}} {% if article.data.recent %}recent{%endif%}">
+                <input class="showContent" type="checkbox"></input>
+                <header>
+                    <h3>{{article.data.title}}</h3>
+                    <summary>{{article.data.summary}}</summary>
+                    <ol>
+                        <li>{{article.data.when}}</li>
+                        <li>{{article.data.role}}</li>
+                        <li>{{article.data.skills}}</li>
+                    </ol>
+                </header>
+                    {{ article.templateContent }}
+            </article>
+            {% endfor %}
+        </section>
+
+        <section class="talks">
+            <h6>Talks &amp; Education</h6>
+            {% for article in talks %}
+            <article id="{{article.data.id}}" class="{{article.data.class}} {% if article.data.recent %}recent{%endif%}">                
+                <header>
+                    <h6>{{article.data.title}}</h6>
+                    <summary>{{article.data.summary}}</summary>
+                    <ol>
+                        <li>{{article.data.endDate}}</li>                       
+                        <li>{{article.data.where}}</li>
+                    </ol>
+                </header>
+                    {{ article.templateContent }}
+            </article>
+            {% endfor %}
+        </section>
+
+        <section class="about">
+            <h6>About &amp; Bio</h6>
+            <p>Owen (he/him) is a collaborative digital artist, working with software, sound, and electronics for the web, VR, performances, devices and installations.</p>
+            <p>His commercial work has included serving as technical lead on large, cutting-edge projects for clients such as Oculus Studios, Google, Microsoft/Xbox, Samsung and Mercedes, collaborating with digital creatives such as Universal Everything, FIELD and B-Reel. These projects have ranged from an interactive web-connected musical installation at the London Science Museum for Google, Web Lab, to a pneumatic live-streamed pinata-smashing robot.</p>
+            <p>He is co-founder of Huldufugl, a Reykjavik-based theatre and events company experimenting with new mediums in theatre, both technological (as with their VR shows Kassinn and Hliðstætt Fólk), and immersive</p>
+            <p>He is also co-founder of Horizons Studio, a London-based creative studio producing interactive musical experiences in VR. Their debut title, Horizons VR was commissioned by Google as a launch title for their Daydream platform, with releases on Oculus and HTC platforms planned for 2019.</p>
+            <h6>Awards</h6>
+            <ul>
+                <li>Sproti Ársins (Nomination), Kassinn / A Box In The Desert, <a href="https://www.fil.is/frettir/1551/" target="_blank">Gríman (Icelandic Theatre Awards) 2020</a></li>
+                <li>Most Amazing Game Award, Kassinn / A Box In The Desert, <a href="https://amazestuff.tumblr.com/post/184139013534/a-maze-berlin-2019-award-winners" target="_blank">A MAZE Berlin 2019</a></li>
+                <li>Best Interactive Narrative Experience, Kassinn / A Box In The Desert, <a href="https://raindance.org/raindance-immersive-award-winners-presented-by-bose/" target="_blank">Raindance Immersive 2019</a></li>
+                <li>Outstanding US Premiere, Kassinn / A Box In The Desert, <a href="https://sdfringe.org/" target="_blank">San Diego Fringe Festival</a></li>
+                <li>Innovation In Performance Award, Kassinn / A Box In The Desert, <a href="https://www.facebook.com/Stoffholm/photos/now-and-then-we-come-across-work-that-takes-it-that-extra-lap-intotheunknown-by-/10155501339495855/" target="_blank">Stockholm Fringe Festival 2018</a></li>
+                <li>Grand Prix (Nomination), Kassinn / A Box In The Desert, Stockholm Fringe Festival 2018</li>
+                <li>People's Choice Award (Nomination), Mmorph, <a href="https://thefwa.com/editorial/the-fwa-peoples-choice-award-pca-2016-vote-now" target="_blank">FWA 2018</a></li>
+                <li>Site Of The Month, Mmorph, <a href="https://thefwa.com/cases/mmorph" target="_blank">FWA 2016</a></li>
+                <li>FWA Insights, Mmorph, <a href="https://thefwa.com/article/insights-mmorph" target="_blank">FWA 2016</a></li>
+                <li>Honorable Mention, Mmorph, <a href="https://www.awwwards.com/sites/mmorph" target="_blank">Awwwards 2016</a></li>
+                
+                
+                
+            </ul>
+            <h6>Recent Employment history</h6>
+            <ul>
+                <li>2020-2021 Senior Developer, <a href="https://volta-xr.com/" target="_blank">Volta XR</a></li>
+                <li>2014-2020 Freelance Developer / Artist</li>
+                <li>2011-2014 Senior Developer, <a href="https://www.b-reel.com/" target="_blank">B-Reel London</a></li>
+            </ul>
+            
+
+
+
+
+        </section>
+
+
+       
 
     </main>
 </body>
+
+ 

@@ -1,27 +1,55 @@
 @import './colours.scss';
 
 @font-face {
-	font-family: 'alternate_gothic_no1_dregular';
-	src: url("../fonts/alternate_gothic_no1_d-webfont.eot");
-	src: url("../fonts/alternate_gothic_no1_d-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/alternate_gothic_no1_d-webfont.woff") format("woff"), url("../fonts/alternate_gothic_no1_d-webfont.ttf") format("truetype"), url("../fonts/alternate_gothic_no1_d-webfont.svg#alternate_gothic_no1_dregular") format("svg");
-	font-weight: normal;
-	font-style: normal;
+    font-family: 'vtf_victoriannaitalic';
+    src: url('../fonts/vtf_victorianna_thin_talic-webfont.eot');
+    src: url('../fonts/vtf_victorianna_thin_talic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/vtf_victorianna_thin_talic-webfont.woff') format('woff'),
+         url('../fonts/vtf_victorianna_thin_talic-webfont.ttf') format('truetype'),
+         url('../fonts/vtf_victorianna_thin_talic-webfont.svg#vtf_victoriannaitalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
 }
 
+
+
+
 @font-face {
-	font-family: 'futura_ltcn_btlight';
-	src: url("../fonts/futuralc-webfont.eot");
-	src: url("../fonts/futuralc-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/futuralc-webfont.woff") format("woff"), url("../fonts/futuralc-webfont.ttf") format("truetype"), url("../fonts/futuralc-webfont.svg#futura_ltcn_btlight") format("svg");
-	font-weight: normal;
-	font-style: normal;
+    font-family: 'vtf_victoriannathin';
+    src: url('../fonts/vtf_victorianna_thin-webfont.eot');
+    src: url('../fonts/vtf_victorianna_thin-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/vtf_victorianna_thin-webfont.woff') format('woff'),
+         url('../fonts/vtf_victorianna_thin-webfont.ttf') format('truetype'),
+         url('../fonts/vtf_victorianna_thin-webfont.svg#vtf_victoriannathin') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
 }
+
+// @font-face {
+// 	font-family: 'alternate_gothic_no1_dregular';
+// 	src: url("../fonts/alternate_gothic_no1_d-webfont.eot");
+// 	src: url("../fonts/alternate_gothic_no1_d-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/alternate_gothic_no1_d-webfont.woff") format("woff"), url("../fonts/alternate_gothic_no1_d-webfont.ttf") format("truetype"), url("../fonts/alternate_gothic_no1_d-webfont.svg#alternate_gothic_no1_dregular") format("svg");
+// 	font-weight: normal;
+// 	font-style: normal;
+// }
+
+// @font-face {
+// 	font-family: 'futura_ltcn_btlight';
+// 	src: url("../fonts/futuralc-webfont.eot");
+// 	src: url("../fonts/futuralc-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/futuralc-webfont.woff") format("woff"), url("../fonts/futuralc-webfont.ttf") format("truetype"), url("../fonts/futuralc-webfont.svg#futura_ltcn_btlight") format("svg");
+// 	font-weight: normal;
+// 	font-style: normal;
+// }
 
 
 h1, h2, h3 {
-	font-family: "futura_ltcn_btlight", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: "vtf_victoriannathin", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-weight: normal;
 	letter-spacing: 0.01em;
-	text-shadow: $highlightColor 0px 1px 2px;
+	// text-shadow: $highlightColor 0px -1px 2px;
+	text-shadow: 1px 0px 0px $highlightColor;
    
   }
 
@@ -79,6 +107,7 @@ h6 {
 	font-size: 16px;
 	line-height: 1.25em;
 	margin-top: 1px;
+	font-weight: bold;
 }
 
 a {

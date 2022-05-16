@@ -1,18 +1,29 @@
 
-main article {
+main article, section {
     display: none;	
 }
 
+// main > section > h6 { display: none; }
+// main.all, main.recent {
+//     > section > h6 {
+//         display: block;
+//     }
+// }
+
 
 main.all {
-    .collaboration, .recent, .works, .talks{
+    .collaboration, .performance, .recent, .works, .talks{
         display: block;
     }    
 }
 main.recent {
-    .recent{
+    > section:not(.about) {
         display: block;
-    }    
+        .recent{
+            display: block;
+        }
+    }
+        
 }
 
 main.collaboration {
@@ -22,7 +33,7 @@ main.collaboration {
 }
 
 main.works {
-    .works{
+    .works, .performance{
         display: block;
     }    
 }

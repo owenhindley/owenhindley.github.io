@@ -27,6 +27,7 @@ body {
 
 nav {
 	label {
+		margin-right: 1em;
 		span {
 			cursor: pointer;
 			// background-color: $textColor;
@@ -38,6 +39,7 @@ nav {
 
 		input {
 			appearance: none;
+			margin-left: -1em;
 		}
 
 		input:checked+span {
@@ -164,6 +166,10 @@ header {
 
 main {
 	margin-top: 4rem;
+
+	> section {
+		margin-bottom: 2em;
+	}
 }
 
 
@@ -220,7 +226,7 @@ article {
 
 		h3 {
 			display: block;
-			text-transform: uppercase;
+			// text-transform: uppercase;
 		}
 
 		summary {
@@ -242,7 +248,7 @@ article {
 
 	&>section {
 
-		display: none;
+		
 		max-height: 0px;		
 		overflow: hidden;
 		transition: max-height 0.2s ease-out;
@@ -267,6 +273,12 @@ article {
 			p.small {
 				font-size: 0.75em;
 			}
+
+			
+		}
+
+		&:last-child {
+			margin-bottom: 2em;
 		}
 
 	}

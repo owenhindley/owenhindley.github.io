@@ -1,0 +1,22 @@
+main article, section {
+  display: none; }
+
+main.all .collaboration, main.all .performance, main.all .recent, main.all .works, main.all .talks {
+  display: block; }
+
+main.recent > section:not(.about) {
+  display: block; }
+  main.recent > section:not(.about) .recent {
+    display: block; }
+
+main.collaboration .collaboration {
+  display: block; }
+
+main.works .works, main.works .performance {
+  display: block; }
+
+main.talks .talks {
+  display: block; }
+
+main.about .about {
+  display: block; }

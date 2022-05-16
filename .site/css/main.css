@@ -1,23 +1,23 @@
 @charset "UTF-8";
 @font-face {
-  font-family: 'alternate_gothic_no1_dregular';
-  src: url("../fonts/alternate_gothic_no1_d-webfont.eot");
-  src: url("../fonts/alternate_gothic_no1_d-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/alternate_gothic_no1_d-webfont.woff") format("woff"), url("../fonts/alternate_gothic_no1_d-webfont.ttf") format("truetype"), url("../fonts/alternate_gothic_no1_d-webfont.svg#alternate_gothic_no1_dregular") format("svg");
+  font-family: 'vtf_victoriannaitalic';
+  src: url("../fonts/vtf_victorianna_thin_talic-webfont.eot");
+  src: url("../fonts/vtf_victorianna_thin_talic-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/vtf_victorianna_thin_talic-webfont.woff") format("woff"), url("../fonts/vtf_victorianna_thin_talic-webfont.ttf") format("truetype"), url("../fonts/vtf_victorianna_thin_talic-webfont.svg#vtf_victoriannaitalic") format("svg");
   font-weight: normal;
   font-style: normal; }
 
 @font-face {
-  font-family: 'futura_ltcn_btlight';
-  src: url("../fonts/futuralc-webfont.eot");
-  src: url("../fonts/futuralc-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/futuralc-webfont.woff") format("woff"), url("../fonts/futuralc-webfont.ttf") format("truetype"), url("../fonts/futuralc-webfont.svg#futura_ltcn_btlight") format("svg");
+  font-family: 'vtf_victoriannathin';
+  src: url("../fonts/vtf_victorianna_thin-webfont.eot");
+  src: url("../fonts/vtf_victorianna_thin-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/vtf_victorianna_thin-webfont.woff") format("woff"), url("../fonts/vtf_victorianna_thin-webfont.ttf") format("truetype"), url("../fonts/vtf_victorianna_thin-webfont.svg#vtf_victoriannathin") format("svg");
   font-weight: normal;
   font-style: normal; }
 
 h1, h2, h3 {
-  font-family: "futura_ltcn_btlight", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "vtf_victoriannathin", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: normal;
   letter-spacing: 0.01em;
-  text-shadow: #3502ff 0px 1px 2px; }
+  text-shadow: 1px 0px 0px #3502ff; }
 
 h4,
 h5,
@@ -63,7 +63,8 @@ h6 {
   margin-bottom: 3px;
   font-size: 16px;
   line-height: 1.25em;
-  margin-top: 1px; }
+  margin-top: 1px;
+  font-weight: bold; }
 
 a {
   color: #a0a0a0;
@@ -71,19 +72,21 @@ a {
   a:hover {
     border-bottom: 1px solid #6d6d6d; }
 
-main article {
+main article, section {
   display: none; }
 
-main.all .collaboration, main.all .recent, main.all .works, main.all .talks {
+main.all .collaboration, main.all .performance, main.all .recent, main.all .works, main.all .talks {
   display: block; }
 
-main.recent .recent {
+main.recent > section:not(.about) {
   display: block; }
+  main.recent > section:not(.about) .recent {
+    display: block; }
 
 main.collaboration .collaboration {
   display: block; }
 
-main.works .works {
+main.works .works, main.works .performance {
   display: block; }
 
 main.talks .talks {
@@ -104,19 +107,20 @@ body {
   height: 100%;
   position: absolute; }
 
-nav label span {
-  cursor: pointer;
-  border-radius: 0.1em;
-  padding: 0.2em 0.5em 0.2em 0.5em;
-  border: 1px solid #8668ff; }
-
-nav label input {
-  appearance: none; }
-
-nav label input:checked + span {
-  background-color: #f5f5f5;
-  border: 2px solid #3502ff;
-  color: #1c1c1c; }
+nav label {
+  margin-right: 1em; }
+  nav label span {
+    cursor: pointer;
+    border-radius: 0.1em;
+    padding: 0.2em 0.5em 0.2em 0.5em;
+    border: 1px solid #8668ff; }
+  nav label input {
+    appearance: none;
+    margin-left: -1em; }
+  nav label input:checked + span {
+    background-color: #f5f5f5;
+    border: 2px solid #3502ff;
+    color: #1c1c1c; }
 
 .projectsHeader {
   margin-top: 1em;
@@ -198,6 +202,8 @@ header p {
 
 main {
   margin-top: 4rem; }
+  main > section {
+    margin-bottom: 2em; }
 
 article {
   padding-top: 1em;
@@ -230,8 +236,7 @@ article {
     position: relative;
     margin-bottom: 1em; }
     article header h3 {
-      display: block;
-      text-transform: uppercase; }
+      display: block; }
     article header summary {
       position: relative; }
     article header ol {
@@ -243,7 +248,6 @@ article {
         list-style-type: none;
         font-size: 1em; }
   article > section {
-    display: none;
     max-height: 0px;
     overflow: hidden;
     transition: max-height 0.2s ease-out; }
@@ -258,3 +262,5 @@ article {
         margin-bottom: 2em; }
       article > section > section p.small {
         font-size: 0.75em; }
+    article > section:last-child {
+      margin-bottom: 2em; }
