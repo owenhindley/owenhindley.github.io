@@ -1,0 +1,9 @@
+@import './colours.scss';
+
+.slideshow {
+    width: 100%;
+    text-align: center;
+    background-color: black;
+    border:1px solid $textColor;
+    border-radius: 2px;
+}

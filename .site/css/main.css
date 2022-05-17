@@ -1,25 +1,11 @@
 @charset "UTF-8";
-@font-face {
-  font-family: 'vtf_victoriannaitalic';
-  src: url("../fonts/vtf_victorianna_thin_talic-webfont.eot");
-  src: url("../fonts/vtf_victorianna_thin_talic-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/vtf_victorianna_thin_talic-webfont.woff") format("woff"), url("../fonts/vtf_victorianna_thin_talic-webfont.ttf") format("truetype"), url("../fonts/vtf_victorianna_thin_talic-webfont.svg#vtf_victoriannaitalic") format("svg");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap");
+h1, h2, h3, h4 {
+  font-family: "Josefin Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: normal;
-  font-style: normal; }
+  letter-spacing: -0.02em;
+  text-shadow: 0px 1px 2px #3502ff; }
 
-@font-face {
-  font-family: 'vtf_victoriannathin';
-  src: url("../fonts/vtf_victorianna_thin-webfont.eot");
-  src: url("../fonts/vtf_victorianna_thin-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/vtf_victorianna_thin-webfont.woff") format("woff"), url("../fonts/vtf_victorianna_thin-webfont.ttf") format("truetype"), url("../fonts/vtf_victorianna_thin-webfont.svg#vtf_victoriannathin") format("svg");
-  font-weight: normal;
-  font-style: normal; }
-
-h1, h2, h3 {
-  font-family: "vtf_victoriannathin", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: normal;
-  letter-spacing: 0.01em;
-  text-shadow: 1px 0px 0px #3502ff; }
-
-h4,
 h5,
 h6 {
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -95,10 +81,17 @@ main.talks .talks {
 main.about .about {
   display: block; }
 
+.slideshow {
+  width: 100%;
+  text-align: center;
+  background-color: black;
+  border: 1px solid #f5f5f5;
+  border-radius: 2px; }
+
 body {
-  background: #f5f5f5;
+  background: #1c1c1c;
   font-family: "Open Sans", Verdana, Geneva, sans-serif;
-  color: #1c1c1c;
+  color: #f5f5f5;
   background-repeat: repeat;
   background-attachment: scroll;
   margin: 4rem;
@@ -107,20 +100,22 @@ body {
   height: 100%;
   position: absolute; }
 
-nav label {
-  margin-right: 1em; }
-  nav label span {
-    cursor: pointer;
-    border-radius: 0.1em;
-    padding: 0.2em 0.5em 0.2em 0.5em;
-    border: 1px solid #8668ff; }
-  nav label input {
-    appearance: none;
-    margin-left: -1em; }
-  nav label input:checked + span {
-    background-color: #f5f5f5;
-    border: 2px solid #3502ff;
-    color: #1c1c1c; }
+nav {
+  margin-left: 0.2em; }
+  nav label {
+    margin-right: 1em; }
+    nav label span {
+      cursor: pointer;
+      border-radius: 0.1em;
+      padding: 0.2em 0.5em 0.2em 0.5em;
+      border: 1px solid #8668ff; }
+    nav label input {
+      appearance: none;
+      margin-left: -1em; }
+    nav label input:checked + span {
+      background-color: #1c1c1c;
+      border: 2px solid #3502ff;
+      color: #f5f5f5; }
 
 .projectsHeader {
   margin-top: 1em;
@@ -200,6 +195,11 @@ header p {
   width: 25%;
   min-width: 400px; }
 
+header aside {
+  position: absolute;
+  right: 0;
+  text-align: right; }
+
 main {
   margin-top: 4rem; }
   main > section {
@@ -207,30 +207,33 @@ main {
 
 article {
   padding-top: 1em;
-  border-top: 1px solid #1b1b1b;
+  border-top: 1px solid #f4f4f4;
   overflow: hidden; }
   article input[type="checkbox"].showContent {
     appearance: none;
     width: 100%;
-    height: 5em;
+    height: 6.5em;
     display: block;
     position: absolute;
     cursor: pointer;
-    z-index: 1000; }
+    z-index: 1000;
+    margin: 0; }
     article input[type="checkbox"].showContent:hover::after {
       content: "⇢";
-      color: #1c1c1c;
+      color: #f5f5f5;
       position: absolute;
       left: -2em;
       top: 1.5em;
       transition: all 0.2s ease-out;
       opacity: 1; }
-    article input[type="checkbox"].showContent:checked:hover:after {
-      transform: rotate(-90deg);
-      opacity: 0.5; }
-    article input[type="checkbox"].showContent:checked ~ section {
-      display: inline-block;
-      max-height: 100vh; }
+    article input[type="checkbox"].showContent:checked {
+      border-bottom: 1px dotted #363636; }
+      article input[type="checkbox"].showContent:checked:hover:after {
+        transform: rotate(-90deg);
+        opacity: 0.5; }
+      article input[type="checkbox"].showContent:checked ~ section {
+        display: inline-block;
+        max-height: 100vh; }
   article header {
     width: auto;
     position: relative;
@@ -251,16 +254,30 @@ article {
     max-height: 0px;
     overflow: hidden;
     transition: max-height 0.2s ease-out; }
-    article > section > section {
-      width: 40%;
+    @media (min-width: 1024px) {
+      article > section {
+        width: 80%;
+        margin-right: 1em; } }
+    article > section h4 {
+      margin-bottom: 1em; }
+    article > section img {
+      width: 90%;
+      height: auto; }
+      article > section img.small {
+        width: 20%; }
+    article > section img, article > section iframe {
+      margin-bottom: 1em; }
+    article > section p {
+      margin-top: 0;
+      margin-bottom: 2em;
       float: left; }
-      article > section > section img,
-      article > section > section iframe {
-        width: 90%; }
-      article > section > section p {
-        margin-top: 0;
-        margin-bottom: 2em; }
-      article > section > section p.small {
-        font-size: 0.75em; }
+      @media (min-width: 1024px) {
+        article > section p {
+          width: 40%;
+          margin-right: 1em; } }
+    article > section p.small {
+      font-size: 0.75em; }
+    article > section:first-of-type {
+      margin-top: 2em; }
     article > section:last-child {
       margin-bottom: 2em; }

@@ -1,24 +1,10 @@
-@font-face {
-  font-family: 'vtf_victoriannaitalic';
-  src: url("../fonts/vtf_victorianna_thin_talic-webfont.eot");
-  src: url("../fonts/vtf_victorianna_thin_talic-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/vtf_victorianna_thin_talic-webfont.woff") format("woff"), url("../fonts/vtf_victorianna_thin_talic-webfont.ttf") format("truetype"), url("../fonts/vtf_victorianna_thin_talic-webfont.svg#vtf_victoriannaitalic") format("svg");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap");
+h1, h2, h3, h4 {
+  font-family: "Josefin Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: normal;
-  font-style: normal; }
+  letter-spacing: -0.02em;
+  text-shadow: 0px 1px 2px #3502ff; }
 
-@font-face {
-  font-family: 'vtf_victoriannathin';
-  src: url("../fonts/vtf_victorianna_thin-webfont.eot");
-  src: url("../fonts/vtf_victorianna_thin-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/vtf_victorianna_thin-webfont.woff") format("woff"), url("../fonts/vtf_victorianna_thin-webfont.ttf") format("truetype"), url("../fonts/vtf_victorianna_thin-webfont.svg#vtf_victoriannathin") format("svg");
-  font-weight: normal;
-  font-style: normal; }
-
-h1, h2, h3 {
-  font-family: "vtf_victoriannathin", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: normal;
-  letter-spacing: 0.01em;
-  text-shadow: 1px 0px 0px #3502ff; }
-
-h4,
 h5,
 h6 {
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;

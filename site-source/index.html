@@ -40,15 +40,23 @@
 
     <header>
         <!-- <h1>Owen Hindley</h1> -->
+
+       
         <h1>O</h1>
+        <aside>
+            <!-- <a id="twitter-link" href="http://twitter.com/owen_hindley" target="_blank">t</a>
+            <a id="github-link" href="http://github.com/owenhindley" target="_blank">g</a> -->
+                <p>owenhindley at hotmail dot com<br/>
+                +354 762 0292</p>
+            </h6>    
+        </aside>
         <p>✋Hi! I'm Owen, and I create experiences for VR, theatre, installations, games,
             performance and the web using software, electronics and sometimes sound.</p>       
-            <a id="twitter-link" href="http://twitter.com/owen_hindley" target="_blank">t</a>
-        <a id="github-link" href="http://github.com/owenhindley" target="_blank">g</a>
-        <h6>
-            owenhindley at hotmail dot com<br>
-            +354 762 0292<br>
-        </h6>         
+       
+            <div class="slideshow">
+                <img src="./images/projects/ih-lnoae-03_looping.gif"/>
+            </div>
+            
         <!-- <p>I'm co-founder of <a href="http://huldufugl.is/" target="_blank">Huldufugl</a>, creating
             immersive theatrical environments in both the real world
             and the&nbsp;virtual.</p>			 -->
@@ -129,7 +137,7 @@
         </section>
 
         <section class="collaboration">
-            <h6>Collaborations</h6>
+            <h6>Collaborations &amp; Commercial</h6>
             {% for article in collaboration %}
             <article id="{{article.data.id}}" class="{{article.data.class}} {% if article.data.recent %}recent{%endif%}">
                 <input class="showContent" type="checkbox"></input>
@@ -168,8 +176,12 @@
             <h6>About &amp; Bio</h6>
             <p>Owen (he/him) is a collaborative digital artist, working with software, sound, and electronics for the web, VR, performances, devices and installations.</p>
             <p>His commercial work has included serving as technical lead on large, cutting-edge projects for clients such as Oculus Studios, Google, Microsoft/Xbox, Samsung and Mercedes, collaborating with digital creatives such as Universal Everything, FIELD and B-Reel. These projects have ranged from an interactive web-connected musical installation at the London Science Museum for Google, Web Lab, to a pneumatic live-streamed pinata-smashing robot.</p>
-            <p>He is co-founder of Huldufugl, a Reykjavik-based theatre and events company experimenting with new mediums in theatre, both technological (as with their VR shows Kassinn and Hliðstætt Fólk), and immersive</p>
+            <p>He is co-founder of <a href="http://huldufugl.is" target="_blank">Huldufugl</a> a Reykjavik-based theatre and events company experimenting with new mediums in theatre, both technological (as with their VR shows Kassinn and Hliðstætt Fólk), and immersive</p>
             <p>He is also co-founder of Horizons Studio, a London-based creative studio producing interactive musical experiences in VR. Their debut title, Horizons VR was commissioned by Google as a launch title for their Daydream platform, with releases on Oculus and HTC platforms planned for 2019.</p>
+            <p>He was also Sound Supervisor and on-set sound recordist on two short independent films, The Fallow Field and Who We Are, and sound editor on the Subsource Dubumentary.</p>
+            <p></p>
+            
+            
             <h6>Awards</h6>
             <ul>
                 <li>Sproti Ársins (Nomination), Kassinn / A Box In The Desert, <a href="https://www.fil.is/frettir/1551/" target="_blank">Gríman (Icelandic Theatre Awards) 2020</a></li>
@@ -185,6 +197,14 @@
                 
                 
                 
+            </ul>
+
+            <h6>Links</h6>
+            <ul>
+                <li><a href="https://github.com/owenhindley/" target="_blank">Github</a></li>
+                <li><a href="https://twitter.com/owen_hindley" target="_blank">Twitter</a></li>
+                <li><a href="https://www.instagram.com/owenhindley/" target="_blank">Instagram</a></li>
+                <li><a href="https://www.imdb.com/name/nm3918183" target="_blank">IMDB</a></li>
             </ul>
             <h6>Recent Employment history</h6>
             <ul>
@@ -203,6 +223,10 @@
        
 
     </main>
+    <footer>
+        <p>Owen Hindley, 2022</p>
+
+    </footer>
 </body>
 
  
