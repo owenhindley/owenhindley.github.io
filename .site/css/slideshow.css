@@ -22,3 +22,10 @@
     color: #BF4539; }
   100% {
     color: #a69960; } }
+
+.slideshow {
+  width: 100%;
+  text-align: center;
+  background-color: black;
+  border: 1px solid #f5f5f5;
+  border-radius: 2px; }

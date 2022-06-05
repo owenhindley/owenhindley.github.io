@@ -3,6 +3,56 @@
 // $textColor:#1c1c1c;
 // $highlightColor: #3502ff;
 
+
+
+/* Color Theme Swatches in RGBA */
+// $c0: rgba(52,135,135, 1);
+// $c1: rgba(249,126,8, 1);
+// $c2: rgba(158,247,237, 1);
+// $c3: rgba(242,68,4, 1);
+// $c4: rgba(33,186,186, 1);
+
+/* Color Theme Swatches in Hex */
+$c0: #a69960;
+$c1: #BF4539;
+$c2: #F29849;
+$c3: #F2D0A7;
+$c4: #F24B4B;
+
+
+
 $backgroundColor:#1c1c1c;
 $textColor:#f5f5f5;
-$highlightColor: #3502ff;
+$highlightColor: $c0;
+
+
+// $c0: #3502ff;
+// $c1: #FCB71C;
+// $c2: #3503FC;
+// $c3: #B3FC1C;
+// $c4: #0F5EFC;
+
+.c0 {
+    color:$c0;
+}
+.c1 {
+    color:$c1;
+}
+.c2 {
+    color:$c2;
+}
+.c3 {
+    color:$c3;
+}
+.c4 {
+    color:$c4;
+}
+
+@keyframes colourCycle {
+    0% { color: $c0; }
+    50% { color : $c1; }
+    100% { color : $c0; }
+}
+
+
+
