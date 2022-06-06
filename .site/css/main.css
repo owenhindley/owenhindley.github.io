@@ -3,58 +3,58 @@
 /* Color Theme Swatches in Hex */
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap");
 .c0 {
-  color: #a69960; }
+  color: #BF7582; }
 
 .c1 {
-  color: #BF4539; }
+  color: #3B82BF; }
 
 .c2 {
-  color: #F29849; }
+  color: #F2D194; }
 
 .c3 {
-  color: #F2D0A7; }
+  color: #D99E6A; }
 
 .c4 {
-  color: #F24B4B; }
+  color: #F2F2F2; }
 
 @keyframes colourCycle {
   0% {
-    color: #a69960; }
+    color: #BF7582; }
   50% {
-    color: #BF4539; }
+    color: #3B82BF; }
   100% {
-    color: #a69960; } }
+    color: #BF7582; } }
 
 /* Color Theme Swatches in RGBA */
 /* Color Theme Swatches in Hex */
 .c0 {
-  color: #a69960; }
+  color: #BF7582; }
 
 .c1 {
-  color: #BF4539; }
+  color: #3B82BF; }
 
 .c2 {
-  color: #F29849; }
+  color: #F2D194; }
 
 .c3 {
-  color: #F2D0A7; }
+  color: #D99E6A; }
 
 .c4 {
-  color: #F24B4B; }
+  color: #F2F2F2; }
 
 @keyframes colourCycle {
   0% {
-    color: #a69960; }
+    color: #BF7582; }
   50% {
-    color: #BF4539; }
+    color: #3B82BF; }
   100% {
-    color: #a69960; } }
+    color: #BF7582; } }
 
 h1, h2, h3, h4 {
   font-family: "Josefin Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: normal;
   letter-spacing: -0.02em;
-  text-shadow: 0px 1px 2px #a69960; }
+  text-shadow: 0px 1px 2px #c2c2c2; }
 
 h5,
 h6 {
@@ -134,27 +134,27 @@ main.about .about {
 /* Color Theme Swatches in RGBA */
 /* Color Theme Swatches in Hex */
 .c0 {
-  color: #a69960; }
+  color: #BF7582; }
 
 .c1 {
-  color: #BF4539; }
+  color: #3B82BF; }
 
 .c2 {
-  color: #F29849; }
+  color: #F2D194; }
 
 .c3 {
-  color: #F2D0A7; }
+  color: #D99E6A; }
 
 .c4 {
-  color: #F24B4B; }
+  color: #F2F2F2; }
 
 @keyframes colourCycle {
   0% {
-    color: #a69960; }
+    color: #BF7582; }
   50% {
-    color: #BF4539; }
+    color: #3B82BF; }
   100% {
-    color: #a69960; } }
+    color: #BF7582; } }
 
 .slideshow {
   width: 100%;
@@ -190,13 +190,13 @@ nav {
       text-transform: uppercase;
       font-weight: bolder; }
     nav label:nth-of-type(4n) span {
-      color: #a69960; }
+      color: #BF7582; }
     nav label:nth-of-type(4n+1) span {
-      color: #BF4539; }
+      color: #3B82BF; }
     nav label:nth-of-type(4n+2) span {
-      color: #F29849; }
+      color: #F2D194; }
     nav label:nth-of-type(4n+3) span {
-      color: #F2D0A7; }
+      color: #D99E6A; }
     nav label input {
       appearance: none;
       margin-left: -1em; }
@@ -326,14 +326,6 @@ article {
       article input[type="checkbox"].showContent:checked ~ section {
         display: inline-block;
         max-height: 100vh; }
-  article:nth-of-type(4n) header h4 {
-    color: #a69960; }
-  article:nth-of-type(4n+1) header h4 {
-    color: #BF4539; }
-  article:nth-of-type(4n+2) header h4 {
-    color: #F29849; }
-  article:nth-of-type(4n+3) header h4 {
-    color: #F2D0A7; }
   article header {
     width: auto;
     position: relative;

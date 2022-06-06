@@ -267,10 +267,11 @@ article {
 		}
 	}
 
-	&:nth-of-type(4n) header h4 { color: $c0; }
-	&:nth-of-type(4n+1) header h4 { color: $c1; }
-	&:nth-of-type(4n+2) header h4 { color: $c2; }
-	&:nth-of-type(4n+3) header h4 { color: $c3; }
+	// & header h4 { color: $c2; }
+	// &:nth-of-type(2n) header h4 { color:darken($textColor, 20)}
+	// &:nth-of-type(4n+1) header h4 { color: $c1; }
+	// &:nth-of-type(4n+2) header h4 { color: $c2; }
+	// &:nth-of-type(4n+3) header h4 { color: $c3; }
 	// &:nth-of-type(5n+4) header h4 { color: $c4; }
 
 	header {

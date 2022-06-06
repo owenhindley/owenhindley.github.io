@@ -13,17 +13,23 @@
 // $c4: rgba(33,186,186, 1);
 
 /* Color Theme Swatches in Hex */
-$c0: #a69960;
-$c1: #BF4539;
-$c2: #F29849;
-$c3: #F2D0A7;
-$c4: #F24B4B;
+// $c0: #c7b049;
+// $c1: #BF4539;
+// $c2: #F29849;
+// $c3: #F2D0A7;
+// $c4: #F24B4B;
+
+$c0: #BF7582;
+$c1: #3B82BF;
+$c2: #F2D194;
+$c3: #D99E6A;
+$c4: #F2F2F2;
 
 
 
 $backgroundColor:#1c1c1c;
 $textColor:#f5f5f5;
-$highlightColor: $c0;
+$highlightColor: darken($textColor, 20);
 
 
 // $c0: #3502ff;
