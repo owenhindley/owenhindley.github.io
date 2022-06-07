@@ -81,3 +81,6 @@ a {
   text-decoration: none; }
   a:hover {
     border-bottom: 1px solid #6d6d6d; }
+
+p {
+  line-height: 1.5em; }
