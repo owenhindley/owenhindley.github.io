@@ -33,6 +33,23 @@
 	function OnNavChange(e){
 		document.querySelector('main').className = e;
 	}
+
+    var videoElement;
+    document.addEventListener("DOMContentLoaded", function(){
+        videoElement = document.getElementById('splashVideo');
+        document.addEventListener('scroll', (e)=>{
+            var opacity =  0.0;
+            if (window.scrollY < videoElement.offsetHeight) {
+                opacity = (videoElement.offsetHeight - (window.scrollY * 4.0)) / videoElement.offsetHeight;
+            }
+            opacity = Math.max(0.0, opacity);
+            videoElement.style.opacity = opacity;
+        });
+
+
+    });
+    
+   
 </script>
 
 
