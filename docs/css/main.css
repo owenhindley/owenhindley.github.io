@@ -108,8 +108,10 @@ a {
   a:hover {
     border-bottom: 1px solid #6d6d6d; }
 
-p {
-  line-height: 1.5em; }
+p, li, ul {
+  line-height: 1.5em;
+  font-size: 1.1em;
+  color: #8a8989; }
 
 main article, section {
   display: none; }
@@ -461,7 +463,8 @@ article {
     article > section p {
       margin-top: 1em;
       margin-bottom: 2em;
-      float: left; }
+      float: left;
+      font-weight: 100; }
       @media (min-width: 1024px) {
         article > section p {
           width: 40%;

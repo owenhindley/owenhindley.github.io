@@ -82,5 +82,7 @@ a {
   a:hover {
     border-bottom: 1px solid #6d6d6d; }
 
-p {
-  line-height: 1.5em; }
+p, li, ul {
+  line-height: 1.5em;
+  font-size: 1.1em;
+  color: #8a8989; }
