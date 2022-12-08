@@ -277,6 +277,8 @@ header {
 
 	@media (max-width:1024px) {
 
+		overflow: hidden;
+
 		> p {
 			display: none;
 		}

@@ -351,17 +351,19 @@ header aside {
   text-align: right; }
 
 @media (max-width: 1024px) {
-  header > p {
-    display: none; }
-  header aside {
-    position: static;
-    text-align: left;
-    opacity: 0.5;
-    display: block;
-    float: left;
-    margin-bottom: 1em; }
-    header aside p {
-      margin: 0; } }
+  header {
+    overflow: hidden; }
+    header > p {
+      display: none; }
+    header aside {
+      position: static;
+      text-align: left;
+      opacity: 0.5;
+      display: block;
+      float: left;
+      margin-bottom: 1em; }
+      header aside p {
+        margin: 0; } }
 
 main {
   margin-top: 4rem; }
