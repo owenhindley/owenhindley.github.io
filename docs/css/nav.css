@@ -1,7 +1,13 @@
-main article, section {
+main article,
+section {
   display: none; }
 
-main.all .collaboration, main.all .performance, main.all .recent, main.all .works, main.all .talks {
+main.all .collaboration,
+main.all .performance,
+main.all .recent,
+main.all .works,
+main.all .archive,
+main.all .talks {
   display: block; }
 
 main.recent > section:not(.about) {
@@ -12,11 +18,15 @@ main.recent > section:not(.about) {
 main.collaboration .collaboration {
   display: block; }
 
-main.works .works, main.works .performance {
+main.works .works,
+main.works .performance {
   display: block; }
 
 main.talks .talks {
   display: block; }
 
 main.about .about {
+  display: block; }
+
+main.archive .archive {
   display: block; }

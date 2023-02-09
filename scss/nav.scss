@@ -1,6 +1,6 @@
-
-main article, section {
-    display: none;	
+main article,
+section {
+    display: none;
 }
 
 // main > section > h6 { display: none; }
@@ -10,46 +10,52 @@ main article, section {
 //     }
 // }
 
-
 main.all {
-    .collaboration, .performance, .recent, .works, .talks{
+    .collaboration,
+    .performance,
+    .recent,
+    .works,
+    .archive,
+    .talks {
         display: block;
-    }    
+    }
 }
 main.recent {
     > section:not(.about) {
         display: block;
-        .recent{
+        .recent {
             display: block;
         }
     }
-        
 }
 
 main.collaboration {
-    .collaboration{
+    .collaboration {
         display: block;
-    }    
+    }
 }
 
 main.works {
-    .works, .performance{
+    .works,
+    .performance {
         display: block;
-    }    
+    }
 }
 
 main.talks {
-    .talks{
+    .talks {
         display: block;
-    }    
+    }
 }
 
 main.about {
-    .about{
+    .about {
         display: block;
-    }    
+    }
 }
 
-
-
-
+main.archive {
+    .archive {
+        display: block;
+    }
+}

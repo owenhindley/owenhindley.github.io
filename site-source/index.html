@@ -118,6 +118,10 @@
             <input type="radio" name="nav" id="check-talks"></input>
             <span>Talks&nbsp;&amp;&nbsp;Education</span>
         </label>	
+        <label onclick="OnNavChange('archive')">
+            <input type="radio" name="nav" id="check-archive"></input>
+            <span>Archive</span>
+        </label>	
         <label onclick="OnNavChange('about')">
             <input type="radio" name="nav" id="check-about"></input>
             <span>About</span>
@@ -130,6 +134,7 @@
         {% assign performances = collections.article | where : "data.class", "performance" | sort: 'data.endDate' | reverse %}
         {% assign collaboration = collections.article | where : "data.class", "collaboration" | sort: 'data.endDate' | reverse %}
         {% assign talks = collections.article | where : "data.class", "talks" | sort: 'data.endDate' | reverse  %}        
+        {% assign archive = collections.archive | sort: 'data.endDate' | reverse  %}        
 
         <section class="works">
             <h6>Works &amp; Performances</h6>
@@ -180,6 +185,26 @@
                         <li>{{article.data.when}}</li>
                         <li>{{article.data.role}}</li>
                         <li>{{article.data.skills}}</li>
+                    </ol>
+                </header>
+                    {{ article.templateContent }}
+            </article>
+            {% endfor %}
+        </section>
+
+       
+
+        <section class="archive">
+            <h6>Project Archive</h6>
+            {% for article in archive %}
+            <article id="{{article.data.id}}" class="{{article.data.class}} {% if article.data.recent %}recent{%endif%}">                
+                <input class="showContent" type="checkbox"></input>
+                <header>
+                    <h6>{{article.data.title}}</h6>
+                    <summary>{{article.data.summary}}</summary>
+                    <ol>
+                        <li>{{article.data.endDate}}</li>                       
+                        <li>{{article.data.where}}</li>
                     </ol>
                 </header>
                     {{ article.templateContent }}
