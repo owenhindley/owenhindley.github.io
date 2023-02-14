@@ -43,7 +43,7 @@
             if (window.scrollY < videoElement.offsetHeight) {
                 opacity = (videoElement.offsetHeight - (window.scrollY * 4.0)) / videoElement.offsetHeight;
             }
-            opacity = Math.max(0.0, opacity);
+            opacity = Math.min(0.5, Math.max(0.0, opacity));
             videoElement.style.opacity = opacity;
         });
 
@@ -139,6 +139,7 @@
 
         <section class="works">
             <h6>Works &amp; Performances</h6>
+            <p>These are pieces which I've either directed myself or been part of the main creative team.</p>
             {% for article in works %}
             <article id="{{article.data.id}}" class="{{article.data.class}} {% if article.data.recent %}recent{%endif%}">
                 <input class="showContent" type="checkbox"></input>
@@ -176,6 +177,7 @@
 
         <section class="collaboration">
             <h6>Collaborations &amp; Commercial</h6>
+            <p>More commercial projects where I've been brought in as a contractor or collaborator, often on the technical side of things.</p>
             {% for article in collaboration %}
             <article id="{{article.data.id}}" class="{{article.data.class}} {% if article.data.recent %}recent{%endif%}">
                 <input class="showContent" type="checkbox"></input>
@@ -197,6 +199,7 @@
 
         <section class="archive">
             <h6>Project Archive</h6>
+            <p>Older projects that define my early career and interests.</p>
             {% for article in archive %}
             <article id="{{article.data.id}}" class="{{article.data.class}} {% if article.data.recent %}recent{%endif%}">                
                 <input class="showContent" type="checkbox"></input>
@@ -215,6 +218,7 @@
 
         <section class="talks">
             <h6>Talks &amp; Education</h6>
+            <p>When I've been asked to lecture or run workshops for students or institutions about my work or projects.</p>
             {% for article in talks %}
             <article id="{{article.data.id}}" class="{{article.data.class}} {% if article.data.recent %}recent{%endif%}">                
                 <header>

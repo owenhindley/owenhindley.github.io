@@ -43,7 +43,7 @@
             if (window.scrollY < videoElement.offsetHeight) {
                 opacity = (videoElement.offsetHeight - (window.scrollY * 4.0)) / videoElement.offsetHeight;
             }
-            opacity = Math.max(0.0, opacity);
+            opacity = Math.min(0.5, Math.max(0.0, opacity));
             videoElement.style.opacity = opacity;
         });
 
@@ -139,6 +139,7 @@
 
         <section class="works">
             <h6>Works &amp; Performances</h6>
+            <p>These are pieces which I've either directed myself or been part of the main creative team.</p>
             
             <article id="fallax" class="works recent">
                 <input class="showContent" type="checkbox"></input>
@@ -349,6 +350,39 @@
         combination of effects that you end up coming up with in the
         moment.
     </p>
+</section>
+
+            </article>
+            
+            <article id="aristokrasia" class="works recent">
+                <input class="showContent" type="checkbox"></input>
+                <header>
+                    <h4>Aristokrasia</h4>
+                    <summary>Show visuals design + performance</summary>
+                    <ol>
+                        <li>2022-current</li>
+                        <li>Visual design & development</li>
+                        <li>Touchdesigner, Unity</li>
+                    </ol>
+                </header>
+                    
+<section>
+    <img
+        src="./images/projects/aristokrasia.jpg"
+        alt="aristokrasia-portfolio"
+        class="alignleft"
+    />
+    <h4>
+        An audio-visual collaboration with one of Iceland's most
+        established electronic musicians, Úlfur Eldjárn
+    </h4>
+    <h4>
+        Premiering at Extreme Chill Festival, Reykjavík, 2022, and
+        ongoing into 2023.
+    </h4>
+</section>
+<section>
+    <p>More images + info coming soon.</p>
 </section>
 
             </article>
@@ -771,6 +805,108 @@
 
             </article>
             
+            <article id="moon-seat" class="works ">
+                <input class="showContent" type="checkbox"></input>
+                <header>
+                    <h4>The Moon Seat</h4>
+                    <summary>Audio-visual public installation</summary>
+                    <ol>
+                        <li>2016-17</li>
+                        <li>Technical lead, sound design</li>
+                        <li>Flash, Processing</li>
+                    </ol>
+                </header>
+                    
+<section>
+    <img
+        src="./images/projects/moon-seat.jpg"
+        alt="Moon Seat"
+        width="610"
+    />
+</section>
+
+<section>
+    <ul>
+        <li>
+            <strong
+                >The Tab:
+                <a
+                    href="http://thetab.com/uk/cambridge/2016/02/18/art-installation-inspired-full-moon-placed-outside-union-69233"
+                    target="_blank"
+                    >⤤</a
+                ></strong
+            >
+        </li>
+        <li>
+            <strong
+                >The Moon Seat at e-Luminate 2016 :
+                <a
+                    href="http://www.e-luminatefestivals.co.uk/e-luminate-festival-2016/eventsandinstallations/alexander-jenkins-and-owen-hindley/"
+                    target="_blank"
+                    >⤤</a
+                ></strong
+            >
+        </li>
+        <li>
+            <strong
+                >Project Website :
+                <a href="http://moonseat.tumblr.com/" target="_blank"
+                    >⤤</a
+                ></strong
+            >
+        </li>
+    </ul>
+</section>
+
+<section>
+    <p>
+        The Moon Seat is a playful installation that entertains our
+        inner child whilst simultaneously courting long forgotten
+        childhood fears. The installation had its first public outing
+        at the <strong>e-Luminate</strong> festival in Cambridge, UK
+        from 12th-17th February 2016, and was located on the front
+        lawn of the prestigious Cambridge Union Society.
+    </p>
+
+    <p>
+        Audience members were invited to sit, at which point the pool
+        of moonlight would instantly open to show their shadow. After
+        a few seconds, their shadow would transform into an animal
+        controlled by their bodily movements, but with a character all
+        of its own. An ethereal generative soundtrack reacting to the
+        user's movements accompanies the piece.
+    </p>
+</section>
+<section>
+    <p>
+        I'd worked with Alex for a long time at B-Reel, and I was very
+        excited to be asked to get involved in his first independent
+        installation art piece! It quickly became apparent that we
+        were going to need some more help, so we drafted in
+        ex-B-Reelers and good friends Yi-Wen Lin and Christian Persson
+        to come on board.
+    </p>
+
+    <p>
+        We pulled in quite a variety of technologies for this one,
+        including
+        <a href="http://processing.org" target="_blank">Processing</a>
+        (main show),
+        <a href="http://nwjs.io" target="_blank">NodeWebkit</a>
+        (gesture detection &amp; tracking),
+        <a
+            href="http://labs.adobe.com/technologies/flashruntimes/"
+            target="_blank"
+            >Flash/AIR</a
+        >
+        (character animation &amp; playback) and
+        <a href="http://puredata.info/" target="_blank">Pure Data</a>
+        (generative audio &amp; DMX control)
+    </p>
+</section>
+
+            </article>
+            
             <article id="horizons-vr" class="works ">
                 <input class="showContent" type="checkbox"></input>
                 <header>
@@ -860,6 +996,222 @@
 
             </article>
             
+            <article id="mmorph" class="works ">
+                <input class="showContent" type="checkbox"></input>
+                <header>
+                    <h4>Mmorph</h4>
+                    <summary>Browser-based interactive audio experience</summary>
+                    <ol>
+                        <li>2016</li>
+                        <li>Lead Develoment, Design</li>
+                        <li>JS, WebAudio, SVG Animation</li>
+                    </ol>
+                </header>
+                    
+<section>
+    <img src="./images/projects/Mmorph-screenshot.jpg" alt="mmorph by MassiveMusic" width="610" height="374" />
+</section>
+
+<section>
+    <ul>
+    <li><strong>Site link : <a href="http://mmorph.massivemusic.com" target="_blank">⤤</a></strong></li>
+    <li><strong>Case Study Video : <a href="https://vimeo.com/154044120" target="_blank">⤤</a></strong></li>
+    <li><strong>FWA PCA of The Year (Nomination): <a
+            href="https://thefwa.com/editorial/the-fwa-peoples-choice-award-pca-2016-vote-now"
+            target="_blank">⤤</a></br></strong></li>
+    <li><strong>FWA Site of The Month: <a href="http://www.thefwa.com/site/mmorph" target="_blank">⤤</a></strong></li>
+    <li><strong>Awwwards Honorable Mention: <a href="http://www.awwwards.com/best-websites/mmorph/" target="_blank">⤤</a></strong></li>
+        <li><strong>FWA Insights: <a href="http://www.thefwa.com/article/insights-mmorph" target="_blank">⤤</a></strong></li>
+    
+</ul>
+</section>
+<section>
+    <p>mmorph is an adventure into new ways of delivering interactive music in the browser
+    and beyond.<br/><br/>
+
+A collaboration between global music agency MassiveMusic, Reactify Music, Grotesk,
+    Enzien Audio and myself, mmorph is an example of a new workflow which we hope will
+    open up many possibilities for interactive audio &#8211; first in the browser, and
+    then for games, apps, installations and VR.</p>
+<p>The site takes you through an interactive music piece, enabling different musical
+    parts, applying realtime effects, composing and looping a top-line synth, and
+    creating intense build-ups and drops!</p>
+
+</section>
+
+<section>
+   <p> My role was lead developer on the project, handling the integration of the audio
+    code from Reactify &#038; Enzien Audio (who in turn were working with original music
+    composed by Massive) with realtime SVG graphics and animations art-directed by
+    Grotesk.</p>
+
+<p>The interactive audio was produced via a unique workflow where Reactify worked
+    rapidly and closely with Massive&#8217;s in-house composer in Pure Data, an visual
+    programming environment that allows for real-time prototyping and development.</p>
+
+<p>This Pure Data &#8216;patch&#8217; was then converted to run in the browser via
+    Enzien Audio&#8217;s <strong>Heavy</strong> compiler. This compiler can also
+    transform the same source patch into code suitable for Unity, Unreal engine,
+    OpenFrameworks, desktop/mobile apps and VR experiences, with little or no
+    alterations to the original.</p>
+</section>
+
+<section>
+    <ul>
+    <li><strong>MassiveMusic: <a href="http://www.massivemusic.com/" target="_blank">⤤</a></strong></li>
+    <li><strong>Reactify: <a href="http://reactifymusic.com/" target="_blank">⤤</a></strong></li>
+    <li><strong>Enzien Audio: <a href="https://enzienaudio.com/" target="_blank">⤤</a></strong></li>
+    <li><strong>Grotesk Studio: <a href="http://groteskstudio.com/" target="_blank">⤤</a></strong></li>
+</ul>
+</section>
+
+            </article>
+            
+            <article id="harpa-pong" class="works ">
+                <input class="showContent" type="checkbox"></input>
+                <header>
+                    <h4>Harpa Pong</h4>
+                    <summary>Massive outdoor game</summary>
+                    <ol>
+                        <li>2014</li>
+                        <li>Design, Development</li>
+                        <li>Nodejs, DMX, HTML5</li>
+                    </ol>
+                </header>
+                    
+<section>
+    <div class="video-wrapper">
+        <iframe
+            width="610"
+            height="343"
+            src="//www.youtube.com/embed/R3_OSTtyfSw?modestbranding=1&#038;showinfo=0&#038;rel=0"
+            frameborder="0"
+            allowfullscreen
+        ></iframe>
+    </div>
+</section>
+<section>
+    <ul>
+        <li>
+            <strong
+                >Vice Magazine :
+                <a
+                    href="https://www.vice.com/en/article/xy4ded/icelanders-played-a-massive-game-of-pong-on-an-olafur-eliasson-building"
+                    >⤤</a
+                ></strong
+            >
+        </li>
+        <li>
+            <strong
+                >Reykjavik Grapevine :
+                <a
+                    href="http://grapevine.is/culture/art/2014/08/30/go-pong-harpa-now/"
+                    target="_blank"
+                    >⤤</a
+                ></strong
+            >
+        </li>
+
+        <li>
+            <strong
+                >Iceland Magazine:
+                <a
+                    href="http://www.icelandmag.com/article/playing-pong-harpas-concert-hall-43-61-meter-light-wall"
+                    target="_blank"
+                    >⤤</a
+                ></strong
+            >
+        </li>
+
+        <li>
+            <strong
+                >Homepage :
+                <a href="http://harpapong.com" target="_blank"
+                    >⤤</a
+                ></strong
+            >
+        </li>
+        <li>
+            <strong
+                >Menningarnótt site (Icelandic) :
+                <a
+                    href="http://menningarnott.is/pong-horpu"
+                    target="_blank"
+                    >⤤</a
+                ></strong
+            >
+        </li>
+        <li>
+            <strong
+                >Github :
+                <a href="https://github.com/owenhindley/harpapong"
+                    >⤤</a
+                ></strong
+            >
+        </li>
+    </ul>
+</section>
+<section>
+    <p>
+        PONG is a massive interactive outdoor artwork that allows two
+        people to play the classic game against each other on the
+        monumental facade of Harpa, Iceland&#8217;s flagship concert
+        hall in downtown Reykjavik, designed by Ólafur Eliasson.
+    </p>
+
+    <p>
+        Conceived and produced by Atli Bollason, the project began as
+        a chance meeting between myself and Atli at a birthday party
+        in Reykjavik, and over the next few months developed into a
+        reality &#8211; with not only the CEO of the building coming
+        on board very quickly, but for the first time for a project
+        like this, Ólafur himself (the first time he has allowed a
+        project like this to take over the facade&#8217;s lighting
+        system). Vodafone Iceland also agreed to sponsor the project,
+        and supply us with some of the equipment.
+    </p>
+
+    <p>
+        The project was launched on Menningarnótt (Culture Night) on
+        the 23rd August 2014, and ran for a week afterwards as part of
+        the Reykjavik Dance Festival. For the launch night, we setup a
+        stage in front of the building, and players used a pair of
+        phones to control their &#8216;paddles&#8217; on the 43m-high
+        screen. Afterwards, players were able to join a special Wi-fi
+        network which took them directly to the game, which was
+        transmitted from a hill overlooking the building. This would
+        allow them to join a virtual queue, and play against friends
+        or complete strangers.
+    </p>
+</section>
+<section>
+    <p>
+        Our roles were split with Atli handling the concept, creative
+        direction, project management and publicity, and me handling
+        the design, hardware, networking and programming.
+    </p>
+
+    <p>
+        Three separate Node.js servers run together to create the
+        experience; one running in the basement of Harpa which outputs
+        DMX to control the 35&#215;11 pixel display (6 universes of
+        512 channels each), one running in the cloud which actually
+        simulates the game physics, and receives WebSocket connections
+        from the player&#8217;s phone, and another which handles the
+        game queue.
+    </p>
+
+    <p>
+        An HTML5 mobile front-end was also developed to give visual
+        feedback to the player of their paddle, and current score. The
+        code for the entire project is available on
+        <a href="https://github.com/owenhindley/harpapong"> github</a
+        >.
+    </p>
+</section>
+
+            </article>
+            
 
             <!-- <h6>Performances</h6>
             
@@ -885,39 +1237,7 @@ https://www.youtube.com/watch?v=IUtDG1TvjI0&ab_channel=Huldufugl
 
         <section class="collaboration">
             <h6>Collaborations &amp; Commercial</h6>
-            
-            <article id="aristokrasia" class="collaboration recent">
-                <input class="showContent" type="checkbox"></input>
-                <header>
-                    <h4>Aristokrasia</h4>
-                    <summary>Show visuals design + performance</summary>
-                    <ol>
-                        <li>2022-current</li>
-                        <li>Visual design & development</li>
-                        <li>Touchdesigner, Unity</li>
-                    </ol>
-                </header>
-                    
-<section>
-    <img
-        src="./images/projects/aristokrasia.jpg"
-        alt="aristokrasia-portfolio"
-        class="alignleft"
-    />
-    <h4>
-        An audio-visual collaboration with one of Iceland's most
-        established electronic musicians, Úlfur Eldjárn
-    </h4>
-    <h4>
-        Premiering at Extreme Chill Festival, Reykjavík, 2022, and
-        ongoing into 2023.
-    </h4>
-</section>
-<section>
-    <p>More images + info coming soon.</p>
-</section>
-
-            </article>
+            <p>More commercial projects where I've been brought in as a contractor or collaborator, often on the technical side of things.</p>
             
             <article id="lambchild" class="collaboration recent">
                 <input class="showContent" type="checkbox"></input>
@@ -1121,67 +1441,6 @@ https://www.youtube.com/watch?v=IUtDG1TvjI0&ab_channel=Huldufugl
 
             </article>
             
-            <article id="moon-seat" class="collaboration ">
-                <input class="showContent" type="checkbox"></input>
-                <header>
-                    <h4>The Moon Seat</h4>
-                    <summary>Audio-visual public installation</summary>
-                    <ol>
-                        <li>2016-17</li>
-                        <li>Technical lead, sound design</li>
-                        <li>Flash, Processing</li>
-                    </ol>
-                </header>
-                    
-
-<section>
-    <img src="./images/projects/moon-seat.jpg" alt="Moon Seat" width="610" />
-</section>
-
-<section>
-    <ul>
-    <li><strong>The Tab: <a
-            href="http://thetab.com/uk/cambridge/2016/02/18/art-installation-inspired-full-moon-placed-outside-union-69233"
-            target="_blank">⤤</a></strong></li>
-    <li><strong>The Moon Seat at e-Luminate 2016 : <a
-            href="http://www.e-luminatefestivals.co.uk/e-luminate-festival-2016/eventsandinstallations/alexander-jenkins-and-owen-hindley/"
-            target="_blank">⤤</a></strong></li>
-        <li><strong>Project Website : <a href="http://moonseat.tumblr.com/" target="_blank">⤤</a></strong></li>
-        </ul>
-</section>
-
-
-<section>
-    <p>The Moon Seat is a playful installation that entertains our inner child whilst
-    simultaneously courting long forgotten childhood fears.
-
-    The installation had its first public outing at the <strong>e-Luminate</strong>
-    festival in Cambridge, UK from 12th-17th February 2016, and was located on the front
-    lawn of the prestigious Cambridge Union Society.</p>
-
-    <p>Audience members were invited to sit, at which point the pool of moonlight would
-    instantly open to show their shadow. After a few seconds, their shadow would
-    transform into an animal controlled by their bodily movements, but
-    with a character all of its own. An ethereal generative soundtrack reacting to the
-    user's movements accompanies the piece.</p>
-</section>
-<section>
-    <p>I'd worked with Alex for a long time at B-Reel, and I was very excited to be
-    asked to get involved in his first independent installation art piece!
-
-    It quickly became apparent that we were going to need some more help, so we drafted
-    in ex-B-Reelers and good friends Yi-Wen Lin and Christian Persson to come on board.</p>
-
-    <p>We pulled in quite a variety of technologies for this one, including <a href="http://processing.org"
-        target="_blank">Processing</a> (main show), <a href="http://nwjs.io" target="_blank">NodeWebkit</a> (gesture
-    detection &amp;
-    tracking), <a href="http://labs.adobe.com/technologies/flashruntimes/" target="_blank">Flash/AIR</a> (character
-    animation &amp; playback) and <a href="http://puredata.info/" target="_blank">Pure Data</a> (generative audio
-   &amp; DMX control)</p>
-</section>
-
-            </article>
-            
             <article id="vive-launch-site" class="collaboration ">
                 <input class="showContent" type="checkbox"></input>
                 <header>
@@ -1315,77 +1574,6 @@ https://www.youtube.com/watch?v=IUtDG1TvjI0&ab_channel=Huldufugl
     <!-- The results can be seen in the video above, for three days the visuals were bouncing around to the likes of Skrillex, Todd Terje and Elliphant, and were attracting attention not only in the city of Reykjavik, but also (we happily realised) inside the venue as well, where we accidentally became the main lightshow for the SonarPub stage. -->
 
 </section>
-            </article>
-            
-            <article id="mmorph" class="collaboration ">
-                <input class="showContent" type="checkbox"></input>
-                <header>
-                    <h4>Mmorph</h4>
-                    <summary>Browser-based interactive audio experience</summary>
-                    <ol>
-                        <li>2016</li>
-                        <li>Lead Develoment, Design</li>
-                        <li>JS, WebAudio, SVG Animation</li>
-                    </ol>
-                </header>
-                    
-<section>
-    <img src="./images/projects/Mmorph-screenshot.jpg" alt="mmorph by MassiveMusic" width="610" height="374" />
-</section>
-
-<section>
-    <ul>
-    <li><strong>Site link : <a href="http://mmorph.massivemusic.com" target="_blank">⤤</a></strong></li>
-    <li><strong>Case Study Video : <a href="https://vimeo.com/154044120" target="_blank">⤤</a></strong></li>
-    <li><strong>FWA PCA of The Year (Nomination): <a
-            href="https://thefwa.com/editorial/the-fwa-peoples-choice-award-pca-2016-vote-now"
-            target="_blank">⤤</a></br></strong></li>
-    <li><strong>FWA Site of The Month: <a href="http://www.thefwa.com/site/mmorph" target="_blank">⤤</a></strong></li>
-    <li><strong>Awwwards Honorable Mention: <a href="http://www.awwwards.com/best-websites/mmorph/" target="_blank">⤤</a></strong></li>
-        <li><strong>FWA Insights: <a href="http://www.thefwa.com/article/insights-mmorph" target="_blank">⤤</a></strong></li>
-    
-</ul>
-</section>
-<section>
-    <p>mmorph is an adventure into new ways of delivering interactive music in the browser
-    and beyond.<br/><br/>
-
-A collaboration between global music agency MassiveMusic, Reactify Music, Grotesk,
-    Enzien Audio and myself, mmorph is an example of a new workflow which we hope will
-    open up many possibilities for interactive audio &#8211; first in the browser, and
-    then for games, apps, installations and VR.</p>
-<p>The site takes you through an interactive music piece, enabling different musical
-    parts, applying realtime effects, composing and looping a top-line synth, and
-    creating intense build-ups and drops!</p>
-
-</section>
-
-<section>
-   <p> My role was lead developer on the project, handling the integration of the audio
-    code from Reactify &#038; Enzien Audio (who in turn were working with original music
-    composed by Massive) with realtime SVG graphics and animations art-directed by
-    Grotesk.</p>
-
-<p>The interactive audio was produced via a unique workflow where Reactify worked
-    rapidly and closely with Massive&#8217;s in-house composer in Pure Data, an visual
-    programming environment that allows for real-time prototyping and development.</p>
-
-<p>This Pure Data &#8216;patch&#8217; was then converted to run in the browser via
-    Enzien Audio&#8217;s <strong>Heavy</strong> compiler. This compiler can also
-    transform the same source patch into code suitable for Unity, Unreal engine,
-    OpenFrameworks, desktop/mobile apps and VR experiences, with little or no
-    alterations to the original.</p>
-</section>
-
-<section>
-    <ul>
-    <li><strong>MassiveMusic: <a href="http://www.massivemusic.com/" target="_blank">⤤</a></strong></li>
-    <li><strong>Reactify: <a href="http://reactifymusic.com/" target="_blank">⤤</a></strong></li>
-    <li><strong>Enzien Audio: <a href="https://enzienaudio.com/" target="_blank">⤤</a></strong></li>
-    <li><strong>Grotesk Studio: <a href="http://groteskstudio.com/" target="_blank">⤤</a></strong></li>
-</ul>
-</section>
-
             </article>
             
             <article id="light-organ" class="collaboration ">
@@ -1609,82 +1797,6 @@ A collaboration between global music agency MassiveMusic, Reactify Music, Grotes
 </section>
             </article>
             
-            <article id="harpa-pong" class="collaboration ">
-                <input class="showContent" type="checkbox"></input>
-                <header>
-                    <h4>Harpa Pong</h4>
-                    <summary>Massive outdoor game</summary>
-                    <ol>
-                        <li>2014</li>
-                        <li>Design, Development</li>
-                        <li>Nodejs, DMX, HTML5</li>
-                    </ol>
-                </header>
-                    <section>
-    <div class="video-wrapper">
-    <iframe width="610" height="343"
-        src="//www.youtube.com/embed/R3_OSTtyfSw?modestbranding=1&#038;showinfo=0&#038;rel=0" frameborder="0"
-        allowfullscreen></iframe>
-    </div>
-</section>
-<section>
-    <ul>
-        <li><strong>Vice Magazine : <a href="https://www.vice.com/en/article/xy4ded/icelanders-played-a-massive-game-of-pong-on-an-olafur-eliasson-building">⤤</a></strong></li>
-        <li><strong>Reykjavik Grapevine : <a href="http://grapevine.is/culture/art/2014/08/30/go-pong-harpa-now/"
-            target="_blank">⤤</a></strong></li>
-        
-    <li><strong>Iceland Magazine: <a
-            href="http://www.icelandmag.com/article/playing-pong-harpas-concert-hall-43-61-meter-light-wall"
-            target="_blank">⤤</a></strong></li>
-       
-    <li><strong>Homepage : <a href="http://harpapong.com" target="_blank">⤤</a></strong></li>
-   <li> <strong>Menningarnótt site (Icelandic) : <a href="http://menningarnott.is/pong-horpu" target="_blank">⤤</a></strong></li>
-   <li><strong>Github : <a href="https://github.com/owenhindley/harpapong">⤤</a></strong></li>
-    </ul>
-</section>
-<section>
-    <p>PONG is a massive interactive outdoor artwork that allows two people to play the
-    classic game against each other on the monumental facade of Harpa, Iceland&#8217;s
-    flagship concert hall in downtown Reykjavik, designed by Ólafur Eliasson.</p>
-
-<p>Conceived and produced by Atli Bollason, the project began as a chance meeting
-    between myself and Atli at a birthday party in Reykjavik, and over the next few
-    months developed into a reality &#8211; with not only the CEO of the building coming
-    on board very quickly, but for the first time for a project like this, Ólafur
-    himself (the first time he has allowed a project like this to take over the
-    facade&#8217;s lighting system). Vodafone Iceland also agreed to sponsor the
-    project, and supply us with some of the equipment.</p>
-
-<p>The project was launched on Menningarnótt (Culture Night) on the 23rd August 2014,
-    and ran for a week afterwards as part of the Reykjavik Dance Festival.
-    For the launch night, we setup a stage in front of the building, and players used a
-    pair of phones to control their &#8216;paddles&#8217; on the 43m-high screen.
-    Afterwards, players were able to join a special Wi-fi network which took them
-    directly to the game, which was transmitted from a hill overlooking the building.
-    This would allow them to join a virtual queue, and play against friends or complete
-    strangers.</p>
-</section>
-<section>
-<p>Our roles were split with Atli handling the concept, creative direction, project
-    management and publicity, and me handling the design, hardware, networking and
-    programming.</p>
-
-<p>Three separate Node.js servers run together to create the experience; one running in
-    the basement of Harpa which outputs DMX to control the 35&#215;11 pixel display (6
-    universes of 512 channels each), one running in the cloud which actually simulates
-    the game physics, and receives WebSocket connections from the player&#8217;s phone,
-    and another which handles the game queue.</p>
-
-<p> An HTML5 mobile front-end was also developed to give visual feedback to the player
-    of their paddle, and current score.
-
-    The code for the entire project is available on <a href="https://github.com/owenhindley/harpapong"> github</a>.</p>
-
-    
-</section>
-
-            </article>
-            
             <article id="xbox-glitch" class="collaboration ">
                 <input class="showContent" type="checkbox"></input>
                 <header>
@@ -1807,6 +1919,7 @@ A collaboration between global music agency MassiveMusic, Reactify Music, Grotes
 
         <section class="archive">
             <h6>Project Archive</h6>
+            <p>Older projects that define my early career and interests.</p>
             
             <article id="google_web_lab" class="archive ">                
                 <input class="showContent" type="checkbox"></input>
@@ -2002,7 +2115,7 @@ A collaboration between global music agency MassiveMusic, Reactify Music, Grotes
             <article id="beatles_on_itunes" class="archive ">                
                 <input class="showContent" type="checkbox"></input>
                 <header>
-                    <h6>Beatles on iTunes</h6>
+                    <h6>The Beatles iTunes launch</h6>
                     <summary>iTunes LP authoring</summary>
                     <ol>
                         <li>2010</li>                       
@@ -2254,8 +2367,8 @@ A collaboration between global music agency MassiveMusic, Reactify Music, Grotes
             <article id="hitachi_-_interactive_tables" class="archive ">                
                 <input class="showContent" type="checkbox"></input>
                 <header>
-                    <h6>Hitachi - Interactive Tables</h6>
-                    <summary></summary>
+                    <h6>Hitachi - Inspire Life Exhibition</h6>
+                    <summary>Multi-touch interactive installation</summary>
                     <ol>
                         <li>2008</li>                       
                         <li>London & Paris</li>
@@ -2297,6 +2410,7 @@ A collaboration between global music agency MassiveMusic, Reactify Music, Grotes
 
         <section class="talks">
             <h6>Talks &amp; Education</h6>
+            <p>When I've been asked to lecture or run workshops for students or institutions about my work or projects.</p>
             
             <article id="vr-masterclass" class="talks recent">                
                 <header>
