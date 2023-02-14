@@ -9,8 +9,7 @@
 body,
 html {
     background: $backgroundColor;
-    font-family: 'Open Sans', Verdana, Geneva, sans-serif;
-    color: $textColor;
+
     width: 100%;
     margin: 0;
     padding: 0;
@@ -21,7 +20,7 @@ html {
 
 ul,
 li {
-    list-style: none !important;
+    // list-style: none !important;
 }
 
 .container {
@@ -41,6 +40,10 @@ li {
         margin-left: 1em;
         margin-right: 1em;
         width: calc(100% - 2em);
+    }
+
+    header p {
+        color: #efefef;
     }
 }
 
@@ -378,11 +381,13 @@ article {
 
         h4 {
             display: block;
+            color: darken(#efefef, 10);
             // text-transform: uppercase;
         }
 
         summary {
             position: relative;
+            color: darken(#efefef, 15);
         }
 
         ol {
