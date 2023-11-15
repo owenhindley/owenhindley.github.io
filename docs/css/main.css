@@ -59,14 +59,14 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: 'Josefin Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Josefin Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: normal;
   letter-spacing: -0.02em;
   text-shadow: 0px 1px 2px #c2c2c2; }
 
 h5,
 h6 {
-  font-family: 'quasimoda', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'quasimoda', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: normal;
   letter-spacing: 0.02em; }
 
@@ -240,9 +240,12 @@ html {
 
 nav {
   margin-left: 0.2em;
-  margin-top: 3em;
+  margin-top: calc(50vh - 8rem);
   margin-bottom: 3em;
   float: left; }
+  @media (max-width: 1024px) {
+    nav {
+      margin-top: 3em; } }
   nav label {
     margin-right: 1em;
     float: left;
@@ -253,7 +256,7 @@ nav {
       padding: 0.3em 0 0em 0;
       margin-right: 1em;
       color: black;
-      font-family: 'Josefin Sans';
+      font-family: "Josefin Sans";
       text-transform: uppercase;
       font-weight: bolder;
       font-size: 44px; }
@@ -368,7 +371,8 @@ header h1 {
 
 header p {
   width: 25%;
-  min-width: 400px; }
+  min-width: 400px;
+  color: #efefef; }
 
 header aside {
   position: absolute;
@@ -403,7 +407,7 @@ article {
     appearance: none !important;
     -webkit-appearance: none !important;
     -moz-appearance: none !important; }
-  article input[type='checkbox'].showContent {
+  article input[type="checkbox"].showContent {
     width: 100%;
     height: 6.5em;
     display: block;
@@ -411,27 +415,27 @@ article {
     cursor: pointer;
     z-index: 1000;
     margin: 0; }
-    article input[type='checkbox'].showContent:hover::after {
-      content: '⇢';
-      font-family: 'Open Sans';
+    article input[type="checkbox"].showContent:hover::after {
+      content: "⇢";
+      font-family: "Open Sans";
       color: #f5f5f5;
       position: absolute;
       left: -2em;
       top: 1.5em;
       transition: all 0.2s ease-out;
       opacity: 1; }
-    article input[type='checkbox'].showContent:checked {
+    article input[type="checkbox"].showContent:checked {
       border-bottom: 1px dotted #363636; }
-      article input[type='checkbox'].showContent:checked:hover:after {
+      article input[type="checkbox"].showContent:checked:hover:after {
         transform: rotate(-90deg);
         opacity: 0.5; }
-      article input[type='checkbox'].showContent:checked ~ section {
+      article input[type="checkbox"].showContent:checked ~ section {
         display: inline-block;
         max-height: 800vh; }
   @media (max-width: 1024px) {
-    article input[type='checkbox'].showContent {
+    article input[type="checkbox"].showContent {
       height: 8.5em; }
-      article input[type='checkbox'].showContent:checked {
+      article input[type="checkbox"].showContent:checked {
         border-bottom: none; } }
   article header {
     width: auto;

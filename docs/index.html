@@ -32,7 +32,9 @@
 
 <script>
 	function OnNavChange(e){
-		document.querySelector('main').className = e;
+        var main = document.querySelector('main')
+		main.className = e;
+        main.scrollIntoView({ behavior : "smooth"});
 	}
 
     var videoElement;
@@ -540,6 +542,39 @@
 
             </article>
             
+            <article id="aristokrasia" class="works recent">
+                <input class="showContent" type="checkbox"></input>
+                <header>
+                    <h4>Aristokrasia</h4>
+                    <summary>Show visuals design + performance</summary>
+                    <ol>
+                        <li>2022-current</li>
+                        <li>Visual design & development</li>
+                        <li>Touchdesigner, Unity</li>
+                    </ol>
+                </header>
+                    
+<section>
+    <img
+        src="./images/projects/aristokrasia.jpg"
+        alt="aristokrasia-portfolio"
+        class="alignleft"
+    />
+    <h4>
+        An audio-visual collaboration with one of Iceland's most
+        established electronic musicians, Úlfur Eldjárn
+    </h4>
+    <h4>
+        Premiering at Extreme Chill Festival, Reykjavík, 2022, and
+        ongoing into 2023.
+    </h4>
+</section>
+<section>
+    <p>More images + info coming soon.</p>
+</section>
+
+            </article>
+            
             <article id="parallel-people" class="works recent">
                 <input class="showContent" type="checkbox"></input>
                 <header>
@@ -688,39 +723,6 @@
             >
         </li>
     </ul>
-</section>
-
-            </article>
-            
-            <article id="aristokrasia" class="works recent">
-                <input class="showContent" type="checkbox"></input>
-                <header>
-                    <h4>Aristokrasia</h4>
-                    <summary>Show visuals design + performance</summary>
-                    <ol>
-                        <li>2022-current</li>
-                        <li>Visual design & development</li>
-                        <li>Touchdesigner, Unity</li>
-                    </ol>
-                </header>
-                    
-<section>
-    <img
-        src="./images/projects/aristokrasia.jpg"
-        alt="aristokrasia-portfolio"
-        class="alignleft"
-    />
-    <h4>
-        An audio-visual collaboration with one of Iceland's most
-        established electronic musicians, Úlfur Eldjárn
-    </h4>
-    <h4>
-        Premiering at Extreme Chill Festival, Reykjavík, 2022, and
-        ongoing into 2023.
-    </h4>
-</section>
-<section>
-    <p>More images + info coming soon.</p>
 </section>
 
             </article>
