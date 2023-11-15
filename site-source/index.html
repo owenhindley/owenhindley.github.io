@@ -5,17 +5,17 @@
 <meta charset="utf-8">
 <title>Owen Hindley</title>
 <meta name="description"
-	content="Owen Hindley creates experiences for VR, theatre, installations, games, performance and the web using software, electronics and sound.">
+	content="Owen Hindley is a digital artist creating experiences for VR, theatre, installations, games, performance and the web using software, electronics and sound.">
 <meta name="author" content="Owen Hindley">
 <meta property="og:url" content="http://www.owenhindley.co.uk">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Owen Hindley">
 <meta property="og:description"
-	content="Owen Hindley creates experiences for VR, theatre, installations, games, performance and the web using software, electronics and sound.">
+	content="Owen Hindley is a digital artist creating experiences for VR, theatre, installations, games, performance and the web using software, electronics and sound.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Owen Hindley Portfolio">
 <meta name="twitter:description"
-	content="Owen Hindley creates experiences for VR, theatre, installations, games, performance and the web using software, electronics and sound.">
+	content="Owen Hindley is a digital artist creating experiences for VR, theatre, installations, games, performance and the web using software, electronics and sound.">
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -25,6 +25,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="https://use.typekit.net/bio5jjx.css">
+
 
 <link rel="stylesheet" href="css/normalize.css">
 <link rel="stylesheet" href="css/main.css">
@@ -44,8 +45,8 @@
             if (window.scrollY < videoElement.offsetHeight) {
                 opacity = (videoElement.offsetHeight - (window.scrollY * 4.0)) / videoElement.offsetHeight;
             }
-            opacity = Math.max(0.0, opacity);
-            videoElement.style.opacity = opacity * 0.5;
+            opacity = Math.min(0.5, Math.max(0.0, opacity));
+            videoElement.style.opacity = opacity;
         });
 
 
@@ -85,7 +86,7 @@
             </h6>    
         </aside>
         <p>✋ Hi, I'm Owen!</p>
-        <p>I create work for stage, screens and spaces using software, electronics and sound.</p>    
+        <p>I'm a digital artist creating work for stage, screens and spaces using software, electronics and sound.</p>    
         <p>I've made VR theatre shows, AR music videos, enormous games of PONG, a robot that smashes pinatas, projected sets for a circus show, a little video game and an ARG for Xbox.</p>   
        
            
@@ -120,6 +121,10 @@
             <input type="radio" name="nav" id="check-talks"></input>
             <span>Talks&nbsp;&amp;&nbsp;Education</span>
         </label>	
+        <label onclick="OnNavChange('archive')">
+            <input type="radio" name="nav" id="check-archive"></input>
+            <span>Archive</span>
+        </label>	
         <label onclick="OnNavChange('about')">
             <input type="radio" name="nav" id="check-about"></input>
             <span>About</span>
@@ -132,9 +137,11 @@
         {% assign performances = collections.article | where : "data.class", "performance" | sort: 'data.endDate' | reverse %}
         {% assign collaboration = collections.article | where : "data.class", "collaboration" | sort: 'data.endDate' | reverse %}
         {% assign talks = collections.article | where : "data.class", "talks" | sort: 'data.endDate' | reverse  %}        
+        {% assign archive = collections.archive | sort: 'data.endDate' | reverse  %}        
 
         <section class="works">
             <h6>Works &amp; Performances</h6>
+            <p>These are pieces which I've either directed myself or been part of the main creative team.</p>
             {% for article in works %}
             <article id="{{article.data.id}}" class="{{article.data.class}} {% if article.data.recent %}recent{%endif%}">
                 <input class="showContent" type="checkbox"></input>
@@ -172,6 +179,7 @@
 
         <section class="collaboration">
             <h6>Collaborations &amp; Commercial</h6>
+            <p>More commercial projects where I've been brought in as a contractor or collaborator, often on the technical side of things.</p>
             {% for article in collaboration %}
             <article id="{{article.data.id}}" class="{{article.data.class}} {% if article.data.recent %}recent{%endif%}">
                 <input class="showContent" type="checkbox"></input>
@@ -189,8 +197,30 @@
             {% endfor %}
         </section>
 
+       
+
+        <section class="archive">
+            <h6>Project Archive</h6>
+            <p>Older projects that define my early career and interests.</p>
+            {% for article in archive %}
+            <article id="{{article.data.id}}" class="{{article.data.class}} {% if article.data.recent %}recent{%endif%}">                
+                <input class="showContent" type="checkbox"></input>
+                <header>
+                    <h6>{{article.data.title}}</h6>
+                    <summary>{{article.data.summary}}</summary>
+                    <ol>
+                        <li>{{article.data.endDate}}</li>                       
+                        <li>{{article.data.where}}</li>
+                    </ol>
+                </header>
+                    {{ article.templateContent }}
+            </article>
+            {% endfor %}
+        </section>
+
         <section class="talks">
             <h6>Talks &amp; Education</h6>
+            <p>When I've been asked to lecture or run workshops for students or institutions about my work or projects.</p>
             {% for article in talks %}
             <article id="{{article.data.id}}" class="{{article.data.class}} {% if article.data.recent %}recent{%endif%}">                
                 <header>

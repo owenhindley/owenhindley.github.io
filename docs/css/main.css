@@ -50,21 +50,30 @@
   100% {
     color: #BF7582; } }
 
-h1, h2, h3, h4 {
-  font-family: "Josefin Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+body,
+html {
+  font-family: 'quasimoda', 'Open Sans', Verdana, Geneva, sans-serif;
+  color: #f5f5f5; }
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Josefin Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: normal;
   letter-spacing: -0.02em;
   text-shadow: 0px 1px 2px #c2c2c2; }
 
 h5,
 h6 {
-  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'quasimoda', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: normal;
   letter-spacing: 0.02em; }
 
 h6 {
-  font-family: "Open Sans", Verdana, Geneva, sans-serif;
+  font-family: 'quasimoda', 'Open Sans', Verdana, Geneva, sans-serif;
   font-weight: lighter;
+  font-weight: 400;
   letter-spacing: 0.05em;
   font-size: 80%; }
 
@@ -108,15 +117,23 @@ a {
   a:hover {
     border-bottom: 1px solid #6d6d6d; }
 
-p, li, ul {
+p,
+li,
+ul {
   line-height: 1.5em;
   font-size: 1.1em;
-  color: #8a8989; }
+  color: #a3a3a3; }
 
-main article, section {
+main article,
+section {
   display: none; }
 
-main.all .collaboration, main.all .performance, main.all .recent, main.all .works, main.all .talks {
+main.all .collaboration,
+main.all .performance,
+main.all .recent,
+main.all .works,
+main.all .archive,
+main.all .talks {
   display: block; }
 
 main.recent > section:not(.about) {
@@ -127,13 +144,17 @@ main.recent > section:not(.about) {
 main.collaboration .collaboration {
   display: block; }
 
-main.works .works, main.works .performance {
+main.works .works,
+main.works .performance {
   display: block; }
 
 main.talks .talks {
   display: block; }
 
 main.about .about {
+  display: block; }
+
+main.archive .archive {
   display: block; }
 
 /* Color Theme Swatches in RGBA */
@@ -168,10 +189,9 @@ main.about .about {
   border: 1px solid #f5f5f5;
   border-radius: 2px; }
 
-body, html {
+body,
+html {
   background: black;
-  font-family: "Open Sans", Verdana, Geneva, sans-serif;
-  color: #f5f5f5;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -193,8 +213,11 @@ body, html {
       margin-left: 1em;
       margin-right: 1em;
       width: calc(100% - 2em); } }
+  .container header p {
+    color: #efefef; }
 
-#splashVideo, #video-overlay {
+#splashVideo,
+#video-overlay {
   position: absolute;
   top: 0px;
   left: 0px;
@@ -202,7 +225,7 @@ body, html {
   height: 100%;
   object-fit: cover;
   display: block;
-  opacity: 0.75;
+  opacity: 0.5;
   z-index: 0; }
 
 #video-overlay {
@@ -227,23 +250,25 @@ nav {
     display: block; }
     nav label span {
       cursor: pointer;
-      padding: 0.3em 0 0.0em 0;
+      padding: 0.3em 0 0em 0;
       margin-right: 1em;
       color: black;
-      font-family: "Josefin Sans";
+      font-family: 'Josefin Sans';
       text-transform: uppercase;
       font-weight: bolder;
       font-size: 44px; }
     nav label:nth-of-type(4n) span {
       color: #BF7582; }
-    nav label:nth-of-type(4n+1) span {
+    nav label:nth-of-type(4n + 1) span {
       color: #3B82BF; }
-    nav label:nth-of-type(4n+2) span {
+    nav label:nth-of-type(4n + 2) span {
       color: #F2D194; }
-    nav label:nth-of-type(4n+3) span {
+    nav label:nth-of-type(4n + 3) span {
       color: #D99E6A; }
     nav label input {
-      appearance: none;
+      appearance: none !important;
+      -webkit-appearance: none !important;
+      -moz-appearance: none !important;
       margin-left: -1em; }
     nav label input:checked + span {
       border-bottom: 2px solid white; }
@@ -321,7 +346,7 @@ nav {
   margin-top: 1em; }
 
 #contentSelection {
-  color: #CCC;
+  color: #ccc;
   /*padding-left: 8px;*/
   /*border-bottom-width: thin;
 	border-bottom-style: solid;
@@ -374,8 +399,11 @@ article {
   padding-top: 1em;
   border-top: 1px solid #f4f4f4;
   overflow: hidden; }
-  article input[type="checkbox"].showContent {
-    appearance: none;
+  article input {
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important; }
+  article input[type='checkbox'].showContent {
     width: 100%;
     height: 6.5em;
     display: block;
@@ -383,36 +411,38 @@ article {
     cursor: pointer;
     z-index: 1000;
     margin: 0; }
-    article input[type="checkbox"].showContent:hover::after {
-      content: "⇢";
-      font-family: "Open Sans";
+    article input[type='checkbox'].showContent:hover::after {
+      content: '⇢';
+      font-family: 'Open Sans';
       color: #f5f5f5;
       position: absolute;
       left: -2em;
       top: 1.5em;
       transition: all 0.2s ease-out;
       opacity: 1; }
-    article input[type="checkbox"].showContent:checked {
+    article input[type='checkbox'].showContent:checked {
       border-bottom: 1px dotted #363636; }
-      article input[type="checkbox"].showContent:checked:hover:after {
+      article input[type='checkbox'].showContent:checked:hover:after {
         transform: rotate(-90deg);
         opacity: 0.5; }
-      article input[type="checkbox"].showContent:checked ~ section {
+      article input[type='checkbox'].showContent:checked ~ section {
         display: inline-block;
         max-height: 800vh; }
   @media (max-width: 1024px) {
-    article input[type="checkbox"].showContent {
+    article input[type='checkbox'].showContent {
       height: 8.5em; }
-      article input[type="checkbox"].showContent:checked {
+      article input[type='checkbox'].showContent:checked {
         border-bottom: none; } }
   article header {
     width: auto;
     position: relative;
     margin-bottom: 1em; }
     article header h4 {
-      display: block; }
+      display: block;
+      color: #d6d6d6; }
     article header summary {
-      position: relative; }
+      position: relative;
+      color: #c9c9c9; }
     article header ol {
       position: absolute;
       left: 50%;
@@ -445,12 +475,16 @@ article {
       margin-bottom: 1em;
       width: 60%;
       line-height: 1.3em; }
-    article > section img {
+    article > section img,
+    article > section video {
       width: 100%;
       height: auto; }
-      article > section img.small {
+      article > section img.small,
+      article > section video.small {
         width: 20%; }
-    article > section img, article > section iframe {
+    article > section img,
+    article > section iframe,
+    article > section video {
       margin-bottom: 1em; }
     article > section .video-wrapper {
       position: relative;
