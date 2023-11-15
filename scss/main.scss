@@ -1,16 +1,13 @@
-
-@import './colours.scss';
-@import './typography.scss';
-@import './nav.scss';
-@import './slideshow.scss';
-
-
+@import "./colours.scss";
+@import "./typography.scss";
+@import "./nav.scss";
+@import "./slideshow.scss";
 
 // $backgroundColor: #1c1c1c;
 // $textColor: #dbdad8;
 
-
-body, html {
+body,
+html {
 	background: $backgroundColor;
 	font-family: "Open Sans", Verdana, Geneva, sans-serif;
 	color: $textColor;
@@ -35,72 +32,89 @@ body, html {
 	margin-left: 8vw;
 	width: 100%;
 
-	@media (max-width:1024px) {
+	@media (max-width: 1024px) {
 		margin-left: 1em;
 		margin-right: 1em;
 		width: calc(100% - 2em);
 	}
-
 }
 
-#splashVideo, #video-overlay {
-
+#splashVideo,
+#video-overlay {
 	position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    opacity: 0.75;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+	opacity: 0.5;
 	z-index: 0;
 }
-#video-overlay{
-	background-image: url(../images/video-overlay.png), linear-gradient(to bottom, transparent 0%, rgba(28, 28, 28, 0.2) 75%, black 100%);
-    background-size: 2px 2px, 100% 100%;
-    background-repeat: repeat, no-repeat;
-    opacity: 1;
+#video-overlay {
+	background-image: url(../images/video-overlay.png),
+		linear-gradient(
+			to bottom,
+			transparent 0%,
+			rgba(28, 28, 28, 0.2) 75%,
+			black 100%
+		);
+	background-size: 2px 2px, 100% 100%;
+	background-repeat: repeat, no-repeat;
+	opacity: 1;
 }
 
-@media (max-width:1024px) {
+@media (max-width: 1024px) {
 	#splashVideo {
 		display: none;
 	}
 }
 
 nav {
-	margin-left:0.2em;
-	margin-top:3em;
-	margin-bottom:3em;
-	float:left;
+	margin-left: 0.2em;
+	margin-top: calc(50vh - 8rem);
+	margin-bottom: 3em;
+	float: left;
+
+	@media (max-width: 1024px) {
+		margin-top: 3em;
+	}
+
 	label {
 		margin-right: 1em;
-		float:left;
-		height:4em;
+		float: left;
+		height: 4em;
 		display: block;
 		span {
 			cursor: pointer;
 			// background-color: $textColor;
 			// border-radius: 0.1em;
 			// padding: 0.3em 0.5em 0.3em 0.5em;
-			padding: 0.3em 0 0.0em 0;
-			margin-right:1em;
+			padding: 0.3em 0 0em 0;
+			margin-right: 1em;
 			// color:$backgroundColor;
 			// border: 1px solid lighten($highlightColor, 20);
 			// border:1px solid darken(white, 20);
 
-			color:black;
+			color: black;
 			font-family: "Josefin Sans";
 			text-transform: uppercase;
 			font-weight: bolder;
-			font-size:44px;
+			font-size: 44px;
 		}
 
-		&:nth-of-type(4n) span { color: $c0; }
-		&:nth-of-type(4n+1) span { color: $c1; }
-		&:nth-of-type(4n+2) span { color: $c2; }
-		&:nth-of-type(4n+3) span { color: $c3; }
-		
+		&:nth-of-type(4n) span {
+			color: $c0;
+		}
+		&:nth-of-type(4n + 1) span {
+			color: $c1;
+		}
+		&:nth-of-type(4n + 2) span {
+			color: $c2;
+		}
+		&:nth-of-type(4n + 3) span {
+			color: $c3;
+		}
 
 		// &:nth-of-type(0) span { background-color: $c0; }
 		// &:nth-of-type(1) span { background-color: $c1; }
@@ -111,14 +125,13 @@ nav {
 		// &:nth-of-type(6) span { background-color: $c2; }
 		// &:nth-of-type(7) span { background-color: $c3; }
 		// &:nth-of-type(8) span { background-color: $c4; }
-		
 
 		input {
 			appearance: none;
 			margin-left: -1em;
 		}
 
-		input:checked+span {
+		input:checked + span {
 			// background-color: $backgroundColor;
 			// border: 2px solid white;
 			// color: $textColor;
@@ -127,21 +140,18 @@ nav {
 		}
 	}
 
-	@media (max-width:1024px) {
+	@media (max-width: 1024px) {
 		text-align: center;
 		label {
 			height: 3em;
-			margin-left:auto;
+			margin-left: auto;
 			margin-right: auto;
 			span {
 				font-size: 24px;
 			}
 		}
 	}
-
-
 }
-
 
 .projectsHeader {
 	margin-top: 1em;
@@ -149,7 +159,6 @@ nav {
 	color: #efefef;
 	margin-bottom: -0.5em;
 }
-
 
 #titlePiece {
 	margin-top: 2rem;
@@ -163,14 +172,11 @@ nav {
 		}
 	}
 
-
 	.tilde {
 		font-size: 25px;
 		position: relative;
 	}
 }
-
-
 
 .social-link {
 	color: transparent;
@@ -185,11 +191,10 @@ nav {
 	margin-right: 0.5em;
 }
 
-@media (max-width:1024px) {
-	.social-link{
-		float:left;
+@media (max-width: 1024px) {
+	.social-link {
+		float: left;
 	}
-	
 }
 
 #twitter-link {
@@ -209,7 +214,6 @@ nav {
 }
 
 @media (min-width: 992px) {
-
 	/* line 52, ../../src/scss/_title.scss */
 	#titleContact {
 		position: absolute;
@@ -235,7 +239,7 @@ nav {
 }
 
 #contentSelection {
-	color: #CCC;
+	color: #ccc;
 	/*padding-left: 8px;*/
 	/*border-bottom-width: thin;
 	border-bottom-style: solid;
@@ -257,26 +261,23 @@ nav {
 }
 
 header {
-
 	h1 {
-		margin-left:-25px;
-		animation:colourCycle 60s infinite;
+		margin-left: -25px;
+		animation: colourCycle 60s infinite;
 	}
 	p {
 		width: 25%;
 		min-width: 400px;
+		color: #efefef;
 	}
 
-	
 	aside {
 		position: absolute;
-		right:0;
+		right: 0;
 		text-align: right;
-
 	}
 
-	@media (max-width:1024px) {
-
+	@media (max-width: 1024px) {
 		overflow: hidden;
 
 		> p {
@@ -288,15 +289,14 @@ header {
 			text-align: left;
 			opacity: 0.5;
 			display: block;
-			float:left;
+			float: left;
 			margin-bottom: 1em;
 			p {
-				margin:0;
+				margin: 0;
 			}
 		}
 	}
 }
-
 
 main {
 	margin-top: 4rem;
@@ -306,11 +306,7 @@ main {
 	}
 }
 
-
-
-
 article {
-
 	padding-top: 1em;
 	border-top: 1px solid darken($textColor, 0.5);
 	overflow: hidden;
@@ -338,19 +334,15 @@ article {
 			}
 		}
 
-
-
 		&:checked {
-
 			&:hover:after {
 				transform: rotate(-90deg);
 				opacity: 0.5;
-
 			}
 
-			~section {
+			~ section {
 				display: inline-block;
-				max-height: 800vh;				
+				max-height: 800vh;
 			}
 
 			border-bottom: 1px dotted darken($textColor, 75);
@@ -362,9 +354,7 @@ article {
 			height: 8.5em;
 			&:checked {
 				border-bottom: none;
-			
 			}
-			
 		}
 	}
 
@@ -376,12 +366,9 @@ article {
 	// &:nth-of-type(5n+4) header h4 { color: $c4; }
 
 	header {
-
 		width: auto;
 		position: relative;
 		margin-bottom: 1em;
-
-		
 
 		h4 {
 			display: block;
@@ -401,47 +388,40 @@ article {
 			li {
 				list-style-type: none;
 				font-size: 1em;
-				&:nth-of-type(3){ display: none;}
+				&:nth-of-type(3) {
+					display: none;
+				}
 			}
-
-			
 		}
 
 		@media (max-width: 1024px) {
-
 			ol {
 				display: block;
 				position: static;
 				padding: 0;
-				margin-top:0.25em;
+				margin-top: 0.25em;
 				margin-bottom: 1.75em;
 				padding-bottom: 1.75em;
 				opacity: 0.5;
 
 				li {
-					float:left;
-					margin-right:1em;
+					float: left;
+					margin-right: 1em;
 				}
 			}
 		}
-
 	}
 
-	&>section {
-
-		
-		max-height: 0px;		
+	& > section {
+		max-height: 0px;
 		overflow: hidden;
 		transition: max-height 0.2s ease-out;
 		width: 100%;
 		border-bottom: 1px dotted darken($textColor, 75);
-		
-	
-		
 
 		h4 {
 			margin-bottom: 1em;
-			width:60%;
+			width: 60%;
 			line-height: 1.3em;
 		}
 
@@ -453,11 +433,12 @@ article {
 				width: 20%;
 			}
 		}
-		img, iframe {
+		img,
+		iframe {
 			margin-bottom: 1em;
 			// padding-top:0.5em;
 			// padding-bottom:0.5em;
-			
+
 			// border: 1px solid white;
 		}
 
@@ -468,8 +449,8 @@ article {
 
 			iframe {
 				position: absolute;
-				top:0;
-				left:0;
+				top: 0;
+				left: 0;
 				width: 100%;
 				height: 100%;
 			}
@@ -478,12 +459,11 @@ article {
 		p {
 			margin-top: 1em;
 			margin-bottom: 2em;
-			float:left;
+			float: left;
 
 			font-weight: 100;
-			
 
-			@media (min-width:1024px) {
+			@media (min-width: 1024px) {
 				width: 40%;
 				margin-right: 5em;
 			}
@@ -493,27 +473,24 @@ article {
 			font-size: 0.75em;
 		}
 
-		
-
-
 		&:first-of-type {
-			margin-top:2em;
+			margin-top: 2em;
 		}
 		&:last-child {
 			margin-bottom: 2em;
 		}
 
-		@media (min-width:1024px) {
+		@media (min-width: 1024px) {
 			// width: 95%;
 			// margin-right: 1em;
 		}
 
-		@media (max-width:1024px) {
-			width:100%;
+		@media (max-width: 1024px) {
+			width: 100%;
 
 			h4 {
 				font-size: 24px;
-				width:100%;
+				width: 100%;
 			}
 
 			iframe {
@@ -521,13 +498,11 @@ article {
 				padding: 0;
 			}
 		}
-
-
 	}
-
 
 	// show when about is selected
 
-	main.about section.about & { display: block;}
-
+	main.about section.about & {
+		display: block;
+	}
 }
