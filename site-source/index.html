@@ -31,7 +31,9 @@
 
 <script>
 	function OnNavChange(e){
-		document.querySelector('main').className = e;
+        var main = document.querySelector('main')
+		main.className = e;
+        main.scrollIntoView({ behavior : "smooth"});
 	}
 
     var videoElement;
@@ -43,7 +45,7 @@
                 opacity = (videoElement.offsetHeight - (window.scrollY * 4.0)) / videoElement.offsetHeight;
             }
             opacity = Math.max(0.0, opacity);
-            videoElement.style.opacity = opacity;
+            videoElement.style.opacity = opacity * 0.5;
         });
 
 
