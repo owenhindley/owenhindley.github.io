@@ -56,9 +56,9 @@ $highlightColor: darken($textColor, 20);
 }
 
 @keyframes colourCycle {
-    0% { color: $c0; }
+    0% { color: $c4; }
     50% { color : $c1; }
-    100% { color : $c0; }
+    100% { color : $c2; }
 }
 
 

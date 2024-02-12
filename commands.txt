@@ -1,2 +1,4 @@
 node-sass -w scss/main.scss -o docs/css/
 npx @11ty/eleventy --serve --input=site-source/ --output=docs/
+
+sass -w scss/main.scss -o docs/css/
