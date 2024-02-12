@@ -486,6 +486,9 @@ article {
       article > section img.small,
       article > section video.small {
         width: 20%; }
+        article > section img.medium,
+        article > section video.medium {
+          width: 45%; }
     article > section img,
     article > section iframe,
     article > section video {

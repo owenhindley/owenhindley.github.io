@@ -446,6 +446,10 @@ article {
 			width: 100%;
 			height: auto;
 
+			&.medium {
+				width:45%;
+			}
+
 			&.small {
 				width: 20%;
 			}
