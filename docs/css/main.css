@@ -455,7 +455,7 @@ nav label input:checked + span {
 }
 
 header h1 {
-  margin-left: -146px;
+  margin-left: -0.125em;
   animation: colourCycle 10s alternate-reverse infinite;
 }
 header p {
