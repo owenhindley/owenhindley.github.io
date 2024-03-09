@@ -86,9 +86,10 @@
                 <a class="social-link" id="instagram-link" href="https://www.instagram.com/owenhindley/" target="_blank">i</a>
             </h6>    
         </aside>
-        <h1>Owen Hindley</h1>
-        <p>Digital artist creating work for stage, screens and spaces using software, electronics and sound.</p>    
-        <!-- <p>I've made VR theatre, AR music videos, enormous games of PONG, pinata-smashing robots, projected sets for a circus show, a little video game and an ARG for Xbox.</p>    -->
+        <h1>Owen Hindley</h1>        
+        <p>I'm a British-born, Iceland-based digital artist creating work for stage, screens and spaces using code, electronics and sound.</p>    
+        <p>I've made and directed VR theatre, interactive music experiences, an enormous game of PONG, a pinata-smashing robot, music videos, a little video game and an ARG for Xbox, amongst other things.</p>   
+        <p>Here's the story so far :</p>
        
            
     
@@ -111,11 +112,11 @@
         </label>	
         <label onclick="OnNavChange('works')">
             <input type="radio" name="nav" id="check-works"></input>
-            <span>Works&nbsp;&amp;&nbsp;Performances</span>
+            <span>Works</span>
         </label>		
         <label onclick="OnNavChange('collaboration')">
             <input type="radio" name="nav" id="check-collaboration"></input>
-            <span>Collaborations&nbsp;&amp;&nbsp;Commercial</span>
+            <span>Collaborations</span>
         </label>
        		
         <label onclick="OnNavChange('talks')">
@@ -142,7 +143,7 @@
 
         <section class="works">
             <h6>Works &amp; Performances</h6>
-            <p>These are pieces which I've either directed myself or been part of the main creative team.</p>
+            <!-- <p>These are pieces which I've either directed myself or been part of the main creative team.</p> -->
             {% for article in works %}
             <article id="{{article.data.id}}" class="{{article.data.class}} {% if article.data.recent %}recent{%endif%}">
                 <input class="showContent" type="checkbox"></input>
