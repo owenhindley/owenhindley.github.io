@@ -61,11 +61,11 @@
 <body>
 
     
-    <video id="splashVideo" muted="" loop="" autoplay="" data-src="images/video/test-header-video" class="visible">
+    <!-- <video id="splashVideo" muted="" loop="" autoplay="" data-src="images/video/test-header-video" class="visible">
         <source src="images/video/header-video-short.webm">
         <source src="images/video/header-video-short.mp4">
     </video>
-    <div id="video-overlay"></div>
+    <div id="video-overlay"></div> -->
 
     <div class="container">
   
@@ -87,8 +87,9 @@
             </h6>    
         </aside>
         <h1>Owen Hindley</h1>
-        <p>Digital artist creating work for stage, screens and spaces using software, electronics and sound.</p>    
-        <!-- <p>I've made VR theatre, AR music videos, enormous games of PONG, pinata-smashing robots, projected sets for a circus show, a little video game and an ARG for Xbox.</p>    -->
+        <p>I'm a British-born, Iceland-based digital artist creating work for stage, screens and spaces using code, electronics and sound.</p>    
+        <p>I've made and directed VR theatre, interactive music experiences, an enormous game of PONG, a pinata-smashing robot, music videos, a little video game and an ARG for Xbox, amongst other things.</p>   
+        <p>Here's the story so far :</p>
        
            
     
@@ -111,16 +112,16 @@
         </label>	
         <label onclick="OnNavChange('works')">
             <input type="radio" name="nav" id="check-works"></input>
-            <span>Works&nbsp;&amp;&nbsp;Performances</span>
+            <span>Works</span>
         </label>		
         <label onclick="OnNavChange('collaboration')">
             <input type="radio" name="nav" id="check-collaboration"></input>
-            <span>Collaborations&nbsp;&amp;&nbsp;Commercial</span>
+            <span>Collaborations</span>
         </label>
        		
         <label onclick="OnNavChange('talks')">
             <input type="radio" name="nav" id="check-talks"></input>
-            <span>Talks&nbsp;&amp;&nbsp;Education</span>
+            <span>Education</span>
         </label>	
         <label onclick="OnNavChange('archive')">
             <input type="radio" name="nav" id="check-archive"></input>
@@ -142,7 +143,8 @@
 
         <section class="works">
             <h6>Works &amp; Performances</h6>
-            <p>These are pieces which I've either directed myself or been part of the main creative team.</p>
+            <br/>
+            <!-- <p>These are pieces which I've either directed myself or been part of the main creative team.</p> -->
             
             <article id="tid" class="works recent">
                 <input class="showContent" type="checkbox"></input>
@@ -646,63 +648,6 @@ Created as part of Hafnar.haus Hringekja, also produced by Þorsteinn and myself
 
             </article>
             
-            <article id="parallel-people" class="works recent">
-                <input class="showContent" type="checkbox"></input>
-                <header>
-                    <div class="thumbImg" style="background-image:url(images/projects/thumbs/parallel-people-thumb.jpg);"></div>
-                    <h4>Parallel People / Hliðstætt Fólk</h4>
-                    <summary>Interactive VR theatre</summary>
-                    <ol>
-                        <li><h6>2020-2022</h6></li>
-                        <li><h6>Design, development, direction</h6></li>
-                        <li><h6>Unity, Houdini, VR</h6></li>
-                    </ol>
-                </header>
-                    <section>
-    <div class="video-wrapper">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/bRZjQWJO9fk" frameborder="0" allowfullscreen></iframe>
-    </div>
-    <h4>A live interactive social theatre experience about trust, communication and questioning your sources of information.</h4>
-    <h4>Nominated for Best Immersive Performance at Raindance Immersive 2022.</h4>
-    
-</section>
-<section>
-    <p>One day, you wake up and find yourself trapped in a transparent box in a hostile, barren landscape - but it appears you're not alone.</p>
-    <p> There is the Caretaker, who says they just want to keep you safe inside this box,
-        promising to show you wonders beyond imagining.</p>
-        <p> There are the Others, individuals trapped in boxes just as you
-        are - some of whom are acting strangely.</p>
-        <p> And the Voice in your head - together all of them are talking, acting,
-        behaving at odds with one another - so who will you believe?
-    </p>
-
-</section>
-<section>
-    <p>Based on my theatre company Huldufugl's international award-winning VR experience 'Kassinn / A Box In The Desert' (one of the world's first experiences of its kind), this show expands the narrative to
-        allow five audience members to determine their own story against a barrage of conflicting voices.</p>
-    <p>My role on this project was lead developer, director and live show operator, with the concept and script co-created by the whole amazing team.</p>
-    <p>The show takes place entirely in VR using the Oculus Quest headset.</p>
-</section>
-<section>
-    <p>
-        Performances:
-    <ul>
-        <li>Þjóðleikhúsið (The National Theatre of Iceland) - April 2022 (Sold out run)</li>
-        <li>Raindance Immersive 2022 - November 2022 (Nominated for Best Immersive Performance)</li>
-    </ul>
-    </p>
-</section>
-<section>
-    <ul>
-        <li>Created by Huldufugl <a href="http://www.huldufugl.is/" target="_blank">⤤</a></li>
-        <li>Performers - Nanna Gunnars & Ástþór Ágústsson</li>
-        <li>Design, development & Direction - Owen Hindley, Torfi Ásgeirsson, Steingerður Lóa Gunnars</li>
-        <li>Composer - Íris Thorarins</li>
-    </ul>
-    
-</section>
-            </article>
-            
             <article id="hidden-people" class="works recent">
                 <input class="showContent" type="checkbox"></input>
                 <header>
@@ -832,6 +777,63 @@ Created as part of Hafnar.haus Hringekja, also produced by Þorsteinn and myself
     <p>More images + info coming soon.</p>
 </section>
 
+            </article>
+            
+            <article id="parallel-people" class="works recent">
+                <input class="showContent" type="checkbox"></input>
+                <header>
+                    <div class="thumbImg" style="background-image:url(images/projects/thumbs/parallel-people-thumb.jpg);"></div>
+                    <h4>Parallel People / Hliðstætt Fólk</h4>
+                    <summary>Interactive VR theatre</summary>
+                    <ol>
+                        <li><h6>2020-2022</h6></li>
+                        <li><h6>Design, development, direction</h6></li>
+                        <li><h6>Unity, Houdini, VR</h6></li>
+                    </ol>
+                </header>
+                    <section>
+    <div class="video-wrapper">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/bRZjQWJO9fk" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <h4>A live interactive social theatre experience about trust, communication and questioning your sources of information.</h4>
+    <h4>Nominated for Best Immersive Performance at Raindance Immersive 2022.</h4>
+    
+</section>
+<section>
+    <p>One day, you wake up and find yourself trapped in a transparent box in a hostile, barren landscape - but it appears you're not alone.</p>
+    <p> There is the Caretaker, who says they just want to keep you safe inside this box,
+        promising to show you wonders beyond imagining.</p>
+        <p> There are the Others, individuals trapped in boxes just as you
+        are - some of whom are acting strangely.</p>
+        <p> And the Voice in your head - together all of them are talking, acting,
+        behaving at odds with one another - so who will you believe?
+    </p>
+
+</section>
+<section>
+    <p>Based on my theatre company Huldufugl's international award-winning VR experience 'Kassinn / A Box In The Desert' (one of the world's first experiences of its kind), this show expands the narrative to
+        allow five audience members to determine their own story against a barrage of conflicting voices.</p>
+    <p>My role on this project was lead developer, director and live show operator, with the concept and script co-created by the whole amazing team.</p>
+    <p>The show takes place entirely in VR using the Oculus Quest headset.</p>
+</section>
+<section>
+    <p>
+        Performances:
+    <ul>
+        <li>Þjóðleikhúsið (The National Theatre of Iceland) - April 2022 (Sold out run)</li>
+        <li>Raindance Immersive 2022 - November 2022 (Nominated for Best Immersive Performance)</li>
+    </ul>
+    </p>
+</section>
+<section>
+    <ul>
+        <li>Created by Huldufugl <a href="http://www.huldufugl.is/" target="_blank">⤤</a></li>
+        <li>Performers - Nanna Gunnars & Ástþór Ágústsson</li>
+        <li>Design, development & Direction - Owen Hindley, Torfi Ásgeirsson, Steingerður Lóa Gunnars</li>
+        <li>Composer - Íris Thorarins</li>
+    </ul>
+    
+</section>
             </article>
             
             <article id="out-of-sync" class="works recent">
