@@ -1,6 +1,7 @@
 /* Color Theme Swatches in RGBA */
 /* Color Theme Swatches in Hex */
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Sono:wght@200&display=swap");
 .c0 {
   color: #BF7582; }
 
@@ -18,39 +19,33 @@
 
 @keyframes colourCycle {
   0% {
-    color: #BF7582; }
+    color: #F2F2F2; }
   50% {
     color: #3B82BF; }
   100% {
-    color: #BF7582; } }
+    color: #F2D194; } }
 
 body,
 html {
-  font-family: 'quasimoda', 'Open Sans', Verdana, Geneva, sans-serif;
+  font-family: "quasimoda", "Open Sans", Verdana, Geneva, sans-serif;
   color: #f5f5f5; }
 
 h1,
 h2,
 h3,
 h4 {
-  font-family: 'Josefin Sans', 'Helvetica Neue', Helvetica, Arial,
- sans-serif;
+  font-family: "Sono", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: normal;
-  letter-spacing: -0.02em;
-  /* text-shadow: 0px 1px 2px #c2c2c2; */
-}
+  letter-spacing: -0.02em; }
 
 h5,
 h6 {
-  font-family: 'quasimoda', 'Open Sans', 'Helvetica Neue', Helvetica,
- Arial, sans-serif;
+  font-family: "Sono", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: normal;
   letter-spacing: 0.02em; }
 
 h6 {
-  font-family: 'quasimoda', 'Open Sans', Verdana, Geneva, sans-serif;
-  font-weight: lighter;
-  font-weight: 400;
+  font-family: "Sono", "Helvetica Neue", Helvetica, Arial, sans-serif;
   letter-spacing: 0.05em;
   font-size: 80%; }
 
@@ -63,7 +58,7 @@ h6 {
   margin: 0px;
   padding: 0px;
   display: block;
-  line-height: 1.1em; }
+  line-height: 2em; }
 
 h1 {
   font-size: 64px; }
@@ -76,7 +71,7 @@ h3 {
   font-size: 42px; }
 
 h4 {
-  font-size: 32px; }
+  font-size: 22px; }
 
 h5 {
   font-size: 24px; }

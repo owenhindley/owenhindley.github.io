@@ -1,48 +1,46 @@
-@import './colours.scss';
+@import "./colours.scss";
 
 // @import url('https://fonts.googleapis.com/css2?family=Kavivanar&display=swap');
 // @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
 // @import url('https://fonts.googleapis.com/css2?family=Zen+Loop:ital@0;1&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Sono:wght@200&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Sono:wght@200&display=swap");
 
 body,
 html {
-    font-family: 'quasimoda', 'Open Sans', Verdana, Geneva, sans-serif;
-    color: $textColor;
+	font-family: "quasimoda", "Open Sans", Verdana, Geneva, sans-serif;
+	color: $textColor;
 }
 
 h1,
 h2,
 h3,
 h4 {
-    font-family: 'Sono', 'Helvetica Neue', Helvetica, Arial,
-        sans-serif;
-        //font-family: 'Josefin Sans', 'Helvetica Neue', Helvetica, Arial,
-        //sans-serif;
-    font-weight: normal;
-    letter-spacing: -0.02em;
-    // text-shadow: $highlightColor 0px -1px 2px;
-    text-shadow: 0px 1px 2px $highlightColor;
+	font-family: "Sono", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	//font-family: 'Josefin Sans', 'Helvetica Neue', Helvetica, Arial,
+	//sans-serif;
+	font-weight: normal;
+	letter-spacing: -0.02em;
+	// text-shadow: $highlightColor 0px -1px 2px;
+	// text-shadow: 0px 1px 2px $highlightColor;
 }
 
 h5,
 h6 {
-    // font-family: 'quasimoda', 'Open Sans', 'Helvetica Neue', Helvetica,
-        // Arial, sans-serif;
-    font-family: 'Sono', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-weight: normal;
-    letter-spacing: 0.02em;
+	// font-family: 'quasimoda', 'Open Sans', 'Helvetica Neue', Helvetica,
+	// Arial, sans-serif;
+	font-family: "Sono", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-weight: normal;
+	letter-spacing: 0.02em;
 }
 
 h6 {
-    // font-family: 'quasimoda', 'Open Sans', Verdana, Geneva, sans-serif;
-    // font-weight: lighter;
-    // font-weight: 400;
-    font-family: 'Sono', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    letter-spacing: 0.05em;
-    font-size: 80%;
+	// font-family: 'quasimoda', 'Open Sans', Verdana, Geneva, sans-serif;
+	// font-weight: lighter;
+	// font-weight: 400;
+	font-family: "Sono", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	letter-spacing: 0.05em;
+	font-size: 80%;
 }
 
 h1,
@@ -51,54 +49,54 @@ h3,
 h4,
 h5,
 h6 {
-    margin: 0px;
-    padding: 0px;
-    display: block;
-    line-height: 2.0em;
+	margin: 0px;
+	padding: 0px;
+	display: block;
+	line-height: 2em;
 }
 
 h1 {
-    font-size: 64px;
+	font-size: 64px;
 }
 
 h2 {
-    font-size: 64px;
-    clear: none;
+	font-size: 64px;
+	clear: none;
 }
 
 h3 {
-    font-size: 42px;
+	font-size: 42px;
 }
 
 h4 {
-    font-size: 22px;
+	font-size: 22px;
 }
 
 h5 {
-    font-size: 24px;
+	font-size: 24px;
 }
 
 h6 {
-    margin-bottom: 3px;
-    font-size: 16px;
-    line-height: 1.25em;
-    margin-top: 1px;
-    font-weight: bold;
+	margin-bottom: 3px;
+	font-size: 16px;
+	line-height: 1.25em;
+	margin-top: 1px;
+	font-weight: bold;
 }
 
 a {
-    color: #a0a0a0;
-    text-decoration: none;
+	color: #a0a0a0;
+	text-decoration: none;
 
-    &:hover {
-        border-bottom: 1px solid #6d6d6d;
-    }
+	&:hover {
+		border-bottom: 1px solid #6d6d6d;
+	}
 }
 
 p,
 li,
 ul {
-    line-height: 1.5em;
-    font-size: 1.1em;
-    color: lighten(#8a8989, 10);
+	line-height: 1.5em;
+	font-size: 1.1em;
+	color: lighten(#8a8989, 10);
 }
