@@ -1,4 +1,9 @@
-node-sass -w scss/main.scss -o docs/css/
-npx @11ty/eleventy --serve --input=site-source/ --output=docs/
+#node-sass -w scss/main.scss -o docs/css/
 
-sass -w scss/main.scss -o docs/css/
+
+#sass -w scss/main.scss -o docs/css/
+
+# BELOW ONES
+
+npx @11ty/eleventy --serve --input=site-source/ --output=docs/
+sass -w scss/main.scss docs/css/main.css

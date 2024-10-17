@@ -28,9 +28,10 @@ $c4: #F2F2F2;
 
 
 // $backgroundColor:#1c1c1c;
-$backgroundColor:black;
-$textColor:#f5f5f5;
-$highlightColor: darken($textColor, 20);
+$backgroundColor:rgb(242, 242, 242);
+$backgroundColor: #f1ffee;
+$textColor:#1f1f1f;
+$highlightColor: lighten($textColor, 20);
 
 
 // $c0: #3502ff;
