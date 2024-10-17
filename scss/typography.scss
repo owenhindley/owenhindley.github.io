@@ -8,7 +8,7 @@
 
 body,
 html {
-	font-family: "quasimoda", "Open Sans", Verdana, Geneva, sans-serif;
+	font-family: "Sono", "Open Sans", Verdana, Geneva, sans-serif;
 	color: $textColor;
 }
 
@@ -52,7 +52,7 @@ h6 {
 	margin: 0px;
 	padding: 0px;
 	display: block;
-	line-height: 2em;
+	// line-height: 2em;
 }
 
 h1 {
@@ -98,5 +98,6 @@ li,
 ul {
 	line-height: 1.5em;
 	font-size: 1.1em;
-	color: lighten(#8a8989, 10);
+	color: darken($textColor, 10);
+	font-style: italic;
 }

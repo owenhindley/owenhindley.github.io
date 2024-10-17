@@ -78,9 +78,9 @@
        
         <!-- <h1>O</h1> -->
         <aside>
-                <h6>owenhindley at hotmail dot com<br/>
+                <p>owenhindley at hotmail dot com<br/>
                 +354 762 0292<br/>
-                @owenhindley</h6>
+                @owenhindley</p>
 
                 <!-- <a class="social-link" id="twitter-link" href="https://twitter.com/owen_hindley" target="_blank">t</a> -->
                 <a class="social-link" id="github-link" href="https://github.com/owenhindley" target="_blank">g</a>
@@ -88,8 +88,8 @@
             </h6>    
         </aside>
         <h1>Owen Hindley</h1>        
-        <p>I'm a British-born, Iceland-based digital artist creating work for stage, screens and spaces using code, electronics and sound.</p>    
-        <p>I've made and directed VR theatre, interactive music experiences, an enormous game of PONG, a pinata-smashing robot, music videos, a little video game and an ARG for Xbox, amongst other things.</p>   
+        <p>Hi there! I'm a digital artist creating work for stage, screens and spaces using code, electronics and sound.</p>    
+        <p>I've created VR theatre, interactive music experiences, an enormous game of PONG, a pinata-smashing robot, music videos, and video games.</p>   
         <p>Here's the story so far :</p>
        
            
@@ -102,14 +102,14 @@
     </header>
 
 
-    <nav>
-        <label onclick="OnNavChange('all')">
-            <input type="radio" name="nav" id="check-all" checked></input>
-            <span>All</span>
+    <nav>        
+        <label onclick="OnNavChange('featured')">
+            <input type="radio" name="nav" id="check-featured" checked></input>
+            <span>Featured</span>
         </label>	
-        <label onclick="OnNavChange('recent')">
-            <input type="radio" name="nav" id="check-recent"></input>
-            <span>Recent</span>
+        <label onclick="OnNavChange('all')">
+            <input type="radio" name="nav" id="check-all" ></input>
+            <span>All</span>
         </label>	
         <label onclick="OnNavChange('works')">
             <input type="radio" name="nav" id="check-works"></input>
@@ -134,7 +134,8 @@
         </label>		
     </nav>
 
-    <main class="all">
+
+    <main class="featured">
 
         {% assign works = collections.article | where : "data.class", "works" | sort: 'data.endDate' | reverse %}
         {% assign performances = collections.article | where : "data.class", "performance" | sort: 'data.endDate' | reverse %}
@@ -146,7 +147,7 @@
             <h6>Works &amp; Performances</h6>
             <!-- <p>These are pieces which I've either directed myself or been part of the main creative team.</p> -->
             {% for article in works %}
-            <article id="{{article.data.id}}" class="{{article.data.class}} {% if article.data.recent %}recent{%endif%}">
+            <article id="{{article.data.id}}" class="{{article.data.class}} {% if article.data.featured %}featured{%endif%}">
                 <input class="showContent" type="checkbox"></input>
                 <header>
                     <div class="thumbImg" style="background-image:url(images/projects/thumbs/{{article.data.id}}-thumb.jpg);"></div>
@@ -164,7 +165,7 @@
 
             <!-- <h6>Performances</h6>
             {% for article in performances %}
-            <article id="{{article.data.id}}" class="{{article.data.class}} {% if article.data.recent %}recent{%endif%}">
+            <article id="{{article.data.id}}" class="{{article.data.class}} {% if article.data.featured %}featured{%endif%}">
                 <input class="showContent" type="checkbox"></input>
                 <header>
                     <h3>{{article.data.title}}</h3>
@@ -185,7 +186,7 @@
             <h6>Collaborations &amp; Commercial</h6>
             <p>More commercial projects where I've been brought in as a contractor or collaborator, often on the technical side of things.</p>
             {% for article in collaboration %}
-            <article id="{{article.data.id}}" class="{{article.data.class}} {% if article.data.recent %}recent{%endif%}">
+            <article id="{{article.data.id}}" class="{{article.data.class}} {% if article.data.featured %}featured{%endif%}">
                 <input class="showContent" type="checkbox"></input>
                 <header>
                     <div class="thumbImg" style="background-image:url(./images/projects/thumbs/{{article.data.id}}-thumb.jpg);"></div>
@@ -208,7 +209,7 @@
             <h6>Project Archive</h6>
             <p>Older projects that define my early career and interests.</p>
             {% for article in archive %}
-            <article id="{{article.data.id}}" class="{{article.data.class}} {% if article.data.recent %}recent{%endif%}">                
+            <article id="{{article.data.id}}" class="{{article.data.class}} featured">                
                 <input class="showContent" type="checkbox"></input>
                 <header>
                     <h6>{{article.data.title}}</h6>
@@ -227,7 +228,7 @@
             <h6>Talks &amp; Education</h6>
             <p>When I've been asked to lecture or run workshops for students or institutions about my work or projects.</p>
             {% for article in talks %}
-            <article id="{{article.data.id}}" class="{{article.data.class}} {% if article.data.recent %}recent{%endif%}">                
+            <article id="{{article.data.id}}" class="{{article.data.class}} featured">                
                 <header>
                     <h6>{{article.data.title}}</h6>
                     <summary>{{article.data.summary}}</summary>

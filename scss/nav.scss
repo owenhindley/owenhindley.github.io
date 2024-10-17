@@ -20,10 +20,10 @@ main.all {
         display: block;
     }
 }
-main.recent {
+main.featured {
     > section:not(.about) {
         display: block;
-        .recent {
+        .featured {
             display: block;
         }
     }
