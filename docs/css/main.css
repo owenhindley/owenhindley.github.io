@@ -235,6 +235,25 @@ main.archive .archive {
   border-radius: 2px;
 }
 
+body.blogpost section {
+  margin-left: -2vw;
+  padding-left: 2vw;
+  display: block;
+}
+body.blogpost section p {
+  font-style: normal;
+  font-weight: bold;
+}
+body.blogpost section:nth-of-type(2n) {
+  background-color: white;
+}
+body.blogpost section img {
+  width: 50%;
+  align-self: center;
+  margin: auto;
+  display: flex;
+}
+
 body,
 html {
   background: #f1ffee;

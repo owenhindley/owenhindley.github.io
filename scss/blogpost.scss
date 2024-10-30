@@ -1,0 +1,28 @@
+body.blogpost {
+
+
+    section {
+        margin-left:-2vw;
+        padding-left:2vw;
+
+        display: block;
+
+        p {
+            font-style:normal;
+            font-weight: bold;
+        }
+
+        &:nth-of-type(2n){
+            background-color: white;
+        }
+
+        img {
+            width: 50%;
+            align-self: center;
+            margin: auto;
+            display: flex;
+        }
+
+    }
+}
+
