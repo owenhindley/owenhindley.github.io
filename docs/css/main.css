@@ -243,15 +243,24 @@ body.blogpost section {
 body.blogpost section p {
   font-style: normal;
   font-weight: bold;
+  margin-bottom: 2em;
+  font-size: 1em;
+  max-width: 600px;
 }
-body.blogpost section:nth-of-type(2n) {
+body.blogpost section ul, body.blogpost section li {
+  max-width: 600px;
+}
+body.blogpost section h3 {
   background-color: white;
+  max-width: 700px;
 }
 body.blogpost section img {
-  width: 50%;
+  width: 80%;
+  background-color: white;
   align-self: center;
   margin: auto;
   display: flex;
+  border: 2px solid #1f1f1f;
 }
 
 body,
