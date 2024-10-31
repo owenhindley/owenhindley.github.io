@@ -217,13 +217,9 @@
                         <input class="showContent" onClick="GoToBlogpost('{{post.data.id}}')" type="checkbox"></input>
                         <header>
                             <div class="thumbImg" style="background-image:url(images/blog/thumbs/{{post.data.id}}-thumb.jpg);"></div>
+                            <h6>{{post.data.pubDate}}</h6>
                             <h6>{{post.data.title}}</h6>
                             <summary>{{post.data.summary}}</summary>
-                            <ol>
-                                <li>
-                                    <h6>{{post.data.pubDate}}</h6>
-                                </li>
-                            </ol>
                         </header>
                     </article>
                 {% endfor %}
