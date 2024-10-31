@@ -39,36 +39,42 @@ title: Blogpost
 
         <header>
 
-            {# <aside>
-                <p>owenhindley at hotmail dot com<br/>
+            <aside>
+                {# <p>owenhindley at hotmail dot com<br/>
                 +354 762 0292<br/>
-                @owenhindley</p>
+                @owenhindley</p> #}
 
                 <!-- <a class="social-link" id="twitter-link" href="https://twitter.com/owen_hindley" target="_blank">t</a> -->
                 <a class="social-link" id="github-link" href="https://github.com/owenhindley" target="_blank">g</a>
                 <a class="social-link" id="instagram-link" href="https://www.instagram.com/owenhindley/" target="_blank">i</a>
             </h6>
-        </aside> #}
-            <h1>Owen Hindley</h1>
+        </aside>
+        <h1>Owen Hindley</h1>
 
-        </header>
+    </header>
 
-        <nav>
-            <label onclick="document.location.href = 'http://owenhindley.co.uk'">
-                <input type="radio" name="nav"></input>
-                <span>Back</span>
-            </label>
-        </nav>
-        <main>
-            <h1>{{title}}</h1>
-            <h4>{{summary}}</h4>
-            {{ content | safe }}
-        </main>
-        <footer>
-            <p>Owen Hindley, 2024</p>
+    <nav>
+        <label onclick="document.location.href = 'http://' + document.location.host">
+            <input type="radio" name="nav"></input>
+            <span>Back</span>
+        </label>
+        <label onclick="document.location.href = '#top'">
+            <input type="radio" name="nav"></input>
+            <span>Top</span>
+        </label>
+    </nav>
+    <main>
+        <h1>{{title}}</h1>
+        <br/>
+        <h4>{{summary}}</h4>
+        <br/>
+        {{ content | safe }}
+    </main>
+    <footer>
+        <p>Owen Hindley, 2024</p>
 
-        </footer>
+    </footer>
 
-    </div>
+</div>
 </body>
 </html>

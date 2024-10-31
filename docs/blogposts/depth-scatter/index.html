@@ -36,236 +36,285 @@
 
         <header>
 
-            
-            <h1>Owen Hindley</h1>
+            <aside>
+                
 
-        </header>
+                <!-- <a class="social-link" id="twitter-link" href="https://twitter.com/owen_hindley" target="_blank">t</a> -->
+                <a class="social-link" id="github-link" href="https://github.com/owenhindley" target="_blank">g</a>
+                <a class="social-link" id="instagram-link" href="https://www.instagram.com/owenhindley/" target="_blank">i</a>
+            </h6>
+        </aside>
+        <h1>Owen Hindley</h1>
 
-        <nav>
-            <label onclick="document.location.href = 'http://owenhindley.co.uk'">
-                <input type="radio" name="nav"></input>
-                <span>Back</span>
-            </label>
-        </nav>
-        <main>
-            <h1>Depth Scatter Rendering in TouchDesigner</h1>
-            <h4>A technique for creating point clouds from simple 3D scenes</h4>
-            
-<section>
+    </header>
 
-    <p>Here I'm going to show a rendering technique in TouchDesigner that I've
-used frequently, both for live VJ performing and to make music videos like this one :</p>
+    <nav>
+        <label onclick="document.location.href = 'http://' + document.location.host">
+            <input type="radio" name="nav"></input>
+            <span>Back</span>
+        </label>
+        <label onclick="document.location.href = '#top'">
+            <input type="radio" name="nav"></input>
+            <span>Top</span>
+        </label>
+    </nav>
+    <main>
+        <h1>Depth Scatter Rendering in TouchDesigner</h1>
+        <br/>
+        <h4>A technique for creating point clouds from simple 3D scenes, within TouchDesigner.</h4>
+        <br/>
+        
+<section id="top">
 
-    <div class="video-wrapper">
-        <iframe src="https://www.youtube.com/embed/w5QxJTnQ20U" width="610" height="400" title="YouTube video player"
+    <img src="../../images/blog/depth-scatter/image-tektektek-header.jpg"></p>
+
+<h4>Contents:<br/>
+    <a href="#intro">Step 0 - Introduction</a><br/>
+    <a href="#step-1">Step 1 - Creating the source scene</a><br/>
+    <a href="#step-2">Step 2 - Setup the scene renderer</a><br/>
+    <a href="#step-3">Step 3 - Extracting the depth from render</a><br/>
+    <a href="#step-4">Step 4 - Creating the GPU Particle System</a><br/>
+    <a href="#step-5">Step 5 - Rendering particles</a><br/>
+    <a href="#step-6">Step 1 - Particle lifetime, colour &amp; motion</a><br/>
+    <a href="#step-x">Step X - Where to go next?</a><br/>
+</h4>
+</section>
+<section id="intro">
+<h3>Introduction</h3>
+<p>Here I'm going to show an interesting rendering technique in TouchDesigner that I've
+been using quite a bit, which, for now, I'm going to call "Depth Scattering".
+</p>
+<p>
+    <em>This is a long article, but hopefully usefully detailed - I wanted to try writing something down rather than doing a YouTube video. It's going to go over some basic stuff, but presumes you're familiar with rendering 3D geometry in TouchDesigner, assigning expressions to parameters, but doesn't neccesarily expect you to have done any GLSL before.</em>
+</p>
+
+<h4>You can download the .toe files here:<br/>
+    <a href="./files/DepthScatter-OwenHindley-A.toe">Part A</a><br/>
+    <a href="./files/DepthScatter-OwenHindley-B.toe">Part B</a>
+</h4>
+
+<p>I've been using it for the last year or two quite a bit, for both for live visuals and offline to make music videos like this one :</p>
+
+<div class="video-wrapper">
+    <iframe src="https://www.youtube.com/embed/w5QxJTnQ20U" width="610" height="400" title="YouTube video player"
 frameborder="0"
 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 allowfullscreen></iframe>
-    </div>
+</div>
 
-    <p>I've been drawn to it because even with a relatively simple set of input 3D geometry, you
-get an illusion of fine detail, it's quite easy to art direct, and super
+<p>...and images like this one (from <a href="https://www.youtube.com/watch?v=YzO-moWUiFg&ab_channel=INNI">this music video</a>) : </p>
+<p><img src="../../images/blog/depth-scatter/image-tektektek.jpg"></p>
+
+<p>I've been drawn to it because it gives this illusion of fine detail, even with very simple input geometry (which is great, because I'm not the greatest 3D artist in the world).</p>
+
+<p> Plus it's quite easy to art direct, and super
 fast, which is great when you already have some complex stuff going on with the
 initial source geometry.</p>
 
-    <p>Essentially it's a GPU particle system driven by the depth output of a much
-simpler render within TouchDesigner - so let's see how it's done!</p>
+<p>Essentially it's a GPU particle system driven by the depth output of a much
+simpler render within TouchDesigner - <em>so let's see how it's done!</em>
+</p>
 
 </section>
 
-<section>
+<section id="step-1">
 
-    <h3>Step 1 - create a basic 3D scene.</h3>
+<h3>Step 1:<br/>
+    Creating the source scene.</h3>
 
-    <p>This will be the scene that drives the particle system, so any large dynamic changes
-to the world should happen here. </p>
+<p>This will be the scene that drives the particle system.</p>
+<p>
+    <em>This is where large dynamic changes
+to your scene should happen - try something with nicely animated rotations, scales, punchy translations, but nothing too fast.</em>
+</p>
 
-    <p><img src="../../images/blog/depth-scatter/image4.png"></p>
+<p>I'm going to use a very simple example here, but feel free to add a model or other bit of procedrual geometry in here yourself.</p>
 
-    <p>Here I'm creating three primitives, arranging them using Transform SOPs, adding
+<p><img src="../../images/blog/depth-scatter/image4.png"></p>
+
+<p>Here I'm creating three primitives, arranging them using Transform SOPs, adding
 point colours to each via the Point SOP, and merging them all together.</p>
 
-    <p>We're going to be manipulating our particles a lot based on this scene's
-depth, so things like tunnels, caves or objects spread between the foreground and background should work
-well to demonstrate the technique.</p>
+<p>If you're adding your own, layouts like tunnels, caves or hallways, with geometry spread nicely between the foreground and background should work
+well to demonstrate this technique.</p>
 </section>
-<section>
+<section id="step-2">
 
-    <h3>Step 2 - setup basic scene renderer</h3>
+<h3>Step 2:<br/>
+    Setup the scene renderer.</h3>
 
-    <p>
-        <img src="../../images/blog/depth-scatter/image21.png"></p>
-    <p>
-            Now we take this merged geometry and pipe it into a Geometry
-COMP, here called srcGeo.</p>
+<p>
+    <img src="../../images/blog/depth-scatter/image21.png"></p>
+<p>Now we take this merged geometry and pipe it into a Geometry
+COMP, here called <em>srcGeo.</em>
+</p>
 
-    <p>(Hint - huge time-saving tip that I saw somewhere, if you're dragging an output
+<p>(Hint - huge time-saving tip that I saw somewhere, if you're dragging an output
 from a SOP, keep the mouse button down, and then create a Geometry from the Tab menu, it'll wire up
 the SOP geometry inside the COMP automatically, neat!)</p>
 
-    <p>Then we set up Camera &amp; Light COMPs, create a simple Phong MAT, and finally a
+<p>Then we set up Camera &amp; Light COMPs, create a simple Phong MAT, and finally a
 Render TOP to output an image of our little scene. </p>
 
-    <p>What's good to focus on here is good contrast in the lighting and range of
+<p>What's good to focus on here is good contrast in the lighting and range of
 depth in the camera - we don't need to worry too much about texturing or aspects of the MAT at this
 point, but we can tweak it later once the particle system is setup.</p>
 </section>
 
-<section>
+<section id="step-3">
 
-    <h3>Step 3 - extract depth from render</h3>
+<h3>Step 3 - extract depth from render</h3>
 
-    <p>Next we're going to add a Depth TOP and point it at our Render TOP (by adding
+<p>Next we're going to add a Depth TOP and point it at our Render TOP (by adding
 the path to the Render TOP in the OP field).</p>
 
-    <p>
-        <img src="../../images/blog/depth-scatter/image14.png"></p>
+<p>
+    <img src="../../images/blog/depth-scatter/image14.png"></p>
 
-    <p>If you, like me, haven't previously looked at the Depth TOP, it's a
+<p>If you, like me, haven't previously looked at the Depth TOP, it's a
 useful procedure to extract the depth map from your renders, which you can later use for post-effects like
 depth of field (using a Lookup &amp; a Luma Blur TOP), or in this case, to drive a secondary particle
 system.</p>
-    <p>Now you may not be able to see much in the Depth TOP itself, in the image above you
+<p>Now you may not be able to see much in the Depth TOP itself, in the image above you
 can faintly see the outlines of our objects, but there's a nice feature in TOPs that let us visualise
 the depth map more easily.</p>
 
-    <p>Click on the Depth TOP, activate the viewer (star in the bottom-right, or press
+<p>Click on the Depth TOP, activate the viewer (star in the bottom-right, or press
 'a'), right-click on the background and select 'Normalised Split'. You should then
 see something like this :</p>
-    <p>
-        <img src="../../images/blog/depth-scatter/image17.png"></p>
-    <p>You can also right-click and choose 'Display Pixel Values', which will
+<p>
+    <img src="../../images/blog/depth-scatter/image17.png"></p>
+<p>You can also right-click and choose 'Display Pixel Values', which will
 overlay the current pixel value underneath the mouse:</p>
-    <p>
-        <img src="../../images/blog/depth-scatter/image16.png"></p>
-    <p>If you mouse around a bit, you'll notice that the majority of our values are
+<p>
+    <img src="../../images/blog/depth-scatter/image16.png"></p>
+<p>If you mouse around a bit, you'll notice that the majority of our values are
 crunched within the 0.99..1.0 range - this is because all of these values are relative to the Near and Far
 parameters of the Camera COMP - which is 0.1 -&gt; 1000 by default. &nbsp;</p>
 
-    <p>If our objects are only 1 unit deep from the camera, most of that 32-bit float
+<p>If our objects are only 1 unit deep from the camera, most of that 32-bit float
 precision is spent on the other 999 units, resulting in the values we see here. Usually that's fine,
 but it's something you can come back to tweak later if you see 'stepping' or other
 artifacts in the particle sim.</p>
 
-    <p>Another point to raise here is the Texture Format of the Depth TOP. If you
+<p>Another point to raise here is the Texture Format of the Depth TOP. If you
 middle-mouse (or Alt-right click) on the Depth TOP, you'll see this :</p>
-    <p>
-        <img src="../../images/blog/depth-scatter/image25.png"></p>
-    <p>Notice the section marked 'Format' - and compare it to what comes up on
+<p>
+    <img src="../../images/blog/depth-scatter/image25.png"></p>
+<p>Notice the section marked 'Format' - and compare it to what comes up on
 your normal TOPs (which will probably be 8-bit fixed (RGBA)). This means that on the GPU, the texture
 backing up this Depth TOP is using a 1-channel 32-bit float, whereas normal tops use a 4-channel (for R,G,B
 and Alpha), 8-bit fixed representation. </p>
 
-    <p>This format is used for extra accuracy in the depth map (or depth buffer), so
+<p>This format is used for extra accuracy in the depth map (or depth buffer), so
 it's less likely (but not guaranteed) to see z-fighting when two objects are overlapping and similar
 in distance from the camera. </p>
 
-    <p>This 32-bit float texture format also allows negative numbers to be stored in the
+<p>This 32-bit float texture format also allows negative numbers to be stored in the
 texture, which will be very important later on.</p>
 </section>
 
-<section>
+<section id="step-4">
 
-    <h3>Step 4 - Creating the GPU Particle System </h3>
+<h3>Step 4 - Creating the GPU Particle System </h3>
 
-    <p>So now we have a simple 3D scene, and a texture that represents the depth of the
+<p>So now we have a simple 3D scene, and a texture that represents the depth of the
 scene relative to the viewer's position.</p>
 
-    <p>What we want to do next is very similar to ray tracing, where we fire an imaginary
+<p>What we want to do next is very similar to ray tracing, where we fire an imaginary
 ray from the camera's position into the scene, wait for it to hit something, then spawn a particle at
 that position.</p>
 
-    <p>The steps are :</p>
-    <ul>
-        <li>Generate a random position in screen-space (which we'll
+<p>The steps are :</p>
+<ul>
+    <li>Generate a random position in screen-space (which we'll
 call UV, to make it distinct from XY in world space)</li>
-        <li>Sample the depth map at this UV position, get the depth value
+    <li>Sample the depth map at this UV position, get the depth value
 (which will be between 0 and 1)</li>
-        <li>Grab the camera's inverse projection matrix. </li>
-    </ul>
-    <ul >
-        <li >
+    <li>Grab the camera's inverse projection matrix. </li>
+</ul>
+<ul >
+    <li >
                                     There's a short explainer on what that is <a
 href="https://www.google.com/url?q=https://www.youtube.com/watch?v%3DEqNcqBdrNyI%26ab_channel%3Dpikuma&amp;sa=D&amp;source=editors&amp;ust=1730310899258306&amp;usg=AOvVaw3hwV15uDsY55CsdoDCzW38">here</a>
                                         &nbsp;-
 in very simple terms, it's a series of values that describe the properties of
 the camera, i.e. its field of view, its near &amp; far planes etc.</li>
-    </ul>
-    <ul >
-        <li>
+</ul>
+<ul >
+    <li>
                                             THE MAGIC BIT : Use this matrix and a bit of maths to convert the values
 above into a world space position&nbsp;in 3D.
 </li>
-        <li>Spawn a particle in a new 3D scene at this location</li>
-        <li>Do this many, many times</li>
-        <li>Render the new scene.</li>
-    </ul>
+    <li>Spawn a particle in a new 3D scene at this location</li>
+    <li>Do this many, many times</li>
+    <li>Render the new scene.</li>
+</ul>
 
-    <p>
+<p>
                                             So in diagrams, first we sample a point in screen space, get the depth value:</p>
-    <p>
-        <img src="../../images/blog/depth-scatter/image2.png"></p>
-    <p>This corresponds to a point on the sphere, seen here from a different angle :
+<p>
+    <img src="../../images/blog/depth-scatter/image2.png"></p>
+<p>This corresponds to a point on the sphere, seen here from a different angle :
 </p>
-    <p>
-        <img src="../../images/blog/depth-scatter/image27.png"></p>
+<p>
+    <img src="../../images/blog/depth-scatter/image27.png"></p>
 
-    <p>Now comes the magic / hard bit, depending on your comfort with matrix math (which for
+<p>Now comes the magic / hard bit, depending on your comfort with matrix math (which for
 the record, mine is not great). We multiply this screen-space position and depth by the camera's
 inverse projection matrix, which gives us a position in 3D space, that we can use to drive a particle
 system.</p>
 
-    <p>The next step is to do this for many points per frame, each sampling a different part
+<p>The next step is to do this for many points per frame, each sampling a different part
 of the depth map, so our particles build up &nbsp;a representation of the original 3D scene, like this
 :</p>
-    <p>
-        <img src="../../images/blog/depth-scatter/image20.png"></p>
+<p>
+    <img src="../../images/blog/depth-scatter/image20.png"></p>
 
-    <p>So how do we implement this in TouchDesigner?</p>
+<p>So how do we implement this in TouchDesigner?</p>
 
-    <p>First, we create a Noise TOP, (set to Random (GPU), the Pixel Format set to 8-bit
+<p>First, we create a Noise TOP, (set to Random (GPU), the Pixel Format set to 8-bit
 fixed RGBA, Output to Noise, and the input coming from the Depth TOP to match the resolution), and the Depth
 TOP itself.</p>
 
-    <p>This Noise is very important, it's going to provide the random per-frame points
+<p>This Noise is very important, it's going to provide the random per-frame points
 for us to sample the depth texture from. It gives us a big list of values in the range (0..1, 0..1, 0..1)
 for the red, green and blue channels, which we then use in the compute shader as UV coordinates on the depth
 map.</p>
 
-    <p>
-        <aside>
-            <span >Using 'pictures' as 'data' in this way was one of the big
+<p>
+    <em>Using 'pictures' as 'data' in this way was one of the big
 gotcha moments for me in TouchDesigner, and it's the area that the new POP operator family I think is
 trying to address - when you have a texture that represents positions, things like contrast, brightness etc
 (via the Level TOP) can do interesting things in 3D space to those positions, but they're not
 necessarily easy to visualise or control exactly what's going on, because they're designed to
 work with perceptual differences in pictures. It's super fun to play around in this space, and abuse
 TOPs in affecting 3D point clouds (what does an Edge Detect do in 3D space, for example?), but I'm
-excited to play with the new POPs for more intentional stuff.</p>
-        </aside>
+excited to play with the new POPs for more intentional stuff.</em>
+</p>
 
-        <p>Then we're going to create a Compute Shader to do the conversion of depth map +
+<p>Then we're going to create a Compute Shader to do the conversion of depth map +
 camera matrix into world-space positions, but on the GPU. We can do this with a GLSL Multi TOP :</p>
 
-        <p>
-            <img src="../../images/blog/depth-scatter/image10.png"></p>
+<p>
+    <img src="../../images/blog/depth-scatter/image10.png"></p>
 
-        <p>And plug the Noise TOP and Depth TOP into the multi-input connector, in that order
+<p>And plug the Noise TOP and Depth TOP into the multi-input connector, in that order
 (important!)</p>
 
-        <p>
-            <img src="../../images/blog/depth-scatter/image13.png"></p>
+<p>
+    <img src="../../images/blog/depth-scatter/image13.png"></p>
 
-        <p>When you put down a GLSL Multi TOP, by default it's set to use a vertex/pixel
+<p>When you put down a GLSL Multi TOP, by default it's set to use a vertex/pixel
 shader, which is what you'd traditionally use for a full-screen post-processing effect. </p>
 
-        <p>
+<p>
                                                                         We're going to set the Mode to 'Compute
 Shader', because they're more flexible, for example letting us write to
 more than one output at a time (which okay, you can do in fragment shaders, but it's tricky).
 </p>
 
-        <p>
+<p>
                                                                             Then we set the property called 'Dispatch
 Size', in which I've added an expression for the input width &amp; height, divided
 by 8. This is another area where compute shaders differ from vertex/fragment shaders, in that you can
@@ -276,703 +325,702 @@ href="https://www.google.com/url?q=https://gpuopen.com/learn/optimizing-gpu-occu
                                                                                     ),
 but my general understanding is that:</p>
 
-        <ul >
-            <li >If you're running a compute shader over a texture (or other buffer
+<p >
+    <em >If you're running a compute shader over a texture (or other buffer
 that contains data), your Dispatch Size needs to<br/>
-                <span style="text-align:center">
+        <span style="text-align:center">
                     = the dimensions of input
-buffer / thread size (defined in the shader code itself)</span></li>
-        </ul>
+buffer / thread size (defined in the shader code itself)</span></em>
+</p>
 
-        <p>Here we have a Dispatch Size of 160 x 90, and in the compute shader (which
+<p>Here we have a Dispatch Size of 160 x 90, and in the compute shader (which
 we'll see in a second), a layout of 8 x 8. </p>
 
-        <p>These values have worked fine for me, but if you want to fiddle, you can increase the
+<p>These values have worked fine for me, but if you want to fiddle, you can increase the
 size in the shader and change the corresponding number in the Dispatch Size expression. If these mismatch,
 you'll either be wasting dispatch cycles (because the shader will be running over parts of the texture
 that are out of bounds, and be discarded), or miss processing parts of the input image (because there
 won't be enough thread groups dispatched to cover the whole thing).</p>
 
-        <p>
+<p>
                                                                                             Next we need to pass our camera projection matrix to the compute shader. In the Matrices&nbsp;tab of
 the
 GLSL Multi TOP, we create a Matrix uniform
-called invCamProjection :</p>
-        <p>
-            <img src="../../images/blog/depth-scatter/image26.png"></p>
-        <p>The expression for the value here is :</p>
-        <p>
+called <em>invCamProjection</em> :</p>
+<p>
+    <img src="../../images/blog/depth-scatter/image26.png"></p>
+<p>The expression for the value here is :</p>
+<p>
                                                                                                         op(&#39;camSrc&#39;).projectionInverse(op(&#39;depth1&#39;).width,op(&#39;depth1&#39;).height)
 </p>
 
-        <p>
+<p>
                                                                                                             The projectionInverse function here takes in an
 aspect ratio, which we give it by specifying the width and height of the Depth TOP. This is because the
 camera doesn't specify an aspect ratio itself (that's determined by the Render TOP that uses
 it), so in order to create a matrix we need to specify one.</p>
 
-        <p>Now we're ready to create our Compute Shader. Click the first pink arrow
+<p>Now we're ready to create our Compute Shader. Click the first pink arrow
 underneath the GLSL Multi TOP to open up the editor, and put in the following :</p>
-        <p>
-            <br>uniform mat4 invCamProjection;</p>
-        <p>layout (local_size_x = 8, local_size_y = 8) in;</p>
-        <p>void main()</p>
-        <p>{</p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ivec2 uv =
-ivec2(gl_GlobalInvocationID.xy);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-        <p ></p>
-        <p>&nbsp; &nbsp; vec2 depthUV = texelFetch(sTD2DInputs[0], uv, 0).xy;</p>
-        <p>&nbsp; &nbsp; </p>
-        <p>&nbsp; &nbsp; float depth = texture(sTD2DInputs[1], depthUV.xy).r;</p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vec4 screenspacePos = vec4(-1.0f +
-(depthUV.x * 2.0f), -1.0f + (depthUV.y * 2.0f), depth, 1);</p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vec4 hpositionWS = invCamProjection *
-screenspacePos;</p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hpositionWS.xyz = hpositionWS.xyz /
-hpositionWS.w;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<pre><code>
+uniform mat4 invCamProjection;
+
+layout (local_size_x = 8, local_size_y = 8) in;
+void main()
+{
+
+        ivec2 uv = ivec2(gl_GlobalInvocationID.xy);    
+        vec2 depthUV = texelFetch(sTD2DInputs[0], uv, 0).xy;
+        float depth = texture(sTD2DInputs[1], depthUV.xy).r;
+
+        vec4 screenspacePos = vec4(-1.0f + (depthUV.x * 2.0f), -1.0f + (depthUV.y * 2.0f), depth, 1);
+
+        vec4 hpositionWS = invCamProjection * screenspacePos;
+        hpositionWS.xyz = hpositionWS.xyz / hpositionWS.w;   
+        vec3 posWorld = hpositionWS.xyz;
+
+        imageStore(mTDComputeOutputs[0], ivec2(uv), vec4(posWorld, 1.0f));                
+
+}
+
+    </pre>
+</code>
+
+<p>It should look like this in the DAT editor :</p>
+
+<p>
+<img src="../../images/blog/depth-scatter/image6.png"></p>
+
+<p>Let's step through this and see what's happening.</p>
+
+<p> First <em>uniform mat4 invCamProjection</em> is importing our matrix from the uniform we defined a second ago, grabbing it from the Camera COMP.</p>
+<p> Then <em>layout (local_size_x = 8, local_size_y = 8) in;</em>specifies the thread group size, see above discussion on Dispatch Size.</p>
+<p> We get a texel-based UV <em>ivec2</em> that we're going to call UV (even though it's not normalised) <em>ivec2 uv = ivec2(gl_GlobalInvocationID.xy);</em>
 </p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vec3 posWorld =
-hpositionWS.xyz;</p>
-        <p ></p>
-        <p ></p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;imageStore(mTDComputeOutputs[0],
-ivec2(uv), vec4(posWorld,
-1.0f));&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<p>We sample the first input (which is our Noise TOP) to get a random XY coordinate in (0..1, 0..1). Here we use <em>texelFetch</em> because our UV coordinate is in the space
+(0..width, 0..height).</p>
+<p>Then we sample the input depth map using our <em>depthUV</em> value - using <em>texture</em> because <em>depthUV</em> is normalised (0..1). From this we get a float <em>depth</em>, which is normalised (0..1), where 0 is the near plane and 1 is the far plane of the
+camera. </p>
+<p> The camera matrix works in a 'screen space' coordinate system that extends from (-1,1, -1,1), so we convert our <em>depthUV</em> coordinates into this <em>screenspacePos</em> space on line 14, and (important!) add <em>depth</em> as the
+z&nbsp;component, and a 1 as the w component because we're working with 4x4 matrices, and our next step needs a <em>vec4.</em>
 </p>
-        <p ></p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-        <p>}</p>
+<p>Now comes the matrix math - we multiply <em>invCamProjection</em> by <em>screenspacePos</em>.
+    </p>
+<p>...and this should give us our world-space position, right? NO.
+Because matrix math, we need to divide the <em>xyz</em> component by
+the <em>w</em> component of the resulting vector, which happens on the next line. Maybe someone can explain to me why one day.</p>
 
-        <p>It should look like this in the DAT editor :</p>
+<p>
+We then <em>imageStore</em> this
+value into our output texture.</p>
 
-        <p>
-            <img src="../../images/blog/depth-scatter/image6.png"></p>
-
-        <p>Let's step through this and see what's happening.</p>
-
-        <ul >
-            <li>
-                                                                                                                            First uniform mat4 invCamProjection&nbsp;is importing our matrix from
-the
-uniform we defined a second ago, grabbing it from the
-Camera COMP.</li>
-            <li>
-                                                                                                                                    Then layout (local_size_x = 8, local_size_y = 8)
-in;&nbsp;specifies the thread group size, see above discussion on Dispatch
-Size.</li>
-            <li>
-                                                                                                                                        We get a texel-based UV ivec2 that we're going to call UV (even though
-it's not normalised) ivec2 uv =
-ivec2(gl_GlobalInvocationID.xy);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`</li>
-            <li>
-                                                                                                                                            We sample the first input (which is our Noise TOP) to get a random XY
-coordinate in (0..1, 0..1). Here we use texelFetch&nbsp;because our UV coordinate is in the space
-(0..width, 0..height).</li>
-            <li>
-                                                                                                                                                    Then we sample the input depth map using our depthUV&nbsp;value
--
-using texture&nbsp;because depthUV&nbsp; is
-normalised (0..1). From this we get a float depth, which
-is normalised (0..1), where 0 is the near plane and 1 is the far plane of the
-camera.
-</li>
-            <li>
-                                                                                                                                                                            The camera matrix works in a 'screen space' coordinate system
-that extends from (-1,1, -1,1), so we convert our depthUV&nbsp;coordinates into this
-screenspacePos&nbsp;space on line 14, and (important!) add depth&nbsp;as
-the
-z&nbsp;component, and a 1
-    as the w&nbsp;component because we're working with 4x4
-        matrices, and our next step needs a vec4.</li>
-            <li>
-                                                                                                                                                                                                                Now comes the matrix math - we multiply invCamProjection&nbsp;by
-screenspacePos&nbsp;</li>
-        </ul>
-        <ul >
-            <li >
-                                                                                                                                                                                                                                &hellip;and this should give us our world-space position, right? NO.
-Because matrix math, we need to divide the xyz&nbsp;component by
-the w&nbsp;component of the resulting vector, which
-happens on the next line. Maybe someone can explain to be why one day.</li>
-        </ul>
-        <ul >
-            <li>
-                                                                                                                                                                                                                                        We then imageStore&nbsp;this
-value into our output texture.</li>
-        </ul>
-
-        <p>If this all works, and the GLSL Multi TOP doesn't report any errors, you should
+<p>If this all works, and the GLSL Multi TOP doesn't report any errors, you should
 see something like this in the viewer :</p>
 
-        <p>
-            <img src="../../images/blog/depth-scatter/image18.png"></p>
-        <p>And if you enable Normalised Split in the viewer as above, you can see the bounds of
+<p>
+<img src="../../images/blog/depth-scatter/image18.png"></p>
+<p>And if you enable Normalised Split in the viewer as above, you can see the bounds of
 the positions we've extracted from the depth map &amp; camera matrix :</p>
 
-        <p>
-            <img src="../../images/blog/depth-scatter/image9.png"></p>
+<p>
+<img src="../../images/blog/depth-scatter/image9.png"></p>
 
-        <p>Each point in this output texture will represent an output particle, so if our input
+<p>Each point in this output texture will represent an output particle, so if our input
 image is 1280x720, we'll have 921,600 particles - which is quite a lot, but no big deal for a modern
 GPU to handle. You can specify a larger or smaller amount by manually changing the resolution of your input
 Noise TOP.</p>
 
-        <p>Our B channel represents Z, and we see the minimum value as -1000, which is the
+<p>Our B channel represents Z, and we see the minimum value as -1000, which is the
 'far' plane of the camera. And we also notice some large values for the extents of R &amp; G, so
 what's happening here?</p>
 
-        <p>Well a lot of our particles will hit the 'background' of the Depth map,
+<p>Well a lot of our particles will hit the 'background' of the Depth map,
 meaning there weren't any 3D objects there, so they return a depth value of 1, and are scattered over
 an imaginary surface at -1000 away from the camera. We can either discard these particles (see later when we
 talk about particle lifetimes) or specify a closer Far plane in the camera we use for rendering our
 particles, so they get clipped off.</p>
 
-        <p>Now let's use these positions to render some particles!</p>
-    </section>
-    <section>
+<p>Now let's use these positions to render some particles!</p>
+</section>
+<section id="step-5">
 
-        <h3>Step 5 - Rendering the particles</h3>
-        <p ></p>
-        <p>One of TouchDesigner's best party tricks is Instancing, where you can input a
+<h3>Step 5:<br/>
+    Rendering the particles.</h3>
+<p>One of TouchDesigner's best party tricks is Instancing, where you can input a
 simple bit of geometry, but duplicate it many, many times on the GPU very performantly, driving it with a
 mixture of TOPs, CHOPs or DATs - whatever you want, just as long as the dimensions match up. This lets you
 do lots of creative things with point clouds, if you scroll Instagram for #touchdesigner you'll see a
 lot of this technique being used in live VJ sets and installations. </p>
 
-        <p>So for our particles, we're going to create a simple Box SOP, and wire this
+<p>So for our particles, we're going to create a simple Box SOP, and wire this
 into a Geometry COMP, so we have something to render :</p>
-        <p>
-            <img src="../../images/blog/depth-scatter/image12.png"></p>
+<p>
+<img src="../../images/blog/depth-scatter/image12.png"></p>
 
-        <p>
+<p>
                                                                                                                                                                                                                                                     Then we go to the Instancing tab of the geo1&nbsp;COMP, and
 turn on Instancing, and drag the GLSL Multi TOP into the Translate OP&nbsp;field. Then we assign
-r, g
-and b to the Translate X, Y and Z parameters respectively
-(there's a drop-down under the arrow on the right). </p>
+<em>r</em>, <em>g</em> and <em>b</em> to the Translate X, Y and Z parameters respectively (there's a drop-down under the arrow on the right). </p>
 
-        <p>The next that that happens is that TouchDesigner might get super slow, this is
+<p>The next that that happens is that TouchDesigner might get super slow, this is
 because our Box TOP is way too large and causing lots of overdraw in the Geo viewer. </p>
 
-        <p>So we go back to our Box SOP, and turn down the Uniform Scale to something like 0.01,
+<p>So we go back to our Box SOP, and turn down the Uniform Scale to something like 0.01,
 until we see something like this in the Geo viewer - you might need to hunt around a bit using the in-built
 camera to find your points.</p>
-        <p>
-            <img src="../../images/blog/depth-scatter/image15.png"></p>
+<p>
+<img src="../../images/blog/depth-scatter/image15.png"></p>
 
-        <p>You might also see this collection of points splatted against a 'back
+<p>You might also see this collection of points splatted against a 'back
 wall', with a shadow of missing points in the outline of your objects - that's the points that
 missed any objects, which we can deal with later.</p>
 
-        <p>
+<p>
                                                                                                                                                                                                                                                                     Next we can create a new Render TOP, but specify only geo1&nbsp;in the Geometry property,
 so
 it only renders the particles. Specify the original camera in the corresponding
-Render TOP property, and it should look something like this :</p>
+Render TOP property, and it should look something like this:</p>
 
-        <p>
-            <img src="../../images/blog/depth-scatter/image19.png"></p>
+<p>
+<img src="../../images/blog/depth-scatter/image19.png"></p>
 
-        <p>And we've made our first depth-scattered particle system!</p>
+<p>And we've made our first depth-scattered particle system!</p>
 
-        <p>Things to check if it doesn't :</p>
-        <ul >
-            <li>Uniform Scale of the Box SOP, if you make this 1, you should see
-some particles around the place</li>
-            <li>The Normalised Split view of the GLSL Multi TOP, it should look
+<h4>You can download the .toe file for this setup here :<br/>
+<a href="./files/DepthScatter-OwenHindley-A.toe">Part A</a><br/>
+</h4>
+
+<p>Things to check if it's not working :</p>
+
+<p>
+<em>Uniform Scale of the Box SOP, if you make this 1, you should see
+some particles around the place</em>
+</P>
+<p>
+<em>The Normalised Split view of the GLSL Multi TOP, it should look
 like noise (i.e. different values scattered across the place), and have a max/min around half of your
-Camera's Far plane.</li>
-        </ul>
+Camera's Far plane.</em>
+</p>
 
-        <p>But this isn't particularly exciting by itself, we're going to take this
+<p>But this isn't particularly exciting by itself, we're going to take this
 a bit further.</p>
 
-        <p>Step 6 - Particle lifetime, colour &amp; motion</p>
-        <p ></p>
-        <p>Currently we're creating new 'particles' every frame, and then
+</section>
+<section id="step-6">
+
+<h3>Step 6:<br/>
+    Particle lifetime, colour &amp; motion</h3>
+
+<p>Currently we're creating new 'particles' every frame, and then
 overwriting these all on the next frame.</p>
 
-        <p>We're also sampling the same particle position on the depth map, because our
+<p>We're also sampling the same particle position on the depth map, because our
 input Noise TOP is not changing.</p>
 
-        <p>Let's make our Noise move, by plugging the current frame number into the random
+<p>Let's make our Noise move, by plugging the current frame number into the random
 Seed parameter:</p>
 
-        <p>
-            <img src="../../images/blog/depth-scatter/image28.png"></p>
+<p>
+<img src="../../images/blog/depth-scatter/image28.png"></p>
 
-        <p>What we want to do is:</p>
-        <ul >
-            <li>Maintain a list of particle 'lifetimes', which reduce
-over time</li>
-            <li>When a particle's lifetime reaches 0, we sample a new point
-on the depth map, and reset its lifespan.</li>
-        </ul>
+<p>What we want to do is:</p>
 
-        <p>We do this by having our Compute Shader write to a second texture, to store the
+<p>
+<em>Maintain a list of particle 'lifetimes', which reduce
+over time.</em>
+</p>
+<p>
+<em>When a particle's lifetime reaches 0, we sample a new point
+on the depth map, and reset its lifespan.</em>
+</p>
+
+<p>We do this by having our Compute Shader write to a second texture, to store the
 lifetime of that particle, which gets read back in on the next frame.</p>
 
-        <p>Something nice about Compute Shaders is that we can both read and write to our output
+<p>Something nice about Compute Shaders is that we can both read and write to our output
 texture buffers, and provided we're always reading/writing to the same part of the texture for each
 particle that we process, we won't get into trouble. Of course, if we started reading &amp; writing to
 another part of the texture (i.e. another particle), we don't know whether this frame's
 calculation has completed on that part, so we could get unexpected results.</p>
 
-        <p>So let's create a second output for our Compute Shader to write to, in the GLSL
+<p>So let's create a second output for our Compute Shader to write to, in the GLSL
 Multi TOP :</p>
-        <p>
-            <img src="../../images/blog/depth-scatter/image7.png"></p>
-        <p>What you'll notice is there's no increase in output connectors on the
+<p>
+<img src="../../images/blog/depth-scatter/image7.png"></p>
+<p>What you'll notice is there's no increase in output connectors on the
 GLSL Multi TOP, we need to use a Render Select TOP to extract this buffer :</p>
-        <p>
-            <img src="../../images/blog/depth-scatter/image22.png"></p>
+<p>
+<img src="../../images/blog/depth-scatter/image22.png"></p>
 
-        <p>
+<p>
                                                                                                                                                                                                                                                                                                     You can also see that I've attached a Null TOP to the output of the GLSL and called it
 positions.</p>
 
-        <p>Assign the GLSL top to the TOP parameter of the Render Select TOP, and set the index
+<p>Assign the GLSL top to the TOP parameter of the Render Select TOP, and set the index
 to 1. Initially, it'll be blank because we're not writing to it yet.</p>
 
-        <p>Let's modify our Compute Shader to see how easy it is to write to multiple
+<p>Let's modify our Compute Shader to see how easy it is to write to multiple
 outputs:</p>
-        <p>
-            <img src="../../images/blog/depth-scatter/image11.png"></p>
+<p>
+<img src="../../images/blog/depth-scatter/image11.png"></p>
 
-        <p>Here we've added a line 22, which writes (1,0,1,1) to the output at index 1,
+<p>Here we've added a line 22, which writes (1,0,1,1) to the output at index 1,
 which gives us a nice pink colour in the Render Select TOP :</p>
-        <p>
-            <img src="../../images/blog/depth-scatter/image23.png"></p>
+<p>
+<img src="../../images/blog/depth-scatter/image23.png"></p>
 
-        <p>Now we need to modify our shader to do the following<br>- read the current lifetime
+<p>Now we need to modify our shader to do the following<br>- read the current lifetime
 value of our particle from the lifetime buffer</p>
-        <p>- if it's greater than 0, decrease it by some small amount, write it back to
+<p>- if it's greater than 0, decrease it by some small amount, write it back to
 the buffer</p>
-        <p>- if it's less than or equal to 0, re-sample the depth buffer, calculate a new
+<p>- if it's less than or equal to 0, re-sample the depth buffer, calculate a new
 world-space position for the particle, and reset the lifetime.</p>
 
-        <p>So our compute shader will change to this:</p>
+<p>So our compute shader will change to this:</p>
 
-        <p>uniform mat4 invCamProjection;</p>
-        <p>layout (local_size_x = 8, local_size_y = 8) in;</p>
-        <p>void main()</p>
-        <p>{</p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ivec2 uv =
-ivec2(gl_GlobalInvocationID.xy);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vec4 lifetime =
-imageLoad(mTDComputeOutputs[1], uv);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (lifetime.x &gt; 0){</p>
-        <p>
-                                                                                                                                                                                                                                                                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lifetime.x
--= 0.1f;</p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else {</p>
-        <p>
-                                                                                                                                                                                                                                                                                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lifetime.x
-= 1.0f;</p>
-        <p ></p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp;vec2 depthUV = texelFetch(sTD2DInputs[0], uv,
-0).xy;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;</p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp;float depth = texture(sTD2DInputs[1],
-depthUV.xy).r;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</p>
-        <p>
-                                                                                                                                                                                                                                                                                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vec4
-screenspacePos = vec4(-1.0f + (depthUV.x * 2.0f), -1.0f + (depthUV.y * 2.0f), depth, 1);</p>
-        <p>
-                                                                                                                                                                                                                                                                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</p>
-        <p>
-                                                                                                                                                                                                                                                                                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vec4
-hpositionWS = invCamProjection * screenspacePos;</p>
-        <p>
-                                                                                                                                                                                                                                                                                                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hpositionWS.xyz
-= hpositionWS.xyz /
-hpositionWS.w;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</p>
-        <p>
-                                                                                                                                                                                                                                                                                                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vec3
-posWorld = hpositionWS.xyz;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-        <p>
-                                                                                                                                                                                                                                                                                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;imageStore(mTDComputeOutputs[0],
-ivec2(uv), vec4(posWorld,
-1.0f));&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p>
-        <p ></p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;imageStore(mTDComputeOutputs[1],
-ivec2(uv), lifetime);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-        <p>}</p>
+<pre><code>
+uniform mat4 invCamProjection;
 
-        <p>
-                                                                                                                                                                                                                                                                                                                                                Now if we look at our outputs, we should see the lifetime&nbsp;TOP flashing from pink to blue,
-and
-the positions&nbsp;TOP changing pattern whenever it changes to pink.
+layout (local_size_x = 8, local_size_y = 8) in;
+void main()
+{
+        ivec2 uv = ivec2(gl_GlobalInvocationID.xy);                
+        vec4 lifetime = imageLoad(mTDComputeOutputs[1], uv);       
+        if (lifetime.x > 0){
+                lifetime.x -= 0.1f;
+        } else {
+                lifetime.x = 1.0f;
+                vec2 depthUV = texelFetch(sTD2DInputs[0], uv, 0).xy;            
+                float depth = texture(sTD2DInputs[1], depthUV.xy).r;                
+                vec4 screenspacePos = vec4(-1.0f + (depthUV.x * 2.0f), -1.0f + (depthUV.y * 2.0f), depth, 1);
+                vec4 hpositionWS = invCamProjection * screenspacePos;
+                hpositionWS.xyz = hpositionWS.xyz / hpositionWS.w;   
+                vec3 posWorld = hpositionWS.xyz;        
+
+                imageStore(mTDComputeOutputs[0], ivec2(uv), vec4(posWorld, 1.0f));                
+        }
+        imageStore(mTDComputeOutputs[1], ivec2(uv), lifetime);        
+}
+        </pre>
+</code>
+
+Now if we look at our outputs, we should see the <em>lifetime</em> TOP flashing from pink to blue, and the <em>positions</em> TOP changing pattern whenever it changes to pink.
 </p>
 
-        <p>This is nice, but we don't want our particles all re-birthing at the same time,
+<p>This is nice, but we don't want our particles all re-birthing at the same time,
 so we need to add some variation.</p>
 
-        <p>
-            <span >There's other ways of doing this, for sure, such as seeding the lifetime
+<p>
+<span >There's other ways of doing this, for sure, such as seeding the lifetime
 texture with a noise pattern on reset.</p>
-            <p >
-                <span ></p>
-                <p>
+<p >
+<span ></p>
+<p>
                                                                                                                                                                                                                                                                                                                                                                         We can do this by using the (unused, so far) part of the input noise, and using it to affect
 both the age rate and the life expectancy. We need to shuffle our compute shader around a bit, so we sample
 the whole noise component before the if&nbsp;statement
 :</p>
 
-                <p>uniform mat4 invCamProjection;</p>
-                <p>layout (local_size_x = 8, local_size_y = 8) in;</p>
-                <p>void main()</p>
-                <p>{</p>
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ivec2 uv =
-ivec2(gl_GlobalInvocationID.xy);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</p>
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vec4 noise =
-texelFetch(sTD2DInputs[0], uv, 0);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// sample noise
-input</p>
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vec4 lifetime =
-imageLoad(mTDComputeOutputs[1], uv);</p>
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (lifetime.x &gt; 0){</p>
-                <p>
-                                                                                                                                                                                                                                                                                                                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lifetime.x
--= 0.1f * noise.b;</p>
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else {</p>
-                <p>
-                                                                                                                                                                                                                                                                                                                                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lifetime.x
-= 1.0f * noise.b;</p>
-                <p>
-                                                                                                                                                                                                                                                                                                                                                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</p>
-                <p>
-                                                                                                                                                                                                                                                                                                                                                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vec2
-depthUV = noise.xy;</p>
-                <p ></p>
-                <p>
-                                                                                                                                                                                                                                                                                                                                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float
-depth = texture(sTD2DInputs[1], depthUV.xy).r;</p>
-                <p>
-                                                                                                                                                                                                                                                                                                                                                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</p>
-                <p>
-                                                                                                                                                                                                                                                                                                                                                                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vec4
-screenspacePos = vec4(-1.0f + (depthUV.x * 2.0f), -1.0f + (depthUV.y * 2.0f), depth, 1);</p>
-                <p>
-                                                                                                                                                                                                                                                                                                                                                                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</p>
-                <p>
-                                                                                                                                                                                                                                                                                                                                                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vec4
-hpositionWS = invCamProjection * screenspacePos;</p>
-                <p>
-                                                                                                                                                                                                                                                                                                                                                                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hpositionWS.xyz
-= hpositionWS.xyz /
-hpositionWS.w;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</p>
-                <p>
-                                                                                                                                                                                                                                                                                                                                                                                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vec3
-posWorld = hpositionWS.xyz;</p>
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-                <p>
-                                                                                                                                                                                                                                                                                                                                                                                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;imageStore(mTDComputeOutputs[0],
-ivec2(uv), vec4(posWorld,
-1.0f));&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</p>
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p>
-                <p ></p>
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;imageStore(mTDComputeOutputs[1],
-ivec2(uv),
-lifetime);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</p>
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-                <p>}</p>
+<pre><code>
+uniform mat4 invCamProjection;
 
-                <p>We should now see the positions and lifetimes changing a bit more evenly. In our
+layout (local_size_x = 8, local_size_y = 8) in;
+void main()
+{
+        ivec2 uv = ivec2(gl_GlobalInvocationID.xy);                
+        vec4 noise = texelFetch(sTD2DInputs[0], uv, 0);        // sample noise input
+        vec4 lifetime = imageLoad(mTDComputeOutputs[1], uv);
+
+        if (lifetime.x > 0){
+                lifetime.x -= 0.1f * noise.b;
+        } else {
+                lifetime.x = 1.0f * noise.b;
+                vec2 depthUV = noise.xy;
+                float depth = texture(sTD2DInputs[1], depthUV.xy).r;
+                vec4 screenspacePos = vec4(-1.0f + (depthUV.x * 2.0f), -1.0f + (depthUV.y * 2.0f), depth, 1);                
+
+                vec4 hpositionWS = invCamProjection * screenspacePos;
+                hpositionWS.xyz = hpositionWS.xyz / hpositionWS.w;               
+
+                vec3 posWorld = hpositionWS.xyz;
+                imageStore(mTDComputeOutputs[0], ivec2(uv), vec4(posWorld, 1.0f));                
+        }
+        imageStore(mTDComputeOutputs[1], ivec2(uv), lifetime);                
+}
+
+    </pre>
+</code>
+
+<p>We should now see the positions and lifetimes changing a bit more evenly. In our
 final render, we should see particles glittering across the surface a bit. But the effect is pretty subtle,
 because our underlying depth map isn't changing.</p>
 
-                <p>Let's add some motion to our source image so we can see the effect of particle
+<p>Let's add some motion to our source image so we can see the effect of particle
 lifetime on this end image.</p>
-                <p>
+<p>
                                                                                                                                                                                                                                                                                                                                                                                                                             Let's go back to our srcGeo (the one
 holding the sphere, triangle and torus), and make it spin, but putting an expression inside the Rotate Y
 parameter :</p>
 
-                <p>
-                    <img src="../../images/blog/depth-scatter/image8.png"></p>
+<p>
+<img src="../../images/blog/depth-scatter/image8.png"></p>
 
-                <p>Now we should be able to see a bit of a difference in the final render. It's
+<p>Now we should be able to see a bit of a difference in the final render. It's
 still a little uninspiring though, so let's push on with some more particle behaviours &amp;
 effects.</p>
 
-                <p>For example, let's sample the colour of the original render - which (depending
+<p>For example, let's sample the colour of the original render - which (depending
 on your original material setup) will include shadows.</p>
 
-                <p>Connect the original Render TOP into the GLSL Multi TOP, and check that it's in
+<p>Connect the original Render TOP into the GLSL Multi TOP, and check that it's in
 position 2 in the list :</p>
-                <p>
-                    <img src="../../images/blog/depth-scatter/image1.png"></p>
+<p>
+<img src="../../images/blog/depth-scatter/image1.png"></p>
 
-                <p>
+<p>
                                                                                                                                                                                                                                                                                                                                                                                                                                         Now we could create a new output buffer to hold the colour information for the particles, but as
 we're only using one channel of our lifetime&nbsp;buffer, we could use the other three to store
 colour.
 </p>
 
-                <p>
+<p>
                                                                                                                                                                                                                                                                                                                                                                                                                                                 So let's do that - first by moving the channel we use to store lifetime to the
 w&nbsp;channel (or alpha) channel of the output, and then by sampling the
 render buffer input, and storing that in the rgb&nbsp;channels.</p>
 
-                <p>New compute shader:</p>
+<p>New compute shader:</p>
 
-                <p>uniform mat4 invCamProjection;</p>
-                <p>layout (local_size_x = 8, local_size_y = 8) in;</p>
-                <p>void main()</p>
-                <p>{</p>
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ivec2 uv =
-ivec2(gl_GlobalInvocationID.xy);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vec4 noise =
-texelFetch(sTD2DInputs[0], uv, 0);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// sample noise
-input</p>
-                <p ></p>
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vec4 lifetime =
-imageLoad(mTDComputeOutputs[1], uv);</p>
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (lifetime.w &gt; 0){</p>
-                <p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lifetime.w
--= 0.1f * noise.b;</p>
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else {</p>
-                <p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lifetime.w
-= 1.0f * noise.b;</p>
-                <p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</p>
-                <p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vec2
-depthUV = noise.xy;</p>
-                <p ></p>
-                <p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float
-depth = texture(sTD2DInputs[1], depthUV.xy).r;</p>
-                <p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vec3
-colour = texture(sTD2DInputs[2], depthUV.xy).rgb;</p>
-                <p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lifetime.rgb
-= colour;</p>
-                <p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</p>
-                <p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vec4
-screenspacePos = vec4(-1.0f + (depthUV.x * 2.0f), -1.0f + (depthUV.y * 2.0f), depth, 1);</p>
-                <p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</p>
-                <p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vec4
-hpositionWS = invCamProjection * screenspacePos;</p>
-                <p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hpositionWS.xyz
-= hpositionWS.xyz /
-hpositionWS.w;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</p>
-                <p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vec3
-posWorld = hpositionWS.xyz;</p>
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-                <p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;imageStore(mTDComputeOutputs[0],
-ivec2(uv), vec4(posWorld,
-1.0f));&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</p>
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p>
-                <p ></p>
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;imageStore(mTDComputeOutputs[1],
-ivec2(uv),
-lifetime);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</p>
-                <p ></p>
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-                <p>}</p>
-                <p ></p>
-                <p>
+<pre><code>
+uniform mat4 invCamProjection;
+
+layout (local_size_x = 8, local_size_y = 8) in;
+void main()
+{
+        ivec2 uv = ivec2(gl_GlobalInvocationID.xy);        
+        vec4 noise = texelFetch(sTD2DInputs[0], uv, 0);        // sample noise input
+        vec4 lifetime = imageLoad(mTDComputeOutputs[1], uv);
+        if (lifetime.w > 0){
+                lifetime.w -= 0.1f * noise.b;
+        } else {
+                lifetime.w = 1.0f * noise.b;
+                vec2 depthUV = noise.xy;
+                float depth = texture(sTD2DInputs[1], depthUV.xy).r;
+                vec3 colour = texture(sTD2DInputs[2], depthUV.xy).rgb;
+                lifetime.rgb = colour;
+
+                vec4 screenspacePos = vec4(-1.0f + (depthUV.x * 2.0f), -1.0f + (depthUV.y * 2.0f), depth, 1);
+                vec4 hpositionWS = invCamProjection * screenspacePos;
+                hpositionWS.xyz = hpositionWS.xyz / hpositionWS.w;   
+                vec3 posWorld = hpositionWS.xyz;
+
+                imageStore(mTDComputeOutputs[0], ivec2(uv), vec4(posWorld, 1.0f));                
+        }
+
+        imageStore(mTDComputeOutputs[1], ivec2(uv), lifetime);                
+
+}
+    </pre>
+</code>
+
+<p>
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     In order to display these colours on our particles, we need to go to the Instance 2 tab on our
 particle geo1, and drag into the lifetime TOP, and set the
 R, G, B parameters accordingly:</p>
-                <p>
-                    <img src="../../images/blog/depth-scatter/image3.png"></p>
+<p>
+<img src="../../images/blog/depth-scatter/image3.png"></p>
 
-                <p>What we should then see is our particles in the final Render TOP obtain the same
+<p>What we should then see is our particles in the final Render TOP obtain the same
 colour as in the original render. It might help to set the Camera COMP to render with a black background to
 see better.</p>
 
-                <p>What we can also do at this stage is use the actual lifetime channel (a, or w) to
+<p>What we can also do at this stage is use the actual lifetime channel (a, or w) to
 control the scale of the particles, so they fade away instead of popping in and out. </p>
 
-                <p>We can tweak the amount we decrease the lifetime by each frame in order to see this
+<p>We can tweak the amount we decrease the lifetime by each frame in order to see this
 more clearly - and also notice the 'time smearing' effect we get with this change, which is a
 key part of this whole system. I like to adjust this depending on the amount of movement in the original
 scene, to give something that's either deliberately abstract or really clear, depending on the
 moment.</p>
 
-                <p>
-                    <img src="../../images/blog/depth-scatter/image24.png"></p>
+<p>
+<img src="../../images/blog/depth-scatter/image24.png"></p>
 
-                <p>One last thing, is adding some movement into the particles themselves, so for example
+<p>One last thing, is adding some movement into the particles themselves, so for example
 some gravity. For this we need to read the current position, modify it, and write it back when the lifetime
 &gt; 0 in the compute shader, which now looks like this &nbsp;(we've had to shuffle around the
 read/write commands to the position buffer) a bit :</p>
 
-                <p>uniform mat4 invCamProjection;</p>
-                <p ></p>
-                <p>layout (local_size_x = 8, local_size_y = 8) in;</p>
-                <p>void main()</p>
-                <p>{</p>
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ivec2 uv =
-ivec2(gl_GlobalInvocationID.xy);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vec4 noise =
-texelFetch(sTD2DInputs[0], uv, 0);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// sample noise
-input</p>
-                <p ></p>
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vec4 lifetime =
-imageLoad(mTDComputeOutputs[1], uv);</p>
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vec4 position =
-imageLoad(mTDComputeOutputs[0], uv);</p>
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (lifetime.w &gt; 0){</p>
-                <p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lifetime.w
--= 0.01f * noise.b;</p>
-                <p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;position.y
--= 0.01f *
-sin(noise.b);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</p>
-                <p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</p>
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else {</p>
-                <p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lifetime.w
-= 1.0f * noise.b;</p>
-                <p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</p>
-                <p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vec2
-depthUV = noise.xy;</p>
-                <p ></p>
-                <p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float
-depth = texture(sTD2DInputs[1], depthUV.xy).r;</p>
-                <p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vec3
-colour = texture(sTD2DInputs[2], depthUV.xy).rgb;</p>
-                <p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lifetime.rgb
-= colour;</p>
-                <p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</p>
-                <p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vec4
-screenspacePos = vec4(-1.0f + (depthUV.x * 2.0f), -1.0f + (depthUV.y * 2.0f), depth, 1);</p>
-                <p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</p>
-                <p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vec4
-hpositionWS = invCamProjection * screenspacePos;</p>
-                <p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hpositionWS.xyz
-= hpositionWS.xyz /
-hpositionWS.w;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</p>
-                <p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;position
-= vec4(hpositionWS.xyz,
-1);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</p>
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p>
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;imageStore(mTDComputeOutputs[0],
-ivec2(uv),
-position);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</p>
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;imageStore(mTDComputeOutputs[1],
-ivec2(uv),
-lifetime);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</p>
-                <p>}</p>
+<pre><code>
+uniform mat4 invCamProjection;
+layout (local_size_x = 8, local_size_y = 8) in;
+void main()
+{
+        ivec2 uv = ivec2(gl_GlobalInvocationID.xy);        
+        vec4 noise = texelFetch(sTD2DInputs[0], uv, 0);        // sample noise input
+        vec4 lifetime = imageLoad(mTDComputeOutputs[1], uv);
+        vec4 position = imageLoad(mTDComputeOutputs[0], uv);
 
-                <p>And we should have something like this :</p>
+        if (lifetime.w > 0){
+                lifetime.w -= 0.01f * noise.b;
+                position.y -= 0.01f * sin(noise.b);                
+        } else {
+                lifetime.w = 1.0f * noise.b;
+                vec2 depthUV = noise.xy;
+                float depth = texture(sTD2DInputs[1], depthUV.xy).r;
+                vec3 colour = texture(sTD2DInputs[2], depthUV.xy).rgb;
+                lifetime.rgb = colour;
+                vec4 screenspacePos = vec4(-1.0f + (depthUV.x * 2.0f), -1.0f + (depthUV.y * 2.0f), depth, 1);
+                vec4 hpositionWS = invCamProjection * screenspacePos;
+                hpositionWS.xyz = hpositionWS.xyz / hpositionWS.w;   
+                position = vec4(hpositionWS.xyz, 1);                
+        }
+        imageStore(mTDComputeOutputs[0], ivec2(uv), position);                
+        imageStore(mTDComputeOutputs[1], ivec2(uv), lifetime);                
+}
 
-                <p>
-                    <img src="../../images/blog/depth-scatter/image5.png"></p>
+    </pre>
+</code>
 
-                <p>Where our particles are falling a bit like sand.</p>
+<p>And we should have something like this :</p>
 
-                <p>Step X - Next Steps?</p>
+<p>
+<img src="../../images/blog/depth-scatter/image5.png"></p>
 
-                <p>We're now into the region of programming general GPU particle simulations in a
+<p>Where our particles are falling a bit like sand.</p>
+
+<h4>You can download the .toe file for this setup here :<br/>
+<a href="./files/DepthScatter-OwenHindley-B.toe">Part B</a><br/>
+</h4>
+
+</section>
+
+<section id="step-x">
+
+<h3>Step X:<br/>
+    Where to go next?</h3>
+
+<p>We're now into the region of programming general GPU particle simulations in a
 compute shader, which is a well-established field of work in itself, with lots of resources. - a quick
 Google for 'TouchDesigner GPU Particles' will give you a whole bunch of things to try out, so
 our tutorial is going to pause here for now.</p>
 
-                <p>Things to look into:</p>
-                <ul >
-                    <li>Per-instance textures (as used in the Harmonic Dream Sequence
-video above)</li>
-                    <li>Using a different camera to render the final particles than the
-one that creates the depth map</li>
-                </ul>
-                <ul >
-                    <li>Adding position noise over lifetime</li>
-                    <li>Varying the size of particles, e.g. based on colour, or noise
-lookup</li>
-                    <li>Having a small random subset of particles 'glitter'
-or shine</li>
-                    <li>Having some percentage of particles randomly scattered in space,
-as a dust effect, which helps give a sense of parallax when moving the camera a lot.</li>
-                    <li>Using inputs like the Kinect Camera (which will output a point
+<p>Here's an example of material from an ongoing audio-visual project (<a href="http://instagram.com/mmmmotet">MOTET</a>) where I'm using this technique a lot, both live and for creating offline videos.</p>
+
+<p>Using some pretty uninspiring source geometry like this:</p>
+
+<img src="../../images/blog/depth-scatter/image-flowers-prerender.jpg"></p>
+
+<p>We can get something like this, which looks much more interesting:</p>
+
+<blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/CwBMiuDAE28/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+<div style="padding:16px;">
+<a href="https://www.instagram.com/p/CwBMiuDAE28/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank">
+<div style=" display: flex; flex-direction: row; align-items: center;">
+<div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div>
+<div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;">
+<div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div>
+<div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div>
+</div>
+</div>
+<div style="padding: 19% 0;"></div>
+<div style="display:block; height:50px; margin:0 auto 12px; width:50px;">
+<svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink">
+<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    <g transform="translate(-511.000000, -20.000000)" fill="#000000">
+        <g>
+            <path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path>
+        </g>
+    </g>
+</g>
+</svg>
+</div>
+<div style="padding-top: 8px;">
+<div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">View this post on Instagram</div>
+</div>
+<div style="padding: 12.5% 0;"></div>
+<div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;">
+<div>
+<div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div>
+<div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div>
+<div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div>
+</div>
+<div style="margin-left: 8px;">
+<div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div>
+<div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div>
+</div>
+<div style="margin-left: auto;">
+<div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div>
+<div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div>
+<div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;">
+<div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div>
+<div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div>
+</div>
+</a>
+<p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">
+<a href="https://www.instagram.com/p/CwBMiuDAE28/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">A post shared by Owen Hindley (@owenhindley)</a>
+</p>
+</div>
+</blockquote>
+<script async src="//www.instagram.com/embed.js"></script>
+
+<p>Things to look into:</p>
+
+<p>
+<em>- Per-instance textures (as used in the Harmonic Dream Sequence
+video above)</em><br/>
+<em>- Using a different camera to render the final particles than the
+one that creates the depth map</em><br/>
+<em>- Adding position noise over lifetime</em><br/>
+<em>- Varying the size of particles, e.g. based on colour, or noise
+lookup</em><br/>
+<em>- Having a small random subset of particles 'glitter'
+or shine</em><br/>
+<em>- Having some percentage of particles randomly scattered in space,
+as a dust effect, which helps give a sense of parallax when moving the camera a lot.</em><br/>
+<em>- Using inputs like the Kinect Camera (which will output a point
 cloud by itself), or grayscale patterns with a moving camera to create interesting 'swept'
-shapes through 3D space.</li>
-                </ul>
+shapes through 3D space.</em>
+</p>
 
-                <p>Many of these effects I've implemented in my own systems, inspired a great deal
-by Keijiro's work in the Unity Visual Effect Graph (particularly the glitter effect).</p>
+<p>Many of these effects I've implemented in my own systems, inspired a great deal
+by <a href="https://www.keijiro.tokyo/">Keijirō Takahashi's</a> work in the Unity Visual Effect Graph (particularly the glitter effect).</p>
 
-                <p>There's also going to be alternative (and maybe even better!) methods to
-achieve all of the above, but this approach has taught me a whole lot about compute shaders, and let me
-control the particle behaviour in a very precise way, and all in realtime!</p>
+<p>I used his VFX graph tools a lot on this project, which works on a similar principle, but in Unity :</p>
 
-                <p>The next thing I'm going to look at (and maybe write an article on) is
+<blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/CsGgrSDKNa8/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+<div style="padding:16px;">
+<a href="https://www.instagram.com/p/CsGgrSDKNa8/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank">
+<div style=" display: flex; flex-direction: row; align-items: center;">
+<div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div>
+<div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;">
+<div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div>
+<div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div>
+</div>
+</div>
+<div style="padding: 19% 0;"></div>
+<div style="display:block; height:50px; margin:0 auto 12px; width:50px;">
+<svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink">
+<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    <g transform="translate(-511.000000, -20.000000)" fill="#000000">
+        <g>
+            <path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path>
+        </g>
+    </g>
+</g>
+</svg>
+</div>
+<div style="padding-top: 8px;">
+<div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">View this post on Instagram</div>
+</div>
+<div style="padding: 12.5% 0;"></div>
+<div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;">
+<div>
+<div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div>
+<div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div>
+<div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div>
+</div>
+<div style="margin-left: 8px;">
+<div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div>
+<div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div>
+</div>
+<div style="margin-left: auto;">
+<div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div>
+<div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div>
+<div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;">
+<div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div>
+<div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div>
+</div>
+</a>
+<p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">
+<a href="https://www.instagram.com/p/CsGgrSDKNa8/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">A post shared by Owen Hindley (@owenhindley)</a>
+</p>
+</div>
+</blockquote>
+<script async src="//www.instagram.com/embed.js"></script>
+
+<p>There's also going to be alternative (and maybe even better!) methods to
+achieve all of the above, but this approach using compute shaders has taught me a whole lot, and let me
+control the particle behaviour in a very precise way, and all in realtime, which I like.</p>
+
+<blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/C35wqlIKdPY/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+<div style="padding:16px;">
+<a href="https://www.instagram.com/p/C35wqlIKdPY/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank">
+<div style=" display: flex; flex-direction: row; align-items: center;">
+<div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div>
+<div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;">
+<div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div>
+<div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div>
+</div>
+</div>
+<div style="padding: 19% 0;"></div>
+<div style="display:block; height:50px; margin:0 auto 12px; width:50px;">
+<svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink">
+<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    <g transform="translate(-511.000000, -20.000000)" fill="#000000">
+        <g>
+            <path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path>
+        </g>
+    </g>
+</g>
+</svg>
+</div>
+<div style="padding-top: 8px;">
+<div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">View this post on Instagram</div>
+</div>
+<div style="padding: 12.5% 0;"></div>
+<div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;">
+<div>
+<div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div>
+<div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div>
+<div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div>
+</div>
+<div style="margin-left: 8px;">
+<div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div>
+<div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div>
+</div>
+<div style="margin-left: auto;">
+<div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div>
+<div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div>
+<div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;">
+<div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div>
+<div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div>
+</div>
+</a>
+<p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">
+<a href="https://www.instagram.com/p/C35wqlIKdPY/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">A post shared by Owen Hindley (@owenhindley)</a>
+</p>
+</div>
+</blockquote>
+<script async src="//www.instagram.com/embed.js"></script>
+
+<p>The next thing I'm going to look at (and maybe write an article on) is
 importing these position buffers into a program like Houdini for rendering the particles in a more high-end
 manner. Why? Because simulation in Houdini can be a bit slow, and unless you're using OpenCL nodes,
 not necessarily GPU-accelerated. I've already done some tests with importing the position buffers into
 Houdini as an image sequence, so watch this space.</p>
-        </main>
-        <footer>
-            <p>Owen Hindley, 2024</p>
 
-        </footer>
+<h3>If you're interested in more examples, or have some questions, you can DM me on Instagram <a href="http://instagram.com/owenhindley">here!</a>
+</h3>
 
-    </div>
+<h3>
+    Thanks for reading!
+</h3>
+</section>
+    </main>
+    <footer>
+        <p>Owen Hindley, 2024</p>
+
+    </footer>
+
+</div>
 </body>
 </html>

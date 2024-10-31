@@ -16,10 +16,12 @@ main.all {
     .recent,
     .works,
     .archive,
+    .blogposts,
     .talks {
         display: block;
     }
 }
+
 main.featured {
     > section:not(.about) {
         display: block;
@@ -59,3 +61,10 @@ main.archive {
         display: block;
     }
 }
+
+main.blogposts {
+    .blogpost {
+        display: block;
+    }
+}
+

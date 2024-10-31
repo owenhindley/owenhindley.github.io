@@ -1,0 +1,74 @@
+---
+title: Blogpost
+---
+
+<!DOCTYPE html>
+<html>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta charset="utf-8">
+    <title>Owen Hindley | {{ title }}</title>
+    <meta name="description"
+	content="Owen Hindley is a digital artist creating experiences for VR, theatre, installations, games, performance and the web using software, electronics and sound.">
+    <meta name="author" content="Owen Hindley">
+    <meta property="og:url" content="http://www.owenhindley.co.uk">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Owen Hindley">
+    <meta property="og:image" content="http://www.owenhindley.co.uk/images/sharing-image.jpg">
+    <meta property="og:description"
+	content="Owen Hindley is a digital artist creating experiences for VR, theatre, installations, games, performance and the web using software, electronics and sound.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Owen Hindley Portfolio">
+    <meta name="twitter:description"
+	content="Owen Hindley is a digital artist creating experiences for VR, theatre, installations, games, performance and the web using software, electronics and sound.">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://use.typekit.net/bio5jjx.css">
+
+    <link rel="stylesheet" href="../../css/normalize.css">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/blogpost.css">
+</head>
+<body class="blogpost">
+    <div class="container">
+
+        <header>
+
+            {# <aside>
+                <p>owenhindley at hotmail dot com<br/>
+                +354 762 0292<br/>
+                @owenhindley</p>
+
+                <!-- <a class="social-link" id="twitter-link" href="https://twitter.com/owen_hindley" target="_blank">t</a> -->
+                <a class="social-link" id="github-link" href="https://github.com/owenhindley" target="_blank">g</a>
+                <a class="social-link" id="instagram-link" href="https://www.instagram.com/owenhindley/" target="_blank">i</a>
+            </h6>
+        </aside> #}
+            <h1>Owen Hindley</h1>
+
+        </header>
+
+        <nav>
+            <label onclick="document.location.href = 'http://owenhindley.co.uk'">
+                <input type="radio" name="nav"></input>
+                <span>Back</span>
+            </label>
+        </nav>
+        <main>
+            <h1>{{title}}</h1>
+            <h4>{{summary}}</h4>
+            {{ content | safe }}
+        </main>
+        <footer>
+            <p>Owen Hindley, 2024</p>
+
+        </footer>
+
+    </div>
+</body>
+</html>

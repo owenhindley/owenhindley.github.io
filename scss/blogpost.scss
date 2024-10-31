@@ -1,11 +1,23 @@
 body.blogpost {
 
+    main {
+
+        h1, h3,h4 {
+            background-color: white;
+            margin-left:-0.5em;
+            padding-left:0.5em;
+            padding-top:0.5em;
+            padding-bottom:0.5em;
+        }
+    }
+
 
     section {
         margin-left:-2vw;
         padding-left:2vw;
 
         display: block;
+
       
 
         p {
@@ -14,6 +26,10 @@ body.blogpost {
             margin-bottom: 2em;
             font-size: 1em;   
             max-width: 600px;
+
+            em {
+                background-color: white;
+            }
         }
 
         ul, li {
@@ -34,6 +50,20 @@ body.blogpost {
             display: flex;
 
             border:2px solid $textColor;
+        }
+
+        pre {
+            width:80%;
+            padding:1em;
+            background:$codeBackground;
+            color:$codeForeground;
+            margin-left:-0.5em;
+            border:0.5em solid white;
+
+            code {
+                font-size: 1.1em;
+            }
+
         }
 
     }
