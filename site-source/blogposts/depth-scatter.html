@@ -20,6 +20,7 @@ summary: A technique for creating point clouds from simple 3D scenes, within Tou
     <a href="#step-4">Step 4 - Creating the GPU Particle System</a><br/>
     <a href="#step-5">Step 5 - Rendering particles</a><br/>
     <a href="#step-6">Step 6 - Particle lifetime, colour &amp; motion</a><br/>
+    <a href="#step-7">Break - An Alternative method</a><br/>
     <a href="#step-x">Step X - Where to go next?</a><br/>
 </h4>
 </section>
@@ -31,6 +32,7 @@ been using quite a bit, which, for now, I'm going to call "Depth Scattering".
 <p>
     <em>This is a long article, but hopefully usefully detailed - I wanted to try writing something down rather than doing a YouTube video. It's going to go over some basic stuff, but presumes you're familiar with rendering 3D geometry in TouchDesigner, assigning expressions to parameters, but doesn't neccesarily expect you to have done any GLSL before.</em>
 </p>
+<p>This tutorial is designed for TouchDesigner 2023.12000 upwards, older versions might behave slightly differently. Thanks to Svava Johansdóttir and Mickey Van Olst for proof-reading this and offering suggestions!</p>
 
 <h4>You can download the .toe files here:<br/>
     <a href="./files/DepthScatter-OwenHindley-A.toe">Part A</a><br/>
@@ -77,7 +79,7 @@ to your scene should happen - try something with nicely animated rotations, scal
 <p><img src="../../images/blog/depth-scatter/image4.png"></p>
 
 <p>Here I'm creating three primitives, arranging them using Transform SOPs, adding
-point colours to each via the Point SOP, and merging them all together.</p>
+point colours to each via the Point SOP, and merging them all together. (The diamond is a Sphere SOP with the Rows & Columns set to 4)</p>
 
 <p>If you're adding your own, layouts like tunnels, caves or hallways, with geometry spread nicely between the foreground and background should work
 well to demonstrate this technique.</p>
@@ -90,14 +92,16 @@ well to demonstrate this technique.</p>
 <p>
     <img src="../../images/blog/depth-scatter/image21.png"></p>
 <p>Now we take this merged geometry and pipe it into a Geometry
-COMP, here called <em>srcGeo.</em>
+COMP, here called <em>srcGeo.</em>. 
 </p>
 
-<p>(Hint - huge time-saving tip that I saw somewhere, if you're dragging an output
-from a SOP, keep the mouse button down, and then create a Geometry from the Tab menu, it'll wire up
-the SOP geometry inside the COMP automatically, neat!)</p>
+<p>Huge time-saving tip that I saw somewhere, drag an output
+from a SOP, keep the mouse button down, and then create a Geometry from the Tab -> COMP menu, it'll wire up
+the SOP geometry inside the COMP automatically, neat!</p>
 
-<p>Then we set up Camera &amp; Light COMPs, create a simple Phong MAT, and finally a
+<p><em>If you don't use the above method, you'll need to create a COMP, then go inside, create an In SOP, delete everything else, and make sure the Render (purple) flag is set in the bottom of the node. See more <a href="https://docs.derivative.ca/Geometry_COMP">here</a></em></p>
+
+<p>Then we set up Camera &amp; Light COMPs, create a simple Phong MAT, assign it to the Material parameter of our COMP, and finally a
 Render TOP to output an image of our little scene. </p>
 
 <p>What's good to focus on here is good contrast in the lighting and range of
@@ -116,12 +120,12 @@ the path to the Render TOP in the OP field).</p>
     <img src="../../images/blog/depth-scatter/image14.png"></p>
 
 <p>If you, like me, haven't previously looked at the Depth TOP, it's a
-useful procedure to extract the depth map from your renders, which you can later use for post-effects like
+useful procedure to extract the depth texture from your renders, which you can later use for post-effects like
 depth of field (using a Lookup &amp; a Luma Blur TOP), or in this case, to drive a secondary particle
 system.</p>
 <p>Now you may not be able to see much in the Depth TOP itself, in the image above you
 can faintly see the outlines of our objects, but there's a nice feature in TOPs that let us visualise
-the depth map more easily.</p>
+the depth map more easily - this doesn't change the underlying values, only how they're displayed.</p>
 
 <p>Click on the Depth TOP, activate the viewer (star in the bottom-right, or press
 'a'), right-click on the background and select 'Normalised Split'. You should then
@@ -132,7 +136,7 @@ see something like this :</p>
 overlay the current pixel value underneath the mouse:</p>
 <p>
     <img src="../../images/blog/depth-scatter/image16.png"></p>
-<p>If you mouse around a bit, you'll notice that the majority of our values are
+<p>If you move your mouse around a bit, you'll notice that the majority of our values are
 crunched within the 0.99..1.0 range - this is because all of these values are relative to the Near and Far
 parameters of the Camera COMP - which is 0.1 -&gt; 1000 by default. &nbsp;</p>
 
@@ -147,10 +151,10 @@ middle-mouse (or Alt-right click) on the Depth TOP, you'll see this :</p>
     <img src="../../images/blog/depth-scatter/image25.png"></p>
 <p>Notice the section marked 'Format' - and compare it to what comes up on
 your normal TOPs (which will probably be 8-bit fixed (RGBA)). This means that on the GPU, the texture
-backing up this Depth TOP is using a 1-channel 32-bit float, whereas normal tops use a 4-channel (for R,G,B
+backing up this Depth TOP is using a 1-channel 32-bit float, whereas most TOPs by default use a 4-channel (for R,G,B
 and Alpha), 8-bit fixed representation. </p>
 
-<p>This format is used for extra accuracy in the depth map (or depth buffer), so
+<p>This format is used for extra accuracy in the depth texture (or depth buffer - which describes the raw data behind the texture), so
 it's less likely (but not guaranteed) to see z-fighting when two objects are overlapping and similar
 in distance from the camera. </p>
 
@@ -217,8 +221,8 @@ of the depth map, so our particles build up &nbsp;a representation of the origin
 
 <p>So how do we implement this in TouchDesigner?</p>
 
-<p>First, we create a Noise TOP, (set to Random (GPU), the Pixel Format set to 8-bit
-fixed RGBA, Output to Noise, and the input coming from the Depth TOP to match the resolution), and the Depth
+<p>First, we create a Noise TOP, (deselect 'Monochrome', set to Random (GPU), the Pixel Format set to 8-bit
+fixed RGBA, Output to Noise, and the input coming from the Depth TOP into the Noise TOP input so that all TOPs are at the same resolution), and the Depth
 TOP itself.</p>
 
 <p>This Noise is very important, it's going to provide the random per-frame points
@@ -339,7 +343,7 @@ void main()
 
 <p> First <em>uniform mat4 invCamProjection</em> is importing our matrix from the uniform we defined a second ago, grabbing it from the Camera COMP.</p>
 <p> Then <em>layout (local_size_x = 8, local_size_y = 8) in;</em>specifies the thread group size, see above discussion on Dispatch Size.</p>
-<p> We get a texel-based UV <em>ivec2</em> that we're going to call UV (even though it's not normalised) <em>ivec2 uv = ivec2(gl_GlobalInvocationID.xy);</em>
+<p> We get a texel-based UV <em>ivec2</em> that we're going to call UV (even though it's not normalised) <em>ivec2 uv = ivec2(gl_GlobalInvocationID.xy);</em> - this <em>gl_GlobalInvocationID</em> tells us which texel (or pixel) we're currently working on.
 </p>
 <p>We sample the first input (which is our Noise TOP) to get a random XY coordinate in (0..1, 0..1). Here we use <em>texelFetch</em> because our UV coordinate is in the space
 (0..width, 0..height).</p>
@@ -738,12 +742,58 @@ void main()
 
 </section>
 
+<section class="alternate" id="step-7">
+    <h3><em>Break: <br/>An Alternative Method</em></h3>
+
+    <p>
+        So shortly after publishing this article, I sent it to a few friends for feedback, and improved / rephrased a few parts.
+    </p>
+
+    <p>I got one specific bit of feedback from <a href="https://mickeyvanolst.com/">Mickey Van Olst</a> (Thanks Mickey!) which showed - in true TouchDesigner way - that there's a much simpler approach to the above, using an override MAT in the Render TOP :</p>
+
+    <p>
+       Here he pointed out a feature of the Phong MAT, under the Advanced tab -> Color Buffer, which is set to 'Full Shading' by default, but also provides a list of useful output types such as World Space Position, World Space Normal, texture coordinates etc.
+    </p>
+    <p> You'll need a recent version of TouchDesigner (2023.12000 works) for this to behave as you'd expect, but we can use this approach to bypass the matrix calculation in the compute shader entirely. He goes a step further and proposes using a Noise TOP into a Lookup TOP to sample random parts of the image each frame. 
+    </p>
+
+    <p>It's interesting to think about what could be done with these other outputs (which you can send to other Color passes in the Render TOP, and extract using the Render Select TOP) - such as getting the normal of the rendered object so that your scattered points adhere to the curvature of the source. The whole thing's a bit like having AOVs from an offline renderer without having to write any GLSL!</p>
+
+    <img src="../../images/blog/depth-scatter/depth-scatter-alternate.jpg"></p>
+
+
+    <p>Steps are :<br/>
+        - Create a new TouchDesigner file, follow steps 1 &amp; 2 as above.<br/>
+        - Create a Phong MAT<br/>
+        - On the Advanced tab, at the bottom, press the plus icon to add an output ColorBuffer, and on this new entry change 'Full Shading' to 'World Space Position'<br/>
+        - Assign this material to your srcGeo COMP<br/>
+        - In your first Render TOP, go to Advanced, change '# Color Buffers' to 2<br/>
+        - Also in your Render TOP, change the Pixel Format (in Common) to 32-bit RGBA.<br/>
+        - Create a Render Select TOP, assign your <em>render1</em> to the TOP field, set Index to 1. (this should now show the geometry coloured depending on its position in 3D space.)<br/>
+        - Wire this Render Select TOP to a Noise TOP, de-select Monochrome, and wire both this Noise TOP and the Render Select TOP into a Remap TOP.<br/>
+        - This will output random positions across the world space texture.<br/>
+        - Create our particle geometry, a small (0.001f in size) Box SOP, connect it to a Geometry COMP just in step 5.<br/>
+        - Enable Instancing on your particle Geo COMP, and assign the Remap TOP to the Translate OP, and r,g,b to x,y, z respectively.<br/>
+    </p>
+
+    <p>
+        This is a neat approach, getting you there with no compute shaders, and I'm sure you could build in a lifetime system using the Feedback or Cache TOPs instead of a compute shader!
+    </p>
+
+    <p>You could also read in the pre-computed world space positions into a compute shader, then add noise, maintain lifetimes, etc. as above, but without the potentially heavy matrix math, which could increase your performance.</p>
+
+    <h4>You can download the .toe file for this alternative setup here :<br/>
+        <a href="./files/DepthScatter-OwenHindley-C.toe">Part C</a><br/>
+        </h4>
+
+</section>
+
 <section id="step-x">
 
 <h3>Step X:<br/>
     Where to go next?</h3>
 
-<p>We're now into the region of programming general GPU particle simulations in a
+<p>Whichever approach you take above, we're now into the region of programming general GPU particle simulations in a
 compute shader, which is a well-established field of work in itself, with lots of resources. - a quick
 Google for 'TouchDesigner GPU Particles' will give you a whole bunch of things to try out, so
 our tutorial is going to pause here for now.</p>

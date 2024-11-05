@@ -1,71 +1,70 @@
 body.blogpost {
+	main {
+		h1,
+		h3,
+		h4 {
+			background-color: white;
+			margin-left: -0.5em;
+			padding-left: 0.5em;
+			padding-top: 0.5em;
+			padding-bottom: 0.5em;
+		}
+	}
 
-    main {
+	section {
+		margin-left: -2vw;
+		padding-left: 2vw;
 
-        h1, h3,h4 {
-            background-color: white;
-            margin-left:-0.5em;
-            padding-left:0.5em;
-            padding-top:0.5em;
-            padding-bottom:0.5em;
-        }
-    }
+		display: block;
 
+		p {
+			font-style: normal;
+			font-weight: bold;
+			margin-bottom: 2em;
+			font-size: 1em;
+			max-width: 600px;
 
-    section {
-        margin-left:-2vw;
-        padding-left:2vw;
+			em {
+				background-color: white;
+			}
+		}
 
-        display: block;
+		ul,
+		li {
+			max-width: 600px;
+		}
 
-      
+		h3 {
+			background-color: white;
+			max-width: 700px;
+		}
 
-        p {
-            font-style:normal;
-            font-weight: bold;
-            margin-bottom: 2em;
-            font-size: 1em;   
-            max-width: 600px;
+		img {
+			width: 80%;
+			background-color: white;
+			align-self: center;
+			margin: auto;
+			display: flex;
 
-            em {
-                background-color: white;
-            }
-        }
+			border: 2px solid $textColor;
+		}
 
-        ul, li {
-            max-width: 600px;
-        }
+		pre {
+			width: 80%;
+			padding: 1em;
+			background: $codeBackground;
+			color: $codeForeground;
+			margin-left: -0.5em;
+			border: 0.5em solid white;
 
-       
-        h3 {
-            background-color: white;
-            max-width: 700px;            
-        }
+			code {
+				font-size: 1.1em;
+			}
+		}
 
-        img {
-            width: 80%;
-            background-color: white;
-            align-self: center;
-            margin: auto;
-            display: flex;
-
-            border:2px solid $textColor;
-        }
-
-        pre {
-            width:80%;
-            padding:1em;
-            background:$codeBackground;
-            color:$codeForeground;
-            margin-left:-0.5em;
-            border:0.5em solid white;
-
-            code {
-                font-size: 1.1em;
-            }
-
-        }
-
-    }
+		&.alternate {
+			background-color: darken(white, 10);
+			// color: $backgroundColor;
+		}
+	}
 }
-
