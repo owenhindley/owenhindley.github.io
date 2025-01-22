@@ -25,6 +25,7 @@
     color: #3B82BF; }
   100% {
     color: #F2D194; } }
+
 /* Color Theme Swatches in RGBA */
 /* Color Theme Swatches in Hex */
 .c0 {
@@ -49,6 +50,7 @@
     color: #3B82BF; }
   100% {
     color: #F2D194; } }
+
 body,
 html {
   font-family: "Sono", "Open Sans", Verdana, Geneva, sans-serif;
@@ -185,6 +187,7 @@ main.blogposts .blogpost {
     color: #3B82BF; }
   100% {
     color: #F2D194; } }
+
 .slideshow {
   width: 100%;
   text-align: center;
@@ -200,6 +203,7 @@ body.blogpost main h4 {
   padding-left: 0.5em;
   padding-top: 0.5em;
   padding-bottom: 0.5em; }
+
 body.blogpost section {
   margin-left: -2vw;
   padding-left: 2vw;
@@ -287,6 +291,7 @@ html {
 @media (max-width: 1024px) {
   #splashVideo {
     display: none; } }
+
 nav {
   margin-left: 0.2em;
   padding-top: 1em;
@@ -380,6 +385,7 @@ nav {
 @media (max-width: 1024px) {
   .social-link {
     float: left; } }
+
 #twitter-link {
   background-image: url("../images/twitter.svg"); }
 
@@ -398,6 +404,7 @@ nav {
     position: absolute;
     left: 710px;
     margin-right: 0; } }
+
 #titleContact h2 {
   margin-bottom: 9px;
   font-size: 34px;
@@ -413,8 +420,8 @@ nav {
   color: #1f1f1f;
   /*padding-left: 8px;*/
   /*border-bottom-width: thin;
-  border-bottom-style: solid;
-  border-bottom-color: #000;*/
+	border-bottom-style: solid;
+	border-bottom-color: #000;*/
   margin-top: 1em; }
 
 #contentList {
@@ -429,14 +436,17 @@ nav {
 header h1 {
   margin-left: -0.125em;
   color: #3B82BF; }
+
 header p {
   width: 45%;
   min-width: 400px; }
+
 header aside {
   position: absolute;
   right: 0;
   text-align: right;
   top: 2.1em; }
+
 @media (max-width: 1024px) {
   header {
     overflow: hidden; }
@@ -535,7 +545,8 @@ article {
           display: none; }
         article header ol li:nth-of-type(2) h6 {
           font-size: 12px; }
-      .archive article header ol, .talks article header ol {
+      .archive article header ol,
+      .talks article header ol {
         left: 70%;
         top: 0em; }
     article header .thumbImg {
@@ -613,7 +624,8 @@ article {
         left: 0;
         width: 100%;
         height: 100%; }
-    article > section li, article > section p {
+    article > section li,
+    article > section p {
       margin-top: 1em;
       margin-left: 1em;
       margin-bottom: 1em;
@@ -621,7 +633,8 @@ article {
       color: #6f8699;
       font-weight: 600; }
       @media (min-width: 1024px) {
-        article > section li, article > section p {
+        article > section li,
+        article > section p {
           width: 40%;
           margin-right: 5em; } }
     article > section p.small {
@@ -640,4 +653,12 @@ article {
   main.about section.about article {
     display: block; }
 
-/*# sourceMappingURL=main.css.map */
+.horizontal-image-list a {
+  text-decoration: none;
+  border: none; }
+
+.horizontal-image-list img {
+  height: 5rem;
+  width: auto;
+  float: left;
+  margin-right: 2rem; }
