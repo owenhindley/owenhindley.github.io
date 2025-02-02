@@ -96,11 +96,11 @@
 
         <nav>
             <label onclick="OnNavChange('featured')">
-                <input type="radio" name="nav" id="check-featured" checked></input>
+                <input type="radio" name="nav" id="check-featured"></input>
                 <span>Featured</span>
             </label>
             <label onclick="OnNavChange('all')">
-                <input type="radio" name="nav" id="check-all" ></input>
+                <input type="radio" name="nav" id="check-all" checked></input>
                 <span>All</span>
             </label>
             <label onclick="OnNavChange('works')">
@@ -129,7 +129,7 @@
             </label>
         </nav>
 
-        <main class="featured">
+        <main class="all">
 
             {% assign works = collections.article | where : "data.class",
             "works" | sort : 'data.endDate' | reverse %}

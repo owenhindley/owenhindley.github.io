@@ -606,8 +606,10 @@ article {
 			font-weight: 600;
 
 			@media (min-width: 1024px) {
-				width: 40%;
+				width: 80%;
 				margin-right: 5em;
+				list-style: square;
+				margin-left: 0.5em;
 			}
 		}
 
