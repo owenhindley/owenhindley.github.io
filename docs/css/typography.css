@@ -1,44 +1,45 @@
-@import "./colours.scss";
-
-
 /* Color Theme Swatches in RGBA */
 /* Color Theme Swatches in Hex */
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Sono:wght@200&display=swap");
 .c0 {
-  color: #BF7582; }
+  color: #bf7582; }
 
 .c1 {
-  color: #3B82BF; }
+  color: #3b82bf; }
 
 .c2 {
-  color: #F2D194; }
+  color: #f2d194; }
 
 .c3 {
-  color: #D99E6A; }
+  color: #d99e6a; }
 
 .c4 {
-  color: #F2F2F2; }
+  color: #f2f2f2; }
+
+.inverted {
+  background-color: #1f1f1f;
+  color: #f5fff3; }
 
 @keyframes colourCycle {
   0% {
-    color: #F2F2F2; }
+    color: #f2f2f2; }
   50% {
-    color: #3B82BF; }
+    color: #3b82bf; }
   100% {
-    color: #F2D194; } }
+    color: #f2d194; } }
 
 body,
 html {
   font-family: "Sono", "Open Sans", Verdana, Geneva, sans-serif;
-  color: #f5f5f5; }
+  color: #1f1f1f; }
 
 h1,
 h2,
 h3,
 h4 {
   font-family: "Sono", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: normal;
+  font-weight: bolder;
   letter-spacing: -0.02em; }
 
 h5,
@@ -60,8 +61,7 @@ h5,
 h6 {
   margin: 0px;
   padding: 0px;
-  display: block;
-  line-height: 2em; }
+  display: inline; }
 
 h1 {
   font-size: 64px; }
@@ -97,5 +97,9 @@ li,
 ul {
   line-height: 1.5em;
   font-size: 1.1em;
-  color: $textColor;
- }
+  color: #060606;
+  font-style: italic; }
+  p strong,
+  li strong,
+  ul strong {
+    font-weight: bolder; }

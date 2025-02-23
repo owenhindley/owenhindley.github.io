@@ -1,9 +1,6 @@
-
 // $backgroundColor:#f5f5f5;
 // $textColor:#1c1c1c;
 // $highlightColor: #3502ff;
-
-
 
 /* Color Theme Swatches in RGBA */
 // $c0: rgba(52,135,135, 1);
@@ -19,23 +16,21 @@
 // $c3: #F2D0A7;
 // $c4: #F24B4B;
 
-$c0: #BF7582;
-$c1: #3B82BF;
-$c2: #F2D194;
-$c3: #D99E6A;
-$c4: #F2F2F2;
-
-
+$c0: #bf7582;
+$c1: #3b82bf;
+$c2: #f2d194;
+$c3: #d99e6a;
+$c4: #f2f2f2;
 
 // $backgroundColor:#1c1c1c;
-$backgroundColor:rgb(242, 242, 242);
-$backgroundColor: #f1ffee;
-$textColor:#1f1f1f;
-$highlightColor: lighten($textColor, 20);
-$textAltColor:#6f8699;
-$codeBackground:#3d3d3d;
-$codeForeground:$backgroundColor;
 
+$sectionBackground: #ffffff57;
+$backgroundColor: lighten(#f1ffee, 0.9);
+$textColor: #1f1f1f;
+$highlightColor: lighten($textColor, 20);
+$textAltColor: #6f8699;
+$codeBackground: #3d3d3d;
+$codeForeground: $backgroundColor;
 
 // $c0: #3502ff;
 // $c1: #FCB71C;
@@ -44,26 +39,34 @@ $codeForeground:$backgroundColor;
 // $c4: #0F5EFC;
 
 .c0 {
-    color:$c0;
+	color: $c0;
 }
 .c1 {
-    color:$c1;
+	color: $c1;
 }
 .c2 {
-    color:$c2;
+	color: $c2;
 }
 .c3 {
-    color:$c3;
+	color: $c3;
 }
 .c4 {
-    color:$c4;
+	color: $c4;
+}
+
+.inverted {
+	background-color: $textColor;
+	color: $backgroundColor;
 }
 
 @keyframes colourCycle {
-    0% { color: $c4; }
-    50% { color : $c1; }
-    100% { color : $c2; }
+	0% {
+		color: $c4;
+	}
+	50% {
+		color: $c1;
+	}
+	100% {
+		color: $c2;
+	}
 }
-
-
-

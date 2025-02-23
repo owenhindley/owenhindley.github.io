@@ -1,24 +1,28 @@
 /* Color Theme Swatches in RGBA */
 /* Color Theme Swatches in Hex */
 .c0 {
-  color: #BF7582; }
+  color: #bf7582; }
 
 .c1 {
-  color: #3B82BF; }
+  color: #3b82bf; }
 
 .c2 {
-  color: #F2D194; }
+  color: #f2d194; }
 
 .c3 {
-  color: #D99E6A; }
+  color: #d99e6a; }
 
 .c4 {
-  color: #F2F2F2; }
+  color: #f2f2f2; }
+
+.inverted {
+  background-color: #1f1f1f;
+  color: #f5fff3; }
 
 @keyframes colourCycle {
   0% {
-    color: #BF7582; }
+    color: #f2f2f2; }
   50% {
-    color: #3B82BF; }
+    color: #3b82bf; }
   100% {
-    color: #BF7582; } }
+    color: #f2d194; } }

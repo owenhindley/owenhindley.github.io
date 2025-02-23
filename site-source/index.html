@@ -144,7 +144,7 @@
             {% assign blogposts = collections.blogpost | sort : 'data.endDate' | reverse %}
 
             <section class="works">
-                <h6>Works &amp; Performances</h6>
+                <h6 class="inverted"><strong>Works &amp; Performances</strong></h6>
                 <!-- <p>These are pieces which I've either directed myself or been part of the main creative team.</p> -->
                 {% for article in works %}
                     <article id="{{article.data.id}}" class="{{article.data.class}} {% if article.data.featured %}featured{%endif%}">
@@ -185,7 +185,7 @@
             </section>
 
             <section class="collaboration">
-                <h6>Collaborations &amp; Commercial</h6>
+                <h6 class="inverted"><strong>Collaborations &amp; Commercial</strong></h6>
                 <p>More commercial projects where I've been brought in as a contractor or collaborator, often on the technical side of things.</p>
                 {% for article in collaboration %}
                     <article id="{{article.data.id}}" class="{{article.data.class}} {% if article.data.featured %}featured{%endif%}">
@@ -212,7 +212,7 @@
             </section>
 
             <section class="blogpost">
-                <h6>Articles &amp; Tutorials</h6>
+                <h6 class="inverted"> <strong>Articles &amp; Tutorials</strong></h6>
                 {% for post in blogposts %}
                     <article id="{{post.data.id}}" class="{{post.data.class}} featured">
                         <input class="showContent" onClick="GoToBlogpost('{{post.data.id}}')" type="checkbox"></input>
@@ -227,7 +227,7 @@
             </section>
 
             <section class="talks">
-                <h6>Talks &amp; Education</h6>
+                <h6 class="inverted"><strong>Talks &amp; Education</strong></h6>
                 <p>When I've been asked to lecture or run workshops for students or institutions about my work or projects.</p>
                 {% for article in talks %}
                     <article id="{{article.data.id}}" class="{{article.data.class}}">
@@ -249,7 +249,7 @@
             </section>
 
             <section class="archive">
-                <h6>Project Archive</h6>
+                <h6 class="inverted"><strong>Project Archive</strong></h6>
                 <p>Older projects that define my early career and interests.</p>
                 {% for article in archive %}
                     <article id="{{article.data.id}}" class="{{article.data.class}} featured">
@@ -273,8 +273,9 @@
             </section>
 
             <section class="about">
-                <h6>About &amp; Bio</h6>
+                <h6 class="inverted"><strong>About &amp; Bio</strong></h6>
                 <article>
+                    <h5>Link to CV : <a href="https://docs.google.com/document/d/e/2PACX-1vSd1JAk3OiWXEYvDNtY49ZzNKxLP-kegM12-3PcGVa7kcZgv6ss3NtjDM3jSfYl_KInMLFNIIHPPcVz/pub">link</a></a></h5>
                     <p>Owen (he/him) is a collaborative digital artist, working with software, sound, and electronics for the web, VR, performances, devices and installations.</p>
                     <p>His commercial work has included serving as technical lead on large, cutting-edge projects for clients such as Oculus Studios, Google, Microsoft/Xbox, Samsung and Mercedes, collaborating with digital creatives such as Universal Everything, FIELD and B-Reel. These projects have ranged from an interactive web-connected musical installation at the London Science Museum for Google, Web Lab, to a pneumatic live-streamed pinata-smashing robot.</p>
                     <p>He is co-founder of <a href="http://huldufugl.is" target="_blank">Huldufugl</a>, a Reykjavik-based theatre and events company experimenting with new mediums in theatre, both technological and immersive.</p>
