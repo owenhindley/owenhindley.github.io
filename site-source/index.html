@@ -117,9 +117,11 @@
 
 
         <div class="taglines">
-            <p class="c1">Hi there! I'm Owen.</p>
-            <p class="c2">I'm a developer, director and artist.</p>
-            <p class="c3">I create work for stage, screens and spaces.</p>
+            <p>Hi there! I'm Owen.<br/>
+                I'm a creative, a developer and an artist.<br/>
+                I create work for spaces, screens and stages,<br/>
+                Collaborations from small to very large.
+            </p>
         </div>
         <!-- <p>I've created VR theatre, interactive music experiences, an enormous game of PONG, a pinata-smashing robot, music videos, and video games.</p> -->
         <!-- <p>Here's the story so far :</p> -->
@@ -139,44 +141,27 @@
             {% assign archive = collections.archive | sort : 'data.endDate' | reverse %}
             {% assign blogposts = collections.blogpost | sort : 'data.endDate' | reverse %}
 
+
             <section class="works">
                 <h6 class="inverted"><strong>Works &amp; Performances</strong></h6>
                 <!-- <p>These are pieces which I've either directed myself or been part of the main creative team.</p> -->
                 {% for article in works %}
                     <article id="{{article.data.id}}" class="{{article.data.class}} {% if article.data.featured %}featured{%endif%}">
-                        <input class="showContent" type="checkbox"></input>
-                        <header>
+                        <a href="/{{article.data.id}}">
                             <div class="thumbImg" style="background-image:url(images/projects/thumbs/{{article.data.id}}-thumb.jpg);"></div>
-                            <h4>{{article.data.title}}</h4>
-                            <summary>{{article.data.summary}}</summary>
-                            <ol>
-                                <li>
-                                    <h6>{{article.data.when}}</h6>
-                                </li>
-                                <!-- <li><h6>{{article.data.role}}</h6></li> -->
-                                <!-- <li><h6>{{article.data.skills}}</h6></li> -->
-                            </ol>
-                        </header>
-                        <!-- {{ article.templateContent }} -->
+
+                            <header>
+                                
+                                <h4>{{article.data.title}}</h4>
+                                <summary>{{article.data.summary}}</summary>
+                                <summary>{{article.data.when}}</summary>
+                                
+                            </header>
+
+                        </a>
+                       
                     </article>
                 {% endfor %}
-
-                <!-- <h6>Performances</h6>
-            {% for article in performances %}
-            <article id="{{article.data.id}}" class="{{article.data.class}} {% if article.data.featured %}featured{%endif%}">
-                <input class="showContent" type="checkbox"></input>
-                <header>
-                    <h3>{{article.data.title}}</h3>
-                    <summary>{{article.data.summary}}</summary>
-                    <ol>
-                        <li>{{article.data.when}}</li>
-                        <li>{{article.data.role}}</li>
-                        <li>{{article.data.skills}}</li>
-                    </ol>
-                </header>
-                    {{ article.templateContent }}
-            </article>
-            {% endfor %} -->
 
             </section>
 
@@ -185,24 +170,21 @@
                 <p>More commercial projects where I've been brought in as a contractor or collaborator, often on the technical side of things.</p>
                 {% for article in collaboration %}
                     <article id="{{article.data.id}}" class="{{article.data.class}} {% if article.data.featured %}featured{%endif%}">
-                        <input class="showContent" type="checkbox"></input>
-                        <header>
-                            <div class="thumbImg" style="background-image:url(./images/projects/thumbs/{{article.data.id}}-thumb.jpg);"></div>
-                            <h4>{{article.data.title}}</h4>
-                            <summary>{{article.data.summary}}</summary>
-                            <ol>
-                                <li>
-                                    <h6>{{article.data.when}}</h6>
-                                </li>
-                                <li>
-                                    <h6>{{article.data.role}}</h6>
-                                </li>
-                                <li>
-                                    <h6>{{article.data.skills}}</h6>
-                                </li>
-                            </ol>
-                        </header>
-                        <!-- {{ article.templateContent }} -->
+                        <a href="/{{article.data.id}}">
+                            <div class="thumbImg" style="background-image:url(images/projects/thumbs/{{article.data.id}}-thumb.jpg);"></div>
+
+                            <header>
+                                
+                                <h4>{{article.data.title}}</h4>
+                                <summary>{{article.data.summary}}</summary>
+                                <summary>{{article.data.when}}</summary>
+                                <summary>{{article.data.role}}</summary>
+                                <summary>{{article.data.skills}}</summary>
+                                
+                            </header>
+
+                        </a>
+                       
                     </article>
                 {% endfor %}
             </section>
@@ -210,13 +192,31 @@
             <section class="blogpost">
                 <h6 class="inverted"> <strong>Articles &amp; Tutorials</strong></h6>
                 {% for post in blogposts %}
+                <article id="{{article.data.id}}" class="{{article.data.class}} {% if article.data.featured %}featured{%endif%}">
+                        <a href="/{{article.data.id}}">
+                            <div class="thumbImg" style="background-image:url(images/projects/thumbs/{{article.data.id}}-thumb.jpg);"></div>
+
+                            <header>
+                                
+                                <h4>{{article.data.title}}</h4>
+                                <summary>{{article.data.summary}}</summary>
+                                <summary>{{article.data.when}}</summary>
+                                <summary>{{article.data.role}}</summary>
+                                <summary>{{article.data.skills}}</summary>
+                                
+                            </header>
+
+                        </a>
+                       
+                    </article>
+
                     <article id="{{post.data.id}}" class="{{post.data.class}} featured">
-                        <input class="showContent" onClick="GoToBlogpost('{{post.data.id}}')" type="checkbox"></input>
-                        <header>
+                        <a href="blog/{{post.data.id}}">
                             <div class="thumbImg" style="background-image:url(images/blog/thumbs/{{post.data.id}}-thumb.jpg);"></div>
-                            <h6>{{post.data.pubDate}}</h6>
-                            <h6>{{post.data.title}}</h6>
+                        <header>
+                            <h4>{{post.data.title}}</h4>
                             <summary>{{post.data.summary}}</summary>
+                            <summary>{{post.data.pubDate}}</summary>
                         </header>
                     </article>
                 {% endfor %}
@@ -239,7 +239,7 @@
                                 </li>
                             </ol>
                         </header>
-                        <!-- {{ article.templateContent }} -->
+                        {{ "" }}
                     </article>
                 {% endfor %}
             </section>
@@ -263,7 +263,7 @@
                                 </li>
                             </ol>
                         </header>
-                        <!-- {{ article.templateContent }} -->
+                        {{ "" }}
                     </article>
                 {% endfor %}
             </section>

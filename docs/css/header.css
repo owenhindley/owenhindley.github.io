@@ -47,8 +47,9 @@ header p {
 header aside {
   position: fixed;
   right: 3em;
-  text-align: right;
-  top: 2.1em; }
+  text-align: right; }
+  header aside p {
+    font-size: 0.75em; }
 
 header .taglines {
   display: block;

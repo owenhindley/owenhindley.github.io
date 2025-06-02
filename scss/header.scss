@@ -26,7 +26,11 @@ header {
 		position: fixed;
 		right: 3em;
 		text-align: right;
-		top: 2.1em;
+		// top: 2.1em;
+
+		p {
+			font-size: 0.75em;
+		}
 	}
 
 	.taglines {
