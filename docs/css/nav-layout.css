@@ -1,0 +1,87 @@
+/* Color Theme Swatches in RGBA */
+/* Color Theme Swatches in Hex */
+.c0 {
+  color: #bf7582; }
+
+.c1 {
+  color: #3b82bf; }
+
+.c2 {
+  color: #f2d194; }
+
+.c3 {
+  color: #d99e6a; }
+
+.c4 {
+  color: #f2f2f2; }
+
+.inverted {
+  background-color: #1f1f1f;
+  color: #f7fcf6; }
+
+@keyframes colourCycle {
+  0% {
+    color: #f2f2f2; }
+  50% {
+    color: #3b82bf; }
+  100% {
+    color: #f2d194; } }
+
+nav {
+  padding-top: 1em;
+  float: left;
+  width: 100%; }
+  @media (min-width: 1280px) {
+    nav {
+      position: fixed;
+      width: 8.5em;
+      left: 1em;
+      top: 1em; }
+      nav label {
+        clear: both;
+        width: 100%;
+        text-align: right; }
+        nav label span {
+          height: auto;
+          display: block; } }
+  @media (max-width: 1024px) {
+    nav {
+      margin-top: 3em; } }
+  nav label {
+    margin-right: 1em;
+    float: left;
+    display: block; }
+    nav label span {
+      cursor: pointer;
+      padding: 0;
+      color: #1f1f1f;
+      font-family: "Sono";
+      font-weight: bolder;
+      font-size: 18px;
+      opacity: 0.75; }
+      nav label span:hover {
+        opacity: 1; }
+    nav label:nth-of-type(4n) span {
+      color: #bf7582; }
+    nav label:nth-of-type(4n + 1) span {
+      color: #3b82bf; }
+    nav label:nth-of-type(4n + 2) span {
+      color: #f2d194; }
+    nav label:nth-of-type(4n + 3) span {
+      color: #d99e6a; }
+    nav label input {
+      appearance: none !important;
+      -webkit-appearance: none !important;
+      -moz-appearance: none !important;
+      margin-left: -1em; }
+    nav label input:checked + span {
+      font-weight: bold; }
+  @media (max-width: 1024px) {
+    nav {
+      text-align: center; }
+      nav label {
+        height: 0.5em;
+        margin-left: auto;
+        margin-right: auto; }
+        nav label span {
+          font-size: 24px; } }

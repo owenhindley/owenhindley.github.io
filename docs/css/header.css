@@ -1,0 +1,98 @@
+/* Color Theme Swatches in RGBA */
+/* Color Theme Swatches in Hex */
+.c0 {
+  color: #bf7582; }
+
+.c1 {
+  color: #3b82bf; }
+
+.c2 {
+  color: #f2d194; }
+
+.c3 {
+  color: #d99e6a; }
+
+.c4 {
+  color: #f2f2f2; }
+
+.inverted {
+  background-color: #1f1f1f;
+  color: #f7fcf6; }
+
+@keyframes colourCycle {
+  0% {
+    color: #f2f2f2; }
+  50% {
+    color: #3b82bf; }
+  100% {
+    color: #f2d194; } }
+
+header h1 {
+  margin-left: -0.125em;
+  color: #3b82bf; }
+
+header h6 {
+  float: left;
+  clear: both;
+  display: block;
+  margin-bottom: 2em; }
+
+header p {
+  width: 45%;
+  min-width: 400px;
+  margin-top: 0;
+  margin-bottom: 2em;
+  font-style: normal; }
+
+header aside {
+  position: fixed;
+  right: 3em;
+  text-align: right;
+  top: 2.1em; }
+
+header .taglines {
+  display: block;
+  width: auto; }
+
+@media (max-width: 1024px) {
+  header {
+    overflow: hidden; }
+    header h1 {
+      display: none; }
+    header > p {
+      display: none; }
+    header aside {
+      position: static;
+      right: 3em;
+      text-align: left;
+      opacity: 0.5;
+      display: block;
+      float: left;
+      margin-bottom: 1em; }
+      header aside p {
+        margin: 0; } }
+
+.social-link {
+  color: transparent;
+  width: 20px;
+  height: 20px;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  display: block !important;
+  margin-top: 10px;
+  float: right;
+  margin-right: 0.5em; }
+
+@media (max-width: 1024px) {
+  .social-link {
+    float: left; } }
+
+#twitter-link {
+  background-image: url("../images/twitter.svg"); }
+
+#github-link {
+  background-image: url("../images/github.png"); }
+
+#instagram-link {
+  background-image: url("../images/instagram.png"); }
