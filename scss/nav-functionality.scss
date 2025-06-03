@@ -10,26 +10,30 @@ section {
 //     }
 // }
 
+// main.all {
+//     .collaboration,
+//     .performance,
+//     .recent,
+//     .works,
+//     .archive,
+//     .blogposts,
+//     .talks {
+//         display: block;
+//     }
+// }
+
 main.all {
-    .collaboration,
-    .performance,
-    .recent,
-    .works,
-    .archive,
-    .blogposts,
-    .talks {
+    .all
+    {
         display: block;
     }
 }
 
-main.featured {
-    > section:not(.about) {
-        display: block;
-        .featured {
-            display: block;
-        }
-    }
-}
+// main.featured {
+//     .featured {
+//         display: block;
+//     }
+// }
 
 main.collaboration {
     .collaboration {

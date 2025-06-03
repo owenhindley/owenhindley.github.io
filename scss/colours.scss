@@ -22,11 +22,20 @@ $c2: #f2d194;
 $c3: #d99e6a;
 $c4: #f2f2f2;
 
+$c0: white;
+$c1: white;
+$c2: white;
+$c3: white;
+$c4: white;
+
+
 // $backgroundColor:#1c1c1c;
 
 $sectionBackground: #ffffff57;
-$backgroundColor: desaturate(lighten(#f1ffee, 0.9), 50);
-$textColor: #1f1f1f;
+//$backgroundColor: desaturate(lighten(#f1ffee, 0.9), 50);
+$backgroundColor:black;
+//$textColor: #1f1f1f;
+$textColor: white;
 $highlightColor: lighten($textColor, 20);
 $textAltColor: #6f8699;
 $codeBackground: #3d3d3d;

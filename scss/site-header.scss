@@ -1,0 +1,96 @@
+@import "./colours.scss";
+
+header {
+	h1 {
+		margin-left: -0.125em;
+		// animation: colourCycle 10s alternate-reverse infinite;
+		color: $c1;
+	}
+
+	h6 {
+		float: left;
+		clear: both;
+		display: block;
+		margin-bottom: 2em;
+	}
+
+	p {
+		width: 45%;
+		min-width: 400px;
+		margin-top: 0;
+		margin-bottom: 2em;
+		font-style: normal;
+	}
+
+	aside {
+		position: fixed;
+		right: 3em;
+		text-align: right;
+		// top: 2.1em;
+
+		p {
+			font-size: 0.75em;
+		}
+	}
+
+	.taglines {
+		display: block;
+		width: auto;
+	}
+
+	@media (max-width: 1024px) {
+		overflow: hidden;
+
+		h1 {
+			display: none;
+		}
+
+		> p {
+			display: none;
+		}
+
+		aside {
+			position: static;
+			right: 3em;
+			text-align: left;
+			opacity: 0.5;
+			display: block;
+			float: left;
+			margin-bottom: 1em;
+			p {
+				margin: 0;
+			}
+		}
+	}
+}
+
+.social-link {
+	color: transparent;
+	width: 20px;
+	height: 20px;
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	background-position: center center;
+	display: block !important;
+	margin-top: 10px;
+	float: right;
+	margin-right: 0.5em;
+}
+
+@media (max-width: 1024px) {
+	.social-link {
+		float: left;
+	}
+}
+
+#twitter-link {
+	background-image: url("../images/twitter.svg");
+}
+
+#github-link {
+	background-image: url("../images/github.png");
+}
+
+#instagram-link {
+	background-image: url("../images/instagram.png");
+}
