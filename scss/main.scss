@@ -34,7 +34,7 @@ li {
 
 	margin: 3em;
 	// max-width: 1096px;
-    max-width: 80vw;
+
 	margin-left: 8vw;
 	width: 100%;
 
@@ -47,6 +47,7 @@ li {
 	@media (min-width: 1280px) {
 		margin-left: 13em;
 		width: calc(100% - 14em);
+		max-width: 80vw;
 	}
 }
 
@@ -83,19 +84,19 @@ li {
 
 main {
 	margin-top: 4rem;
-    overflow: hidden;
+	overflow: hidden;
 
 	> section {
 		margin-bottom: 2em;
 
-        // > h6 {
-        //     float:left;
-        //     clear:both;
-        //     display: block;
-        // }
+		// > h6 {
+		//     float:left;
+		//     clear:both;
+		//     display: block;
+		// }
 
-        > .article-collection {
-            clear: both;
-        }
+		> .article-collection {
+			clear: both;
+		}
 	}
 }
