@@ -243,26 +243,9 @@
                 </header>
                 <div class="article-collection">
                     {% for post in blogposts %}
-                        <article id="{{article.data.id}}" class="{{article.data.class}} {% if article.data.featured %}featured{%endif%}">
-                            <a href="/{{article.data.id}}">
-                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/{{article.data.id}}-thumb.jpg);"></div>
-
-                                <header>
-
-                                    <h4>{{article.data.title}}</h4>
-                                    <summary>{{article.data.summary}}</summary>
-                                    <summary>{{article.data.when}}</summary>
-                                    <summary>{{article.data.role}}</summary>
-                                    <summary>{{article.data.skills}}</summary>
-
-                                </header>
-
-                            </a>
-
-                        </article>
-
+                    
                         <article id="{{post.data.id}}" class="{{post.data.class}} featured">
-                            <a href="blog/{{post.data.id}}">
+                            <a href="blogposts/{{post.data.id}}">
                                 <div class="thumbImg" style="background-image:url(images/blog/thumbs/{{post.data.id}}-thumb.jpg);"></div>
                                 <header>
                                     <h4>{{post.data.title}}</h4>
@@ -406,7 +389,7 @@
 
         </main>
         <footer>
-            <p>Owen Hindley, 2025</p>
+            <p>© Owen Hindley, {% year %}</p>
 
         </footer>
 

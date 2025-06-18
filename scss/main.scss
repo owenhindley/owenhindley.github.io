@@ -6,6 +6,7 @@
 @import "./site-header.scss";
 @import "./slideshow.scss";
 @import "./blogpost.scss";
+@import "./single-article.scss";
 
 body,
 html {
@@ -48,6 +49,9 @@ li {
 		margin-left: 13em;
 		width: calc(100% - 14em);
 		max-width: 80vw;
+	}
+	footer {
+		padding-bottom: 2em;
 	}
 }
 

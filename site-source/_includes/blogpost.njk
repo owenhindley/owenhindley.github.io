@@ -63,17 +63,22 @@ title: Blogpost
             <span>Top</span>
         </label>
     </nav>
-    <main>
-        <h1>{{title}}</h1>
-        <br/>
-        <h4>{{summary}}</h4>
-        <br/>
-        {{ content | safe }}
-    </main>
-    <footer>
-        <p>Owen Hindley, 2024</p>
+    <div class="single-article">
 
-    </footer>
+        <article>
+
+            <header>
+                <p>{{title}} - {{summary}}</p>
+            </header>
+            {{ content | safe }}
+
+            <footer>
+                <p>© Owen Hindley, {% year %}</p>
+
+            </footer>
+        </article>
+
+    </div>
 
 </div>
 </body>

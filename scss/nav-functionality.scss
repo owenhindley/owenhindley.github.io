@@ -1,6 +1,6 @@
 main article,
-section {
-    display: none;
+main section {
+	display: none;
 }
 
 // main > section > h6 { display: none; }
@@ -23,10 +23,9 @@ section {
 // }
 
 main.all {
-    .all
-    {
-        display: block;
-    }
+	.all {
+		display: block;
+	}
 }
 
 // main.featured {
@@ -36,39 +35,38 @@ main.all {
 // }
 
 main.collaboration {
-    .collaboration {
-        display: block;
-    }
+	.collaboration {
+		display: block;
+	}
 }
 
 main.works {
-    .works,
-    .performance {
-        display: block;
-    }
+	.works,
+	.performance {
+		display: block;
+	}
 }
 
 main.talks {
-    .talks {
-        display: block;
-    }
+	.talks {
+		display: block;
+	}
 }
 
 main.about {
-    .about {
-        display: block;
-    }
+	.about {
+		display: block;
+	}
 }
 
 main.archive {
-    .archive {
-        display: block;
-    }
+	.archive {
+		display: block;
+	}
 }
 
 main.blogposts {
-    .blogpost {
-        display: block;
-    }
+	.blogpost {
+		display: block;
+	}
 }
-

@@ -32,9 +32,8 @@ title: Blogpost
 
     <link rel="stylesheet" href="../../css/normalize.css">
     <link rel="stylesheet" href="../../css/main.css">
-    <link rel="stylesheet" href="../../css/article.css">
 </head>
-<body class="article">
+<body class="single-article">
     <div class="container">
 
         <nav>
@@ -43,15 +42,28 @@ title: Blogpost
                 <span>Back</span>
             </label>
         </nav>
-        <main>
-            <h1>{{title}}</h1>
-            <h4>{{summary}}</h4>
-            {{ content | safe }}
-        </main>
-        <footer>
-            <p>Owen Hindley, 2024</p>
+        {# 
+        <div class="header-image">
+            <div class="gradient"></div>
+            <img src="../images/projects/thumbs/{{id}}-thumb.jpg" class="thumbImg"/>
+        </div> #}
 
-        </footer>
+        <div class="single-article">
+
+            <article>
+
+                <header>
+                    <p>{{title}} - {{summary}}</p>
+                </header>
+                {{ content | safe }}
+
+                <footer>
+                    <p>© Owen Hindley, {% year %}</p>
+
+                </footer>
+            </article>
+
+        </div>
 
     </div>
 </body>
