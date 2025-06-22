@@ -20,6 +20,10 @@ header {
 		margin-top: 0;
 		margin-bottom: 2em;
 		font-style: normal;
+
+		@media (max-width: 1024px) {
+			float: left;
+		}
 	}
 
 	aside {

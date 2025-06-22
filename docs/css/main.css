@@ -218,7 +218,7 @@ main.blogposts .blogpost {
   100% {
     color: white; } }
 
-@media (min-width: 1280px) {
+@media (min-width: 1024px) {
   nav {
     float: left;
     width: 100%;
@@ -480,6 +480,9 @@ header p {
   margin-top: 0;
   margin-bottom: 2em;
   font-style: normal; }
+  @media (max-width: 1024px) {
+    header p {
+      float: left; } }
 
 header aside {
   position: fixed;
@@ -820,7 +823,7 @@ li {
       margin-left: 1em;
       margin-right: 1em;
       width: calc(100% - 2em); } }
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     .container {
       margin-left: 13em;
       width: calc(100% - 14em);
