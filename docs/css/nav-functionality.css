@@ -1,0 +1,24 @@
+main section {
+  display: none; }
+
+main.all > .all {
+  display: block; }
+
+main.collaboration .collaboration {
+  display: block; }
+
+main.works .works,
+main.works .performance {
+  display: block; }
+
+main.talks .talks {
+  display: block; }
+
+main.about .about {
+  display: block; }
+
+main.archive .archive {
+  display: block; }
+
+main.blogposts .blogpost {
+  display: block; }

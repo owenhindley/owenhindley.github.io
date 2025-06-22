@@ -2,12 +2,14 @@
 
 main section:not(.simple-list) article {
 	position: relative;
+	display: flex;
+	flex-direction: column;
 
 	// full-size mode
 	// large featured projects, 2-column mode
 
 	@media (min-width: 1024px) {
-		width: 50%;
+		width: 45%;
 		max-width: 40em;
 
 		&.featured {
@@ -24,8 +26,13 @@ main section:not(.simple-list) article {
 		margin-bottom: 5em;
 
 		// staggered spacing below each
-		&:nth-of-type(2n) {
-			margin-top: 5em;
+		:not(.featured) &:nth-of-type(2n) {
+			margin-top: 8em;
+			margin-bottom: 8em;
+		}
+		:not(.featured) &:nth-of-type(5n) {
+			margin-top: 2em;
+			margin-bottom: 2em;
 		}
 
 		.thumbImg {

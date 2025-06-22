@@ -105,7 +105,7 @@ h6 {
 a {
   color: #a0a0a0;
   text-decoration: none; }
-  a:hover {
+  .single-article a:hover {
     border-bottom: 1px solid #6d6d6d; }
 
 p,
