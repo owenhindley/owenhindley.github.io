@@ -42,7 +42,7 @@
             document.location.href = document.location.origin + "/blogposts/" + name
         }
 
-        var videoElement;
+        /*var videoElement;
         document.addEventListener("DOMContentLoaded", function () {
             videoElement = document.getElementById('splashVideo');
             document.addEventListener('scroll', (e) => {
@@ -55,6 +55,7 @@
             });
 
         });
+        */
     </script>
 
     <body>
@@ -210,7 +211,7 @@
                         <strong>Collaborations &amp; Commercial</strong>
                     </h6>
 
-                    <p>More commercial projects where I've been brought in as a contractor or collaborator, often on the technical side of things.</p>
+                    <p class="small">More commercial projects where I've been brought in as a contractor or collaborator, often on the technical side of things.</p>
                 </header>
                 <div class="article-collection">
                     {% for article in collaboration %}
@@ -252,17 +253,18 @@
                                     <summary>{{post.data.summary}}</summary>
                                     <summary>{{post.data.pubDate}}</summary>
                                 </header>
+                            </a>
                             </article>
                         {% endfor %}
                     </div>
                 </section>
 
-                <section class="talks">
+                <section class="talks simple-list">
                     <header>
                         <h6 class="inverted">
                             <strong>Talks &amp; Education</strong>
                         </h6>
-                        <p>When I've been asked to lecture or run workshops for students or institutions about my work or projects.</p>
+                        <p class="small">When I've been asked to lecture or run workshops for students or institutions about my work or projects.</p>
                     </header>
                     <div class="article-collection">
                         {% for article in talks %}
@@ -272,10 +274,10 @@
                                     <summary>{{article.data.summary}}</summary>
                                     <ol>
                                         <li>
-                                            <h6>{{article.data.endDate}}</h6>
+                                            {{article.data.endDate}}
                                         </li>
                                         <li>
-                                            <h6>{{article.data.where}}</h6>
+                                            {{article.data.where}}
                                         </li>
                                     </ol>
                                 </header>
@@ -285,33 +287,33 @@
                     </div>
                 </section>
 
-                <section class="archive">
+                <section class="archive simple-list">
                     <h6 class="inverted">
                         <strong>Project Archive</strong>
                     </h6>
-                    <p>Older projects that define my early career and interests.</p>
+                    <p class="small">Older projects that define my early career and interests.</p>
                     <div class="article-collection">
                         {% for article in archive %}
                             <article id="{{article.data.id}}" class="{{article.data.class}} featured">
-                                <input class="showContent" type="checkbox"></input>
+                                 <a href="/archive/{{article.data.id}}">
                                 <header>
-                                    <div class="thumbImg" style="margin:0; width:0; height:2em;"></div>
                                     <h6>{{article.data.title}}</h6>
                                     <summary>{{article.data.summary}}</summary>
                                     <ol>
                                         <li>
-                                            <h6>{{article.data.endDate}}</h6>
+                                            {{article.data.endDate}}
                                         </li>
                                         <li>
-                                            <h6>{{article.data.where}}</h6>
+                                            {{article.data.where}}
                                         </li>
                                     </ol>
                                 </header>
-                                {{ "" }}
+                                </a>
                             </article>
                         {% endfor %}
                     </div>
                 </section>
+
 
                 <section class="about">
                     <h6 class="inverted">

@@ -1,0 +1,5 @@
+{
+  "layout" : "article.njk",
+  "permalink": "/archive/{{ page.fileSlug }}/index.html",
+  "tags": ["archive"]
+}

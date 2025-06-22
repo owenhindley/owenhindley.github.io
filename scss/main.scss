@@ -21,8 +21,9 @@ html {
 }
 
 ul,
+ol,
 li {
-	// list-style: none !important;
+	list-style: none !important;
 }
 
 .container {
@@ -92,6 +93,12 @@ main {
 
 	> section {
 		margin-bottom: 2em;
+
+		header {
+			p {
+				clear: both;
+			}
+		}
 
 		// > h6 {
 		//     float:left;
