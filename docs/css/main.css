@@ -163,7 +163,7 @@ ul {
     .small {
       font-size: 0.9em; } }
 
-main section {
+main > section {
   display: none; }
 
 main.all > .all {
