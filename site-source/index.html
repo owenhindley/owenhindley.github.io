@@ -34,13 +34,17 @@
             var main = document.querySelector('main')
             main.className = e;
             //main.scrollIntoView({behavior: "smooth"});
+            // close nav
+            document
+                .querySelector("#nav-toggle")
+                .checked = false;
         }
 
         function GoToBlogpost(name) {
             document.location.href = document.location.origin + "/blogposts/" + name
         }
 
-        var videoElement;
+        /*var videoElement;
         document.addEventListener("DOMContentLoaded", function () {
             videoElement = document.getElementById('splashVideo');
             document.addEventListener('scroll', (e) => {
@@ -53,6 +57,7 @@
             });
 
         });
+        */
     </script>
 
     <body>
@@ -66,69 +71,67 @@
         <div class="container">
 
             <header>
-                <!-- <h1>Owen Hindley</h1> -->
 
-                <!-- <div class="slideshow">
-            <img src="./images/projects/ih-lnoae-03_looping.gif"/>
-        </div> -->
-
-                <!-- <h1>O</h1> -->
                 <aside>
-                    <h3 class="inverted">Owen Hindley</h3>
+                    <!-- <h3 class="inverted">Owen Hindley</h3> -->
                     <p>owenhindley at hotmail dot com<br/>
-                +354 762 0292<br/>
-                @owenhindley</p>
+                    +354 762 0292<br/>
+                    @owenhindley<br/>
+                    Reykjavík / Worldwide</p>
 
-                    <!-- <a class="social-link" id="twitter-link" href="https://twitter.com/owen_hindley" target="_blank">t</a> -->
                     <a class="social-link" id="github-link" href="https://github.com/owenhindley" target="_blank">g</a>
                     <a class="social-link" id="instagram-link" href="https://www.instagram.com/owenhindley/" target="_blank">i</a>
                 </h6>
             </aside>
-            <!-- <h1>Owen Hindley</h1> -->
-            <p>Hi there! I'm a digital artist creating work for stage, screens and spaces using code, electronics and sound.</p>
-            <p>I've created VR theatre, interactive music experiences, an enormous game of PONG, a pinata-smashing robot, music videos, and video games.</p>
-            <p>Here's the story so far :</p>
 
-            <!-- <p>I'm co-founder of <a href="http://huldufugl.is/" target="_blank">Huldufugl</a>, creating
-            immersive theatrical environments in both the real world
-            and the&nbsp;virtual.</p>			 -->
-            <!-- <p>Here's the story so far...</p> -->
+            <nav>
+                <input type="checkbox" id="nav-toggle" name="nav-toggle"></input>
+                <div id="hamburger-lines">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <label onclick="OnNavChange('all')">
+                    <!-- <input type="radio" name="nav" id="check-all" checked></input> -->
+                    <span>All</span>
+                </label>
+                <label onclick="OnNavChange('works')">
+                    <!-- <input type="radio" name="nav" id="check-works"></input> -->
+                    <span>Works</span>
+                </label>
+                <label onclick="OnNavChange('collaboration')">
+                    <!-- <input type="radio" name="nav" id="check-collaboration"></input> -->
+                    <span>Commercial</span>
+                </label>
+                <label onclick="OnNavChange('blogposts')">
+                    <!-- <input type="radio" name="nav" id="check-blogposts"></input> -->
+                    <span>Articles</span>
+                </label>
+                <label onclick="OnNavChange('talks')">
+                    <!-- <input type="radio" name="nav" id="check-talks"></input> -->
+                    <span>Talks &amp; Education</span>
+                </label>
+                <label onclick="OnNavChange('archive')">
+                    <!-- <input type="radio" name="nav" id="check-archive"></input> -->
+                    <span>Archive</span>
+                </label>
+                <label onclick="OnNavChange('about')">
+                    <!-- <input type="radio" name="nav" id="check-about"></input> -->
+                    <span>About</span>
+                </label>
+            </nav>
+
+            <div class="taglines">
+                <p>Hi there! I'm Owen.<br/>
+                I'm a creative, a developer and an artist.<br/>
+                I create work for spaces, screens and stages.<br/>
+                Collaborations from small to very large.
+            </p>
+            </div>
+            <!-- <p>I've created VR theatre, interactive music experiences, an enormous game of PONG, a pinata-smashing robot, music videos, and video games.</p> -->
+            <!-- <p>Here's the story so far :</p> -->
+
         </header>
-
-        <nav>
-            <label onclick="OnNavChange('featured')">
-                <input type="radio" name="nav" id="check-featured"></input>
-                <span>Featured</span>
-            </label>
-            <label onclick="OnNavChange('all')">
-                <input type="radio" name="nav" id="check-all" checked></input>
-                <span>All</span>
-            </label>
-            <label onclick="OnNavChange('works')">
-                <input type="radio" name="nav" id="check-works"></input>
-                <span>Works</span>
-            </label>
-            <label onclick="OnNavChange('collaboration')">
-                <input type="radio" name="nav" id="check-collaboration"></input>
-                <span>Commercial</span>
-            </label>
-            <label onclick="OnNavChange('blogposts')">
-                <input type="radio" name="nav" id="check-blogposts"></input>
-                <span>Articles</span>
-            </label>
-            <label onclick="OnNavChange('talks')">
-                <input type="radio" name="nav" id="check-talks"></input>
-                <span>Talks &amp; Education</span>
-            </label>
-            <label onclick="OnNavChange('archive')">
-                <input type="radio" name="nav" id="check-archive"></input>
-                <span>Archive</span>
-            </label>
-            <label onclick="OnNavChange('about')">
-                <input type="radio" name="nav" id="check-about"></input>
-                <span>About</span>
-            </label>
-        </nav>
 
         <main class="all">
 
@@ -143,210 +146,265 @@
             {% assign archive = collections.archive | sort : 'data.endDate' | reverse %}
             {% assign blogposts = collections.blogpost | sort : 'data.endDate' | reverse %}
 
-            <section class="works">
-                <h6 class="inverted"><strong>Works &amp; Performances</strong></h6>
-                <!-- <p>These are pieces which I've either directed myself or been part of the main creative team.</p> -->
-                {% for article in works %}
-                    <article id="{{article.data.id}}" class="{{article.data.class}} {% if article.data.featured %}featured{%endif%}">
-                        <input class="showContent" type="checkbox"></input>
-                        <header>
-                            <div class="thumbImg" style="background-image:url(images/projects/thumbs/{{article.data.id}}-thumb.jpg);"></div>
-                            <h4>{{article.data.title}}</h4>
-                            <summary>{{article.data.summary}}</summary>
-                            <ol>
-                                <li>
-                                    <h6>{{article.data.when}}</h6>
-                                </li>
-                                <!-- <li><h6>{{article.data.role}}</h6></li> -->
-                                <!-- <li><h6>{{article.data.skills}}</h6></li> -->
-                            </ol>
-                        </header>
-                        {{ article.templateContent }}
-                    </article>
-                {% endfor %}
+            {% assign allProjects = works | concat: collaboration | sort : 'data.endDate' | reverse %}
+            {% assign featured = allProjects | where : "data.featured" %}
 
-                <!-- <h6>Performances</h6>
-            {% for article in performances %}
-            <article id="{{article.data.id}}" class="{{article.data.class}} {% if article.data.featured %}featured{%endif%}">
-                <input class="showContent" type="checkbox"></input>
+            <section class="all">
                 <header>
-                    <h3>{{article.data.title}}</h3>
-                    <summary>{{article.data.summary}}</summary>
-                    <ol>
-                        <li>{{article.data.when}}</li>
-                        <li>{{article.data.role}}</li>
-                        <li>{{article.data.skills}}</li>
-                    </ol>
+                    <h6 class="inverted">
+                        <strong>All Projects</strong>
+                    </h6>
+                    <!-- <p>These are pieces which I've either directed myself or been part of the main creative team.</p> -->
                 </header>
-                    {{ article.templateContent }}
-            </article>
-            {% endfor %} -->
+                <div class="article-collection">
 
+                    {% for article in allProjects %}
+                        <article id="{{article.data.id}}" class="all {% if article.data.featured %}featured{%endif%}">
+                            <a href="/{{article.data.id}}">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/{{article.data.id}}-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>{{article.data.title}}</h4>
+                                    <summary>{{article.data.summary}}</summary>
+                                    <summary>{{article.data.when}}</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    {% endfor %}
+
+                    <article id="link-to-archive" class="all">
+                        <a href="#" onclick="OnNavChange('archive')">
+                            <div class="thumbImg" style="background-image:url(images/projects/thumbs/archive-thumb.jpg);"></div>
+                            <header>
+                                <h4>Archive</h4>
+                                <summary>Previous &amp; early work</summary>
+                            </header>
+                        </a>
+                    </article>
+                </div>
+            </section>
+
+            <section class="works">
+                <header>
+                    <h6 class="inverted">
+                        <strong>Individual Works &amp; Performances</strong>
+                    </h6>
+                    <!-- <p>These are pieces which I've either directed myself or been part of the main creative team.</p> -->
+                </header>
+                <div class="article-collection">
+
+                    {% for article in works %}
+                        <article id="{{article.data.id}}" class="{{article.data.class}} {% if article.data.featured %}featured{%endif%}">
+                            <a href="/{{article.data.id}}">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/{{article.data.id}}-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>{{article.data.title}}</h4>
+                                    <summary>{{article.data.summary}}</summary>
+                                    <summary>{{article.data.when}}</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    {% endfor %}
+                </div>
             </section>
 
             <section class="collaboration">
-                <h6 class="inverted"><strong>Collaborations &amp; Commercial</strong></h6>
-                <p>More commercial projects where I've been brought in as a contractor or collaborator, often on the technical side of things.</p>
-                {% for article in collaboration %}
-                    <article id="{{article.data.id}}" class="{{article.data.class}} {% if article.data.featured %}featured{%endif%}">
-                        <input class="showContent" type="checkbox"></input>
-                        <header>
-                            <div class="thumbImg" style="background-image:url(./images/projects/thumbs/{{article.data.id}}-thumb.jpg);"></div>
-                            <h4>{{article.data.title}}</h4>
-                            <summary>{{article.data.summary}}</summary>
-                            <ol>
-                                <li>
-                                    <h6>{{article.data.when}}</h6>
-                                </li>
-                                <li>
-                                    <h6>{{article.data.role}}</h6>
-                                </li>
-                                <li>
-                                    <h6>{{article.data.skills}}</h6>
-                                </li>
-                            </ol>
-                        </header>
-                        {{ article.templateContent }}
-                    </article>
-                {% endfor %}
+                <header>
+                    <h6 class="inverted">
+                        <strong>Commercial Work &amp; Collaborations</strong>
+                    </h6>
+
+                    <p class="small">More commercial projects where I've been brought in as a contractor or collaborator, often on the technical side of things.</p>
+                </header>
+                <div class="article-collection">
+                    {% for article in collaboration %}
+                        <article id="{{article.data.id}}" class="{{article.data.class}} {% if article.data.featured %}featured{%endif%}">
+                            <a href="/{{article.data.id}}">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/{{article.data.id}}-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>{{article.data.title}}</h4>
+                                    <summary>{{article.data.summary}}</summary>
+                                    <summary>{{article.data.when}}</summary>
+                                    <summary class="small">{{article.data.role}}</summary>
+                                    <summary class="small">{{article.data.skills}}</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    {% endfor %}
+                </div>
             </section>
 
             <section class="blogpost">
-                <h6 class="inverted"> <strong>Articles &amp; Tutorials</strong></h6>
-                {% for post in blogposts %}
-                    <article id="{{post.data.id}}" class="{{post.data.class}} featured">
-                        <input class="showContent" onClick="GoToBlogpost('{{post.data.id}}')" type="checkbox"></input>
-                        <header>
-                            <div class="thumbImg" style="background-image:url(images/blog/thumbs/{{post.data.id}}-thumb.jpg);"></div>
-                            <h6>{{post.data.pubDate}}</h6>
-                            <h6>{{post.data.title}}</h6>
-                            <summary>{{post.data.summary}}</summary>
-                        </header>
-                    </article>
-                {% endfor %}
+                <header>
+                    <h6 class="inverted">
+                        <strong>Articles &amp; Tutorials</strong>
+                    </h6>
+                </header>
+                <div class="article-collection">
+                    {% for post in blogposts %}
+
+                        <article id="{{post.data.id}}" class="{{post.data.class}} featured">
+                            <a href="blogposts/{{post.data.id}}">
+                                <div class="thumbImg" style="background-image:url(images/blog/thumbs/{{post.data.id}}-thumb.jpg);"></div>
+                                <header>
+                                    <h4>{{post.data.title}}</h4>
+                                    <summary>{{post.data.summary}}</summary>
+                                    <summary>{{post.data.pubDate}}</summary>
+                                </header>
+                            </a>
+                        </article>
+                    {% endfor %}
+                </div>
             </section>
 
-            <section class="talks">
-                <h6 class="inverted"><strong>Talks &amp; Education</strong></h6>
-                <p>When I've been asked to lecture or run workshops for students or institutions about my work or projects.</p>
-                {% for article in talks %}
-                    <article id="{{article.data.id}}" class="{{article.data.class}}">
-                        <header>
-                            <h6>{{article.data.title}}</h6>
-                            <summary>{{article.data.summary}}</summary>
-                            <ol>
-                                <li>
-                                    <h6>{{article.data.endDate}}</h6>
-                                </li>
-                                <li>
-                                    <h6>{{article.data.where}}</h6>
-                                </li>
-                            </ol>
-                        </header>
-                        {{ article.templateContent }}
-                    </article>
-                {% endfor %}
+            <section class="talks simple-list">
+                <header>
+                    <h6 class="inverted">
+                        <strong>Talks &amp; Education</strong>
+                    </h6>
+                    <p class="small">When I've been asked to lecture or run workshops for students or institutions about my work or projects.</p>
+                </header>
+                <div class="article-collection">
+                    {% for article in talks %}
+                        <article id="{{article.data.id}}" class="{{article.data.class}}">
+                            <header>
+                                <h6>{{article.data.title}}</h6>
+                                <summary>{{article.data.summary}}</summary>
+                                <ol>
+                                    <li>
+                                        {{article.data.endDate}}
+                                    </li>
+                                    <li>
+                                        {{article.data.where}}
+                                    </li>
+                                </ol>
+                            </header>
+                            {{ "" }}
+                        </article>
+                    {% endfor %}
+                </div>
             </section>
 
-            <section class="archive">
-                <h6 class="inverted"><strong>Project Archive</strong></h6>
-                <p>Older projects that define my early career and interests.</p>
-                {% for article in archive %}
-                    <article id="{{article.data.id}}" class="{{article.data.class}} featured">
-                        <input class="showContent" type="checkbox"></input>
-                        <header>
-                            <div class="thumbImg" style="margin:0; width:0; height:2em;"></div>
-                            <h6>{{article.data.title}}</h6>
-                            <summary>{{article.data.summary}}</summary>
-                            <ol>
-                                <li>
-                                    <h6>{{article.data.endDate}}</h6>
-                                </li>
-                                <li>
-                                    <h6>{{article.data.where}}</h6>
-                                </li>
-                            </ol>
-                        </header>
-                        {{ article.templateContent }}
-                    </article>
-                {% endfor %}
+            <section class="archive simple-list">
+                <h6 class="inverted">
+                    <strong>Project Archive</strong>
+                </h6>
+                <p class="small">Older projects that define my early career and interests.</p>
+                <div class="article-collection">
+                    {% for article in archive %}
+                        <article id="{{article.data.id}}" class="{{article.data.class}} featured">
+                            <a href="/archive/{{article.data.id}}">
+                                <header>
+                                    <h6>{{article.data.title}}</h6>
+                                    <summary>{{article.data.summary}}</summary>
+                                    <ol>
+                                        <li>
+                                            {{article.data.endDate}}
+                                        </li>
+                                        <li>
+                                            {{article.data.where}}
+                                        </li>
+                                    </ol>
+                                </header>
+                            </a>
+                        </article>
+                    {% endfor %}
+                </div>
             </section>
 
             <section class="about">
-                <h6 class="inverted"><strong>About &amp; Bio</strong></h6>
+                <h6 class="inverted">
+                    <strong>About &amp; Bio</strong>
+                </h6>
                 <article>
-                    <h5>Link to CV : <a href="https://docs.google.com/document/d/e/2PACX-1vSd1JAk3OiWXEYvDNtY49ZzNKxLP-kegM12-3PcGVa7kcZgv6ss3NtjDM3jSfYl_KInMLFNIIHPPcVz/pub">link</a></a></h5>
-                    <p>Owen (he/him) is a collaborative digital artist, working with software, sound, and electronics for the web, VR, performances, devices and installations.</p>
-                    <p>His commercial work has included serving as technical lead on large, cutting-edge projects for clients such as Oculus Studios, Google, Microsoft/Xbox, Samsung and Mercedes, collaborating with digital creatives such as Universal Everything, FIELD and B-Reel. These projects have ranged from an interactive web-connected musical installation at the London Science Museum for Google, Web Lab, to a pneumatic live-streamed pinata-smashing robot.</p>
-                    <p>He is co-founder of <a href="http://huldufugl.is" target="_blank">Huldufugl</a>, a Reykjavik-based theatre and events company experimenting with new mediums in theatre, both technological and immersive.</p>
-                    <p>He is also co-founder of Horizons Studio, a London-based creative studio producing interactive musical experiences in VR. Their debut title, Horizons VR was commissioned by Google as a launch title for their Daydream platform, with releases on Oculus and HTC platforms planned for 2019.</p>
-                    <p>He was also Sound Supervisor and on-set sound recordist on two short independent films, The Fallow Field and Who We Are, and sound editor on the Subsource Dubumentary.</p>
-                    <p></p>
+                    <h5>Link to CV : <a href="https://docs.google.com/document/d/e/2PACX-1vSd1JAk3OiWXEYvDNtY49ZzNKxLP-kegM12-3PcGVa7kcZgv6ss3NtjDM3jSfYl_KInMLFNIIHPPcVz/pub">link</a>
+                    </a>
+                </h5>
+                <p>Owen (he/him) is a collaborative digital artist, working with software, sound, and electronics for the web, VR, performances, devices and installations.</p>
+                <p>His commercial work has included serving as technical lead on large, cutting-edge projects for clients such as Oculus Studios, Google, Microsoft/Xbox, Samsung and Mercedes, collaborating with digital creatives such as Universal Everything, FIELD and B-Reel. These projects have ranged from an interactive web-connected musical installation at the London Science Museum for Google, Web Lab, to a pneumatic live-streamed pinata-smashing robot.</p>
+                <p>He is co-founder of <a href="http://huldufugl.is" target="_blank">Huldufugl</a>, a Reykjavik-based theatre and events company experimenting with new mediums in theatre, both technological and immersive.</p>
+                <p>He is also co-founder of Horizons Studio, a London-based creative studio producing interactive musical experiences in VR. Their debut title, Horizons VR was commissioned by Google as a launch title for their Daydream platform, with releases on Oculus and HTC platforms planned for 2019.</p>
+                <p>He was also Sound Supervisor and on-set sound recordist on two short independent films, The Fallow Field and Who We Are, and sound editor on the Subsource Dubumentary.</p>
+                <p></p>
 
-                    <h6>Awards</h6>
-                    <ul>
+                <h6>Awards</h6>
+                <ul>
 
-                        <li>Most Amazing Game Award, Kassinn / A Box In The Desert, <a href="https://amazestuff.tumblr.com/post/184139013534/a-maze-berlin-2019-award-winners" target="_blank">A MAZE Berlin 2019</a>
-                        </li>
-                        <li>Best Interactive Narrative Experience, Kassinn / A Box In The Desert, <a href="https://raindance.org/raindance-immersive-award-winners-presented-by-bose/" target="_blank">Raindance Immersive 2019</a>
-                        </li>
-                        <li>Outstanding US Premiere, Kassinn / A Box In The Desert, <a href="https://sdfringe.org/" target="_blank">San Diego Fringe Festival</a>
-                        </li>
-                        <li>Innovation In Performance Award, Kassinn / A Box In The Desert, <a href="https://www.facebook.com/Stoffholm/photos/now-and-then-we-come-across-work-that-takes-it-that-extra-lap-intotheunknown-by-/10155501339495855/" target="_blank">Stockholm Fringe Festival 2018</a>
-                        </li>
+                    <li>Most Amazing Game Award, Kassinn / A Box In The Desert, <a href="https://amazestuff.tumblr.com/post/184139013534/a-maze-berlin-2019-award-winners" target="_blank">A MAZE Berlin 2019</a>
+                    </li>
+                    <li>Best Interactive Narrative Experience, Kassinn / A Box In The Desert, <a href="https://raindance.org/raindance-immersive-award-winners-presented-by-bose/" target="_blank">Raindance Immersive 2019</a>
+                    </li>
+                    <li>Outstanding US Premiere, Kassinn / A Box In The Desert, <a href="https://sdfringe.org/" target="_blank">San Diego Fringe Festival</a>
+                    </li>
+                    <li>Innovation In Performance Award, Kassinn / A Box In The Desert, <a href="https://www.facebook.com/Stoffholm/photos/now-and-then-we-come-across-work-that-takes-it-that-extra-lap-intotheunknown-by-/10155501339495855/" target="_blank">Stockholm Fringe Festival 2018</a>
+                    </li>
 
-                        <li>Site Of The Month, Mmorph, <a href="https://thefwa.com/cases/mmorph" target="_blank">FWA 2016</a>
-                        </li>
-                        <li>FWA Insights, Mmorph, <a href="https://thefwa.com/article/insights-mmorph" target="_blank">FWA 2016</a>
-                        </li>
-                        <li>Honorable Mention, Mmorph, <a href="https://www.awwwards.com/sites/mmorph" target="_blank">Awwwards 2016</a>
-                        </li>
+                    <li>Site Of The Month, Mmorph, <a href="https://thefwa.com/cases/mmorph" target="_blank">FWA 2016</a>
+                    </li>
+                    <li>FWA Insights, Mmorph, <a href="https://thefwa.com/article/insights-mmorph" target="_blank">FWA 2016</a>
+                    </li>
+                    <li>Honorable Mention, Mmorph, <a href="https://www.awwwards.com/sites/mmorph" target="_blank">Awwwards 2016</a>
+                    </li>
 
-                    </ul>
-                    <h6>Nominations</h6>
-                    <ul>
-                        <li>Best Immersive Performance (Nomination), Parallel People, <a href="https://raindance.org/wp-content/uploads/2022/09/2022-Raindance-Immersive-FINAL.pdf" target="_blank">Raindance Immersive 2022</a>
-                        </li>
-                        <li>Sproti Ársins (Nomination), Kassinn / A Box In The Desert, <a href="https://www.fil.is/frettir/1551/" target="_blank">Gríman (Icelandic Theatre Awards) 2020</a>
-                        </li>
-                        <li>Grand Prix (Nomination), Kassinn / A Box In The Desert, Stockholm Fringe Festival 2018</li>
-                        <li>People's Choice Award (Nomination), Mmorph, <a href="https://thefwa.com/editorial/the-fwa-peoples-choice-award-pca-2016-vote-now" target="_blank">FWA 2018</a>
-                        </li>
-                    </ul>
+                </ul>
+                <h6>Nominations</h6>
+                <ul>
+                    <li>Best Immersive Performance (Nomination), Parallel People, <a href="https://raindance.org/wp-content/uploads/2022/09/2022-Raindance-Immersive-FINAL.pdf" target="_blank">Raindance Immersive 2022</a>
+                    </li>
+                    <li>Sproti Ársins (Nomination), Kassinn / A Box In The Desert, <a href="https://www.fil.is/frettir/1551/" target="_blank">Gríman (Icelandic Theatre Awards) 2020</a>
+                    </li>
+                    <li>Grand Prix (Nomination), Kassinn / A Box In The Desert, Stockholm Fringe Festival 2018</li>
+                    <li>People's Choice Award (Nomination), Mmorph, <a href="https://thefwa.com/editorial/the-fwa-peoples-choice-award-pca-2016-vote-now" target="_blank">FWA 2018</a>
+                    </li>
+                </ul>
 
-                    <h6>Links</h6>
-                    <ul>
-                        <li>
-                            <a href="https://github.com/owenhindley/" target="_blank">Github</a>
-                        </li>
-                        <li>
-                            <a href="https://twitter.com/owen_hindley" target="_blank">Twitter</a>
-                        </li>
-                        <li>
-                            <a href="https://www.instagram.com/owenhindley/" target="_blank">Instagram</a>
-                        </li>
-                        <li>
-                            <a href="https://www.imdb.com/name/nm3918183" target="_blank">IMDB</a>
-                        </li>
-                    </ul>
-                    <h6>Recent Employment history</h6>
-                    <ul>
-                        <li>2014-current Freelance Creative Technologist & Digital Artist</li>
-                        <li>2020-2021 Senior Developer, <a href="https://volta-xr.com/" target="_blank">Volta XR</a>
-                        </li>
-                        <li>2011-2014 Senior Developer, <a href="https://www.b-reel.com/" target="_blank">B-Reel London</a>
-                        </li>
-                    </ul>
+                <h6>Links</h6>
+                <ul>
+                    <li>
+                        <a href="https://github.com/owenhindley/" target="_blank">Github</a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/owen_hindley" target="_blank">Twitter</a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/owenhindley/" target="_blank">Instagram</a>
+                    </li>
+                    <li>
+                        <a href="https://www.imdb.com/name/nm3918183" target="_blank">IMDB</a>
+                    </li>
+                </ul>
+                <h6>Recent Employment history</h6>
+                <ul>
+                    <li>2014-current Freelance Creative Technologist & Digital Artist</li>
+                    <li>2020-2021 Senior Developer, <a href="https://volta-xr.com/" target="_blank">Volta XR</a>
+                    </li>
+                    <li>2011-2014 Senior Developer, <a href="https://www.b-reel.com/" target="_blank">B-Reel London</a>
+                    </li>
+                </ul>
 
-                </article>
+            </article>
 
-            </section>
+        </section>
 
-        </main>
-        <footer>
-            <p>Owen Hindley, 2024</p>
+    </main>
+    <footer>
+        <p>© Owen Hindley, {% year %}</p>
 
-        </footer>
+    </footer>
 
-    </div>
+</div>
 </body>

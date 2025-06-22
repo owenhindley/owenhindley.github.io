@@ -1,0 +1,109 @@
+/* Color Theme Swatches in RGBA */
+/* Color Theme Swatches in Hex */
+.c0 {
+  color: white; }
+
+.c1 {
+  color: white; }
+
+.c2 {
+  color: white; }
+
+.c3 {
+  color: white; }
+
+.c4 {
+  color: white; }
+
+.inverted {
+  background-color: white;
+  color: #0d0d0d; }
+
+@keyframes colourCycle {
+  0% {
+    color: white; }
+  50% {
+    color: white; }
+  100% {
+    color: white; } }
+
+@media (min-width: 1024px) {
+  nav {
+    float: left;
+    width: 100%;
+    position: fixed;
+    width: 8.5em;
+    left: 1em;
+    top: 3em; }
+    nav #nav-toggle {
+      display: none; }
+    nav label {
+      clear: both;
+      width: 100%;
+      margin-bottom: 1.15em;
+      text-align: right; }
+      nav label span {
+        height: auto;
+        display: block; } }
+
+nav input {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important; }
+
+nav label {
+  margin-right: 1em;
+  float: left;
+  display: block; }
+  nav label span {
+    cursor: pointer;
+    padding: 0;
+    color: white;
+    opacity: 0.75;
+    font-size: 1.1em; }
+    nav label span:hover {
+      opacity: 1; }
+  nav label input:checked + span {
+    font-weight: bold; }
+
+@media (max-width: 1024px) {
+  nav {
+    position: fixed;
+    top: 2em;
+    right: 2em;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 99999;
+    text-align: right; }
+    nav #hamburger-lines {
+      float: right;
+      margin-bottom: 1em; }
+      nav #hamburger-lines span {
+        display: block;
+        height: 0.2em;
+        width: 2em;
+        border-top: 1px solid white;
+        margin-top: 0.1em;
+        transition: all 0.5s; }
+    nav #nav-toggle {
+      position: absolute;
+      right: 0;
+      display: block;
+      text-align: right;
+      width: 2em;
+      height: 1.2em;
+      float: right;
+      z-index: 99999;
+      cursor: pointer; }
+      nav #nav-toggle:checked ~ label {
+        display: block; }
+      nav #nav-toggle:checked ~ #hamburger-lines span {
+        margin-top: 0.2em;
+        border-top: 1px solid rgba(255, 255, 255, 0.2); }
+    nav label {
+      display: none;
+      width: 100%;
+      clear: both;
+      margin-left: auto;
+      margin-right: auto;
+      padding-right: 2em;
+      margin-bottom: 1em; } }

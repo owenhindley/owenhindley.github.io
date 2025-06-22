@@ -1,0 +1,181 @@
+@import "./colours.scss";
+
+main section:not(.simple-list) article {
+	position: relative;
+
+	// full-size mode
+	// large featured projects, 2-column mode
+
+	@media (min-width: 1024px) {
+		width: 50%;
+		max-width: 40em;
+
+		&.featured {
+			max-width: 80em;
+
+			margin-bottom: 8em;
+			.thumbImg {
+				height: 25vw;
+			}
+		}
+
+		float: left;
+		padding-top: 1em;
+		margin-bottom: 5em;
+
+		// staggered spacing below each
+		&:nth-of-type(2n) {
+			margin-top: 5em;
+		}
+
+		.thumbImg {
+			width: 90%;
+			height: 13vw;
+			float: left;
+
+			margin-bottom: 1em;
+			background-size: cover;
+			background-position: 50% 50%;
+			// opacity: 0.75;
+			transition: 0.25s;
+			// filter: grayscale(100%);
+		}
+	}
+
+	@media (max-width: 1024px) {
+		width: 100%;
+		float: left;
+		padding-top: 1em;
+		margin-bottom: 5em;
+
+		.thumbImg {
+			width: 90%;
+			height: 40vw;
+			float: left;
+
+			margin-bottom: 1em;
+			background-size: cover;
+			background-position: 50% 50%;
+			// opacity: 0.75;
+			transition: 0.25s;
+			// filter: grayscale(100%);
+		}
+	}
+
+	header {
+		transition: all 0.5s;
+		position: absolute;
+		width: auto;
+		height: auto;
+
+		bottom: -2em;
+		left: 2em;
+
+		max-width: 90%;
+
+		background-color: $backgroundColor;
+		padding: 0.2em 0.2em 0 0;
+
+		h4 {
+			display: block;
+			color: darken($textColor, 0);
+		}
+
+		summary {
+			display: block;
+			margin-top: 0.25em;
+			color: darken($textColor, 10);
+
+			@media (max-width: 1024px) {
+				font-size: 0.8em;
+
+				&.small {
+					font-size: 0.6em;
+				}
+			}
+
+			&.small {
+				font-size: 0.8em;
+			}
+		}
+	}
+
+	// header on small screens
+	// alternate justification
+	// reduce text size
+	@media (max-width: 1024px) {
+		header {
+			max-width: 50vw;
+		}
+
+		&:nth-of-type(2n) {
+			header {
+				left: auto;
+				right: 4em;
+			}
+		}
+	}
+
+	&:hover {
+		header {
+			background-color: lighten($backgroundColor, 20);
+			transform: scale(1.02);
+			// h4, summary {
+			//     color:invert($textColor);
+			// }
+		}
+	}
+}
+
+main section.simple-list article {
+	width: 100%;
+	max-width: 100%;
+	overflow: hidden;
+	margin-bottom: 2em;
+
+	&.archive {
+		cursor: pointer;
+
+		transition: all 0.5s;
+
+		&:hover {
+			background-color: lighten($backgroundColor, 10);
+		}
+	}
+
+	a {
+		height: 100%;
+		width: 100%;
+	}
+
+	summary {
+		font-size: 0.75em;
+	}
+
+	header {
+		position: static;
+		width: 100%;
+
+		* {
+			float: left;
+			@media (min-width: 1024px) {
+				width: 20%;
+			}
+			@media (max-width: 1024px) {
+				width: 100%;
+				clear: both;
+			}
+			margin: 0;
+			padding: 0;
+			margin-bottom: 0.25em;
+			margin-right: 1em;
+		}
+
+		ol {
+			li {
+				width: 100%;
+				font-size: 0.75em;
+			}
+		}
+	}
+}

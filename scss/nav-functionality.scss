@@ -1,0 +1,72 @@
+main article,
+main section {
+	display: none;
+}
+
+// main > section > h6 { display: none; }
+// main.all, main.recent {
+//     > section > h6 {
+//         display: block;
+//     }
+// }
+
+// main.all {
+//     .collaboration,
+//     .performance,
+//     .recent,
+//     .works,
+//     .archive,
+//     .blogposts,
+//     .talks {
+//         display: block;
+//     }
+// }
+
+main.all {
+	.all {
+		display: block;
+	}
+}
+
+// main.featured {
+//     .featured {
+//         display: block;
+//     }
+// }
+
+main.collaboration {
+	.collaboration {
+		display: block;
+	}
+}
+
+main.works {
+	.works,
+	.performance {
+		display: block;
+	}
+}
+
+main.talks {
+	.talks {
+		display: block;
+	}
+}
+
+main.about {
+	.about {
+		display: block;
+	}
+}
+
+main.archive {
+	.archive {
+		display: block;
+	}
+}
+
+main.blogposts {
+	.blogpost {
+		display: block;
+	}
+}

@@ -1,35 +1,35 @@
 /* Color Theme Swatches in RGBA */
 /* Color Theme Swatches in Hex */
 .c0 {
-  color: #bf7582; }
+  color: white; }
 
 .c1 {
-  color: #3b82bf; }
+  color: white; }
 
 .c2 {
-  color: #f2d194; }
+  color: white; }
 
 .c3 {
-  color: #d99e6a; }
+  color: white; }
 
 .c4 {
-  color: #f2f2f2; }
+  color: white; }
 
 .inverted {
-  background-color: #1f1f1f;
-  color: #f5fff3; }
+  background-color: white;
+  color: #0d0d0d; }
 
 @keyframes colourCycle {
   0% {
-    color: #f2f2f2; }
+    color: white; }
   50% {
-    color: #3b82bf; }
+    color: white; }
   100% {
-    color: #f2d194; } }
+    color: white; } }
 
 .slideshow {
   width: 100%;
   text-align: center;
   background-color: black;
-  border: 1px solid #1f1f1f;
+  border: 1px solid white;
   border-radius: 2px; }
