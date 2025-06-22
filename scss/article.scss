@@ -85,6 +85,18 @@ main section:not(.simple-list) article {
 			display: block;
 			margin-top: 0.25em;
 			color: darken($textColor, 10);
+
+			@media (max-width: 1024px) {
+				font-size: 0.8em;
+
+				&.small {
+					font-size: 0.6em;
+				}
+			}
+
+			&.small {
+				font-size: 0.8em;
+			}
 		}
 	}
 

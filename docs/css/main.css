@@ -383,6 +383,13 @@ main section:not(.simple-list) article {
       display: block;
       margin-top: 0.25em;
       color: #e6e6e6; }
+      @media (max-width: 1024px) {
+        main section:not(.simple-list) article header summary {
+          font-size: 0.8em; }
+          main section:not(.simple-list) article header summary.small {
+            font-size: 0.6em; } }
+      main section:not(.simple-list) article header summary.small {
+        font-size: 0.8em; }
   @media (max-width: 1024px) {
     main section:not(.simple-list) article header {
       max-width: 50vw; }
