@@ -1,12 +1,12 @@
 @import "./colours.scss";
-
+@use "sass:math";
 // @import url('https://fonts.googleapis.com/css2?family=Kavivanar&display=swap');
 // @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
 // @import url('https://fonts.googleapis.com/css2?family=Zen+Loop:ital@0;1&display=swap');
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Sono:wght@200&display=swap");
 
-$mobile-scale: 0.75;
+$mobile-scale: 1.25;
 
 body,
 html {
@@ -86,30 +86,30 @@ h6 {
 	font-weight: bold;
 }
 
-@media (max-size: 1024px) {
+@media (max-width: 1024px) {
 	h1 {
-		font-size: (64 * $mobile-scale) px;
+		font-size: 48px;
 	}
 
 	h2 {
-		font-size: (64 * $mobile-scale) px;
+		font-size: 48px;
 	}
 
 	h3 {
-		font-size: (42 * $mobile-scale) px;
+		font-size: 24px;
 	}
 
 	h4 {
-		font-size: (22 * $mobile-scale) px;
+		font-size: 16px;
 	}
 
 	h5 {
-		font-size: (24 * $mobile-scale) px;
+		font-size: 16px;
 	}
 
 	h6 {
-		margin-bottom: (3 * $mobile-scale) px;
-		font-size: (18 * $mobile-scale) px;
+		margin-bottom: 1px;
+		font-size: 12px;
 	}
 }
 
@@ -133,6 +133,10 @@ ul {
 	strong {
 		font-weight: bolder;
 	}
+
+	@media (max-width: 1024px) {
+		font-size: 0.8em;
+	}
 }
 
 .inverted {
@@ -144,6 +148,6 @@ ul {
 	font-size: 0.75em;
 
 	@media (max-width: 1024px) {
-		font-size: (0.75 * $mobile-scale) em;
+		font-size: 0.9em;
 	}
 }
