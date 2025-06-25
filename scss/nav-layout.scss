@@ -2,7 +2,7 @@
 
 nav {
 	// large screen layout - fixed on left hand side
-	@media (min-width: 1024px) {
+	@media (min-width: 1025px) {
 		// padding-top: 1em;
 		float: left;
 		width: 100%;
@@ -90,11 +90,14 @@ nav {
 	// small screen layout - hamburger menu
 	@media (max-width: 1024px) {
 		position: fixed;
-		top: 2em;
-		right: 2em;
-		background: rgba(0, 0, 0, 0.75);
+		top: 1em;
+		right: 1em;
+		padding: 1em;
+		background: $backgroundColor;
 		z-index: 99999;
 		text-align: right;
+		border: none;
+		transition: all 0.5s;
 
 		#hamburger-lines {
 			float: right;
@@ -146,6 +149,10 @@ nav {
 			// span {
 			// 	font-size: 24px;
 			// }
+		}
+
+		&:has(input:checked) {
+			border: 1px solid $textColor;
 		}
 	}
 }

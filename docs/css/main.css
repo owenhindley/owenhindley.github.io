@@ -217,7 +217,7 @@ main.blogposts .blogpost {
   100% {
     color: white; } }
 
-@media (min-width: 1024px) {
+@media (min-width: 1025px) {
   nav {
     float: left;
     width: 100%;
@@ -259,11 +259,14 @@ nav label {
 @media (max-width: 1024px) {
   nav {
     position: fixed;
-    top: 2em;
-    right: 2em;
-    background: rgba(0, 0, 0, 0.75);
+    top: 1em;
+    right: 1em;
+    padding: 1em;
+    background: #0d0d0d;
     z-index: 99999;
-    text-align: right; }
+    text-align: right;
+    border: none;
+    transition: all 0.5s; }
     nav #hamburger-lines {
       float: right;
       margin-bottom: 1em; }
@@ -296,7 +299,9 @@ nav label {
       margin-left: auto;
       margin-right: auto;
       padding-right: 2em;
-      margin-bottom: 1em; } }
+      margin-bottom: 1em; }
+    nav:has(input:checked) {
+      border: 1px solid white; } }
 
 /* Color Theme Swatches in RGBA */
 /* Color Theme Swatches in Hex */
@@ -331,7 +336,7 @@ main section:not(.simple-list) article {
   position: relative;
   display: flex;
   flex-direction: column; }
-  @media (min-width: 1024px) {
+  @media (min-width: 1025px) {
     main section:not(.simple-list) article {
       width: 45%;
       max-width: 40em;
@@ -429,7 +434,7 @@ main section.simple-list article {
       padding: 0;
       margin-bottom: 0.25em;
       margin-right: 1em; }
-      @media (min-width: 1024px) {
+      @media (min-width: 1025spx) {
         main section.simple-list article header * {
           width: 20%; } }
       @media (max-width: 1024px) {
@@ -765,7 +770,7 @@ body.blogpost section {
   margin-top: 3em; }
   .single-article article header {
     width: 100%; }
-  @media (min-width: 1024px) {
+  @media (min-width: 1025px) {
     .single-article article section {
       width: 40%;
       float: left;
@@ -828,7 +833,7 @@ li {
       margin-left: 1em;
       margin-right: 1em;
       width: calc(100% - 2em); } }
-  @media (min-width: 1024px) {
+  @media (min-width: 1025px) {
     .container {
       margin-left: 13em;
       width: calc(100% - 14em);

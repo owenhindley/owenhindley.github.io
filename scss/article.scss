@@ -8,7 +8,7 @@ main section:not(.simple-list) article {
 	// full-size mode
 	// large featured projects, 2-column mode
 
-	@media (min-width: 1024px) {
+	@media (min-width: 1025px) {
 		width: 45%;
 		max-width: 40em;
 
@@ -165,7 +165,7 @@ main section.simple-list article {
 
 		* {
 			float: left;
-			@media (min-width: 1024px) {
+			@media (min-width: 1025spx) {
 				width: 20%;
 			}
 			@media (max-width: 1024px) {

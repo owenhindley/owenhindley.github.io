@@ -54,7 +54,7 @@
   margin-top: 3em; }
   .single-article article header {
     width: 100%; }
-  @media (min-width: 1024px) {
+  @media (min-width: 1025px) {
     .single-article article section {
       width: 40%;
       float: left;

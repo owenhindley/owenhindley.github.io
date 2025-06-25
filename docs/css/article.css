@@ -31,7 +31,7 @@ main section:not(.simple-list) article {
   position: relative;
   display: flex;
   flex-direction: column; }
-  @media (min-width: 1024px) {
+  @media (min-width: 1025px) {
     main section:not(.simple-list) article {
       width: 45%;
       max-width: 40em;
@@ -129,7 +129,7 @@ main section.simple-list article {
       padding: 0;
       margin-bottom: 0.25em;
       margin-right: 1em; }
-      @media (min-width: 1024px) {
+      @media (min-width: 1025spx) {
         main section.simple-list article header * {
           width: 20%; } }
       @media (max-width: 1024px) {
