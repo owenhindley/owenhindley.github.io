@@ -282,8 +282,8 @@ nav label {
       right: 0;
       display: block;
       text-align: right;
-      width: 2em;
-      height: 1.2em;
+      width: 4em;
+      height: 3em;
       float: right;
       z-index: 99999;
       cursor: pointer; }
