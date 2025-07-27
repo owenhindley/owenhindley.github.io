@@ -1,0 +1,113 @@
+/* Color Theme Swatches in RGBA */
+/* Color Theme Swatches in Hex */
+.c0 {
+  color: white; }
+
+.c1 {
+  color: white; }
+
+.c2 {
+  color: white; }
+
+.c3 {
+  color: white; }
+
+.c4 {
+  color: white; }
+
+.inverted {
+  background-color: white;
+  color: black; }
+
+@keyframes colourCycle {
+  0% {
+    color: white; }
+  50% {
+    color: white; }
+  100% {
+    color: white; } }
+
+main article:not(.talks) {
+  position: relative; }
+  @media (min-width: 1024px) {
+    main article:not(.talks) {
+      width: 50%;
+      max-width: 40em;
+      float: left;
+      padding-top: 1em;
+      margin-bottom: 5em; }
+      main article:not(.talks).featured {
+        max-width: 80em;
+        margin-bottom: 8em; }
+        main article:not(.talks).featured .thumbImg {
+          height: 25vw; }
+      main article:not(.talks):nth-of-type(2n) {
+        margin-top: 5em; }
+      main article:not(.talks) .thumbImg {
+        width: 90%;
+        height: 13vw;
+        float: left;
+        margin-bottom: 1em;
+        background-size: cover;
+        background-position: 50% 50%;
+        transition: 0.25s; } }
+  @media (max-width: 1024px) {
+    main article:not(.talks) {
+      width: 100%;
+      float: left;
+      padding-top: 1em;
+      margin-bottom: 5em; }
+      main article:not(.talks) .thumbImg {
+        width: 90%;
+        height: 40vw;
+        float: left;
+        margin-bottom: 1em;
+        background-size: cover;
+        background-position: 50% 50%;
+        transition: 0.25s; } }
+  main article:not(.talks) header {
+    transition: all 0.5s;
+    position: absolute;
+    width: auto;
+    height: auto;
+    bottom: -2em;
+    left: 2em;
+    max-width: 90%;
+    background-color: black;
+    padding: 0.2em 0.2em 0 0; }
+    main article:not(.talks) header h4 {
+      display: block;
+      color: white; }
+    main article:not(.talks) header summary {
+      display: block;
+      margin-top: 0.25em;
+      color: #e6e6e6; }
+  @media (max-width: 1024px) {
+    main article:not(.talks) header {
+      max-width: 50vw; }
+    main article:not(.talks):nth-of-type(2n) header {
+      left: auto;
+      right: 4em; } }
+  main article:not(.talks):hover header {
+    background-color: #333333;
+    transform: scale(1.02); }
+
+main article.talks,
+main article.archive {
+  width: 100%;
+  max-width: 100%; }
+  main article.talks header,
+  main article.archive header {
+    position: static;
+    width: 100%; }
+    main article.talks header *,
+    main article.archive header * {
+      float: left;
+      clear: both;
+      margin: 0;
+      padding: 0;
+      margin-bottom: 0.25em; }
+    main article.talks header ol li,
+    main article.archive header ol li {
+      padding: none;
+      margin: none; }

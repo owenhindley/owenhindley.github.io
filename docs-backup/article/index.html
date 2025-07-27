@@ -1,0 +1,1718 @@
+<!DOCTYPE html>
+<html>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta charset="utf-8">
+    <title>Owen Hindley | Digital Artist &amp; Creative Technologist</title>
+    <meta name="description"
+	content="Owen Hindley is a digital artist creating experiences for VR, theatre, installations, games, performance and the web using software, electronics and sound.">
+    <meta name="author" content="Owen Hindley">
+    <meta property="og:url" content="http://www.owenhindley.co.uk">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Owen Hindley">
+    <meta property="og:image" content="http://www.owenhindley.co.uk/images/sharing-image.jpg">
+    <meta property="og:description"
+	content="Owen Hindley is a digital artist creating experiences for VR, theatre, installations, games, performance and the web using software, electronics and sound.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Owen Hindley Portfolio">
+    <meta name="twitter:description"
+	content="Owen Hindley is a digital artist creating experiences for VR, theatre, installations, games, performance and the web using software, electronics and sound.">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://use.typekit.net/bio5jjx.css">
+
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <script>
+        function OnNavChange(e) {
+            var main = document.querySelector('main')
+            main.className = e;
+            //main.scrollIntoView({behavior: "smooth"});
+            // close nav
+            document.querySelector("#nav-toggle").checked = false;
+        }
+
+        function GoToBlogpost(name) {
+            document.location.href = document.location.origin + "/blogposts/" + name
+        }
+
+        var videoElement;
+        document.addEventListener("DOMContentLoaded", function () {
+            videoElement = document.getElementById('splashVideo');
+            document.addEventListener('scroll', (e) => {
+                var opacity = 0.0;
+                if (window.scrollY < videoElement.offsetHeight) {
+                    opacity = (videoElement.offsetHeight - (window.scrollY * 4.0)) / videoElement.offsetHeight;
+                }
+                opacity = Math.min(0.5, Math.max(0.0, opacity));
+                videoElement.style.opacity = opacity;
+            });
+
+        });
+    </script>
+
+    <body>
+
+        <!-- <video id="splashVideo" muted="" loop="" autoplay="" data-src="images/video/test-header-video" class="visible">
+        <source src="images/video/header-video-short.webm">
+        <source src="images/video/header-video-short.mp4">
+    </video>
+    <div id="video-overlay"></div> -->
+
+        <div class="container">
+
+            <header>
+
+                <aside>
+                    <!-- <h3 class="inverted">Owen Hindley</h3> -->
+                    <p>owenhindley at hotmail dot com<br/>
+                    +354 762 0292<br/>
+                    @owenhindley<br/>
+                    Reykjavík / Worldwide</p>
+
+                    <a class="social-link" id="github-link" href="https://github.com/owenhindley" target="_blank">g</a>
+                    <a class="social-link" id="instagram-link" href="https://www.instagram.com/owenhindley/" target="_blank">i</a>
+                </h6>
+            </aside>
+
+            <nav>
+                <input type="checkbox" id="nav-toggle" name="nav-toggle"></input>
+                <div id="hamburger-lines">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <label onclick="OnNavChange('all')">
+                    <!-- <input type="radio" name="nav" id="check-all" checked></input> -->
+                    <span>All</span>
+                </label>
+                <label onclick="OnNavChange('works')">
+                    <!-- <input type="radio" name="nav" id="check-works"></input> -->
+                    <span>Works</span>
+                </label>
+                <label onclick="OnNavChange('collaboration')">
+                    <!-- <input type="radio" name="nav" id="check-collaboration"></input> -->
+                    <span>Commercial</span>
+                </label>
+                <label onclick="OnNavChange('blogposts')">
+                    <!-- <input type="radio" name="nav" id="check-blogposts"></input> -->
+                    <span>Articles</span>
+                </label>
+                <label onclick="OnNavChange('talks')">
+                    <!-- <input type="radio" name="nav" id="check-talks"></input> -->
+                    <span>Talks &amp; Education</span>
+                </label>
+                <label onclick="OnNavChange('archive')">
+                    <!-- <input type="radio" name="nav" id="check-archive"></input> -->
+                    <span>Archive</span>
+                </label>
+                <label onclick="OnNavChange('about')">
+                    <!-- <input type="radio" name="nav" id="check-about"></input> -->
+                    <span>About</span>
+                </label>
+            </nav>
+
+            <div class="taglines">
+                <p>Hi there! I'm Owen.<br/>
+                I'm a creative, a developer and an artist.<br/>
+                I create work for spaces, screens and stages.<br/>
+                Collaborations from small to very large.
+            </p>
+            </div>  
+            <!-- <p>I've created VR theatre, interactive music experiences, an enormous game of PONG, a pinata-smashing robot, music videos, and video games.</p> -->
+            <!-- <p>Here's the story so far :</p> -->
+
+        </header>
+
+        <main class="all">
+
+            
+            
+            
+            
+            
+            
+
+            
+            
+
+            <section class="all">
+                <header>
+                    <h6 class="inverted">
+                        <strong>All Projects</strong>
+                    </h6>
+                    <!-- <p>These are pieces which I've either directed myself or been part of the main creative team.</p> -->
+                </header>
+                <div class="article-collection">
+
+                    
+                        <article id="fallax" class="all featured">
+                            <a href="/fallax">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/fallax-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>F A L L A X</h4>
+                                    <summary>Short film for VR devices</summary>
+                                    <summary>In development</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                        <article id="harmonic-dream-sequence" class="all ">
+                            <a href="/harmonic-dream-sequence">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/harmonic-dream-sequence-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>Dustin O'Halloran - Harmonic Dream Sequence</h4>
+                                    <summary>Audio-visual meditations on an AI-flavoured future</summary>
+                                    <summary>March 2024</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                        <article id="motet" class="all ">
+                            <a href="/motet">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/motet-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>MOTET</h4>
+                                    <summary>Audio-visual project (with Þorsteinn Eyfjörð)</summary>
+                                    <summary>Ongoing</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                        <article id="surveyor" class="all ">
+                            <a href="/surveyor">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/surveyor-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>The Surveyor</h4>
+                                    <summary>Semi-interactive short fiction</summary>
+                                    <summary>August 2024</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                        <article id="harpa-pong" class="all ">
+                            <a href="/harpa-pong">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/harpa-pong-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>Harpa Pong</h4>
+                                    <summary>Massive outdoor game</summary>
+                                    <summary>2014</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                        <article id="kassinn" class="all featured">
+                            <a href="/kassinn">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/kassinn-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>Kassinn / A Box In The Desert</h4>
+                                    <summary>Interactive VR Theatre</summary>
+                                    <summary>2017-2018</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                        <article id="parallel-people" class="all ">
+                            <a href="/parallel-people">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/parallel-people-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>Parallel People / Hliðstætt Fólk</h4>
+                                    <summary>Interactive VR theatre</summary>
+                                    <summary>2020-2022</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                        <article id="under-the-surface" class="all featured">
+                            <a href="/under-the-surface">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/under-the-surface-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>Under The Surface</h4>
+                                    <summary>Interactive spatial data experience by Field.io</summary>
+                                    <summary>2023</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                        <article id="universe-technical-images" class="all ">
+                            <a href="/universe-technical-images">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/universe-technical-images-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>Into The Universe Of Technical Images</h4>
+                                    <summary>Video work</summary>
+                                    <summary>April 2023</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                        <article id="hidden-people" class="all featured">
+                            <a href="/hidden-people">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/hidden-people-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>The Hidden People</h4>
+                                    <summary>Realtime Projections for Aerial Circus Theatre</summary>
+                                    <summary>2018-2022</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                        <article id="aristokrasia" class="all featured">
+                            <a href="/aristokrasia">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/aristokrasia-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>Aristokrasia</h4>
+                                    <summary>Show visuals design + performance</summary>
+                                    <summary>2022-current</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                        <article id="this-machine-throws-pixels" class="all ">
+                            <a href="/this-machine-throws-pixels">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/this-machine-throws-pixels-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>This Machine Throws Pixels</h4>
+                                    <summary>Ongoing performance practice</summary>
+                                    <summary>2007-current</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                        <article id="tid" class="all ">
+                            <a href="/tid">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/tid-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>Tíð</h4>
+                                    <summary>Audiovisual projection installation with Þorsteinn Eyfjörð</summary>
+                                    <summary>February 2024</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                        <article id="lnoae" class="all ">
+                            <a href="/lnoae">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/lnoae-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>Imogen Heap - Last Night Of An Empire</h4>
+                                    <summary>Mixed Reality Music Video</summary>
+                                    <summary>2021</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                        <article id="lambchild" class="all featured">
+                            <a href="/lambchild">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/lambchild-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>Lambchild Superstar</h4>
+                                    <summary>Music Creation Experience for VR</summary>
+                                    <summary>2017-2021</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                        <article id="out-of-sync" class="all featured">
+                            <a href="/out-of-sync">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/out-of-sync-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>Out Of Sync</h4>
+                                    <summary>AR Livestream Performance</summary>
+                                    <summary>2020</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                        <article id="gale" class="all ">
+                            <a href="/gale">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/gale-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>GALE</h4>
+                                    <summary>Platform game</summary>
+                                    <summary>2019</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                        <article id="unconfined" class="all featured">
+                            <a href="/unconfined">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/unconfined-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>Unconfined</h4>
+                                    <summary>Samsung S8 Launch at Milan Design Week 2017</summary>
+                                    <summary>2017-2018</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                        <article id="moon-seat" class="all ">
+                            <a href="/moon-seat">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/moon-seat-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>The Moon Seat</h4>
+                                    <summary>Audio-visual public installation</summary>
+                                    <summary>2016-17</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                        <article id="horizons-vr" class="all featured">
+                            <a href="/horizons-vr">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/horizons-vr-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>Horizons VR</h4>
+                                    <summary>Interactive Musical Journeys in VR</summary>
+                                    <summary>2016-17</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                        <article id="light-organ" class="all ">
+                            <a href="/light-organ">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/light-organ-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>The Light Organ</h4>
+                                    <summary>Audio-visual public installation</summary>
+                                    <summary>2016</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                        <article id="sonar-visuals" class="all ">
+                            <a href="/sonar-visuals">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/sonar-visuals-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>Sónar Reykjavík Visuals</h4>
+                                    <summary>Building-scale generative visuals</summary>
+                                    <summary>2014-16</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                        <article id="vive-launch-site" class="all ">
+                            <a href="/vive-launch-site">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/vive-launch-site-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>HTC Vive Launch Site</h4>
+                                    <summary>Global launch site for HTC Vive</summary>
+                                    <summary>2016</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                        <article id="mmorph" class="all featured">
+                            <a href="/mmorph">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/mmorph-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>Mmorph</h4>
+                                    <summary>Browser-based interactive audio experience</summary>
+                                    <summary>2016</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                        <article id="pinata-smasher" class="all ">
+                            <a href="/pinata-smasher">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/pinata-smasher-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>The Piñata Smashing Robot</h4>
+                                    <summary>Physical/digital advertising stunt</summary>
+                                    <summary>2015</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                        <article id="resonate-music" class="all featured">
+                            <a href="/resonate-music">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/resonate-music-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>Resonate 2015 Theme</h4>
+                                    <summary>Festival music composition + Sound Design</summary>
+                                    <summary>2015</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                        <article id="city-of-drones" class="all ">
+                            <a href="/city-of-drones">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/city-of-drones-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>City Of Drones</h4>
+                                    <summary>Audio-visual experience for web + installation</summary>
+                                    <summary>2014</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                        <article id="xbox-glitch" class="all ">
+                            <a href="/xbox-glitch">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/xbox-glitch-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>XBox Glitch ARG</h4>
+                                    <summary>Online ARG / Cryptic competition</summary>
+                                    <summary>2014</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                        <article id="field-spectra" class="all featured">
+                            <a href="/field-spectra">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/field-spectra-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>Spectra 2</h4>
+                                    <summary>Kinectic sculpture by Field</summary>
+                                    <summary>2014</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                </div>
+            </section>
+
+            <section class="works">
+                <header>
+                    <h6 class="inverted">
+                        <strong>Individual Works &amp; Performances</strong>
+                    </h6>
+                    <!-- <p>These are pieces which I've either directed myself or been part of the main creative team.</p> -->
+                </header>
+                <div class="article-collection">
+
+                    
+                        <article id="fallax" class="works featured">
+                            <a href="/fallax">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/fallax-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>F A L L A X</h4>
+                                    <summary>Short film for VR devices</summary>
+                                    <summary>In development</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                        <article id="harmonic-dream-sequence" class="works ">
+                            <a href="/harmonic-dream-sequence">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/harmonic-dream-sequence-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>Dustin O'Halloran - Harmonic Dream Sequence</h4>
+                                    <summary>Audio-visual meditations on an AI-flavoured future</summary>
+                                    <summary>March 2024</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                        <article id="motet" class="works ">
+                            <a href="/motet">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/motet-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>MOTET</h4>
+                                    <summary>Audio-visual project (with Þorsteinn Eyfjörð)</summary>
+                                    <summary>Ongoing</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                        <article id="surveyor" class="works ">
+                            <a href="/surveyor">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/surveyor-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>The Surveyor</h4>
+                                    <summary>Semi-interactive short fiction</summary>
+                                    <summary>August 2024</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                        <article id="harpa-pong" class="works ">
+                            <a href="/harpa-pong">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/harpa-pong-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>Harpa Pong</h4>
+                                    <summary>Massive outdoor game</summary>
+                                    <summary>2014</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                        <article id="kassinn" class="works featured">
+                            <a href="/kassinn">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/kassinn-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>Kassinn / A Box In The Desert</h4>
+                                    <summary>Interactive VR Theatre</summary>
+                                    <summary>2017-2018</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                        <article id="parallel-people" class="works ">
+                            <a href="/parallel-people">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/parallel-people-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>Parallel People / Hliðstætt Fólk</h4>
+                                    <summary>Interactive VR theatre</summary>
+                                    <summary>2020-2022</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                        <article id="universe-technical-images" class="works ">
+                            <a href="/universe-technical-images">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/universe-technical-images-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>Into The Universe Of Technical Images</h4>
+                                    <summary>Video work</summary>
+                                    <summary>April 2023</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                        <article id="hidden-people" class="works featured">
+                            <a href="/hidden-people">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/hidden-people-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>The Hidden People</h4>
+                                    <summary>Realtime Projections for Aerial Circus Theatre</summary>
+                                    <summary>2018-2022</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                        <article id="tid" class="works ">
+                            <a href="/tid">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/tid-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>Tíð</h4>
+                                    <summary>Audiovisual projection installation with Þorsteinn Eyfjörð</summary>
+                                    <summary>February 2024</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                        <article id="this-machine-throws-pixels" class="works ">
+                            <a href="/this-machine-throws-pixels">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/this-machine-throws-pixels-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>This Machine Throws Pixels</h4>
+                                    <summary>Ongoing performance practice</summary>
+                                    <summary>2007-current</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                        <article id="aristokrasia" class="works featured">
+                            <a href="/aristokrasia">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/aristokrasia-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>Aristokrasia</h4>
+                                    <summary>Show visuals design + performance</summary>
+                                    <summary>2022-current</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                        <article id="out-of-sync" class="works featured">
+                            <a href="/out-of-sync">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/out-of-sync-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>Out Of Sync</h4>
+                                    <summary>AR Livestream Performance</summary>
+                                    <summary>2020</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                        <article id="gale" class="works ">
+                            <a href="/gale">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/gale-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>GALE</h4>
+                                    <summary>Platform game</summary>
+                                    <summary>2019</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                        <article id="horizons-vr" class="works featured">
+                            <a href="/horizons-vr">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/horizons-vr-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>Horizons VR</h4>
+                                    <summary>Interactive Musical Journeys in VR</summary>
+                                    <summary>2016-17</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                        <article id="moon-seat" class="works ">
+                            <a href="/moon-seat">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/moon-seat-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>The Moon Seat</h4>
+                                    <summary>Audio-visual public installation</summary>
+                                    <summary>2016-17</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                        <article id="mmorph" class="works featured">
+                            <a href="/mmorph">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/mmorph-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>Mmorph</h4>
+                                    <summary>Browser-based interactive audio experience</summary>
+                                    <summary>2016</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                </div>
+            </section>
+
+            <section class="collaboration">
+                <header>
+                    <h6 class="inverted">
+                        <strong>Collaborations &amp; Commercial</strong>
+                    </h6>
+
+                    <p>More commercial projects where I've been brought in as a contractor or collaborator, often on the technical side of things.</p>
+                </header>
+                <div class="article-collection">
+                    
+                        <article id="under-the-surface" class="collaboration featured">
+                            <a href="/under-the-surface">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/under-the-surface-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>Under The Surface</h4>
+                                    <summary>Interactive spatial data experience by Field.io</summary>
+                                    <summary>2023</summary>
+                                    <summary>Developer</summary>
+                                    <summary>Unity</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                        <article id="lambchild" class="collaboration featured">
+                            <a href="/lambchild">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/lambchild-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>Lambchild Superstar</h4>
+                                    <summary>Music Creation Experience for VR</summary>
+                                    <summary>2017-2021</summary>
+                                    <summary>Lead Developer</summary>
+                                    <summary>Unity</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                        <article id="lnoae" class="collaboration ">
+                            <a href="/lnoae">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/lnoae-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>Imogen Heap - Last Night Of An Empire</h4>
+                                    <summary>Mixed Reality Music Video</summary>
+                                    <summary>2021</summary>
+                                    <summary>VFX, Developer</summary>
+                                    <summary>Unity, Houdini</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                        <article id="unconfined" class="collaboration featured">
+                            <a href="/unconfined">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/unconfined-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>Unconfined</h4>
+                                    <summary>Samsung S8 Launch at Milan Design Week 2017</summary>
+                                    <summary>2017-2018</summary>
+                                    <summary>Developer</summary>
+                                    <summary>Unity</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                        <article id="vive-launch-site" class="collaboration ">
+                            <a href="/vive-launch-site">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/vive-launch-site-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>HTC Vive Launch Site</h4>
+                                    <summary>Global launch site for HTC Vive</summary>
+                                    <summary>2016</summary>
+                                    <summary>Lead Development</summary>
+                                    <summary>JS, GLSL, WebGL</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                        <article id="sonar-visuals" class="collaboration ">
+                            <a href="/sonar-visuals">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/sonar-visuals-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>Sónar Reykjavík Visuals</h4>
+                                    <summary>Building-scale generative visuals</summary>
+                                    <summary>2014-16</summary>
+                                    <summary>Design, Coordination, Development</summary>
+                                    <summary>NodeJS, DMX</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                        <article id="light-organ" class="collaboration ">
+                            <a href="/light-organ">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/light-organ-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>The Light Organ</h4>
+                                    <summary>Audio-visual public installation</summary>
+                                    <summary>2016</summary>
+                                    <summary>Development</summary>
+                                    <summary>NodeJS, Max/MSP, DMX</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                        <article id="resonate-music" class="collaboration featured">
+                            <a href="/resonate-music">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/resonate-music-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>Resonate 2015 Theme</h4>
+                                    <summary>Festival music composition + Sound Design</summary>
+                                    <summary>2015</summary>
+                                    <summary>Composer, sound designer</summary>
+                                    <summary></summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                        <article id="pinata-smasher" class="collaboration ">
+                            <a href="/pinata-smasher">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/pinata-smasher-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>The Piñata Smashing Robot</h4>
+                                    <summary>Physical/digital advertising stunt</summary>
+                                    <summary>2015</summary>
+                                    <summary>Electronics, Design, Build</summary>
+                                    <summary>Node.js</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                        <article id="field-spectra" class="collaboration featured">
+                            <a href="/field-spectra">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/field-spectra-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>Spectra 2</h4>
+                                    <summary>Kinectic sculpture by Field</summary>
+                                    <summary>2014</summary>
+                                    <summary>Electronic engineering, developer</summary>
+                                    <summary>Arduino, Node.js</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                        <article id="xbox-glitch" class="collaboration ">
+                            <a href="/xbox-glitch">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/xbox-glitch-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>XBox Glitch ARG</h4>
+                                    <summary>Online ARG / Cryptic competition</summary>
+                                    <summary>2014</summary>
+                                    <summary>Concepting, development and sound design</summary>
+                                    <summary>HTML5, PHP, Server administration</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                        <article id="city-of-drones" class="collaboration ">
+                            <a href="/city-of-drones">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/city-of-drones-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>City Of Drones</h4>
+                                    <summary>Audio-visual experience for web + installation</summary>
+                                    <summary>2014</summary>
+                                    <summary>Audio and Physics developer</summary>
+                                    <summary>WebGL, WebAudio, DART</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    
+                </div>
+            </section>
+
+            <section class="blogpost">
+                <header>
+                    <h6 class="inverted">
+                        <strong>Articles &amp; Tutorials</strong>
+                    </h6>
+                </header>
+                <div class="article-collection">
+                    
+                        <article id="" class=" ">
+                            <a href="/">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4></h4>
+                                    <summary></summary>
+                                    <summary></summary>
+                                    <summary></summary>
+                                    <summary></summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+
+                        <article id="depth-scatter" class="blogpost featured">
+                            <a href="blog/depth-scatter">
+                                <div class="thumbImg" style="background-image:url(images/blog/thumbs/depth-scatter-thumb.jpg);"></div>
+                                <header>
+                                    <h4>Depth Scatter Rendering in TouchDesigner</h4>
+                                    <summary>A technique for creating point clouds from simple 3D scenes, within TouchDesigner.</summary>
+                                    <summary>November 2024</summary>
+                                </header>
+                            </article>
+                        
+                    </div>
+                </section>
+
+                <section class="talks">
+                    <header>
+                        <h6 class="inverted">
+                            <strong>Talks &amp; Education</strong>
+                        </h6>
+                        <p>When I've been asked to lecture or run workshops for students or institutions about my work or projects.</p>
+                    </header>
+                    <div class="article-collection">
+                        
+                            <article id="lhi-digital-exhibitions" class="talks">
+                                <header>
+                                    <h6>Digital Exhibitions / Creative Coding For Designers</h6>
+                                    <summary>6-week course for 2nd year Graphic Design students</summary>
+                                    <ol>
+                                        <li>
+                                            <h6>2024-present</h6>
+                                        </li>
+                                        <li>
+                                            <h6>Listaháskóli Íslands (Icelandic University of the Arts)</h6>
+                                        </li>
+                                    </ol>
+                                </header>
+                                
+                            </article>
+                        
+                            <article id="live-visual-machines-touchdesigner-raflost" class="talks">
+                                <header>
+                                    <h6>Making Live Visual Machines In TouchDesigner</h6>
+                                    <summary>Visuals workshop at Raflost 2023</summary>
+                                    <ol>
+                                        <li>
+                                            <h6>2023</h6>
+                                        </li>
+                                        <li>
+                                            <h6>Hafnarhaus, Iceland</h6>
+                                        </li>
+                                    </ol>
+                                </header>
+                                
+                            </article>
+                        
+                            <article id="vr-masterclass" class="talks">
+                                <header>
+                                    <h6>VR Masterclass</h6>
+                                    <summary>Lecture / Workshop</summary>
+                                    <ol>
+                                        <li>
+                                            <h6>2022</h6>
+                                        </li>
+                                        <li>
+                                            <h6>Þjóðleikhúsið (National Theatre of Iceland)</h6>
+                                        </li>
+                                    </ol>
+                                </header>
+                                
+                            </article>
+                        
+                            <article id="lines-of-loving" class="talks">
+                                <header>
+                                    <h6>All Watched Over By Lines Of Loving Grace</h6>
+                                    <summary>Rant/discoveries about Unity line rendering</summary>
+                                    <ol>
+                                        <li>
+                                            <h6>2021</h6>
+                                        </li>
+                                        <li>
+                                            <h6>Innovation House, Reykjavík</h6>
+                                        </li>
+                                    </ol>
+                                </header>
+                                
+                            </article>
+                        
+                            <article id="who-are-huldufugl" class="talks">
+                                <header>
+                                    <h6>Who are Huldufugl?</h6>
+                                    <summary>Lecture</summary>
+                                    <ol>
+                                        <li>
+                                            <h6>2021</h6>
+                                        </li>
+                                        <li>
+                                            <h6>Berghs School of Communication, Stockholm</h6>
+                                        </li>
+                                    </ol>
+                                </header>
+                                
+                            </article>
+                        
+                            <article id="worlding-deserts" class="talks">
+                                <header>
+                                    <h6>Worlding Deserts</h6>
+                                    <summary>Panel discussion about virtual worlds</summary>
+                                    <ol>
+                                        <li>
+                                            <h6>2020</h6>
+                                        </li>
+                                        <li>
+                                            <h6>Night Of Ideas, Institute Francais in London</h6>
+                                        </li>
+                                    </ol>
+                                </header>
+                                
+                            </article>
+                        
+                            <article id="hyper-personal-introduction" class="talks">
+                                <header>
+                                    <h6>Industry Expert Introduction</h6>
+                                    <summary>Lecture</summary>
+                                    <ol>
+                                        <li>
+                                            <h6>2020</h6>
+                                        </li>
+                                        <li>
+                                            <h6>Hyper Island, Stockholm</h6>
+                                        </li>
+                                    </ol>
+                                </header>
+                                
+                            </article>
+                        
+                            <article id="tiny-for-massive" class="talks">
+                                <header>
+                                    <h6>Designing Tiny for Massive</h6>
+                                    <summary>Short course for Graphic Design students</summary>
+                                    <ol>
+                                        <li>
+                                            <h6>2019</h6>
+                                        </li>
+                                        <li>
+                                            <h6>Listaháskóli Íslands (Icelandic University of the Arts)</h6>
+                                        </li>
+                                    </ol>
+                                </header>
+                                
+                            </article>
+                        
+                            <article id="tools-for-collaboration" class="talks">
+                                <header>
+                                    <h6>Tools for Collaboration</h6>
+                                    <summary>Lecture</summary>
+                                    <ol>
+                                        <li>
+                                            <h6>2017</h6>
+                                        </li>
+                                        <li>
+                                            <h6>Resonate Festival 2017, Belgrade</h6>
+                                        </li>
+                                    </ol>
+                                </header>
+                                
+                            </article>
+                        
+                            <article id="processes-for-creativity" class="talks">
+                                <header>
+                                    <h6>Processes for creativity</h6>
+                                    <summary>Lecture</summary>
+                                    <ol>
+                                        <li>
+                                            <h6>2017</h6>
+                                        </li>
+                                        <li>
+                                            <h6>Listaháskóli Íslands (Icelandic University of the Arts)</h6>
+                                        </li>
+                                    </ol>
+                                </header>
+                                
+                            </article>
+                        
+                            <article id="creative-tech-workshop-hyper" class="talks">
+                                <header>
+                                    <h6>Creative Technology Workshop</h6>
+                                    <summary>Arduino, web, and creative technology for Design + Communication students</summary>
+                                    <ol>
+                                        <li>
+                                            <h6>2017</h6>
+                                        </li>
+                                        <li>
+                                            <h6>Hyper Island, Stockholm</h6>
+                                        </li>
+                                    </ol>
+                                </header>
+                                
+                            </article>
+                        
+                            <article id="design-for-vr" class="talks">
+                                <header>
+                                    <h6>Designing for VR</h6>
+                                    <summary>Lecture</summary>
+                                    <ol>
+                                        <li>
+                                            <h6>2017</h6>
+                                        </li>
+                                        <li>
+                                            <h6>Tækniskólinn, Reykjavík</h6>
+                                        </li>
+                                    </ol>
+                                </header>
+                                
+                            </article>
+                        
+                            <article id="dynamic-architecture" class="talks">
+                                <header>
+                                    <h6>Dynamic Architecture</h6>
+                                    <summary>Lecture</summary>
+                                    <ol>
+                                        <li>
+                                            <h6>2016</h6>
+                                        </li>
+                                        <li>
+                                            <h6>Sónar Reykjavík</h6>
+                                        </li>
+                                    </ol>
+                                </header>
+                                
+                            </article>
+                        
+                            <article id="creative-coding" class="talks">
+                                <header>
+                                    <h6>Creative Coding For Designers</h6>
+                                    <summary>Course instructor for 2nd year Graphic Design students</summary>
+                                    <ol>
+                                        <li>
+                                            <h6>2016</h6>
+                                        </li>
+                                        <li>
+                                            <h6>Listaháskóli Íslands (Icelandic University of the Arts)</h6>
+                                        </li>
+                                    </ol>
+                                </header>
+                                
+                            </article>
+                        
+                    </div>
+                </section>
+
+                <section class="archive">
+                    <h6 class="inverted">
+                        <strong>Project Archive</strong>
+                    </h6>
+                    <p>Older projects that define my early career and interests.</p>
+                    <div class="article-collection">
+                        
+                            <article id="google_web_lab" class="archive featured">
+                                <input class="showContent" type="checkbox"></input>
+                                <header>
+                                    <div class="thumbImg" style="margin:0; width:0; height:2em;"></div>
+                                    <h6>Google Web Lab</h6>
+                                    <summary>London Science Museum installation + online experience</summary>
+                                    <ol>
+                                        <li>
+                                            <h6>2013</h6>
+                                        </li>
+                                        <li>
+                                            <h6>London</h6>
+                                        </li>
+                                    </ol>
+                                </header>
+                                
+                            </article>
+                        
+                            <article id="ray_ban_75th_anniversary_website" class="archive featured">
+                                <input class="showContent" type="checkbox"></input>
+                                <header>
+                                    <div class="thumbImg" style="margin:0; width:0; height:2em;"></div>
+                                    <h6>Ray Ban 75th Anniversary website</h6>
+                                    <summary>HTML5 brand experience</summary>
+                                    <ol>
+                                        <li>
+                                            <h6>2012</h6>
+                                        </li>
+                                        <li>
+                                            <h6>London</h6>
+                                        </li>
+                                    </ol>
+                                </header>
+                                
+                            </article>
+                        
+                            <article id="subsource_dubumentary" class="archive featured">
+                                <input class="showContent" type="checkbox"></input>
+                                <header>
+                                    <div class="thumbImg" style="margin:0; width:0; height:2em;"></div>
+                                    <h6>Subsource Dubumentary</h6>
+                                    <summary>Sound supervisor on independent music documentary</summary>
+                                    <ol>
+                                        <li>
+                                            <h6>2011</h6>
+                                        </li>
+                                        <li>
+                                            <h6>Guildford</h6>
+                                        </li>
+                                    </ol>
+                                </header>
+                                
+                            </article>
+                        
+                            <article id="say_what" class="archive featured">
+                                <input class="showContent" type="checkbox"></input>
+                                <header>
+                                    <div class="thumbImg" style="margin:0; width:0; height:2em;"></div>
+                                    <h6>Say What</h6>
+                                    <summary>Mobile lyric matching & rhythm game</summary>
+                                    <ol>
+                                        <li>
+                                            <h6>2011</h6>
+                                        </li>
+                                        <li>
+                                            <h6>London</h6>
+                                        </li>
+                                    </ol>
+                                </header>
+                                
+                            </article>
+                        
+                            <article id="wizarding_world_of_harry_potter_online" class="archive featured">
+                                <input class="showContent" type="checkbox"></input>
+                                <header>
+                                    <div class="thumbImg" style="margin:0; width:0; height:2em;"></div>
+                                    <h6>Wizarding World of Harry Potter Online</h6>
+                                    <summary>Launch site for Universal Orlando's new Harry Potter attracttion</summary>
+                                    <ol>
+                                        <li>
+                                            <h6>2010</h6>
+                                        </li>
+                                        <li>
+                                            <h6>USA</h6>
+                                        </li>
+                                    </ol>
+                                </header>
+                                
+                            </article>
+                        
+                            <article id="beatles_on_itunes" class="archive featured">
+                                <input class="showContent" type="checkbox"></input>
+                                <header>
+                                    <div class="thumbImg" style="margin:0; width:0; height:2em;"></div>
+                                    <h6>The Beatles iTunes launch</h6>
+                                    <summary>iTunes LP authoring</summary>
+                                    <ol>
+                                        <li>
+                                            <h6>2010</h6>
+                                        </li>
+                                        <li>
+                                            <h6>London</h6>
+                                        </li>
+                                    </ol>
+                                </header>
+                                
+                            </article>
+                        
+                            <article id="promo_video_for_you_heard_nothing" class="archive featured">
+                                <input class="showContent" type="checkbox"></input>
+                                <header>
+                                    <div class="thumbImg" style="margin:0; width:0; height:2em;"></div>
+                                    <h6>Promo video for You Heard Nothing</h6>
+                                    <summary>Promo video creative direction</summary>
+                                    <ol>
+                                        <li>
+                                            <h6>2009</h6>
+                                        </li>
+                                        <li>
+                                            <h6>Guildford</h6>
+                                        </li>
+                                    </ol>
+                                </header>
+                                
+                            </article>
+                        
+                            <article id="virtual_guru" class="archive featured">
+                                <input class="showContent" type="checkbox"></input>
+                                <header>
+                                    <div class="thumbImg" style="margin:0; width:0; height:2em;"></div>
+                                    <h6>Virtual Guru</h6>
+                                    <summary>Museum exhibit & teaching tool for classical Indian vocal music</summary>
+                                    <ol>
+                                        <li>
+                                            <h6>2009</h6>
+                                        </li>
+                                        <li>
+                                            <h6>London</h6>
+                                        </li>
+                                    </ol>
+                                </header>
+                                
+                            </article>
+                        
+                            <article id="rave_realtime_video_editor" class="archive featured">
+                                <input class="showContent" type="checkbox"></input>
+                                <header>
+                                    <div class="thumbImg" style="margin:0; width:0; height:2em;"></div>
+                                    <h6>RAVE realtime video editor</h6>
+                                    <summary>Final year project BEng Audio Media Engineering</summary>
+                                    <ol>
+                                        <li>
+                                            <h6>2009</h6>
+                                        </li>
+                                        <li>
+                                            <h6>Guildford</h6>
+                                        </li>
+                                    </ol>
+                                </header>
+                                
+                            </article>
+                        
+                            <article id="madame_tussauds_teen_idol_-_karaoke_machine" class="archive featured">
+                                <input class="showContent" type="checkbox"></input>
+                                <header>
+                                    <div class="thumbImg" style="margin:0; width:0; height:2em;"></div>
+                                    <h6>Madame Tussauds Teen Idol - Karaoke machine</h6>
+                                    <summary>Museum exhibit</summary>
+                                    <ol>
+                                        <li>
+                                            <h6>2009</h6>
+                                        </li>
+                                        <li>
+                                            <h6>London & Berlin</h6>
+                                        </li>
+                                    </ol>
+                                </header>
+                                
+                            </article>
+                        
+                            <article id="the_fallow_field" class="archive featured">
+                                <input class="showContent" type="checkbox"></input>
+                                <header>
+                                    <div class="thumbImg" style="margin:0; width:0; height:2em;"></div>
+                                    <h6>The Fallow Field</h6>
+                                    <summary>Sound supervisor on independent horror film</summary>
+                                    <ol>
+                                        <li>
+                                            <h6>2009</h6>
+                                        </li>
+                                        <li>
+                                            <h6>Guildford</h6>
+                                        </li>
+                                    </ol>
+                                </header>
+                                
+                            </article>
+                        
+                            <article id="hitachi_-_interactive_tables" class="archive featured">
+                                <input class="showContent" type="checkbox"></input>
+                                <header>
+                                    <div class="thumbImg" style="margin:0; width:0; height:2em;"></div>
+                                    <h6>Hitachi - Inspire Life Exhibition</h6>
+                                    <summary>Multi-touch interactive installation</summary>
+                                    <ol>
+                                        <li>
+                                            <h6>2008</h6>
+                                        </li>
+                                        <li>
+                                            <h6>London & Paris</h6>
+                                        </li>
+                                    </ol>
+                                </header>
+                                
+                            </article>
+                        
+                    </div>
+                </section>
+
+                <section class="about">
+                    <h6 class="inverted">
+                        <strong>About &amp; Bio</strong>
+                    </h6>
+                    <article>
+                        <h5>Link to CV : <a href="https://docs.google.com/document/d/e/2PACX-1vSd1JAk3OiWXEYvDNtY49ZzNKxLP-kegM12-3PcGVa7kcZgv6ss3NtjDM3jSfYl_KInMLFNIIHPPcVz/pub">link</a>
+                        </a>
+                    </h5>
+                    <p>Owen (he/him) is a collaborative digital artist, working with software, sound, and electronics for the web, VR, performances, devices and installations.</p>
+                    <p>His commercial work has included serving as technical lead on large, cutting-edge projects for clients such as Oculus Studios, Google, Microsoft/Xbox, Samsung and Mercedes, collaborating with digital creatives such as Universal Everything, FIELD and B-Reel. These projects have ranged from an interactive web-connected musical installation at the London Science Museum for Google, Web Lab, to a pneumatic live-streamed pinata-smashing robot.</p>
+                    <p>He is co-founder of <a href="http://huldufugl.is" target="_blank">Huldufugl</a>, a Reykjavik-based theatre and events company experimenting with new mediums in theatre, both technological and immersive.</p>
+                    <p>He is also co-founder of Horizons Studio, a London-based creative studio producing interactive musical experiences in VR. Their debut title, Horizons VR was commissioned by Google as a launch title for their Daydream platform, with releases on Oculus and HTC platforms planned for 2019.</p>
+                    <p>He was also Sound Supervisor and on-set sound recordist on two short independent films, The Fallow Field and Who We Are, and sound editor on the Subsource Dubumentary.</p>
+                    <p></p>
+
+                    <h6>Awards</h6>
+                    <ul>
+
+                        <li>Most Amazing Game Award, Kassinn / A Box In The Desert, <a href="https://amazestuff.tumblr.com/post/184139013534/a-maze-berlin-2019-award-winners" target="_blank">A MAZE Berlin 2019</a>
+                        </li>
+                        <li>Best Interactive Narrative Experience, Kassinn / A Box In The Desert, <a href="https://raindance.org/raindance-immersive-award-winners-presented-by-bose/" target="_blank">Raindance Immersive 2019</a>
+                        </li>
+                        <li>Outstanding US Premiere, Kassinn / A Box In The Desert, <a href="https://sdfringe.org/" target="_blank">San Diego Fringe Festival</a>
+                        </li>
+                        <li>Innovation In Performance Award, Kassinn / A Box In The Desert, <a href="https://www.facebook.com/Stoffholm/photos/now-and-then-we-come-across-work-that-takes-it-that-extra-lap-intotheunknown-by-/10155501339495855/" target="_blank">Stockholm Fringe Festival 2018</a>
+                        </li>
+
+                        <li>Site Of The Month, Mmorph, <a href="https://thefwa.com/cases/mmorph" target="_blank">FWA 2016</a>
+                        </li>
+                        <li>FWA Insights, Mmorph, <a href="https://thefwa.com/article/insights-mmorph" target="_blank">FWA 2016</a>
+                        </li>
+                        <li>Honorable Mention, Mmorph, <a href="https://www.awwwards.com/sites/mmorph" target="_blank">Awwwards 2016</a>
+                        </li>
+
+                    </ul>
+                    <h6>Nominations</h6>
+                    <ul>
+                        <li>Best Immersive Performance (Nomination), Parallel People, <a href="https://raindance.org/wp-content/uploads/2022/09/2022-Raindance-Immersive-FINAL.pdf" target="_blank">Raindance Immersive 2022</a>
+                        </li>
+                        <li>Sproti Ársins (Nomination), Kassinn / A Box In The Desert, <a href="https://www.fil.is/frettir/1551/" target="_blank">Gríman (Icelandic Theatre Awards) 2020</a>
+                        </li>
+                        <li>Grand Prix (Nomination), Kassinn / A Box In The Desert, Stockholm Fringe Festival 2018</li>
+                        <li>People's Choice Award (Nomination), Mmorph, <a href="https://thefwa.com/editorial/the-fwa-peoples-choice-award-pca-2016-vote-now" target="_blank">FWA 2018</a>
+                        </li>
+                    </ul>
+
+                    <h6>Links</h6>
+                    <ul>
+                        <li>
+                            <a href="https://github.com/owenhindley/" target="_blank">Github</a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com/owen_hindley" target="_blank">Twitter</a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/owenhindley/" target="_blank">Instagram</a>
+                        </li>
+                        <li>
+                            <a href="https://www.imdb.com/name/nm3918183" target="_blank">IMDB</a>
+                        </li>
+                    </ul>
+                    <h6>Recent Employment history</h6>
+                    <ul>
+                        <li>2014-current Freelance Creative Technologist & Digital Artist</li>
+                        <li>2020-2021 Senior Developer, <a href="https://volta-xr.com/" target="_blank">Volta XR</a>
+                        </li>
+                        <li>2011-2014 Senior Developer, <a href="https://www.b-reel.com/" target="_blank">B-Reel London</a>
+                        </li>
+                    </ul>
+
+                </article>
+
+            </section>
+
+        </main>
+        <footer>
+            <p>Owen Hindley, 2025</p>
+
+        </footer>
+
+    </div>
+</body>

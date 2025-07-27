@@ -91,6 +91,10 @@
                     <span></span>
                     <span></span>
                 </div>
+                <label onclick="OnNavChange('featured')">
+                    <!-- <input type="radio" name="nav" id="check-all" checked></input> -->
+                    <span>Featured</span>
+                </label>
                 <label onclick="OnNavChange('all')">
                     <!-- <input type="radio" name="nav" id="check-all" checked></input> -->
                     <span>All</span>
@@ -133,7 +137,7 @@
 
         </header>
 
-        <main class="all">
+        <main class="featured">
 
             {% assign works = collections.article | where : "data.class",
             "works" | sort : 'data.endDate' | reverse %}
@@ -149,6 +153,47 @@
             {% assign allProjects = works | concat: collaboration | sort : 'data.endDate' | reverse %}
             {% assign featured = allProjects | where : "data.featured" %}
 
+            <section class="featured">
+                <header>
+                    <h6 class="inverted">
+                        <strong>Featured Projects</strong>
+                    </h6>
+                    <!-- <p>These are pieces which I've either directed myself or been part of the main creative team.</p> -->
+                </header>
+                <div class="article-collection">
+
+                    {% for article in featured %}
+                        <article id="{{article.data.id}}" class="all {% if article.data.large %}large{%endif%}">
+                            <a href="/{{article.data.id}}">
+                                <div class="thumbImg" style="background-image:url(images/projects/thumbs/{{article.data.id}}-thumb.jpg);"></div>
+
+                                <header>
+
+                                    <h4>{{article.data.title}}</h4>
+                                    <summary>{{article.data.summary}}</summary>
+                                    <summary>{{article.data.when}}</summary>
+
+                                </header>
+
+                            </a>
+
+                        </article>
+                    {% endfor %}
+
+                    <article></article>
+
+                    <article id="link-to-all" class="all">
+                        <a href="#" onclick="OnNavChange('all')">
+                            <div class="thumbImg" style="background-image:url(images/projects/thumbs/google-web-lab-thumb.jpg);"></div>
+                            <header>
+                                <h4>All Projects</h4>
+                            </header>
+                        </a>
+                    </article>
+
+                </div>
+            </section>
+
             <section class="all">
                 <header>
                     <h6 class="inverted">
@@ -159,7 +204,7 @@
                 <div class="article-collection">
 
                     {% for article in allProjects %}
-                        <article id="{{article.data.id}}" class="all {% if article.data.featured %}featured{%endif%}">
+                        <article id="{{article.data.id}}" class="all {% if article.data.large %}large{%endif%}">
                             <a href="/{{article.data.id}}">
                                 <div class="thumbImg" style="background-image:url(images/projects/thumbs/{{article.data.id}}-thumb.jpg);"></div>
 
@@ -282,16 +327,21 @@
                     {% for article in talks %}
                         <article id="{{article.data.id}}" class="{{article.data.class}}">
                             <header>
-                                <h6>{{article.data.title}}</h6>
-                                <summary>{{article.data.summary}}</summary>
                                 <ol>
                                     <li>
                                         {{article.data.endDate}}
                                     </li>
+
+                                    <li>
+                                        <h6>{{article.data.title}}</h6>
+                                    </li>
                                     <li>
                                         {{article.data.where}}
                                     </li>
+
                                 </ol>
+                                <summary>{{article.data.summary}}</summary>
+
                             </header>
                             {{ "" }}
                         </article>

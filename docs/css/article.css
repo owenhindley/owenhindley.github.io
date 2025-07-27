@@ -38,15 +38,15 @@ main section:not(.simple-list) article {
       float: left;
       padding-top: 1em;
       margin-bottom: 5em; }
-      main section:not(.simple-list) article.featured {
+      main section:not(.simple-list) article.large {
         max-width: 80em;
         margin-bottom: 8em; }
-        main section:not(.simple-list) article.featured .thumbImg {
+        main section:not(.simple-list) article.large .thumbImg {
           height: 25vw; }
-      :not(.featured) main section:not(.simple-list) article:nth-of-type(2n) {
+      :not(.large) main section:not(.simple-list) article:nth-of-type(2n) {
         margin-top: 8em;
         margin-bottom: 8em; }
-      :not(.featured) main section:not(.simple-list) article:nth-of-type(5n) {
+      :not(.large) main section:not(.simple-list) article:nth-of-type(5n) {
         margin-top: 2em;
         margin-bottom: 2em; }
       main section:not(.simple-list) article .thumbImg {
@@ -125,6 +125,7 @@ main section.simple-list article {
     width: 100%; }
     main section.simple-list article header * {
       float: left;
+      clear: both;
       margin: 0;
       padding: 0;
       margin-bottom: 0.25em;
