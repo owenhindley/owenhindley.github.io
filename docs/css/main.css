@@ -364,7 +364,7 @@ main section:not(.simple-list) article {
         margin-bottom: 1em;
         background-size: cover;
         background-position: 50% 50%;
-        transition: 0.25s; } }
+        transition: 0.5s; } }
   @media (max-width: 1024px) {
     main section:not(.simple-list) article {
       width: 100%;
@@ -410,8 +410,7 @@ main section:not(.simple-list) article {
       left: auto;
       right: 4em; } }
   main section:not(.simple-list) article:hover header {
-    background-color: #404040;
-    transform: scale(1.02); }
+    background-color: #404040; }
 
 main section.simple-list article {
   width: 100%;

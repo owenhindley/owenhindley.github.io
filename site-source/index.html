@@ -59,28 +59,48 @@
             };
             var rafPending = false;
 
-            function updateShadows() {
+            function updateDynamicElements() {
                 rafPending = false;
                 var invertedElements = Array.from(document.querySelectorAll('.inverted'));
-                if (!invertedElements.length) 
-                    return;
-                
-                invertedElements.forEach(function (el) {
-                    var rect = el.getBoundingClientRect();
-                    var ex = rect.left + rect.width / 2;
-                    var ey = rect.top + rect.height / 2;
-                    var dx = lastPos.x - ex;
-                    var dy = lastPos.y - ey;
-                    var angle = Math.atan2(dy, dx);
-                    var distance = Math.min(40, Math.hypot(dx, dy) / 12);
-                    distance = 2;
-                    var offsetX = Math.round(Math.cos(angle) * distance);
-                    var offsetY = Math.round(Math.sin(angle) * distance);
-                    var blur = Math.max(4, Math.round(distance / 2));
-                    blur = 2
-                    var color = 'rgba(1,0,0,1)';
-                    el.style.filter = 'drop-shadow(' + offsetX + 'px ' + offsetY + 'px ' + blur + 'px red)' + ' drop-shadow(' + offsetX * 2 + 'px ' + offsetY * 2 + 'px ' + blur + 'px blue)';
-                });
+                if (invertedElements.length > 0) {
+
+                    invertedElements.forEach(function (el) {
+                        var rect = el.getBoundingClientRect();
+                        var ex = rect.left + rect.width / 2;
+                        var ey = rect.top + rect.height / 2;
+                        var dx = lastPos.x - ex;
+                        var dy = lastPos.y - ey;
+                        var angle = Math.atan2(dy, dx);
+                        var distance = Math.min(40, Math.hypot(dx, dy) / 12);
+                        distance = 2;
+                        var offsetX = Math.round(Math.cos(angle) * distance);
+                        var offsetY = Math.round(Math.sin(angle) * distance);
+                        var blur = Math.max(4, Math.round(distance / 2));
+                        blur = 2
+                        var color = 'rgba(1,0,0,1)';
+                        el.style.filter = 'drop-shadow(' + offsetX + 'px ' + offsetY + 'px ' + blur + 'px red)' + ' drop-shadow(' + offsetX * 2 + 'px ' + offsetY * 2 + 'px ' + blur + 'px blue)';
+                    });
+                }
+
+                var articleThumbs = Array.from(document.querySelectorAll('article .thumbImg'));
+                if (articleThumbs.length > 0) {
+                    articleThumbs.forEach(function (el) {
+                        var rect = el.getBoundingClientRect();
+                        var ex = rect.left + rect.width / 2;
+                        var ey = rect.top + rect.height / 2;
+                        var dx = lastPos.x - ex;
+                        var dy = lastPos.y - ey;
+                        var angle = Math.atan2(dy, dx);
+                        var distance = Math.min(40, Math.hypot(dx, dy) / 12) * 0.25;
+                        var offsetX = Math.round(Math.cos(angle) * distance);
+                        var offsetY = Math.round(Math.sin(angle) * distance);
+                        var blur = Math.max(2, Math.round(distance / 2));
+                        var scale = 1 + Math.min(0.1, ((0.1 * 10) / Math.pow(distance, 2)));
+                        var offsetScale = Math.min(2, ((1 * 200) / Math.pow(distance, 2)));
+                        el.style.transform = 'translate(' + offsetX * offsetScale + 'px, ' + offsetY * offsetScale + 'px) scale(' + scale + ')';
+                    });
+                }
+
             }
 
             function onPointerMove(e) {
@@ -88,19 +108,19 @@
                 lastPos.y = e.clientY;
                 if (!rafPending) {
                     rafPending = true;
-                    requestAnimationFrame(updateShadows);
+                    requestAnimationFrame(updateDynamicElements);
                 }
             }
 
             window.addEventListener('pointermove', onPointerMove, {passive: true});
             window.addEventListener('resize', function () {
-                requestAnimationFrame(updateShadows);
+                requestAnimationFrame(updateDynamicElements);
             }, {passive: true});
 
             if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', updateShadows);
+                document.addEventListener('DOMContentLoaded', updateDynamicElements);
             } else {
-                updateShadows();
+                updateDynamicElements();
             }
         })();
     </script>
