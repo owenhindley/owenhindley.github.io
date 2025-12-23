@@ -44,20 +44,65 @@
             document.location.href = document.location.origin + "/blogposts/" + name
         }
 
-        /*var videoElement;
-    document.addEventListener("DOMContentLoaded", function () {
-        videoElement = document.getElementById('splashVideo');
-        document.addEventListener('scroll', (e) => {
-            var opacity = 0.0;
-            if (window.scrollY < videoElement.offsetHeight) {
-                opacity = (videoElement.offsetHeight - (window.scrollY * 4.0)) / videoElement.offsetHeight;
+        // Pointer-based dynamic drop-shadow for elements with class "inverted"
+        (function () {
+            // Detect touch-capable devices and skip the effect there
+            var isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints && navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints && navigator.msMaxTouchPoints > 0) || (window.matchMedia && window.matchMedia('(pointer: coarse)').matches);
+            if (isTouch) {
+                // Don't attach pointer listeners on touch devices
+                return;
             }
-            opacity = Math.min(0.5, Math.max(0.0, opacity));
-            videoElement.style.opacity = opacity;
-        });
 
-    });
-    */
+            var lastPos = {
+                x: window.innerWidth / 2,
+                y: window.innerHeight / 2
+            };
+            var rafPending = false;
+
+            function updateShadows() {
+                rafPending = false;
+                var invertedElements = Array.from(document.querySelectorAll('.inverted'));
+                if (!invertedElements.length) 
+                    return;
+                
+                invertedElements.forEach(function (el) {
+                    var rect = el.getBoundingClientRect();
+                    var ex = rect.left + rect.width / 2;
+                    var ey = rect.top + rect.height / 2;
+                    var dx = lastPos.x - ex;
+                    var dy = lastPos.y - ey;
+                    var angle = Math.atan2(dy, dx);
+                    var distance = Math.min(40, Math.hypot(dx, dy) / 12);
+                    distance = 2;
+                    var offsetX = Math.round(Math.cos(angle) * distance);
+                    var offsetY = Math.round(Math.sin(angle) * distance);
+                    var blur = Math.max(4, Math.round(distance / 2));
+                    blur = 2
+                    var color = 'rgba(1,0,0,1)';
+                    el.style.filter = 'drop-shadow(' + offsetX + 'px ' + offsetY + 'px ' + blur + 'px red)' + ' drop-shadow(' + offsetX * 2 + 'px ' + offsetY * 2 + 'px ' + blur + 'px blue)';
+                });
+            }
+
+            function onPointerMove(e) {
+                lastPos.x = e.clientX;
+                lastPos.y = e.clientY;
+                if (!rafPending) {
+                    rafPending = true;
+                    requestAnimationFrame(updateShadows);
+                }
+            }
+
+            window.addEventListener('pointermove', onPointerMove, {passive: true});
+            window.addEventListener('resize', function () {
+                requestAnimationFrame(updateShadows);
+            }, {passive: true});
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', updateShadows);
+            } else {
+                updateShadows();
+            }
+        })();
     </script>
 
     <body>

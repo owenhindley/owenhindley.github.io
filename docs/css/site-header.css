@@ -56,7 +56,8 @@ header aside {
 
 header .taglines {
   display: block;
-  width: auto; }
+  width: auto;
+  line-height: 5.2em; }
 
 @media (max-width: 1024px) {
   header {
