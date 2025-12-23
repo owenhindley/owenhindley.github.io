@@ -95,8 +95,8 @@
                         var offsetX = Math.round(Math.cos(angle) * distance);
                         var offsetY = Math.round(Math.sin(angle) * distance);
                         var blur = Math.max(2, Math.round(distance / 2));
-                        var scale = 1 + Math.min(0.1, ((0.1 * 10) / Math.pow(distance, 2)));
-                        var offsetScale = Math.min(2, ((1 * 200) / Math.pow(distance, 2)));
+                        var scale = 1 + Math.min(0.05, ((0.1 * 10) / Math.pow(distance, 2)));
+                        var offsetScale = Math.min(1.2, ((1 * 200) / Math.pow(distance, 2)));
                         el.style.transform = 'translate(' + offsetX * offsetScale + 'px, ' + offsetY * offsetScale + 'px) scale(' + scale + ')';
                     });
                 }
