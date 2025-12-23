@@ -506,7 +506,6 @@ header aside {
     font-size: 0.75em; }
 
 header .taglines {
-  display: block;
   width: auto;
   line-height: 5.2em; }
 
@@ -866,6 +865,8 @@ li {
 
 @media (max-width: 1024px) {
   #splashVideo {
+    display: none; }
+  .desktop-only {
     display: none; } }
 
 main {
