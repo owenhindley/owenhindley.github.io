@@ -634,14 +634,13 @@ body.blogpost section {
     font-style: normal;
     font-weight: bold;
     margin-bottom: 2em;
-    font-size: 1em;
-    max-width: 600px; }
+    font-size: 1.5em; }
     body.blogpost section p em {
       background-color: white;
       color: black; }
   body.blogpost section ul,
   body.blogpost section li {
-    max-width: 600px; }
+    list-style: disc !important; }
   body.blogpost section h3 {
     background-color: white;
     color: black;
@@ -652,6 +651,8 @@ body.blogpost section {
     align-self: center;
     margin: auto;
     display: flex;
+    margin-top: 4em;
+    margin-bottom: 4em;
     border: 1px solid gray; }
   body.blogpost section pre {
     width: 80%;

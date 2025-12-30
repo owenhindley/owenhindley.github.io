@@ -9,12 +9,11 @@ body.blogpost {
 			color: invert($textColor);
 			margin-left: -0.5em;
 			padding-left: 0.5em;
-            margin-top:0.5em;
+			margin-top: 0.5em;
 			// padding-top: 0.5em;
 			padding-bottom: 0.5em;
 		}
 	}
-    
 
 	section {
 		margin-left: -2vw;
@@ -26,8 +25,8 @@ body.blogpost {
 			font-style: normal;
 			font-weight: bold;
 			margin-bottom: 2em;
-			font-size: 1em;
-			max-width: 600px;
+			font-size: 1.5em;
+			// max-width: 600px;
 
 			em {
 				background-color: $textColor;
@@ -37,7 +36,8 @@ body.blogpost {
 
 		ul,
 		li {
-			max-width: 600px;
+			// max-width: 600px;
+			list-style: disc !important;
 		}
 
 		h3 {
@@ -52,6 +52,8 @@ body.blogpost {
 			align-self: center;
 			margin: auto;
 			display: flex;
+			margin-top: 4em;
+			margin-bottom: 4em;
 
 			border: 1px solid darken($textColor, 50);
 		}
