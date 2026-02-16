@@ -1,86 +1,151 @@
 <!DOCTYPE html>
 <html>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<meta charset="utf-8">
-<title>Owen Hindley | Digital Artist &amp; Creative Technologist</title>
-<meta name="description"
+    <meta charset="utf-8">
+    <title>Owen Hindley | Digital Artist &amp; Creative Technologist</title>
+    <meta name="description"
     content="Owen Hindley is a digital artist creating experiences for VR, theatre, installations, games, performance and the web using software, electronics and sound.">
-<meta name="author" content="Owen Hindley">
-<meta property="og:url" content="http://www.owenhindley.co.uk">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Owen Hindley">
-<meta property="og:image" content="http://www.owenhindley.co.uk/images/sharing-image.jpg">
-<meta property="og:description"
+    <meta name="author" content="Owen Hindley">
+    <meta property="og:url" content="http://www.owenhindley.co.uk">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Owen Hindley">
+    <meta property="og:image" content="http://www.owenhindley.co.uk/images/sharing-image.jpg">
+    <meta property="og:description"
     content="Owen Hindley is a digital artist creating experiences for VR, theatre, installations, games, performance and the web using software, electronics and sound.">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Owen Hindley Portfolio">
-<meta name="twitter:description"
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Owen Hindley Portfolio">
+    <meta name="twitter:description"
     content="Owen Hindley is a digital artist creating experiences for VR, theatre, installations, games, performance and the web using software, electronics and sound.">
 
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" href="images/favicon.png">
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://use.typekit.net/bio5jjx.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://use.typekit.net/bio5jjx.css">
 
-<link rel="stylesheet" href="css/normalize.css">
-<link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
 
-<script>
-    function OnNavChange(e) {
-        var main = document.querySelector('main')
-        main.className = e;
-        //main.scrollIntoView({behavior: "smooth"});
-        // close nav
-        document
-            .querySelector("#nav-toggle")
-            .checked = false;
-    }
+    <script>
+        function OnNavChange(e) {
+            var main = document.querySelector('main')
+            main.className = e;
+            //main.scrollIntoView({behavior: "smooth"});
+            // close nav
+            document
+                .querySelector("#nav-toggle")
+                .checked = false;
+        }
 
-    function GoToBlogpost(name) {
-        document.location.href = document.location.origin + "/blogposts/" + name
-    }
+        function GoToBlogpost(name) {
+            document.location.href = document.location.origin + "/blogposts/" + name
+        }
 
-    /*var videoElement;
-    document.addEventListener("DOMContentLoaded", function () {
-        videoElement = document.getElementById('splashVideo');
-        document.addEventListener('scroll', (e) => {
-            var opacity = 0.0;
-            if (window.scrollY < videoElement.offsetHeight) {
-                opacity = (videoElement.offsetHeight - (window.scrollY * 4.0)) / videoElement.offsetHeight;
+        // Pointer-based dynamic drop-shadow for elements with class "inverted"
+        (function () {
+            // Detect touch-capable devices and skip the effect there
+            var isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints && navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints && navigator.msMaxTouchPoints > 0) || (window.matchMedia && window.matchMedia('(pointer: coarse)').matches);
+            if (isTouch) {
+                // Don't attach pointer listeners on touch devices
+                return;
             }
-            opacity = Math.min(0.5, Math.max(0.0, opacity));
-            videoElement.style.opacity = opacity;
-        });
 
-    });
-    */
-</script>
+            var lastPos = {
+                x: window.innerWidth / 2,
+                y: window.innerHeight / 2
+            };
+            var rafPending = false;
 
-<body>
+            function updateDynamicElements() {
+                rafPending = false;
+                var invertedElements = Array.from(document.querySelectorAll('.inverted'));
+                if (invertedElements.length > 0) {
 
-    <!-- <video id="splashVideo" muted="" loop="" autoplay="" data-src="images/video/test-header-video" class="visible">
+                    invertedElements.forEach(function (el) {
+                        var rect = el.getBoundingClientRect();
+                        var ex = rect.left + rect.width / 2;
+                        var ey = rect.top + rect.height / 2;
+                        var dx = lastPos.x - ex;
+                        var dy = lastPos.y - ey;
+                        var angle = Math.atan2(dy, dx);
+                        var distance = Math.min(40, Math.hypot(dx, dy) / 12);
+                        distance = 2;
+                        var offsetX = Math.round(Math.cos(angle) * distance);
+                        var offsetY = Math.round(Math.sin(angle) * distance);
+                        var blur = Math.max(4, Math.round(distance / 2));
+                        blur = 2
+                        var color = 'rgba(1,0,0,1)';
+                        el.style.filter = 'drop-shadow(' + offsetX + 'px ' + offsetY + 'px ' + blur + 'px red)' + ' drop-shadow(' + offsetX * 2 + 'px ' + offsetY * 2 + 'px ' + blur + 'px blue)';
+                    });
+                }
+
+                var articleThumbs = Array.from(document.querySelectorAll('article .thumbImg'));
+                if (articleThumbs.length > 0) {
+                    articleThumbs.forEach(function (el) {
+                        var rect = el.getBoundingClientRect();
+                        var ex = rect.left + rect.width / 2;
+                        var ey = rect.top + rect.height / 2;
+                        var dx = lastPos.x - ex;
+                        var dy = lastPos.y - ey;
+                        var angle = Math.atan2(dy, dx);
+                        var distance = Math.min(40, Math.hypot(dx, dy) / 12) * 0.25;
+                        var offsetX = Math.round(Math.cos(angle) * distance);
+                        var offsetY = Math.round(Math.sin(angle) * distance);
+                        var blur = Math.max(2, Math.round(distance / 2));
+                        var scale = 1 + Math.min(0.05, ((0.1 * 10) / Math.pow(distance, 2)));
+                        var offsetScale = Math.min(1.2, ((1 * 200) / Math.pow(distance, 2)));
+                        el.style.transform = 'translate(' + offsetX * offsetScale + 'px, ' + offsetY * offsetScale + 'px) scale(' + scale + ')';
+                    });
+                }
+
+            }
+
+            function onPointerMove(e) {
+                lastPos.x = e.clientX;
+                lastPos.y = e.clientY;
+                if (!rafPending) {
+                    rafPending = true;
+                    requestAnimationFrame(updateDynamicElements);
+                }
+            }
+
+            window.addEventListener('pointermove', onPointerMove, {passive: true});
+            window.addEventListener('resize', function () {
+                requestAnimationFrame(updateDynamicElements);
+            }, {passive: true});
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', updateDynamicElements);
+            } else {
+                updateDynamicElements();
+            }
+        })();
+    </script>
+
+    <body>
+
+        <!-- <video id="splashVideo" muted="" loop="" autoplay="" data-src="images/video/test-header-video" class="visible">
         <source src="images/video/header-video-short.webm">
         <source src="images/video/header-video-short.mp4">
     </video>
     <div id="video-overlay"></div> -->
 
-    <div class="container">
+        <div class="container">
 
-        <header>
+            <header>
 
-            <aside>
-                <!-- <h3 class="inverted">Owen Hindley</h3> -->
-                <p>owenhindley at hotmail dot com<br />
-                    +354 762 0292<br />
-                    @owenhindley<br />
+                <aside>
+                    <!-- <h3 class="inverted">Owen Hindley</h3> -->
+                    <p>owenhindley at hotmail dot com<br/>
+                    +354 762 0292<br/>
+                    @owenhindley<br/>
                     Reykjavík / Worldwide</p>
 
-                <a class="social-link" id="github-link" href="https://github.com/owenhindley" target="_blank">g</a>
-                <a class="social-link" id="instagram-link" href="https://www.instagram.com/owenhindley/"
+                    <a class="social-link" id="github-link" href="https://github.com/owenhindley" target="_blank">g</a>
+                    <a class="social-link" id="instagram-link" href="https://www.instagram.com/owenhindley/"
                     target="_blank">i</a>
                 </h6>
             </aside>
@@ -126,45 +191,47 @@
                 </label>
             </nav>
 
-            <div class="taglines">
-                <p>Hi there! I'm Owen.<br />
-                    I'm a creative, a developer and an artist.<br />
-                    I create work for spaces, screens and stages.<br />
-                    Collaborations from small to very large.
+            <div class="taglines desktop-only">
+                <p>I'm Owen, <span class="inverted">digital artist</span>, <span class="inverted">director</span> and <span class="inverted">engineer</span>.</p>
+
+                <p>I create work for <span class="inverted">spaces</span>, <span class="inverted">screens</span> and <span class="inverted">stages</span>.<br/></p>
+            </p>
+
+            <p class="small">
+                    I combine strong narratives and human-centered aesthetics with technology to create experiences across theatre, interactive media, virtual reality, live shows and video games.
                 </p>
-            </div>
-            <!-- <p>I've created VR theatre, interactive music experiences, an enormous game of PONG, a pinata-smashing robot, music videos, and video games.</p> -->
-            <!-- <p>Here's the story so far :</p> -->
+        </div>
+        <!-- <p>I've created VR theatre, interactive music experiences, an enormous game of PONG, a pinata-smashing robot, music videos, and video games.</p> -->
+        <!-- <p>Here's the story so far :</p> -->
 
-        </header>
+    </header>
 
-        <main class="featured">
+    <main class="featured">
 
-            
-            
-            
-            
-            
-            
+        
+        
+        
+        
+        
+        
 
-            
-            
+        
+        
 
-            <section class="featured">
-                <header>
-                    <h6 class="inverted">
-                        <strong>Featured Projects</strong>
-                    </h6>
-                    <!-- <p>These are pieces which I've either directed myself or been part of the main creative team.</p> -->
-                </header>
-                <div class="article-collection">
+        <section class="featured">
+            <header>
+                <h6 class="inverted">
+                    <strong>Featured Projects</strong>
+                </h6>
+                <!-- <p>These are pieces which I've either directed myself or been part of the main creative team.</p> -->
+            </header>
+            <div class="article-collection">
 
-                    
+                
                     <article id="fallax" class="all large">
                         <a href="/fallax">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/fallax-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/fallax-thumb.jpg);"></div>
 
                             <header>
 
@@ -177,12 +244,11 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="flaekt" class="all ">
                         <a href="/flaekt">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/flaekt-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/flaekt-thumb.jpg);"></div>
 
                             <header>
 
@@ -195,12 +261,11 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="serstaedan" class="all ">
                         <a href="/serstaedan">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/serstaedan-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/serstaedan-thumb.jpg);"></div>
 
                             <header>
 
@@ -213,12 +278,11 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="grex-lucis" class="all large">
                         <a href="/grex-lucis">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/grex-lucis-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/grex-lucis-thumb.jpg);"></div>
 
                             <header>
 
@@ -231,12 +295,11 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="harmonic-dream-sequence" class="all ">
                         <a href="/harmonic-dream-sequence">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/harmonic-dream-sequence-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/harmonic-dream-sequence-thumb.jpg);"></div>
 
                             <header>
 
@@ -249,12 +312,11 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="horizons-vr" class="all large">
                         <a href="/horizons-vr">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/horizons-vr-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/horizons-vr-thumb.jpg);"></div>
 
                             <header>
 
@@ -267,12 +329,11 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="tek-tek-tek" class="all ">
                         <a href="/tek-tek-tek">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/tek-tek-tek-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/tek-tek-tek-thumb.jpg);"></div>
 
                             <header>
 
@@ -285,12 +346,11 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="inki" class="all ">
                         <a href="/inki">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/inki-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/inki-thumb.jpg);"></div>
 
                             <header>
 
@@ -303,12 +363,11 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="harpa-pong" class="all ">
                         <a href="/harpa-pong">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/harpa-pong-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/harpa-pong-thumb.jpg);"></div>
 
                             <header>
 
@@ -321,12 +380,11 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="lambchild" class="all large">
                         <a href="/lambchild">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/lambchild-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/lambchild-thumb.jpg);"></div>
 
                             <header>
 
@@ -339,12 +397,11 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="kassinn" class="all large">
                         <a href="/kassinn">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/kassinn-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/kassinn-thumb.jpg);"></div>
 
                             <header>
 
@@ -357,12 +414,11 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="universe-of-technical-images" class="all ">
                         <a href="/universe-of-technical-images">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/universe-of-technical-images-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/universe-of-technical-images-thumb.jpg);"></div>
 
                             <header>
 
@@ -375,38 +431,54 @@
                         </a>
 
                     </article>
-                    
-
-                    <article></article>
-
-                    <article id="link-to-all" class="all">
-                        <a href="#" onclick="OnNavChange('all')">
+                
+                    <article id="motet" class="all ">
+                        <a href="/motet">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/google-web-lab-thumb.jpg);"></div>
+                                style="background-image:url(images/projects/thumbs/motet-thumb.jpg);"></div>
+
                             <header>
-                                <h4>All Projects</h4>
+
+                                <h4>MOTET</h4>
+                                <summary>Audio-visual project (with Þorsteinn Eyfjörð)</summary>
+                                <summary>Ongoing</summary>
+
                             </header>
+
                         </a>
+
                     </article>
+                
 
-                </div>
-            </section>
+                <article></article>
 
-            <section class="all">
-                <header>
-                    <h6 class="inverted">
-                        <strong>All Projects</strong>
-                    </h6>
-                    <!-- <p>These are pieces which I've either directed myself or been part of the main creative team.</p> -->
-                </header>
-                <div class="article-collection">
+                <article id="link-to-all" class="all">
+                    <a href="#" onclick="OnNavChange('all')">
+                        <div class="thumbImg"
+                                style="background-image:url(images/projects/thumbs/google-web-lab-thumb.jpg);"></div>
+                        <header>
+                            <h4>All Projects</h4>
+                        </header>
+                    </a>
+                </article>
 
-                    
+            </div>
+        </section>
+
+        <section class="all">
+            <header>
+                <h6 class="inverted">
+                    <strong>All Projects</strong>
+                </h6>
+                <!-- <p>These are pieces which I've either directed myself or been part of the main creative team.</p> -->
+            </header>
+            <div class="article-collection">
+
+                
                     <article id="fallax" class="all large">
                         <a href="/fallax">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/fallax-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/fallax-thumb.jpg);"></div>
 
                             <header>
 
@@ -419,12 +491,11 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="flaekt" class="all ">
                         <a href="/flaekt">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/flaekt-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/flaekt-thumb.jpg);"></div>
 
                             <header>
 
@@ -437,12 +508,11 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="serstaedan" class="all ">
                         <a href="/serstaedan">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/serstaedan-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/serstaedan-thumb.jpg);"></div>
 
                             <header>
 
@@ -455,12 +525,11 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="grex-lucis" class="all large">
                         <a href="/grex-lucis">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/grex-lucis-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/grex-lucis-thumb.jpg);"></div>
 
                             <header>
 
@@ -473,12 +542,11 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="harmonic-dream-sequence" class="all ">
                         <a href="/harmonic-dream-sequence">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/harmonic-dream-sequence-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/harmonic-dream-sequence-thumb.jpg);"></div>
 
                             <header>
 
@@ -491,12 +559,11 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="surveyor" class="all ">
                         <a href="/surveyor">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/surveyor-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/surveyor-thumb.jpg);"></div>
 
                             <header>
 
@@ -509,12 +576,11 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="horizons-vr" class="all large">
                         <a href="/horizons-vr">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/horizons-vr-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/horizons-vr-thumb.jpg);"></div>
 
                             <header>
 
@@ -527,12 +593,11 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="longer-shadows-softer-stones" class="all ">
                         <a href="/longer-shadows-softer-stones">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/longer-shadows-softer-stones-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/longer-shadows-softer-stones-thumb.jpg);"></div>
 
                             <header>
 
@@ -545,12 +610,11 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="tek-tek-tek" class="all ">
                         <a href="/tek-tek-tek">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/tek-tek-tek-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/tek-tek-tek-thumb.jpg);"></div>
 
                             <header>
 
@@ -563,12 +627,11 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="inki" class="all ">
                         <a href="/inki">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/inki-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/inki-thumb.jpg);"></div>
 
                             <header>
 
@@ -581,12 +644,11 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="harpa-pong" class="all ">
                         <a href="/harpa-pong">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/harpa-pong-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/harpa-pong-thumb.jpg);"></div>
 
                             <header>
 
@@ -599,12 +661,11 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="lambchild" class="all large">
                         <a href="/lambchild">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/lambchild-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/lambchild-thumb.jpg);"></div>
 
                             <header>
 
@@ -617,12 +678,11 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="kassinn" class="all large">
                         <a href="/kassinn">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/kassinn-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/kassinn-thumb.jpg);"></div>
 
                             <header>
 
@@ -635,12 +695,11 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="parallel-people" class="all ">
                         <a href="/parallel-people">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/parallel-people-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/parallel-people-thumb.jpg);"></div>
 
                             <header>
 
@@ -653,12 +712,11 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="under-the-surface" class="all large">
                         <a href="/under-the-surface">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/under-the-surface-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/under-the-surface-thumb.jpg);"></div>
 
                             <header>
 
@@ -671,12 +729,11 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="universe-of-technical-images" class="all ">
                         <a href="/universe-of-technical-images">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/universe-of-technical-images-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/universe-of-technical-images-thumb.jpg);"></div>
 
                             <header>
 
@@ -689,12 +746,11 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="hidden-people" class="all large">
                         <a href="/hidden-people">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/hidden-people-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/hidden-people-thumb.jpg);"></div>
 
                             <header>
 
@@ -707,12 +763,11 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="motet" class="all ">
                         <a href="/motet">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/motet-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/motet-thumb.jpg);"></div>
 
                             <header>
 
@@ -725,12 +780,11 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="aristokrasia" class="all large">
                         <a href="/aristokrasia">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/aristokrasia-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/aristokrasia-thumb.jpg);"></div>
 
                             <header>
 
@@ -743,12 +797,11 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="this-machine-throws-pixels" class="all ">
                         <a href="/this-machine-throws-pixels">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/this-machine-throws-pixels-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/this-machine-throws-pixels-thumb.jpg);"></div>
 
                             <header>
 
@@ -761,12 +814,11 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="tid" class="all ">
                         <a href="/tid">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/tid-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/tid-thumb.jpg);"></div>
 
                             <header>
 
@@ -779,12 +831,11 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="lnoae" class="all ">
                         <a href="/lnoae">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/lnoae-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/lnoae-thumb.jpg);"></div>
 
                             <header>
 
@@ -797,12 +848,11 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="out-of-sync" class="all large">
                         <a href="/out-of-sync">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/out-of-sync-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/out-of-sync-thumb.jpg);"></div>
 
                             <header>
 
@@ -815,12 +865,11 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="gale" class="all large">
                         <a href="/gale">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/gale-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/gale-thumb.jpg);"></div>
 
                             <header>
 
@@ -833,12 +882,11 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="unconfined" class="all large">
                         <a href="/unconfined">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/unconfined-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/unconfined-thumb.jpg);"></div>
 
                             <header>
 
@@ -851,12 +899,11 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="moon-seat" class="all ">
                         <a href="/moon-seat">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/moon-seat-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/moon-seat-thumb.jpg);"></div>
 
                             <header>
 
@@ -869,12 +916,11 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="light-organ" class="all ">
                         <a href="/light-organ">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/light-organ-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/light-organ-thumb.jpg);"></div>
 
                             <header>
 
@@ -887,12 +933,11 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="sonar-visuals" class="all ">
                         <a href="/sonar-visuals">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/sonar-visuals-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/sonar-visuals-thumb.jpg);"></div>
 
                             <header>
 
@@ -905,12 +950,11 @@
                         </a>
 
                     </article>
-                    
-                    <article id="vive-launch-site" class="all ">
-                        <a href="/vive-launch-site">
+                
+                    <article id="vive-launch" class="all ">
+                        <a href="/vive-launch">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/vive-launch-site-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/vive-launch-thumb.jpg);"></div>
 
                             <header>
 
@@ -923,12 +967,11 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="mmorph" class="all large">
                         <a href="/mmorph">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/mmorph-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/mmorph-thumb.jpg);"></div>
 
                             <header>
 
@@ -941,12 +984,11 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="pinata-smasher" class="all ">
                         <a href="/pinata-smasher">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/pinata-smasher-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/pinata-smasher-thumb.jpg);"></div>
 
                             <header>
 
@@ -959,12 +1001,11 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="resonate-music" class="all large">
                         <a href="/resonate-music">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/resonate-music-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/resonate-music-thumb.jpg);"></div>
 
                             <header>
 
@@ -977,12 +1018,11 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="city-of-drones" class="all ">
                         <a href="/city-of-drones">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/city-of-drones-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/city-of-drones-thumb.jpg);"></div>
 
                             <header>
 
@@ -995,12 +1035,11 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="xbox-glitch" class="all ">
                         <a href="/xbox-glitch">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/xbox-glitch-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/xbox-glitch-thumb.jpg);"></div>
 
                             <header>
 
@@ -1013,12 +1052,11 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="spectra" class="all large">
                         <a href="/spectra">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/spectra-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/spectra-thumb.jpg);"></div>
 
                             <header>
 
@@ -1031,12 +1069,11 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="google-web-lab" class="all ">
                         <a href="/google-web-lab">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/google-web-lab-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/google-web-lab-thumb.jpg);"></div>
 
                             <header>
 
@@ -1049,37 +1086,36 @@
                         </a>
 
                     </article>
-                    
+                
 
-                    <article id="link-to-archive" class="all">
-                        <a href="#" onclick="OnNavChange('archive')">
-                            <div class="thumbImg"
+                <article id="link-to-archive" class="all">
+                    <a href="#" onclick="OnNavChange('archive')">
+                        <div class="thumbImg"
                                 style="background-image:url(images/projects/thumbs/archive-thumb.jpg);"></div>
-                            <header>
-                                <h4>Archive</h4>
-                                <summary>Previous &amp; early work</summary>
-                            </header>
-                        </a>
-                    </article>
-                </div>
-            </section>
+                        <header>
+                            <h4>Archive</h4>
+                            <summary>Previous &amp; early work</summary>
+                        </header>
+                    </a>
+                </article>
+            </div>
+        </section>
 
-            <section class="works">
-                <header>
-                    <h6 class="inverted">
-                        <strong>Individual Works &amp; Performances</strong>
-                    </h6>
-                    <!-- <p>These are pieces which I've either directed myself or been part of the main creative team.</p> -->
-                </header>
-                <div class="article-collection">
+        <section class="works">
+            <header>
+                <h6 class="inverted">
+                    <strong>Individual Works &amp; Performances</strong>
+                </h6>
+                <!-- <p>These are pieces which I've either directed myself or been part of the main creative team.</p> -->
+            </header>
+            <div class="article-collection">
 
-                    
+                
                     <article id="fallax"
                         class="works featured">
                         <a href="/fallax">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/fallax-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/fallax-thumb.jpg);"></div>
 
                             <header>
 
@@ -1092,13 +1128,12 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="grex-lucis"
                         class="works featured">
                         <a href="/grex-lucis">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/grex-lucis-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/grex-lucis-thumb.jpg);"></div>
 
                             <header>
 
@@ -1111,13 +1146,12 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="harmonic-dream-sequence"
                         class="works featured">
                         <a href="/harmonic-dream-sequence">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/harmonic-dream-sequence-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/harmonic-dream-sequence-thumb.jpg);"></div>
 
                             <header>
 
@@ -1130,13 +1164,12 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="surveyor"
                         class="works ">
                         <a href="/surveyor">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/surveyor-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/surveyor-thumb.jpg);"></div>
 
                             <header>
 
@@ -1149,13 +1182,12 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="horizons-vr"
                         class="works featured">
                         <a href="/horizons-vr">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/horizons-vr-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/horizons-vr-thumb.jpg);"></div>
 
                             <header>
 
@@ -1168,13 +1200,12 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="tek-tek-tek"
                         class="works featured">
                         <a href="/tek-tek-tek">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/tek-tek-tek-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/tek-tek-tek-thumb.jpg);"></div>
 
                             <header>
 
@@ -1187,13 +1218,12 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="harpa-pong"
                         class="works featured">
                         <a href="/harpa-pong">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/harpa-pong-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/harpa-pong-thumb.jpg);"></div>
 
                             <header>
 
@@ -1206,13 +1236,12 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="kassinn"
                         class="works featured">
                         <a href="/kassinn">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/kassinn-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/kassinn-thumb.jpg);"></div>
 
                             <header>
 
@@ -1225,13 +1254,12 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="parallel-people"
                         class="works ">
                         <a href="/parallel-people">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/parallel-people-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/parallel-people-thumb.jpg);"></div>
 
                             <header>
 
@@ -1244,13 +1272,12 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="universe-of-technical-images"
                         class="works featured">
                         <a href="/universe-of-technical-images">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/universe-of-technical-images-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/universe-of-technical-images-thumb.jpg);"></div>
 
                             <header>
 
@@ -1263,13 +1290,12 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="hidden-people"
                         class="works ">
                         <a href="/hidden-people">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/hidden-people-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/hidden-people-thumb.jpg);"></div>
 
                             <header>
 
@@ -1282,13 +1308,12 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="motet"
-                        class="works ">
+                        class="works featured">
                         <a href="/motet">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/motet-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/motet-thumb.jpg);"></div>
 
                             <header>
 
@@ -1301,13 +1326,12 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="tid"
                         class="works ">
                         <a href="/tid">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/tid-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/tid-thumb.jpg);"></div>
 
                             <header>
 
@@ -1320,13 +1344,12 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="this-machine-throws-pixels"
                         class="works ">
                         <a href="/this-machine-throws-pixels">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/this-machine-throws-pixels-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/this-machine-throws-pixels-thumb.jpg);"></div>
 
                             <header>
 
@@ -1339,13 +1362,12 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="aristokrasia"
                         class="works ">
                         <a href="/aristokrasia">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/aristokrasia-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/aristokrasia-thumb.jpg);"></div>
 
                             <header>
 
@@ -1358,13 +1380,12 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="out-of-sync"
                         class="works ">
                         <a href="/out-of-sync">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/out-of-sync-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/out-of-sync-thumb.jpg);"></div>
 
                             <header>
 
@@ -1377,13 +1398,12 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="gale"
                         class="works ">
                         <a href="/gale">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/gale-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/gale-thumb.jpg);"></div>
 
                             <header>
 
@@ -1396,13 +1416,12 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="moon-seat"
                         class="works ">
                         <a href="/moon-seat">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/moon-seat-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/moon-seat-thumb.jpg);"></div>
 
                             <header>
 
@@ -1415,13 +1434,12 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="mmorph"
                         class="works ">
                         <a href="/mmorph">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/mmorph-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/mmorph-thumb.jpg);"></div>
 
                             <header>
 
@@ -1434,27 +1452,26 @@
                         </a>
 
                     </article>
-                    
-                </div>
-            </section>
+                
+            </div>
+        </section>
 
-            <section class="collaboration">
-                <header>
-                    <h6 class="inverted">
-                        <strong>Commercial Work &amp; Collaborations</strong>
-                    </h6>
+        <section class="collaboration">
+            <header>
+                <h6 class="inverted">
+                    <strong>Commercial Work &amp; Collaborations</strong>
+                </h6>
 
-                    <p class="small">More commercial projects where I've been brought in as a contractor or
+                <p class="small">More commercial projects where I've been brought in as a contractor or
                         collaborator, often on the technical side of things.</p>
-                </header>
-                <div class="article-collection">
-                    
+            </header>
+            <div class="article-collection">
+                
                     <article id="flaekt"
                         class="collaboration featured">
                         <a href="/flaekt">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/flaekt-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/flaekt-thumb.jpg);"></div>
 
                             <header>
 
@@ -1469,13 +1486,12 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="serstaedan"
                         class="collaboration featured">
                         <a href="/serstaedan">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/serstaedan-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/serstaedan-thumb.jpg);"></div>
 
                             <header>
 
@@ -1490,13 +1506,12 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="longer-shadows-softer-stones"
                         class="collaboration ">
                         <a href="/longer-shadows-softer-stones">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/longer-shadows-softer-stones-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/longer-shadows-softer-stones-thumb.jpg);"></div>
 
                             <header>
 
@@ -1511,13 +1526,12 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="inki"
                         class="collaboration featured">
                         <a href="/inki">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/inki-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/inki-thumb.jpg);"></div>
 
                             <header>
 
@@ -1532,13 +1546,12 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="lambchild"
                         class="collaboration featured">
                         <a href="/lambchild">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/lambchild-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/lambchild-thumb.jpg);"></div>
 
                             <header>
 
@@ -1553,13 +1566,12 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="under-the-surface"
                         class="collaboration ">
                         <a href="/under-the-surface">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/under-the-surface-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/under-the-surface-thumb.jpg);"></div>
 
                             <header>
 
@@ -1574,13 +1586,12 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="lnoae"
                         class="collaboration ">
                         <a href="/lnoae">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/lnoae-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/lnoae-thumb.jpg);"></div>
 
                             <header>
 
@@ -1595,13 +1606,12 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="unconfined"
                         class="collaboration ">
                         <a href="/unconfined">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/unconfined-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/unconfined-thumb.jpg);"></div>
 
                             <header>
 
@@ -1616,13 +1626,12 @@
                         </a>
 
                     </article>
-                    
-                    <article id="vive-launch-site"
+                
+                    <article id="vive-launch"
                         class="collaboration ">
-                        <a href="/vive-launch-site">
+                        <a href="/vive-launch">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/vive-launch-site-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/vive-launch-thumb.jpg);"></div>
 
                             <header>
 
@@ -1637,13 +1646,12 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="sonar-visuals"
                         class="collaboration ">
                         <a href="/sonar-visuals">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/sonar-visuals-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/sonar-visuals-thumb.jpg);"></div>
 
                             <header>
 
@@ -1658,13 +1666,12 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="light-organ"
                         class="collaboration ">
                         <a href="/light-organ">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/light-organ-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/light-organ-thumb.jpg);"></div>
 
                             <header>
 
@@ -1679,13 +1686,12 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="resonate-music"
                         class="collaboration ">
                         <a href="/resonate-music">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/resonate-music-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/resonate-music-thumb.jpg);"></div>
 
                             <header>
 
@@ -1700,13 +1706,12 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="pinata-smasher"
                         class="collaboration ">
                         <a href="/pinata-smasher">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/pinata-smasher-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/pinata-smasher-thumb.jpg);"></div>
 
                             <header>
 
@@ -1721,13 +1726,12 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="spectra"
                         class="collaboration ">
                         <a href="/spectra">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/spectra-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/spectra-thumb.jpg);"></div>
 
                             <header>
 
@@ -1742,13 +1746,12 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="xbox-glitch"
                         class="collaboration ">
                         <a href="/xbox-glitch">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/xbox-glitch-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/xbox-glitch-thumb.jpg);"></div>
 
                             <header>
 
@@ -1763,13 +1766,12 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="city-of-drones"
                         class="collaboration ">
                         <a href="/city-of-drones">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/city-of-drones-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/city-of-drones-thumb.jpg);"></div>
 
                             <header>
 
@@ -1784,13 +1786,12 @@
                         </a>
 
                     </article>
-                    
+                
                     <article id="google-web-lab"
                         class="collaboration ">
                         <a href="/google-web-lab">
                             <div class="thumbImg"
-                                style="background-image:url(images/projects/thumbs/google-web-lab-thumb.jpg);">
-                            </div>
+                                style="background-image:url(images/projects/thumbs/google-web-lab-thumb.jpg);"></div>
 
                             <header>
 
@@ -1805,18 +1806,31 @@
                         </a>
 
                     </article>
-                    
-                </div>
-            </section>
+                
+            </div>
+        </section>
 
-            <section class="blogpost">
-                <header>
-                    <h6 class="inverted">
-                        <strong>Articles &amp; Tutorials</strong>
-                    </h6>
-                </header>
-                <div class="article-collection">
-                    
+        <section class="blogpost">
+            <header>
+                <h6 class="inverted">
+                    <strong>Articles &amp; Tutorials</strong>
+                </h6>
+            </header>
+            <div class="article-collection">
+                
+
+                    <article id="year-review-2025" class="blogpost featured">
+                        <a href="blogposts/year-review-2025">
+                            <div class="thumbImg"
+                                style="background-image:url(images/blog/thumbs/year-review-2025-thumb.jpg);"></div>
+                            <header>
+                                <h4>2025 in reivew</h4>
+                                <summary>A look back on what went on in 2025 for me, work-wise.</summary>
+                                <summary>December 2025</summary>
+                            </header>
+                        </a>
+                    </article>
+                
 
                     <article id="depth-scatter" class="blogpost featured">
                         <a href="blogposts/depth-scatter">
@@ -1829,20 +1843,20 @@
                             </header>
                         </a>
                     </article>
-                    
-                </div>
-            </section>
+                
+            </div>
+        </section>
 
-            <section class="talks simple-list">
-                <header>
-                    <h6 class="inverted">
-                        <strong>Talks &amp; Education</strong>
-                    </h6>
-                    <p class="small">When I've been asked to lecture or run workshops for students or institutions about
+        <section class="talks simple-list">
+            <header>
+                <h6 class="inverted">
+                    <strong>Talks &amp; Education</strong>
+                </h6>
+                <p class="small">When I've been asked to lecture or run workshops for students or institutions about
                         my work or projects.</p>
-                </header>
-                <div class="article-collection">
-                    
+            </header>
+            <div class="article-collection">
+                
                     <article id="depth-scatter-london" class="talks">
                         <header>
                             <ol>
@@ -1863,7 +1877,7 @@
                         </header>
                         
                     </article>
-                    
+                
                     <article id="bridging-experiences" class="talks">
                         <header>
                             <ol>
@@ -1884,7 +1898,7 @@
                         </header>
                         
                     </article>
-                    
+                
                     <article id="lhi-digital-exhibitions" class="talks">
                         <header>
                             <ol>
@@ -1905,7 +1919,7 @@
                         </header>
                         
                     </article>
-                    
+                
                     <article id="live-visual-machines-touchdesigner-raflost" class="talks">
                         <header>
                             <ol>
@@ -1926,7 +1940,7 @@
                         </header>
                         
                     </article>
-                    
+                
                     <article id="vr-masterclass" class="talks">
                         <header>
                             <ol>
@@ -1947,7 +1961,7 @@
                         </header>
                         
                     </article>
-                    
+                
                     <article id="lines-of-loving" class="talks">
                         <header>
                             <ol>
@@ -1968,7 +1982,7 @@
                         </header>
                         
                     </article>
-                    
+                
                     <article id="who-are-huldufugl" class="talks">
                         <header>
                             <ol>
@@ -1989,7 +2003,7 @@
                         </header>
                         
                     </article>
-                    
+                
                     <article id="worlding-deserts" class="talks">
                         <header>
                             <ol>
@@ -2010,7 +2024,7 @@
                         </header>
                         
                     </article>
-                    
+                
                     <article id="hyper-personal-introduction" class="talks">
                         <header>
                             <ol>
@@ -2031,7 +2045,7 @@
                         </header>
                         
                     </article>
-                    
+                
                     <article id="tiny-for-massive" class="talks">
                         <header>
                             <ol>
@@ -2052,7 +2066,7 @@
                         </header>
                         
                     </article>
-                    
+                
                     <article id="tools-for-collaboration" class="talks">
                         <header>
                             <ol>
@@ -2073,7 +2087,7 @@
                         </header>
                         
                     </article>
-                    
+                
                     <article id="processes-for-creativity" class="talks">
                         <header>
                             <ol>
@@ -2094,7 +2108,7 @@
                         </header>
                         
                     </article>
-                    
+                
                     <article id="creative-tech-workshop-hyper" class="talks">
                         <header>
                             <ol>
@@ -2115,7 +2129,7 @@
                         </header>
                         
                     </article>
-                    
+                
                     <article id="design-for-vr" class="talks">
                         <header>
                             <ol>
@@ -2136,7 +2150,7 @@
                         </header>
                         
                     </article>
-                    
+                
                     <article id="dynamic-architecture" class="talks">
                         <header>
                             <ol>
@@ -2157,7 +2171,7 @@
                         </header>
                         
                     </article>
-                    
+                
                     <article id="creative-coding" class="talks">
                         <header>
                             <ol>
@@ -2178,17 +2192,17 @@
                         </header>
                         
                     </article>
-                    
-                </div>
-            </section>
+                
+            </div>
+        </section>
 
-            <section class="archive simple-list">
-                <h6 class="inverted">
-                    <strong>Project Archive</strong>
-                </h6>
-                <p class="small">Older projects that define my early career and interests.</p>
-                <div class="article-collection">
-                    
+        <section class="archive simple-list">
+            <h6 class="inverted">
+                <strong>Project Archive</strong>
+            </h6>
+            <p class="small">Older projects that define my early career and interests.</p>
+            <div class="article-collection">
+                
                     <article id="ray_ban_75th_anniversary_website" class="archive featured">
                         <a href="/archive/ray_ban_75th_anniversary_website">
                             <header>
@@ -2205,7 +2219,7 @@
                             </header>
                         </a>
                     </article>
-                    
+                
                     <article id="subsource_dubumentary" class="archive featured">
                         <a href="/archive/subsource_dubumentary">
                             <header>
@@ -2222,7 +2236,7 @@
                             </header>
                         </a>
                     </article>
-                    
+                
                     <article id="say_what" class="archive featured">
                         <a href="/archive/say_what">
                             <header>
@@ -2239,7 +2253,7 @@
                             </header>
                         </a>
                     </article>
-                    
+                
                     <article id="wizarding_world_of_harry_potter_online" class="archive featured">
                         <a href="/archive/wizarding_world_of_harry_potter_online">
                             <header>
@@ -2256,7 +2270,7 @@
                             </header>
                         </a>
                     </article>
-                    
+                
                     <article id="beatles_on_itunes" class="archive featured">
                         <a href="/archive/beatles_on_itunes">
                             <header>
@@ -2273,7 +2287,7 @@
                             </header>
                         </a>
                     </article>
-                    
+                
                     <article id="virtual_guru" class="archive featured">
                         <a href="/archive/virtual_guru">
                             <header>
@@ -2290,7 +2304,7 @@
                             </header>
                         </a>
                     </article>
-                    
+                
                     <article id="the_fallow_field" class="archive featured">
                         <a href="/archive/the_fallow_field">
                             <header>
@@ -2307,7 +2321,7 @@
                             </header>
                         </a>
                     </article>
-                    
+                
                     <article id="rave_realtime_video_editor" class="archive featured">
                         <a href="/archive/rave_realtime_video_editor">
                             <header>
@@ -2324,7 +2338,7 @@
                             </header>
                         </a>
                     </article>
-                    
+                
                     <article id="promo_video_you_heard_nothing" class="archive featured">
                         <a href="/archive/promo_video_you_heard_nothing">
                             <header>
@@ -2341,7 +2355,7 @@
                             </header>
                         </a>
                     </article>
-                    
+                
                     <article id="madame_tussauds_teen_idol" class="archive featured">
                         <a href="/archive/madame_tussauds_teen_idol">
                             <header>
@@ -2358,7 +2372,7 @@
                             </header>
                         </a>
                     </article>
-                    
+                
                     <article id="hitachi_interactive_tables" class="archive featured">
                         <a href="/archive/hitachi_interactive_tables">
                             <header>
@@ -2375,118 +2389,122 @@
                             </header>
                         </a>
                     </article>
-                    
-                </div>
-            </section>
+                
+            </div>
+        </section>
 
-            <section class="about">
-                <h6 class="inverted">
-                    <strong>About &amp; Bio</strong>
-                </h6>
-                <article>
-                    <section>
-                        <h5>Link to CV : <a
+        <section class="about">
+            <h6 class="inverted">
+                <strong>About &amp; Bio</strong>
+            </h6>
+            <article>
+                <section>
+                    <h5>Link to CV : <a
                                 href="https://docs.google.com/document/d/e/2PACX-1vSd1JAk3OiWXEYvDNtY49ZzNKxLP-kegM12-3PcGVa7kcZgv6ss3NtjDM3jSfYl_KInMLFNIIHPPcVz/pub">link</a>
-                            </a>
-                        </h5>
-                    </section>
-                    <section>
-                        <p>Owen (he/him) is a collaborative digital artist, working with software, sound, and
+                    </a>
+                </h5>
+            </section>
+            <section>
+                <p>Owen (he/him) is a collaborative digital artist, working with software, sound, and
                             electronics for the web, VR, performances, devices and installations.</p>
-                        <p>His commercial work has included serving as technical lead on large, cutting-edge projects
+                <p>His commercial work has included serving as technical lead on large, cutting-edge projects
                             for clients such as Oculus Studios, Google, Microsoft/Xbox, Samsung and Mercedes,
                             collaborating with digital creatives such as Universal Everything, FIELD and B-Reel. These
                             projects have ranged from an interactive web-connected musical installation at the London
                             Science Museum for Google, Web Lab, to a pneumatic live-streamed pinata-smashing robot.</p>
-                        <p>He is co-founder of <a href="http://huldufugl.is" target="_blank">Huldufugl</a>, a
+                <p>He is co-founder of <a href="http://huldufugl.is" target="_blank">Huldufugl</a>, a
                             Reykjavik-based theatre and events company experimenting with new mediums in theatre, both
                             technological and immersive.</p>
-                        <p>He is also co-founder of Horizons Studio, a London-based creative studio producing
+                <p>He is also co-founder of Horizons Studio, a London-based creative studio producing
                             interactive musical experiences in VR. Their debut title, Horizons VR was commissioned by
                             Google as a launch title for their Daydream platform, with releases on Oculus and HTC
                             platforms planned for 2019.</p>
-                    </section>
-                    <section class="small">
-                        <h6>Awards</h6>
-                        <ul>
-                            <li>Immersive Award, Fallax<a
+            </section>
+            <section class="small">
+                <h6>Awards</h6>
+                <ul>
+                    <li>Immersive Award, Fallax<a
                                     href="https://www.imaginefilmfestival.nl/en/this-was-imagine-2025-and-these-are-the-award-winners/"
                                     target="_blank">Imagine Fantastic Film Festival</a>
-                            </li>
-                            <li>Most Amazing Game Award, Kassinn / A Box In The Desert, <a
+                    </li>
+                    <li>Most Amazing Game Award, Kassinn / A Box In The Desert, <a
                                     href="https://amazestuff.tumblr.com/post/184139013534/a-maze-berlin-2019-award-winners"
                                     target="_blank">A MAZE Berlin 2019</a>
-                            </li>
-                            <li>Best Interactive Narrative Experience, Kassinn / A Box In The Desert, <a
+                    </li>
+                    <li>Best Interactive Narrative Experience, Kassinn / A Box In The Desert, <a
                                     href="https://raindance.org/raindance-immersive-award-winners-presented-by-bose/"
                                     target="_blank">Raindance Immersive 2019</a>
-                            </li>
-                            <li>Outstanding US Premiere, Kassinn / A Box In The Desert, <a href="https://sdfringe.org/"
+                    </li>
+                    <li>Outstanding US Premiere, Kassinn / A Box In The Desert, <a href="https://sdfringe.org/"
                                     target="_blank">San Diego Fringe Festival</a>
-                            </li>
-                            <li>Innovation In Performance Award, Kassinn / A Box In The Desert, <a
+                    </li>
+                    <li>Innovation In Performance Award, Kassinn / A Box In The Desert, <a
                                     href="https://www.facebook.com/Stoffholm/photos/now-and-then-we-come-across-work-that-takes-it-that-extra-lap-intotheunknown-by-/10155501339495855/"
                                     target="_blank">Stockholm Fringe Festival 2018</a>
-                            </li>
+                    </li>
 
-                            <li>Site Of The Month, Mmorph, <a href="https://thefwa.com/cases/mmorph" target="_blank">FWA
+                    <li>Site Of The Month, Mmorph, <a href="https://thefwa.com/cases/mmorph" target="_blank">FWA
                                     2016</a>
-                            </li>
-                            <li>FWA Insights, Mmorph, <a href="https://thefwa.com/article/insights-mmorph"
+                    </li>
+                    <li>FWA Insights, Mmorph, <a href="https://thefwa.com/article/insights-mmorph"
                                     target="_blank">FWA 2016</a>
-                            </li>
-                            <li>Honorable Mention, Mmorph, <a href="https://www.awwwards.com/sites/mmorph"
+                    </li>
+                    <li>Honorable Mention, Mmorph, <a href="https://www.awwwards.com/sites/mmorph"
                                     target="_blank">Awwwards 2016</a>
-                            </li>
+                    </li>
 
-                        </ul>
-                    </section>
-                    <section class="small">
-                        <h6>Nominations</h6>
-                        <ul>
-                            <li>Best Immersive Performance (Nomination), Parallel People, <a
+                </ul>
+            </section>
+            <section class="small">
+                <h6>Nominations</h6>
+                <ul>
+                    <li>Best Immersive Performance (Nomination), Parallel People, <a
                                     href="https://raindance.org/wp-content/uploads/2022/09/2022-Raindance-Immersive-FINAL.pdf"
                                     target="_blank">Raindance Immersive 2022</a>
-                            </li>
-                            <li>Sproti Ársins (Nomination), Kassinn / A Box In The Desert, <a
+                    </li>
+                    <li>Sproti Ársins (Nomination), Kassinn / A Box In The Desert, <a
                                     href="https://www.fil.is/frettir/1551/" target="_blank">Gríman (Icelandic Theatre
                                     Awards) 2020</a>
+                    </li>
+                    <li>Grand Prix (Nomination), Kassinn / A Box In The Desert, Stockholm Fringe Festival 2018
                             </li>
-                            <li>Grand Prix (Nomination), Kassinn / A Box In The Desert, Stockholm Fringe Festival 2018
-                            </li>
-                            <li>People's Choice Award (Nomination), Mmorph, <a
+                    <li>People's Choice Award (Nomination), Mmorph, <a
                                     href="https://thefwa.com/editorial/the-fwa-peoples-choice-award-pca-2016-vote-now"
                                     target="_blank">FWA 2018</a>
-                            </li>
-                        </ul>
-                    </section>
-                    <section class="small">
-                        <h6>Links</h6>
-                        <ul>
-                            <li>
-                                <a href="https://github.com/owenhindley/" target="_blank">Github</a>
-                            </li>
-                            <li>
-                                <a href="https://twitter.com/owen_hindley" target="_blank">Twitter</a>
-                            </li>
-                            <li>
-                                <a href="https://www.instagram.com/owenhindley/" target="_blank">Instagram</a>
-                            </li>
-                            <li>
-                                <a href="https://www.imdb.com/name/nm3918183" target="_blank">IMDB</a>
-                            </li>
-                        </ul>
-                    </section>
-
-                </article>
-
+                    </li>
+                </ul>
+            </section>
+            <section class="small">
+                <h6>Links</h6>
+                <ul>
+                    <li>
+                        <a href="https://github.com/owenhindley/" target="_blank">Github</a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/owen_hindley" target="_blank">Twitter</a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/owenhindley/" target="_blank">Instagram</a>
+                    </li>
+                    <li>
+                        <a href="https://www.imdb.com/name/nm3918183" target="_blank">IMDB</a>
+                    </li>
+                </ul>
             </section>
 
-        </main>
-        <footer>
-            <p>© Owen Hindley, 2025</p>
+        </article>
 
-        </footer>
+    </section>
 
-    </div>
+</main>
+<footer>
+    <p>© Owen Hindley, 2025</p>
+
+</footer>
+
+</div>
+
+<!-- 100% privacy-first analytics -->
+<script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+
 </body>

@@ -44,7 +44,7 @@ main section:not(.simple-list) article {
 			background-size: cover;
 			background-position: 50% 50%;
 			// opacity: 0.75;
-			transition: 0.25s;
+			transition: 0.5s;
 			// filter: grayscale(100%);
 		}
 	}
@@ -126,7 +126,7 @@ main section:not(.simple-list) article {
 	&:hover {
 		header {
 			background-color: lighten($backgroundColor, 20);
-			transform: scale(1.02);
+			// transform: scale(1.02);
 			// h4, summary {
 			//     color:invert($textColor);
 			// }
