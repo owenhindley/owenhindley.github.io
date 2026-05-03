@@ -453,19 +453,19 @@ main section:not(.simple-list) article {
   }
   main section:not(.simple-list) article.large {
     max-width: 80em;
-    margin-bottom: 8em;
+    margin-bottom: 10em;
   }
   main section:not(.simple-list) article.large .thumbImg {
     height: 25vw;
   }
   main section:not(.simple-list) article {
     float: left;
-    padding-top: 1em;
-    margin-bottom: 5em;
+    padding-top: 1.5em;
+    margin-bottom: 7em;
   }
   :not(.large) main section:not(.simple-list) article:nth-of-type(2n) {
-    margin-top: 8em;
-    margin-bottom: 8em;
+    margin-top: 10em;
+    margin-bottom: 10em;
   }
   :not(.large) main section:not(.simple-list) article:nth-of-type(5n) {
     margin-top: 2em;
@@ -475,10 +475,11 @@ main section:not(.simple-list) article {
     width: 90%;
     height: 13vw;
     float: left;
-    margin-bottom: 1em;
+    margin-bottom: 1.5em;
     background-size: cover;
     background-position: 50% 50%;
-    transition: 0.5s;
+    transition: 0.3s ease;
+    filter: grayscale(20%);
   }
 }
 @media (max-width: 1024px) {
@@ -486,20 +487,21 @@ main section:not(.simple-list) article {
     width: 100%;
     float: left;
     padding-top: 1em;
-    margin-bottom: 5em;
+    margin-bottom: 6em;
   }
   main section:not(.simple-list) article .thumbImg {
     width: 90%;
     height: 40vw;
     float: left;
-    margin-bottom: 1em;
+    margin-bottom: 1.5em;
     background-size: cover;
     background-position: 50% 50%;
-    transition: 0.25s;
+    transition: 0.3s ease;
+    filter: grayscale(20%);
   }
 }
 main section:not(.simple-list) article header {
-  transition: all 0.5s;
+  transition: all 0.3s ease;
   position: absolute;
   width: auto;
   height: auto;
@@ -507,27 +509,31 @@ main section:not(.simple-list) article header {
   left: 2em;
   max-width: 90%;
   background-color: #000000;
-  padding: 0.2em 0.2em 0 0;
+  padding: 0.3em 0.3em 0 0;
 }
 main section:not(.simple-list) article header h4 {
   display: block;
-  color: whitesmoke;
+  color: #f5f5f5;
+  font-weight: 600;
+  line-height: 1.3em;
 }
 main section:not(.simple-list) article header summary {
   display: block;
-  margin-top: 0.25em;
-  color: rgb(219.5, 219.5, 219.5);
+  margin-top: 0.4em;
+  color: #a0a0a0;
+  font-size: 0.95em;
+  line-height: 1.5em;
 }
 @media (max-width: 1024px) {
   main section:not(.simple-list) article header summary {
-    font-size: 0.8em;
+    font-size: 0.85em;
   }
   main section:not(.simple-list) article header summary.small {
-    font-size: 0.6em;
+    font-size: 0.65em;
   }
 }
 main section:not(.simple-list) article header summary.small {
-  font-size: 0.8em;
+  font-size: 0.85em;
 }
 @media (max-width: 1024px) {
   main section:not(.simple-list) article header {
@@ -539,7 +545,11 @@ main section:not(.simple-list) article header summary.small {
   }
 }
 main section:not(.simple-list) article:hover header {
-  background-color: #333333;
+  background-color: #000000;
+}
+main section:not(.simple-list) article:hover .thumbImg {
+  filter: grayscale(0%);
+  transform: scale(1.02);
 }
 
 main section.simple-list article {
