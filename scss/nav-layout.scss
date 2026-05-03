@@ -1,15 +1,15 @@
 @import "./colours.scss";
 
 nav {
+
 	// large screen layout - fixed on left hand side
 	@media (min-width: 1025px) {
-		// padding-top: 1em;
 		float: left;
 		width: 100%;
 		position: fixed;
-		width: 8.5em;
-		left: 1em;
-		top: 3em;
+		width: 9em;
+		left: 1.5em;
+		top: 4em;
 
 		#nav-toggle {
 			display: none;
@@ -18,12 +18,14 @@ nav {
 		label {
 			clear: both;
 			width: 100%;
-			margin-bottom: 1.15em;
+			margin-bottom: 1.4em;
 			text-align: right;
 
 			span {
 				height: auto;
 				display: block;
+				letter-spacing: 0.02em;
+				font-size: 0.95em;
 			}
 		}
 	}
@@ -39,77 +41,54 @@ nav {
 		margin-right: 1em;
 		float: left;
 		display: block;
-		// width:8em;
 
 		span {
 			cursor: pointer;
-
 			padding: 0;
-
 			color: $textColor;
-			opacity: 0.75;
-			font-size: 1.1em;
+			opacity: 0.65;
+			font-size: 1em;
+			font-weight: 500;
+			transition: opacity 0.2s ease;
 
 			&:hover {
 				opacity: 1;
 			}
 		}
 
-		// &:nth-of-type(4n) span {
-		// 	color: $c0;
-		// }
-		// &:nth-of-type(4n + 1) span {
-		// 	color: $c1;
-		// }
-		// &:nth-of-type(4n + 2) span {
-		// 	color: $c2;
-		// }
-		// &:nth-of-type(4n + 3) span {
-		// 	color: $c3;
-		// }
-
-		// &:nth-of-type(0) span { background-color: $c0; }
-		// &:nth-of-type(1) span { background-color: $c1; }
-		// &:nth-of-type(2) span { background-color: $c2; }
-		// &:nth-of-type(3) span { background-color: $c3; }
-		// &:nth-of-type(4) span { background-color: $c4; }
-		// &:nth-of-type(5) span { background-color: $c1; }
-		// &:nth-of-type(6) span { background-color: $c2; }
-		// &:nth-of-type(7) span { background-color: $c3; }
-		// &:nth-of-type(8) span { background-color: $c4; }
-
-		input:checked + span {
-			// background-color: $backgroundColor;
-			// border: 2px solid white;
-			// color: $textColor;
-			font-weight: bold;
-			// border-bottom: 2px solid $highlightColor;
+		input:checked+span {
+			font-weight: 700;
+			opacity: 1;
+			border-bottom: 2px solid $textColor;
+			padding-bottom: 2px;
 		}
 	}
 
 	// small screen layout - hamburger menu
 	@media (max-width: 1024px) {
 		position: fixed;
-		top: 1em;
-		right: 1em;
-		padding: 1em;
+		top: 1.5em;
+		right: 1.5em;
+		padding: 1.2em;
 		background: $backgroundColor;
 		z-index: 99999;
 		text-align: right;
-		border: none;
-		transition: all 0.5s;
+		border: 1px solid rgba(255, 255, 255, 0.1);
+		transition: all 0.3s ease;
+		border-radius: 0px;
 
 		#hamburger-lines {
 			float: right;
+
 			span {
 				display: block;
-				height: 0.2em;
+				height: 2px;
 				width: 2em;
-				// background-color: $textColor;
-				border-top: 1px solid $textColor;
-				margin-top: 0.1em;
-				transition: all 0.5s;
+				background-color: $textColor;
+				margin-top: 0.4em;
+				transition: all 0.3s ease;
 			}
+
 			margin-bottom: 1em;
 		}
 
@@ -125,34 +104,34 @@ nav {
 			cursor: pointer;
 
 			// make the input work
-			&:checked ~ label {
+			&:checked~label {
 				display: block;
 			}
 
 			// update hamburger appearance
-			&:checked ~ #hamburger-lines span {
-				margin-top: 0.2em;
-				border-top: 1px solid rgba(255, 255, 255, 0.2);
+			&:checked~#hamburger-lines span {
+				background-color: $textColor;
+				opacity: 0.6;
 			}
 		}
 
 		& label {
 			display: none;
-
-			// height: 0.5em;
 			width: 100%;
 			clear: both;
 			margin-left: auto;
 			margin-right: auto;
 			padding-right: 2em;
-			margin-bottom: 1em;
-			// span {
-			// 	font-size: 24px;
-			// }
+			margin-bottom: 1.2em;
+
+			span {
+				font-size: 0.95em;
+				font-weight: 500;
+			}
 		}
 
 		&:has(input:checked) {
-			border: 1px solid $textColor;
+			border: 1px solid rgba(255, 255, 255, 0.2);
 		}
 	}
 }
