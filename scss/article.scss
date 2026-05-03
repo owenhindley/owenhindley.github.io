@@ -15,23 +15,21 @@ main section:not(.simple-list) article {
 		&.large {
 			max-width: 80em;
 
-			margin-bottom: 10em;
-
+			margin-bottom: 8em;
 			.thumbImg {
 				height: 25vw;
 			}
 		}
 
 		float: left;
-		padding-top: 1.5em;
-		margin-bottom: 7em;
+		padding-top: 1em;
+		margin-bottom: 5em;
 
 		// staggered spacing below each
 		:not(.large) &:nth-of-type(2n) {
-			margin-top: 10em;
-			margin-bottom: 10em;
+			margin-top: 8em;
+			margin-bottom: 8em;
 		}
-
 		:not(.large) &:nth-of-type(5n) {
 			margin-top: 2em;
 			margin-bottom: 2em;
@@ -42,11 +40,12 @@ main section:not(.simple-list) article {
 			height: 13vw;
 			float: left;
 
-			margin-bottom: 1.5em;
+			margin-bottom: 1em;
 			background-size: cover;
 			background-position: 50% 50%;
-			transition: 0.3s ease;
-			filter: grayscale(20%);
+			// opacity: 0.75;
+			transition: 0.5s;
+			// filter: grayscale(100%);
 		}
 	}
 
@@ -54,23 +53,24 @@ main section:not(.simple-list) article {
 		width: 100%;
 		float: left;
 		padding-top: 1em;
-		margin-bottom: 6em;
+		margin-bottom: 5em;
 
 		.thumbImg {
 			width: 90%;
 			height: 40vw;
 			float: left;
 
-			margin-bottom: 1.5em;
+			margin-bottom: 1em;
 			background-size: cover;
 			background-position: 50% 50%;
-			transition: 0.3s ease;
-			filter: grayscale(20%);
+			// opacity: 0.75;
+			transition: 0.25s;
+			// filter: grayscale(100%);
 		}
 	}
 
 	header {
-		transition: all 0.3s ease;
+		transition: all 0.5s;
 		position: absolute;
 		width: auto;
 		height: auto;
@@ -81,32 +81,28 @@ main section:not(.simple-list) article {
 		max-width: 90%;
 
 		background-color: $backgroundColor;
-		padding: 0.3em 0.3em 0 0;
+		padding: 0.2em 0.2em 0 0;
 
 		h4 {
 			display: block;
-			color: $textColor;
-			font-weight: 600;
-			line-height: 1.3em;
+			color: darken($textColor, 0);
 		}
 
 		summary {
 			display: block;
-			margin-top: 0.4em;
-			color: $textAltColor;
-			font-size: 0.95em;
-			line-height: 1.5em;
+			margin-top: 0.25em;
+			color: darken($textColor, 10);
 
 			@media (max-width: 1024px) {
-				font-size: 0.85em;
+				font-size: 0.8em;
 
 				&.small {
-					font-size: 0.65em;
+					font-size: 0.6em;
 				}
 			}
 
 			&.small {
-				font-size: 0.85em;
+				font-size: 0.8em;
 			}
 		}
 	}
@@ -129,12 +125,11 @@ main section:not(.simple-list) article {
 
 	&:hover {
 		header {
-			background-color: $backgroundColor;
-		}
-
-		.thumbImg {
-			filter: grayscale(0%);
-			transform: scale(1.02);
+			background-color: lighten($backgroundColor, 20);
+			// transform: scale(1.02);
+			// h4, summary {
+			//     color:invert($textColor);
+			// }
 		}
 	}
 }
@@ -143,17 +138,15 @@ main section.simple-list article {
 	width: 100%;
 	max-width: 100%;
 	overflow: hidden;
-	margin-bottom: 2.5em;
-	padding-bottom: 1.5em;
-	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	margin-bottom: 2em;
 
 	&.archive {
 		cursor: pointer;
-		transition: all 0.3s ease;
+
+		transition: all 0.5s;
 
 		&:hover {
-			background-color: rgba(255, 255, 255, 0.03);
-			transform: translateX(4px);
+			background-color: lighten($backgroundColor, 10);
 		}
 	}
 
@@ -163,8 +156,7 @@ main section.simple-list article {
 	}
 
 	summary {
-		font-size: 0.85em;
-		color: $textAltColor;
+		font-size: 0.75em;
 	}
 
 	header {
@@ -174,33 +166,24 @@ main section.simple-list article {
 		* {
 			float: left;
 			clear: both;
-
 			@media (min-width: 1025spx) {
 				width: 20%;
 			}
-
 			@media (max-width: 1024px) {
 				width: 100%;
 				clear: both;
 			}
-
 			margin: 0;
 			padding: 0;
-			margin-bottom: 0.3em;
+			margin-bottom: 0.25em;
 			margin-right: 1em;
 		}
 
 		ol {
 			li {
 				width: 100%;
-				font-size: 0.8em;
-				color: $textAltColor;
+				font-size: 0.75em;
 			}
-		}
-
-		h6 {
-			font-weight: 600;
-			margin-bottom: 0.2em;
 		}
 	}
 }

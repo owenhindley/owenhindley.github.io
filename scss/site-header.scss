@@ -3,60 +3,45 @@
 header {
 	h1 {
 		margin-left: -0.125em;
-		color: $textColor;
-		font-weight: 700;
-		font-size: 2.5em;
-		margin-bottom: 0.3em;
+		// animation: colourCycle 10s alternate-reverse infinite;
+		color: $c1;
 	}
 
 	h6 {
 		float: left;
 		clear: both;
 		display: block;
-		margin-bottom: 2.5em;
-		font-weight: 600;
-		letter-spacing: 0.05em;
+		margin-bottom: 2em;
 	}
 
 	p {
 		width: 45%;
 		min-width: 400px;
 		margin-top: 0;
-		margin-bottom: 2.5em;
+		margin-bottom: 2em;
 		font-style: normal;
-		line-height: 1.8em;
-		color: $textAltColor;
 
 		@media (max-width: 1024px) {
 			float: left;
-			width: 100%;
-			min-width: auto;
 		}
 	}
 
 	aside {
 		position: fixed;
-		right: 4em;
+		right: 3em;
 		text-align: right;
+		// top: 2.1em;
 
 		p {
-			font-size: 0.8em;
-			margin-bottom: 1em;
-			color: $textAltColor;
+			font-size: 0.75em;
 		}
 	}
 
 	.taglines {
-		display: block;
+		// display: block;
 		width: auto;
-		margin-bottom: 2em;
 
-		p {
-			font-size: 1.15em;
-			line-height: 1.8em;
-			color: $textColor;
-			font-weight: 500;
-		}
+		line-height: 5.2em;
 	}
 
 	@media (max-width: 1024px) {
@@ -66,7 +51,7 @@ header {
 			display: none;
 		}
 
-		>p {
+		> p {
 			display: none;
 		}
 
@@ -74,14 +59,12 @@ header {
 			position: static;
 			right: 3em;
 			text-align: left;
-			opacity: 0.7;
+			opacity: 0.5;
 			display: block;
 			float: left;
-			margin-bottom: 2em;
-
+			margin-bottom: 1em;
 			p {
 				margin: 0;
-				font-size: 0.75em;
 			}
 		}
 	}
