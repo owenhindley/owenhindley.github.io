@@ -91,6 +91,7 @@ main section:not(.simple-list) article {
 		summary {
 			display: block;
 			margin-top: 0.25em;
+			margin-left:0.2em;
 			color: darken($textColor, 10);
 
 			@media (max-width: 1024px) {
@@ -103,6 +104,22 @@ main section:not(.simple-list) article {
 
 			&.small {
 				font-size: 0.8em;
+			}
+
+			&:nth-of-type(2){
+				opacity: 70%;
+			}
+			&:nth-of-type(3){
+				opacity: 60%;
+			}
+			&:nth-of-type(4){
+				opacity: 50%;
+			}
+			&:nth-of-type(5){
+				opacity: 40%;
+			}
+			&:nth-of-type(6){
+				opacity: 30%;
 			}
 		}
 	}

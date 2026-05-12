@@ -1,8 +1,3 @@
-#node-sass -w scss/main.scss -o docs/css/
-
-
-#sass -w scss/main.scss -o docs/css/
-
 # BELOW ONES
 
 npx @11ty/eleventy --serve --input=site-source/ --output=docs/

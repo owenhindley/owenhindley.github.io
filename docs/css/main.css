@@ -181,7 +181,7 @@ li,
 ul {
   line-height: 1.7em;
   font-size: 1.1em;
-  color: rgb(224.6, 224.6, 224.6);
+  color: #e1e1e1;
   font-weight: 400;
 }
 p strong,
@@ -201,6 +201,7 @@ ul strong {
 .inverted {
   padding-left: 0.2em;
   padding-right: 0.2em;
+  font-weight: bold;
 }
 
 .small {
@@ -355,6 +356,7 @@ nav label input:checked + span {
   }
   nav #hamburger-lines {
     float: right;
+    margin-bottom: 1em;
   }
   nav #hamburger-lines span {
     display: block;
@@ -363,9 +365,6 @@ nav label input:checked + span {
     background-color: #f5f5f5;
     margin-top: 0.4em;
     transition: all 0.3s ease;
-  }
-  nav #hamburger-lines {
-    margin-bottom: 1em;
   }
   nav #nav-toggle {
     position: absolute;
@@ -450,6 +449,9 @@ main section:not(.simple-list) article {
   main section:not(.simple-list) article {
     width: 45%;
     max-width: 40em;
+    float: left;
+    padding-top: 1em;
+    margin-bottom: 5em;
   }
   main section:not(.simple-list) article.large {
     max-width: 80em;
@@ -457,11 +459,6 @@ main section:not(.simple-list) article {
   }
   main section:not(.simple-list) article.large .thumbImg {
     height: 25vw;
-  }
-  main section:not(.simple-list) article {
-    float: left;
-    padding-top: 1em;
-    margin-bottom: 5em;
   }
   :not(.large) main section:not(.simple-list) article:nth-of-type(2n) {
     margin-top: 8em;
@@ -516,7 +513,8 @@ main section:not(.simple-list) article header h4 {
 main section:not(.simple-list) article header summary {
   display: block;
   margin-top: 0.25em;
-  color: rgb(219.5, 219.5, 219.5);
+  margin-left: 0.2em;
+  color: gainsboro;
 }
 @media (max-width: 1024px) {
   main section:not(.simple-list) article header summary {
@@ -528,6 +526,21 @@ main section:not(.simple-list) article header summary {
 }
 main section:not(.simple-list) article header summary.small {
   font-size: 0.8em;
+}
+main section:not(.simple-list) article header summary:nth-of-type(2) {
+  opacity: 70%;
+}
+main section:not(.simple-list) article header summary:nth-of-type(3) {
+  opacity: 60%;
+}
+main section:not(.simple-list) article header summary:nth-of-type(4) {
+  opacity: 50%;
+}
+main section:not(.simple-list) article header summary:nth-of-type(5) {
+  opacity: 40%;
+}
+main section:not(.simple-list) article header summary:nth-of-type(6) {
+  opacity: 30%;
 }
 @media (max-width: 1024px) {
   main section:not(.simple-list) article header {
@@ -553,7 +566,7 @@ main section.simple-list article.archive {
   transition: all 0.5s;
 }
 main section.simple-list article.archive:hover {
-  background-color: rgb(25.5, 25.5, 25.5);
+  background-color: #1a1a1a;
 }
 main section.simple-list article a {
   height: 100%;
@@ -569,6 +582,10 @@ main section.simple-list article header {
 main section.simple-list article header * {
   float: left;
   clear: both;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 0.25em;
+  margin-right: 1em;
 }
 @media (min-width: 1025spx) {
   main section.simple-list article header * {
@@ -580,12 +597,6 @@ main section.simple-list article header * {
     width: 100%;
     clear: both;
   }
-}
-main section.simple-list article header * {
-  margin: 0;
-  padding: 0;
-  margin-bottom: 0.25em;
-  margin-right: 1em;
 }
 main section.simple-list article header ol li {
   width: 100%;
@@ -844,7 +855,7 @@ body.blogpost section img {
   display: flex;
   margin-top: 4em;
   margin-bottom: 4em;
-  border: 1px solid rgb(117.5, 117.5, 117.5);
+  border: 1px solid #767676;
 }
 body.blogpost section pre {
   width: 80%;
@@ -852,13 +863,13 @@ body.blogpost section pre {
   background: #1a1a1a;
   color: #e5e5e5;
   margin-left: -0.5em;
-  border: 1px solid rgb(117.5, 117.5, 117.5);
+  border: 1px solid #767676;
 }
 body.blogpost section pre code {
   font-size: 1.1em;
 }
 body.blogpost section.alternate {
-  border: 1px dashed rgb(117.5, 117.5, 117.5);
+  border: 1px dashed #767676;
 }
 
 .blogpost .container {
