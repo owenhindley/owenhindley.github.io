@@ -2,3 +2,6 @@
 
 npx @11ty/eleventy --serve --input=site-source/ --output=docs/
 sass -w scss/main.scss docs/css/main.css
+
+possibly
+sass --watch scss/main.scss:docs/css/main.css

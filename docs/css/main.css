@@ -370,7 +370,7 @@ main section:not(.simple-list) article {
         margin-bottom: 10em; }
       :not(.large) main section:not(.simple-list) article:nth-of-type(5n) {
         margin-top: 2em;
-        margin-bottom: 4em; }
+        margin-bottom: 6em; }
       main section:not(.simple-list) article .thumbImg {
         width: 90%;
         height: 13vw;
@@ -402,7 +402,11 @@ main section:not(.simple-list) article {
     left: 2em;
     max-width: 90%;
     background-color: #000000;
-    padding: 0.2em 0.2em 0 0; }
+    padding: 0.4em;
+    padding-top: 0.2em;
+    padding-bottom: 0.4em; }
+    main section:not(.simple-list) article header * {
+      transition: all 0.5s; }
     main section:not(.simple-list) article header h4 {
       display: block;
       color: whitesmoke; }
@@ -435,7 +439,10 @@ main section:not(.simple-list) article {
       left: auto;
       right: 4em; } }
   main section:not(.simple-list) article:hover header {
-    background-color: #333333; }
+    background-color: white;
+    color: #000000; }
+    main section:not(.simple-list) article:hover header * {
+      color: #000000; }
 
 main section.simple-list article {
   width: 100%;

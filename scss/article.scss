@@ -32,7 +32,7 @@ main section:not(.simple-list) article {
 		}
 		:not(.large) &:nth-of-type(5n) {
 			margin-top: 2em;
-			margin-bottom: 4em;
+			margin-bottom: 6em;
 		}
 
 		.thumbImg {
@@ -71,6 +71,9 @@ main section:not(.simple-list) article {
 
 	header {
 		transition: all 0.5s;
+		* {
+			transition: all 0.5s;
+		}
 		position: absolute;
 		width: auto;
 		height: auto;
@@ -82,7 +85,9 @@ main section:not(.simple-list) article {
 		max-width: 90%;
 
 		background-color: $backgroundColor;
-		padding: 0.2em 0.2em 0 0;
+		padding: 0.4em;
+		padding-top: 0.2em;
+		padding-bottom: 0.4em;
 
 		h4 {
 			display: block;
@@ -143,7 +148,11 @@ main section:not(.simple-list) article {
 
 	&:hover {
 		header {
-			background-color: lighten($backgroundColor, 20);
+			background-color: lighten($textColor, 20);
+			color: $backgroundColor;
+			* {
+				color: $backgroundColor;
+			}
 			// transform: scale(1.02);
 			// h4, summary {
 			//     color:invert($textColor);
