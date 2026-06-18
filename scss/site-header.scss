@@ -1,6 +1,6 @@
 @import "./colours.scss";
 
-header {
+.container>header {
 	h1 {
 		margin-left: -0.125em;
 		// animation: colourCycle 10s alternate-reverse infinite;
@@ -51,7 +51,7 @@ header {
 			display: none;
 		}
 
-		> p {
+		>p {
 			display: none;
 		}
 
@@ -63,6 +63,7 @@ header {
 			display: block;
 			float: left;
 			margin-bottom: 1em;
+
 			p {
 				margin: 0;
 			}

@@ -23,8 +23,8 @@
 }
 
 .inverted {
-  background-color: #f5f5f5;
-  color: #000000;
+  background-color: #ececec;
+  color: #121212;
 }
 
 @keyframes colourCycle {
@@ -61,8 +61,8 @@
 }
 
 .inverted {
-  background-color: #f5f5f5;
-  color: #000000;
+  background-color: #ececec;
+  color: #121212;
 }
 
 @keyframes colourCycle {
@@ -76,25 +76,17 @@
     color: #f5f5f5;
   }
 }
-@font-face {
-  font-family: "Abordage";
-  src: url(/fonts/Abordage-Regular.woff2) format("woff2"), url(/fonts/Abordage-Regular.woff) format("woff"), url(/fonts/Abordage-Regular.otf) format("otf"), url(/fonts/Abordage-Regular.ttf) format("ttf");
-}
-@font-face {
-  font-family: "Basteleur";
-  src: url(/fonts/Basteleur-Moonlight.woff2) format("woff2"), url(/fonts/Basteleur-Moonlight.woff) format("woff"), url(/fonts/Basteleur-Moonlight.otf) format("otf"), url(/fonts/Basteleur-Moonlight.ttf) format("ttf");
-}
 body,
 html {
   font-family: "Sono", "Open Sans", Verdana, Geneva, sans-serif;
-  color: #f5f5f5;
+  color: #ececec;
 }
 
 h1,
 h2,
 h3,
 h4 {
-  font-family: "Sono", "Sono", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Sono", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 600;
   letter-spacing: -0.01em;
   line-height: 1.2em;
@@ -189,8 +181,9 @@ li,
 ul {
   line-height: 1.7em;
   font-size: 1.1em;
-  color: rgb(224.6, 224.6, 224.6);
-  font-weight: 200;
+  color: rgb(215.6, 215.6, 215.6);
+  font-weight: 400;
+  padding: 0;
 }
 p strong,
 li strong,
@@ -281,8 +274,8 @@ main.blogposts .blogpost {
 }
 
 .inverted {
-  background-color: #f5f5f5;
-  color: #000000;
+  background-color: #ececec;
+  color: #121212;
 }
 
 @keyframes colourCycle {
@@ -334,7 +327,7 @@ nav label {
 nav label span {
   cursor: pointer;
   padding: 0;
-  color: #f5f5f5;
+  color: #ececec;
   opacity: 0.65;
   font-size: 1em;
   font-weight: 500;
@@ -346,7 +339,7 @@ nav label span:hover {
 nav label input:checked + span {
   font-weight: 700;
   opacity: 1;
-  border-bottom: 2px solid #f5f5f5;
+  border-bottom: 2px solid #ececec;
   padding-bottom: 2px;
 }
 @media (max-width: 1024px) {
@@ -355,7 +348,7 @@ nav label input:checked + span {
     top: 1.5em;
     right: 1.5em;
     padding: 1.2em;
-    background: #000000;
+    background: #121212;
     z-index: 99999;
     text-align: right;
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -369,7 +362,7 @@ nav label input:checked + span {
     display: block;
     height: 2px;
     width: 2em;
-    background-color: #f5f5f5;
+    background-color: #ececec;
     margin-top: 0.4em;
     transition: all 0.3s ease;
   }
@@ -391,7 +384,7 @@ nav label input:checked + span {
     display: block;
   }
   nav #nav-toggle:checked ~ #hamburger-lines span {
-    background-color: #f5f5f5;
+    background-color: #ececec;
     opacity: 0.6;
   }
   nav label {
@@ -435,8 +428,8 @@ nav label input:checked + span {
 }
 
 .inverted {
-  background-color: #f5f5f5;
-  color: #000000;
+  background-color: #ececec;
+  color: #121212;
 }
 
 @keyframes colourCycle {
@@ -520,20 +513,20 @@ main section:not(.simple-list) article header {
   top: 90%;
   left: 2em;
   max-width: 90%;
-  background-color: #000000;
+  background-color: #121212;
   padding: 0.4em;
   padding-top: 0.2em;
   padding-bottom: 0.4em;
 }
 main section:not(.simple-list) article header h4 {
   display: block;
-  color: whitesmoke;
+  color: #ececec;
 }
 main section:not(.simple-list) article header summary {
   display: block;
   margin-top: 0.25em;
   margin-left: 0.2em;
-  color: rgb(219.5, 219.5, 219.5);
+  color: rgb(210.5, 210.5, 210.5);
 }
 @media (max-width: 1024px) {
   main section:not(.simple-list) article header summary {
@@ -572,10 +565,10 @@ main section:not(.simple-list) article header summary:nth-of-type(6) {
 }
 main section:not(.simple-list) article:hover header {
   background-color: white;
-  color: #000000;
+  color: #121212;
 }
 main section:not(.simple-list) article:hover header * {
-  color: #000000;
+  color: #121212;
 }
 
 main section.simple-list article {
@@ -589,7 +582,7 @@ main section.simple-list article.archive {
   transition: all 0.5s;
 }
 main section.simple-list article.archive:hover {
-  background-color: rgb(25.5, 25.5, 25.5);
+  background-color: rgb(43.5, 43.5, 43.5);
 }
 main section.simple-list article a {
   height: 100%;
@@ -651,8 +644,8 @@ main section.simple-list article header ol li {
 }
 
 .inverted {
-  background-color: #f5f5f5;
-  color: #000000;
+  background-color: #ececec;
+  color: #121212;
 }
 
 @keyframes colourCycle {
@@ -666,17 +659,17 @@ main section.simple-list article header ol li {
     color: #f5f5f5;
   }
 }
-header h1 {
+.container > header h1 {
   margin-left: -0.125em;
   color: #f5f5f5;
 }
-header h6 {
+.container > header h6 {
   float: left;
   clear: both;
   display: block;
   margin-bottom: 2em;
 }
-header p {
+.container > header p {
   width: 45%;
   min-width: 400px;
   margin-top: 0;
@@ -684,33 +677,33 @@ header p {
   font-style: normal;
 }
 @media (max-width: 1024px) {
-  header p {
+  .container > header p {
     float: left;
   }
 }
-header aside {
+.container > header aside {
   position: fixed;
   right: 3em;
   text-align: right;
 }
-header aside p {
+.container > header aside p {
   font-size: 0.75em;
 }
-header .taglines {
+.container > header .taglines {
   width: auto;
   line-height: 5.2em;
 }
 @media (max-width: 1024px) {
-  header {
+  .container > header {
     overflow: hidden;
   }
-  header h1 {
+  .container > header h1 {
     display: none;
   }
-  header > p {
+  .container > header > p {
     display: none;
   }
-  header aside {
+  .container > header aside {
     position: static;
     right: 3em;
     text-align: left;
@@ -719,7 +712,7 @@ header .taglines {
     float: left;
     margin-bottom: 1em;
   }
-  header aside p {
+  .container > header aside p {
     margin: 0;
   }
 }
@@ -777,8 +770,8 @@ header .taglines {
 }
 
 .inverted {
-  background-color: #f5f5f5;
-  color: #000000;
+  background-color: #ececec;
+  color: #121212;
 }
 
 @keyframes colourCycle {
@@ -796,7 +789,7 @@ header .taglines {
   width: 100%;
   text-align: center;
   background-color: black;
-  border: 1px solid #f5f5f5;
+  border: 1px solid #ececec;
   border-radius: 2px;
 }
 
@@ -823,8 +816,8 @@ header .taglines {
 }
 
 .inverted {
-  background-color: #f5f5f5;
-  color: #000000;
+  background-color: #ececec;
+  color: #121212;
 }
 
 @keyframes colourCycle {
@@ -841,8 +834,8 @@ header .taglines {
 body.blogpost main h1,
 body.blogpost main h3,
 body.blogpost main h4 {
-  background-color: #f5f5f5;
-  color: #0a0a0a;
+  background-color: #ececec;
+  color: #131313;
   margin-left: -0.5em;
   padding-left: 0.5em;
   margin-top: 0.5em;
@@ -860,27 +853,27 @@ body.blogpost section p {
   font-size: 1.5em;
 }
 body.blogpost section p em {
-  background-color: #f5f5f5;
-  color: #0a0a0a;
+  background-color: #ececec;
+  color: #131313;
 }
 body.blogpost section ul,
 body.blogpost section li {
   list-style: disc !important;
 }
 body.blogpost section h3 {
-  background-color: #f5f5f5;
-  color: #0a0a0a;
+  background-color: #ececec;
+  color: #131313;
   max-width: 700px;
 }
 body.blogpost section img {
   width: 80%;
-  background-color: #f5f5f5;
+  background-color: #ececec;
   align-self: center;
   margin: auto;
   display: flex;
   margin-top: 4em;
   margin-bottom: 4em;
-  border: 1px solid rgb(117.5, 117.5, 117.5);
+  border: 1px solid rgb(108.5, 108.5, 108.5);
 }
 body.blogpost section pre {
   width: 80%;
@@ -888,13 +881,13 @@ body.blogpost section pre {
   background: #1a1a1a;
   color: #e5e5e5;
   margin-left: -0.5em;
-  border: 1px solid rgb(117.5, 117.5, 117.5);
+  border: 1px solid rgb(108.5, 108.5, 108.5);
 }
 body.blogpost section pre code {
   font-size: 1.1em;
 }
 body.blogpost section.alternate {
-  border: 1px dashed rgb(117.5, 117.5, 117.5);
+  border: 1px dashed rgb(108.5, 108.5, 108.5);
 }
 
 .blogpost .container {
@@ -983,8 +976,8 @@ body.blogpost section.alternate {
 }
 
 .inverted {
-  background-color: #f5f5f5;
-  color: #000000;
+  background-color: #ececec;
+  color: #121212;
 }
 
 @keyframes colourCycle {
@@ -1035,22 +1028,29 @@ body.blogpost section.alternate {
   line-height: 1.2em;
 }
 @media (min-width: 1025px) {
+  .single-article article {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-column-gap: 3em;
+    grid-auto-flow: row;
+    grid-auto-rows: auto;
+  }
+  .single-article article header {
+    grid-column: 1/-1;
+  }
   .single-article article section {
-    width: 45%;
-    float: left;
-    margin-right: 3em;
-    margin-bottom: 3em;
+    display: block;
+    width: 100%;
+    margin: 0 0 3em;
     line-height: 1.8em;
   }
   .single-article article section.full-width, .single-article article section:first-of-type {
+    grid-column: 1/-1;
     width: 100%;
     margin-top: 0 !important;
   }
-  .single-article article section:nth-of-type(2n + 1) {
-    margin-top: 3em;
-  }
   .single-article article section.small {
-    font-size: 0.9em;
+    font-size: 0.75em;
   }
 }
 .single-article article section img {
@@ -1082,13 +1082,13 @@ body.blogpost section.alternate {
   margin-top: 3em;
   padding-top: 2em;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  color: #a0a0a0;
+  color: #b0b0b0;
   font-size: 0.9em;
 }
 
 body,
 html {
-  background: #000000;
+  background: #121212;
   width: 100%;
   margin: 0;
   padding: 0;

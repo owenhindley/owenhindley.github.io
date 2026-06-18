@@ -46,25 +46,31 @@
 		}
 
 		@media (min-width: 1025px) {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			grid-column-gap: 3em;
+			grid-auto-flow: row;
+			grid-auto-rows: auto;
+
+			header {
+				grid-column: 1 / -1;
+			}
+
 			section {
-				width: 45%;
-				float: left;
-				margin-right: 3em;
-				margin-bottom: 3em;
+				display: block;
+				width: 100%;
+				margin: 0 0 3em;
 				line-height: 1.8em;
 
 				&.full-width,
 				&:first-of-type {
+					grid-column: 1 / -1;
 					width: 100%;
 					margin-top: 0 !important;
 				}
 
-				&:nth-of-type(2n + 1) {
-					margin-top: 3em;
-				}
-
 				&.small {
-					font-size: 0.9em;
+					font-size: 0.75em;
 				}
 			}
 		}
