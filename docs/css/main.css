@@ -436,6 +436,10 @@ nav label.subfilter span {
     border: 1px solid rgba(255, 255, 255, 0.2);
   }
 }
+.single-article nav {
+  left: 0;
+  top: 2rem;
+}
 
 /* Color Theme Swatches in RGBA */
 /* Color Theme Swatches in Hex */
@@ -775,8 +779,14 @@ main section.columns article img.small {
   line-height: 5.2em;
 }
 @media (max-width: 1024px) {
+  .container > header .taglines {
+    width: 70%;
+  }
+}
+@media (max-width: 1024px) {
   .container > header {
     overflow: hidden;
+    margin-bottom: 2rem;
   }
   .container > header h1 {
     display: none;

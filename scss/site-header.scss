@@ -47,6 +47,10 @@
 		width: 60%;
 
 		line-height: 5.2em;
+
+		@media(max-width:1024px){
+			width:70%;
+		}
 	}
 
 	@media (max-width: 1024px) {
@@ -73,6 +77,8 @@
 				margin: 0;
 			}
 		}
+
+		margin-bottom: 2rem;
 	}
 }
 
