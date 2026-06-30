@@ -16,6 +16,7 @@ main section:not(.simple-list) article {
 			max-width: 80em;
 
 			margin-bottom: 8em;
+
 			.thumbImg {
 				height: 25vw;
 			}
@@ -30,6 +31,7 @@ main section:not(.simple-list) article {
 			margin-top: 8em;
 			margin-bottom: 10em;
 		}
+
 		:not(.large) &:nth-of-type(5n) {
 			margin-top: 2em;
 			margin-bottom: 6em;
@@ -71,9 +73,11 @@ main section:not(.simple-list) article {
 
 	header {
 		transition: all 0.5s;
+
 		* {
 			transition: all 0.5s;
 		}
+
 		position: absolute;
 		width: auto;
 		height: auto;
@@ -88,6 +92,8 @@ main section:not(.simple-list) article {
 		padding: 0.4em;
 		padding-top: 0.2em;
 		padding-bottom: 0.4em;
+
+		z-index: 9999;
 
 		h4 {
 			display: block;
@@ -115,15 +121,19 @@ main section:not(.simple-list) article {
 			&:nth-of-type(2) {
 				opacity: 70%;
 			}
+
 			&:nth-of-type(3) {
 				opacity: 60%;
 			}
+
 			&:nth-of-type(4) {
 				opacity: 50%;
 			}
+
 			&:nth-of-type(5) {
 				opacity: 40%;
 			}
+
 			&:nth-of-type(6) {
 				opacity: 30%;
 			}
@@ -150,9 +160,11 @@ main section:not(.simple-list) article {
 		header {
 			background-color: lighten($textColor, 20);
 			color: $backgroundColor;
+
 			* {
 				color: $backgroundColor;
 			}
+
 			// transform: scale(1.02);
 			// h4, summary {
 			//     color:invert($textColor);
@@ -193,13 +205,16 @@ main section.simple-list article {
 		* {
 			float: left;
 			clear: both;
+
 			@media (min-width: 1025spx) {
 				width: 20%;
 			}
+
 			@media (max-width: 1024px) {
 				width: 100%;
 				clear: both;
 			}
+
 			margin: 0;
 			padding: 0;
 			margin-bottom: 0.25em;
@@ -229,7 +244,7 @@ main section.text-only article {
 		margin-bottom: var(--size-2);
 	}
 
-	
+
 	.social-link {
 		color: transparent;
 		width: 20px;

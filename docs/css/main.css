@@ -199,7 +199,7 @@ ul {
   line-height: 1.7em;
   font-size: 1.1em;
   font-size: var(--size-0);
-  color: #d8d8d8;
+  color: rgb(215.6, 215.6, 215.6);
   font-weight: 400;
   padding: 0;
 }
@@ -381,16 +381,15 @@ nav label.subfilter span {
     top: 1.5em;
     right: 1.5em;
     padding: 1.2em;
-    background: #121212;
+    background: none;
     z-index: 99999;
     text-align: right;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0);
     transition: all 0.3s ease;
     border-radius: 0px;
   }
   nav #hamburger-lines {
     float: right;
-    margin-bottom: 1em;
   }
   nav #hamburger-lines span {
     display: block;
@@ -399,6 +398,9 @@ nav label.subfilter span {
     background-color: #ececec;
     margin-top: 0.4em;
     transition: all 0.3s ease;
+  }
+  nav #hamburger-lines {
+    margin-bottom: 1em;
   }
   nav #nav-toggle {
     position: absolute;
@@ -434,11 +436,14 @@ nav label.subfilter span {
   }
   nav:has(input:checked) {
     border: 1px solid rgba(255, 255, 255, 0.2);
+    background: #121212;
   }
 }
-.single-article nav {
-  left: 0;
-  top: 2rem;
+@media (min-width: 1025px) {
+  .single-article nav {
+    left: 0;
+    top: 2rem;
+  }
 }
 
 /* Color Theme Swatches in RGBA */
@@ -488,9 +493,6 @@ main section:not(.simple-list) article {
   main section:not(.simple-list) article {
     width: 45%;
     max-width: 40em;
-    float: left;
-    padding-top: 1em;
-    margin-bottom: 8em;
   }
   main section:not(.simple-list) article.large {
     max-width: 80em;
@@ -498,6 +500,11 @@ main section:not(.simple-list) article {
   }
   main section:not(.simple-list) article.large .thumbImg {
     height: 25vw;
+  }
+  main section:not(.simple-list) article {
+    float: left;
+    padding-top: 1em;
+    margin-bottom: 8em;
   }
   :not(.large) main section:not(.simple-list) article:nth-of-type(2n) {
     margin-top: 8em;
@@ -536,6 +543,11 @@ main section:not(.simple-list) article {
 }
 main section:not(.simple-list) article header {
   transition: all 0.5s;
+}
+main section:not(.simple-list) article header * {
+  transition: all 0.5s;
+}
+main section:not(.simple-list) article header {
   position: absolute;
   width: auto;
   height: auto;
@@ -546,9 +558,7 @@ main section:not(.simple-list) article header {
   padding: 0.4em;
   padding-top: 0.2em;
   padding-bottom: 0.4em;
-}
-main section:not(.simple-list) article header * {
-  transition: all 0.5s;
+  z-index: 9999;
 }
 main section:not(.simple-list) article header h4 {
   display: block;
@@ -558,7 +568,7 @@ main section:not(.simple-list) article header summary {
   display: block;
   margin-top: 0.25em;
   margin-left: 0.2em;
-  color: lightgray;
+  color: rgb(210.5, 210.5, 210.5);
 }
 @media (max-width: 1024px) {
   main section:not(.simple-list) article header summary {
@@ -614,7 +624,7 @@ main section.simple-list article.archive {
   transition: all 0.5s;
 }
 main section.simple-list article.archive:hover {
-  background-color: #2c2c2c;
+  background-color: rgb(43.5, 43.5, 43.5);
 }
 main section.simple-list article a {
   height: 100%;
@@ -630,10 +640,6 @@ main section.simple-list article header {
 main section.simple-list article header * {
   float: left;
   clear: both;
-  margin: 0;
-  padding: 0;
-  margin-bottom: 0.25em;
-  margin-right: 1em;
 }
 @media (min-width: 1025spx) {
   main section.simple-list article header * {
@@ -645,6 +651,12 @@ main section.simple-list article header * {
     width: 100%;
     clear: both;
   }
+}
+main section.simple-list article header * {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 0.25em;
+  margin-right: 1em;
 }
 main section.simple-list article header ol li {
   width: 100%;
@@ -786,7 +798,6 @@ main section.columns article img.small {
 @media (max-width: 1024px) {
   .container > header {
     overflow: hidden;
-    margin-bottom: 2rem;
   }
   .container > header h1 {
     display: none;
@@ -805,6 +816,9 @@ main section.columns article img.small {
   }
   .container > header aside p {
     margin: 0;
+  }
+  .container > header {
+    margin-bottom: 2rem;
   }
 }
 
@@ -946,7 +960,7 @@ body.blogpost section img {
   display: flex;
   margin-top: 4em;
   margin-bottom: 4em;
-  border: 1px solid #6d6d6d;
+  border: 1px solid rgb(108.5, 108.5, 108.5);
 }
 body.blogpost section pre {
   width: 80%;
@@ -954,13 +968,13 @@ body.blogpost section pre {
   background: #1a1a1a;
   color: #e5e5e5;
   margin-left: -0.5em;
-  border: 1px solid #6d6d6d;
+  border: 1px solid rgb(108.5, 108.5, 108.5);
 }
 body.blogpost section pre code {
   font-size: 1.1em;
 }
 body.blogpost section.alternate {
-  border: 1px dashed #6d6d6d;
+  border: 1px dashed rgb(108.5, 108.5, 108.5);
 }
 
 .blogpost .container {
