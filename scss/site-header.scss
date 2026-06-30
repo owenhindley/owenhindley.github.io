@@ -7,11 +7,14 @@
 		color: $c1;
 	}
 
-	h6 {
-		float: left;
-		clear: both;
+	h1,h2,h3,h4,h5 {
 		display: block;
-		margin-bottom: 2em;
+		// line-height: calc(var(--size-5) * 1.2);
+		margin-bottom: var(--size-5);
+	}
+
+	h3 {
+		line-height: calc(var(--size-4) * 1.2);
 	}
 
 	p {
@@ -34,12 +37,14 @@
 
 		p {
 			font-size: 0.75em;
+			font-size:var(--size--1);
 		}
 	}
 
 	.taglines {
 		// display: block;
 		width: auto;
+		width: 60%;
 
 		line-height: 5.2em;
 	}
@@ -71,24 +76,6 @@
 	}
 }
 
-.social-link {
-	color: transparent;
-	width: 20px;
-	height: 20px;
-	background-size: 100% 100%;
-	background-repeat: no-repeat;
-	background-position: center center;
-	display: block !important;
-	margin-top: 10px;
-	float: right;
-	margin-right: 0.5em;
-}
-
-@media (max-width: 1024px) {
-	.social-link {
-		float: left;
-	}
-}
 
 #twitter-link {
 	background-image: url("../images/twitter.svg");

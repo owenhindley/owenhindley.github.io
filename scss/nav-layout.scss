@@ -18,7 +18,7 @@ nav {
 		label {
 			clear: both;
 			width: 100%;
-			margin-bottom: 1.4em;
+			margin-bottom: var(--size-0);
 			text-align: right;
 
 			span {
@@ -26,6 +26,11 @@ nav {
 				display: block;
 				letter-spacing: 0.02em;
 				font-size: 0.95em;
+				font-size:var(--size-0);
+			}
+
+			&.subfilter {
+				margin-bottom: var(--size--2);
 			}
 		}
 	}
@@ -48,7 +53,8 @@ nav {
 			color: $textColor;
 			opacity: 0.65;
 			font-size: 1em;
-			font-weight: 500;
+			font-size:var(--size-0);
+			// font-weight: 500;
 			transition: opacity 0.2s ease;
 
 			&:hover {
@@ -61,6 +67,14 @@ nav {
 			opacity: 1;
 			border-bottom: 2px solid $textColor;
 			padding-bottom: 2px;
+		}
+
+		&.subfilter {
+			opacity: 0.5;
+			span {
+				font-size: var(--size--1);
+			}
+			
 		}
 	}
 
@@ -126,6 +140,7 @@ nav {
 
 			span {
 				font-size: 0.95em;
+				font-size:var(--size-0);
 				font-weight: 500;
 			}
 		}

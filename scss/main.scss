@@ -98,7 +98,7 @@ li {
 }
 
 main {
-	margin-top: 4rem;
+	// margin-top: 4rem;
 	overflow: hidden;
 
 	>section {
@@ -113,10 +113,11 @@ main {
 
 			h6 {
 				margin-bottom: 1em;
-				font-weight: 700;
-				letter-spacing: 0.05em;
+				// font-weight: 700;
+				// letter-spacing: 0.05em;
 				text-transform: uppercase;
 				font-size: 0.85em;
+				font-size:var(--size-0);
 			}
 		}
 

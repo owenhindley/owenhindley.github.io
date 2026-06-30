@@ -4,8 +4,21 @@
 // @import url('https://fonts.googleapis.com/css2?family=Kavivanar&display=swap');
 // @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
 // @import url('https://fonts.googleapis.com/css2?family=Zen+Loop:ital@0;1&display=swap');
-@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Sono:wght@200&display=swap");
+// @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap");
+// @import url("https://fonts.googleapis.com/css2?family=Sono:wght@200&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Sono:wght,MONO@200..800,0&display=swap');
+
+
+:root {
+	--size--2: clamp(0.8rem, 0.9422rem + -0.1835vw, 0.8247rem);
+	--size--1: clamp(0.9896rem, 0.9399rem + 0.0775vw, 1rem);
+	--size-0: clamp(1.1875rem, 0.8895rem + 0.4651vw, 1.25rem);
+	--size-1: clamp(1.425rem, 0.7695rem + 1.0233vw, 1.5625rem);
+	--size-2: clamp(1.71rem, 0.5509rem + 1.8093vw, 1.9531rem);
+	--size-3: clamp(2.052rem, 0.1955rem + 2.8979vw, 2.4414rem);
+	--size-4: clamp(2.4624rem, -0.3473rem + 4.3859vw, 3.0518rem);
+	--size-5: clamp(2.9549rem, -1.1442rem + 6.3986vw, 3.8147rem);
+      }
 
 $mobile-scale: 1.25;
 
@@ -13,6 +26,8 @@ body,
 html {
 	font-family: "Sono", "Open Sans", Verdana, Geneva, sans-serif;
 	color: $textColor;
+	font-variation-settings:
+    "MONO" 0;
 }
 
 h1,
@@ -57,23 +72,28 @@ h6 {
 
 h1 {
 	font-size: 64px;
+	font-size: var(--size-5);
 }
 
 h2 {
 	font-size: 64px;
 	clear: none;
+	font-size: var(--size-4);
 }
 
 h3 {
 	font-size: 42px;
+	font-size: var(--size-3);
 }
 
 h4 {
 	font-size: 22px;
+	font-size: var(--size-2);
 }
 
 h5 {
 	font-size: 24px;
+	font-size: var(--size-1);
 }
 
 h6 {
@@ -82,6 +102,7 @@ h6 {
 	line-height: 1.25em;
 	margin-top: 1px;
 	font-weight: bold;
+	font-size: var(--size-0);
 }
 
 @media (max-width: 1024px) {
@@ -127,6 +148,7 @@ li,
 ul {
 	line-height: 1.7em;
 	font-size: 1.1em;
+	font-size: var(--size-0);
 	color: darken($textColor, 8);
 	font-weight: 400;
 	// margin: 0;
@@ -150,6 +172,7 @@ ul {
 
 .small {
 	font-size: 0.75em;
+	font-size: var(--size--2);
 
 	@media (max-width: 1024px) {
 		font-size: 0.9em;
