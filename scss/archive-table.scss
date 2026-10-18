@@ -1,0 +1,70 @@
+@import "./colours.scss";
+
+// full project & gig list in the Archive section, laid out like the source spreadsheet
+main section.archive .archive-table-wrapper {
+	width: 100%;
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+}
+
+.archive-table {
+	width: 100%;
+	min-width: 64em;
+	border-collapse: collapse;
+	font-size: var(--size--2);
+	line-height: 1.4em;
+	color: $textAltColor;
+
+	th,
+	td {
+		text-align: left;
+		vertical-align: top;
+		padding: 0.6em 1em 0.6em 0;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	}
+
+	th {
+		position: sticky;
+		top: 0;
+		background-color: $backgroundColor;
+		color: $textColor;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		white-space: nowrap;
+		border-bottom-color: rgba(255, 255, 255, 0.3);
+	}
+
+	td.date,
+	td.category {
+		white-space: nowrap;
+	}
+
+	td.title {
+		color: $textColor;
+		min-width: 12em;
+	}
+
+	td.notes {
+		min-width: 18em;
+	}
+
+	tr.has-link {
+		cursor: pointer;
+		transition: background-color 0.2s ease;
+
+		td.title a {
+			color: $highlightColor;
+			font-weight: 600;
+			border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+
+			&::after {
+				content: " →";
+			}
+		}
+
+		&:hover {
+			background-color: $sectionBackground;
+		}
+	}
+}

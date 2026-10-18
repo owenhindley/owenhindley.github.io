@@ -1,3 +1,10 @@
+# UPDATE ARCHIVE FROM THE PROJECT LIST
+# Download the "Full Project & Gig List" sheet as CSV into archive-list/, then run
+# (adds new rows, deletes entries removed from the sheet; add --dry-run to preview,
+# --force if more than 10 entries need deleting):
+
+node scripts/import-archive.js
+
 # BELOW ONES
 
 npx @11ty/eleventy --serve --input=site-source/ --output=docs/

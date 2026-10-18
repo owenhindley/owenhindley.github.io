@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* Color Theme Swatches in RGBA */
 /* Color Theme Swatches in Hex */
 @import url("https://fonts.googleapis.com/css2?family=Sono:wght,MONO@200..800,0&display=swap");
@@ -713,6 +714,103 @@ main section.columns article img.small {
   main section.columns article header {
     grid-column: 1/-1;
   }
+}
+
+/* Color Theme Swatches in RGBA */
+/* Color Theme Swatches in Hex */
+.c0 {
+  color: #f5f5f5;
+}
+
+.c1 {
+  color: #f5f5f5;
+}
+
+.c2 {
+  color: #f5f5f5;
+}
+
+.c3 {
+  color: #f5f5f5;
+}
+
+.c4 {
+  color: #f5f5f5;
+}
+
+.inverted {
+  background-color: #ececec;
+  color: #121212;
+}
+
+@keyframes colourCycle {
+  0% {
+    color: #f5f5f5;
+  }
+  50% {
+    color: #f5f5f5;
+  }
+  100% {
+    color: #f5f5f5;
+  }
+}
+main section.archive .archive-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.archive-table {
+  width: 100%;
+  min-width: 64em;
+  border-collapse: collapse;
+  font-size: var(--size--2);
+  line-height: 1.4em;
+  color: #b0b0b0;
+}
+.archive-table th,
+.archive-table td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.6em 1em 0.6em 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.archive-table th {
+  position: sticky;
+  top: 0;
+  background-color: #121212;
+  color: #ececec;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  border-bottom-color: rgba(255, 255, 255, 0.3);
+}
+.archive-table td.date,
+.archive-table td.category {
+  white-space: nowrap;
+}
+.archive-table td.title {
+  color: #ececec;
+  min-width: 12em;
+}
+.archive-table td.notes {
+  min-width: 18em;
+}
+.archive-table tr.has-link {
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.archive-table tr.has-link td.title a {
+  color: #ffffff;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+}
+.archive-table tr.has-link td.title a::after {
+  content: " →";
+}
+.archive-table tr.has-link:hover {
+  background-color: rgba(255, 255, 255, 0.08);
 }
 
 /* Color Theme Swatches in RGBA */

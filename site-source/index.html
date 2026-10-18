@@ -249,7 +249,7 @@
 			"collaboration" | sort : 'data.endDate' | reverse %}
 			{% assign talks = collections.article | where : "data.class",
 			"talks" | sort : 'data.endDate' | reverse %}
-			{% assign archive = collections.archive | sort : 'data.endDate' | reverse %}
+			{% assign archive = collections.archive | sort : 'data.sortKey' | reverse %}
 			{% assign blogposts = collections.blogpost | sort : 'data.endDate' | reverse %}
 
 			{% assign allProjects = works | concat: collaboration | sort : 'data.endDate' | reverse %}
@@ -335,7 +335,7 @@
                                 style="background-image:url(images/projects/thumbs/archive-thumb.jpg);"></div>
 							<header>
 								<h4>Archive</h4>
-								<summary>Previous &amp; early work</summary>
+								<summary>Full list of activities</summary>
 							</header>
 						</a>
 					</article>
@@ -467,30 +467,44 @@
 				</div>
 			</section>
 
-			<section class="archive simple-list">
+			<section class="archive">
 				<h6 class="inverted">
 					<strong>Project Archive</strong>
 				</h6>
-				<p class="small">Older projects that define my early career and interests.</p>
-				<div class="article-collection">
-					{% for article in archive %}
-						<article id="{{article.data.id}}" class="{{article.data.class}} featured">
-							<a href="/archive/{{article.data.id}}">
-								<header>
-									<h6>{{article.data.title}}</h6>
-									<summary>{{article.data.summary}}</summary>
-									<ol>
-										<li>
-											{{article.data.endDate}}
-										</li>
-										<li>
-											{{article.data.where}}
-										</li>
-									</ol>
-								</header>
-							</a>
-						</article>
-					{% endfor %}
+	
+				<div class="article-collection archive-table-wrapper">
+					<table class="archive-table">
+						<thead>
+							<tr>
+								<th>Date</th>
+								<th>Title</th>
+								<th>Artist</th>
+								<th>Festival / Event</th>
+								<th>Role</th>
+								<th>Notes</th>
+								<th>Category</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for entry in archive %}
+								<tr{% if entry.data.link != "" %} class="has-link" onclick="document.location.href = '{{entry.data.link}}'"{% endif %}>
+									<td class="date">{{entry.data.when}}</td>
+									<td class="title">
+										{% if entry.data.link != "" %}
+											<a href="{{entry.data.link}}">{{entry.data.title}}</a>
+										{% else %}
+											{{entry.data.title}}
+										{% endif %}
+									</td>
+									<td>{{entry.data.artist}}</td>
+									<td>{{entry.data.event}}</td>
+									<td>{{entry.data.role}}</td>
+									<td class="notes">{{entry.data.notes}}</td>
+									<td class="category">{{entry.data.category}}</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
 				</div>
 			</section>
 
