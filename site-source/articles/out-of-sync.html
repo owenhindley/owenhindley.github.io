@@ -11,9 +11,15 @@ class: works
 featured: false
 large: true
 filter: screens spaces
+credits:
+  - { role: "Performer", name: "Hermigervill / Sveinbjörn Thorarensen", url: "https://hermigervill.bandcamp.com/" }
+  - { role: "Event Production", name: "Uta Reichardt, René Boonekamp, Aephie Chen" }
+  - { role: "AR Graphics", name: "Owen Hindley & Yuli Levtov (Volta)", url: "https://volta-xr.com/" }
+  - { role: "Camera", name: "Yuli Levtov, Uta Reichardt" }
+  - { role: "Video Editing & Titles", name: "Owen Hindley" }
 ---
 
-<section>
+<section class="full-width">
 	<div class="video-wrapper">
 		<iframe
 			src="https://www.youtube.com/embed/lJKXmRWuk8s"
@@ -31,6 +37,9 @@ filter: screens spaces
     </div> -->
 
 </section>
+
+<div class="with-sidebar">
+<div class="main-column">
 
 <section>
 	<h4>
@@ -66,23 +75,6 @@ filter: screens spaces
 	</div>
 </section>
 <section>
-	<ul>
-		<li>
-			<strong>Event Production :</strong> Uta Reichardt, René Boonekamp, Aephie Chen</li>
-		<li>
-			<strong>AR Graphics :</strong> Owen Hindley &#038; Yuli Levtov (Volta)</li>
-		<li>
-			<strong>Performer :</strong>
-			<a href="https://hermigervill.bandcamp.com/" target="_blank">Hermigervill /
-                Sveinbjörn Thorarensen</a>
-		</li>
-		<li>
-			<strong>Camera :</strong> Yuli Levtov, Uta Reichardt</li>
-		<li>
-			<strong>Video Editing &#038; Titles :</strong> Owen Hindley</li>
-	</ul>
-</section>
-<section>
 	<p>Now a 90 minute performance, regardless of how great the music is or colourful the artist's
         onesie is, might not be the most visually interesting experience if it was
         a simple camera setup. Luckily, I had been working for several months with my
@@ -110,3 +102,10 @@ filter: screens spaces
 		<li>Rcam2 page : <a href="https://github.com/keijiro/Rcam2" target="_blank">🔗</a>
 		</li>
 		<ul></section>
+
+</div>
+
+<div class="side-column">
+	{% include "project-lists.liquid" %}
+</div>
+</div>

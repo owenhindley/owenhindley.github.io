@@ -57,7 +57,7 @@
 					</p>
 				</header>
 				
-<section>
+<section class="full-width">
 	<div class="video-wrapper">
 		<iframe
 			src="https://www.youtube.com/embed/lJKXmRWuk8s"
@@ -75,6 +75,9 @@
     </div> -->
 
 </section>
+
+<div class="with-sidebar">
+<div class="main-column">
 
 <section>
 	<h4>
@@ -110,23 +113,6 @@
 	</div>
 </section>
 <section>
-	<ul>
-		<li>
-			<strong>Event Production :</strong> Uta Reichardt, René Boonekamp, Aephie Chen</li>
-		<li>
-			<strong>AR Graphics :</strong> Owen Hindley &#038; Yuli Levtov (Volta)</li>
-		<li>
-			<strong>Performer :</strong>
-			<a href="https://hermigervill.bandcamp.com/" target="_blank">Hermigervill /
-                Sveinbjörn Thorarensen</a>
-		</li>
-		<li>
-			<strong>Camera :</strong> Yuli Levtov, Uta Reichardt</li>
-		<li>
-			<strong>Video Editing &#038; Titles :</strong> Owen Hindley</li>
-	</ul>
-</section>
-<section>
 	<p>Now a 90 minute performance, regardless of how great the music is or colourful the artist's
         onesie is, might not be the most visually interesting experience if it was
         a simple camera setup. Luckily, I had been working for several months with my
@@ -155,6 +141,57 @@
 		</li>
 		<ul></section>
 
+</div>
+
+<div class="side-column">
+	
+
+
+
+
+
+
+
+
+<aside class="archive-list credits-list">
+	<div class="archive-tabs"><h6>Credits</h6></div>
+	<ol>
+		
+		<li>
+			<span class="where">Performer</span>
+			<a href="https://hermigervill.bandcamp.com/" target="_blank"><span class="what">Hermigervill / Sveinbjörn Thorarensen</span></a>
+		</li>
+		
+		<li>
+			<span class="where">Event Production</span>
+			<div><span class="what">Uta Reichardt, René Boonekamp, Aephie Chen</span></div>
+		</li>
+		
+		<li>
+			<span class="where">AR Graphics</span>
+			<a href="https://volta-xr.com/" target="_blank"><span class="what">Owen Hindley & Yuli Levtov (Volta)</span></a>
+		</li>
+		
+		<li>
+			<span class="where">Camera</span>
+			<div><span class="what">Yuli Levtov, Uta Reichardt</span></div>
+		</li>
+		
+		<li>
+			<span class="where">Video Editing & Titles</span>
+			<div><span class="what">Owen Hindley</span></div>
+		</li>
+		
+	</ol>
+</aside>
+
+
+
+
+</div>
+</div>
+
+
 				<footer>
 					<p>© Owen Hindley, 2026</p>
 
@@ -164,5 +201,18 @@
 		</div>
 
 	</div>
+
+	<script>
+		// switches the tabs of the side column list (project-lists.liquid)
+		function ShowArchiveGroup(index) {
+			document.querySelectorAll('.archive-list [role=tabpanel]').forEach(function (s, i) {
+				s.hidden = i !== index;
+			});
+			document.querySelectorAll('.archive-tabs [role=tab]').forEach(function (b, i) {
+				b.classList.toggle('active', i === index);
+				b.setAttribute('aria-selected', i === index ? 'true' : 'false');
+			});
+		}
+	</script>
 </body>
 </html>

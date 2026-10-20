@@ -11,9 +11,14 @@ class: works
 featured: true
 large: false
 filter: spaces screens
+credits:
+  - { role: "Artist", name: "Owen Hindley" }
+  - { role: "Curator", name: "Nils Wiberg" }
+  - { role: "Camerawork", name: "Parik Ontkovic" }
+  - { role: "Recording tests", name: "Liam Cobb, Uta Reichardt, Íris Erlings, René Boonekamp, Hafnarhaus" }
 ---
 
-<section>
+<section class="full-width">
 	<video
 		id="uti-video"
 		muted=""
@@ -26,6 +31,9 @@ filter: spaces screens
 		<source src="../images/video/uti-promo-lq.mp4"/>
 	</video>
 </section>
+
+<div class="with-sidebar">
+<div class="main-column">
 
 <section>
 	<h4>
@@ -107,3 +115,10 @@ filter: spaces screens
 		</li>
 	</ul>
 </section>
+
+</div>
+
+<div class="side-column">
+	{% include "project-lists.liquid" %}
+</div>
+</div>

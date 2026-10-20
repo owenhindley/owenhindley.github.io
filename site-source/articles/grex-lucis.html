@@ -12,9 +12,13 @@ class: works
 featured: true
 large: true
 filter: spaces
+credits:
+  - { role: "Sound (MOTET)", name: "Þorsteinn Eyfjörð", url: "https://cargocollective.com/teyfjord" }
+  - { role: "Electronics, visual design & build (MOTET)", name: "Owen Hindley" }
+  - { role: "Commissioned by", name: "TONIK Festival, Tórshavn" }
 ---
 
-<section>
+<section class="full-width">
 	<div class="video-wrapper">
 		<iframe width="100%" height="610"
 			src="https://www.youtube.com/embed/d5JqJCF_U-s?modestbranding=1&#038;showinfo=0&#038;rel=0" frameborder="0"
@@ -22,6 +26,9 @@ filter: spaces
 	</div>
 
 </section>
+
+<div class="with-sidebar">
+<div class="main-column">
 
 <section>
 	<h4>
@@ -136,3 +143,10 @@ filter: spaces
 	<img src="../images/projects/grex-lucis-pole-office.jpg"
 		alt="Grex Lucis Audio-Visual Sculpture by Owen Hindley and Þorsteinn Eyfjörð"/>
 </section>
+
+</div>
+
+<div class="side-column">
+	{% include "project-lists.liquid" %}
+</div>
+</div>

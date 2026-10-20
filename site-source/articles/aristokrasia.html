@@ -13,6 +13,9 @@ class: works
 featured: false
 large: true
 filter: stage
+credits:
+  - { role: "Music", name: "Úlfur Eldjárn" }
+  - { role: "Visual design & development", name: "Owen Hindley" }
 ---
 
 <section class="full-width">
@@ -21,6 +24,9 @@ filter: stage
         alt="AR performance by Aristokrasia, with visuals by Owen Hindley"
 />
 </section>
+
+<div class="with-sidebar">
+<div class="main-column">
 
 <section>
 
@@ -36,3 +42,10 @@ filter: stage
 <section>
 	<p>More images + info coming soon.</p>
 </section>
+
+</div>
+
+<div class="side-column">
+	{% include "project-lists.liquid" %}
+</div>
+</div>

@@ -10,9 +10,17 @@ role: Concepting, development and sound design
 skills: HTML5, PHP, Server administration
 class: collaboration
 filter: screens
+credits:
+  - { role: "Client", name: "Microsoft / Xbox" }
+  - { role: "Agency", name: "CP+B London", url: "http://www.cpbgroup.com/" }
+  - { role: "Production", name: "B-Reel", url: "http://www.b-reel.com" }
+  - { role: "Development lead, concepting, sound design", name: "Owen Hindley" }
+press:
+  - { when: "2014", title: "Xbox One 'Glitch' advert", outlet: "HuffPost UK, February 2014", url: "https://www.huffingtonpost.co.uk/2014/02/18/xbox-one-glitch-advert_n_4808306.html" }
+  - { when: "2014", title: "Microsoft reveals truth behind Xbox One TV ad glitch", outlet: "Campaign", url: "https://www.campaignlive.co.uk/article/microsoft-reveals-truth-behind-xbox-one-tv-ad-glitch/1281520" }
 ---
 
-<section>
+<section class="full-width">
 	<div class="video-wrapper">
 		<iframe
 			width="100%"
@@ -23,28 +31,10 @@ filter: screens
 		></iframe>
 	</div>
 </section>
-<section>
-	<ul>
-		<li>
-			<strong
-				>Huffington Post :
-				<a
-					href="https://www.huffingtonpost.co.uk/2014/02/18/xbox-one-glitch-advert_n_4808306.html"
-					>🔗</a
-				>
-			</strong>
-		</li>
-		<li>
-			<strong
-				>Campaign Live :
-				<a
-					href="https://www.campaignlive.co.uk/article/microsoft-reveals-truth-behind-xbox-one-tv-ad-glitch/1281520"
-					>🔗</a
-				>
-			</strong>
-		</li>
-	</ul>
-</section>
+
+<div class="with-sidebar">
+<div class="main-column">
+
 <section>
 	<p>
 		&#8216;The Glitch&#8217; was a highly secretive and unusual campaign
@@ -80,17 +70,9 @@ filter: screens
 	</p>
 </section>
 
-<section>
-	<ul>
-		<li>
-			<strong
-				>B-Reel : <a href="http://www.b-reel.com" target="_blank">🔗</a>
-			</strong>
-		</li>
-		<li>
-			<strong
-				>CP+B London : <a href="http://www.cpbgroup.com/" target="_blank">🔗</a>
-			</strong>
-		</li>
-	</ul>
-</section>
+</div>
+
+<div class="side-column">
+	{% include "project-lists.liquid" %}
+</div>
+</div>

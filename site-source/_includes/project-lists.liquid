@@ -1,0 +1,90 @@
+{% comment %}
+	A project page's side column, as on huldufugl.is: a Credits list with a fixed heading,
+	then a tabbed Screenings (or Performances) / Awards / Press list beneath it.
+	Credits, awards and press come from the page's front matter:
+		credits: a list of { role, name, url } (url optional)
+		awards:  a list of { when, title, event, url } (url optional)
+		press:   a list of { when, title, outlet, url }
+	The screenings tab only appears when the page sets `screeningsLabel` (e.g. "Screenings"
+	or "Performances"). It lists the archive/ entries linking to this project, leaving out
+	talks, teaching and releases (Lecture, Teaching and Project rows).
+	Empty groups get no tab; the first remaining tab shows first.
+{% endcomment %}
+{% assign projectLink = "/" | append: id | append: "/" %}
+{% assign projectList = collections.archive | where : "data.link", projectLink | sort : 'data.sortKey' | reverse %}
+{% assign screeningCount = 0 %}
+{% if screeningsLabel %}{% for item in projectList %}{% unless item.data.category == "Lecture" or item.data.category == "Teaching" or item.data.category == "Project" %}{% assign screeningCount = screeningCount | plus: 1 %}{% endunless %}{% endfor %}{% endif %}
+{% assign awardCount = awards | size %}
+{% assign creditCount = credits | size %}
+{% assign pressCount = press | size %}
+{% if creditCount > 0 %}
+<aside class="archive-list credits-list">
+	<div class="archive-tabs"><h6>Credits</h6></div>
+	<ol>
+		{% for item in credits %}
+		<li>
+			<span class="where">{{ item.role }}</span>
+			{% if item.url %}<a href="{{ item.url }}" target="_blank"><span class="what">{{ item.name }}</span></a>{% else %}<div><span class="what">{{ item.name }}</span></div>{% endif %}
+		</li>
+		{% endfor %}
+	</ol>
+</aside>
+{% endif %}
+{% assign tabCount = 0 %}
+{% if screeningCount > 0 or awardCount > 0 or pressCount > 0 %}
+<aside class="archive-list">
+	<div class="archive-tabs" role="tablist">
+		{% if screeningCount > 0 %}<button type="button" role="tab" onclick="ShowArchiveGroup({{ tabCount }})"{% if tabCount == 0 %} class="active" aria-selected="true"{% else %} aria-selected="false"{% endif %}>{{ screeningsLabel }}</button>{% assign tabCount = tabCount | plus: 1 %}{% endif %}
+		{% if awardCount > 0 %}<button type="button" role="tab" onclick="ShowArchiveGroup({{ tabCount }})"{% if tabCount == 0 %} class="active" aria-selected="true"{% else %} aria-selected="false"{% endif %}>Awards</button>{% assign tabCount = tabCount | plus: 1 %}{% endif %}
+		{% if pressCount > 0 %}<button type="button" role="tab" onclick="ShowArchiveGroup({{ tabCount }})"{% if tabCount == 0 %} class="active" aria-selected="true"{% else %} aria-selected="false"{% endif %}>Press</button>{% endif %}
+	</div>
+	{% assign tabCount = 0 %}
+	{% if screeningCount > 0 %}
+	<section role="tabpanel" aria-label="{{ screeningsLabel }}"{% if tabCount > 0 %} hidden{% endif %}>
+		<ol>
+			{% for item in projectList %}{% unless item.data.category == "Lecture" or item.data.category == "Teaching" or item.data.category == "Project" %}
+			<li>
+				<span class="when">{{ item.data.sortKey | slice: 0, 4 }}</span>
+				<div>
+					<span class="what">{{ item.data.event }}</span>
+					{% if item.data.notes != "" %}<span class="where">{{ item.data.notes }}</span>{% endif %}
+				</div>
+			</li>
+			{% endunless %}{% endfor %}
+		</ol>
+	</section>
+	{% assign tabCount = tabCount | plus: 1 %}
+	{% endif %}
+	{% if awardCount > 0 %}
+	<section role="tabpanel" aria-label="Awards"{% if tabCount > 0 %} hidden{% endif %}>
+		<ol>
+			{% for item in awards %}
+			<li>
+				<span class="when">{{ item.when }}</span>
+				{% if item.url %}<a href="{{ item.url }}" target="_blank">{% else %}<div>{% endif %}
+					<span class="what">{{ item.title }}</span>
+					<span class="where">{{ item.event }}</span>
+				{% if item.url %}</a>{% else %}</div>{% endif %}
+			</li>
+			{% endfor %}
+		</ol>
+	</section>
+	{% assign tabCount = tabCount | plus: 1 %}
+	{% endif %}
+	{% if pressCount > 0 %}
+	<section role="tabpanel" aria-label="Press"{% if tabCount > 0 %} hidden{% endif %}>
+		<ol>
+			{% for item in press %}
+			<li>
+				<span class="when">{{ item.when }}</span>
+				<a href="{{ item.url }}" target="_blank">
+					<span class="what">{{ item.title }}</span>
+					<span class="where">{{ item.outlet }}</span>
+				</a>
+			</li>
+			{% endfor %}
+		</ol>
+	</section>
+	{% endif %}
+</aside>
+{% endif %}

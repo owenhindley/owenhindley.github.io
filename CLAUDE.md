@@ -7,7 +7,7 @@ Owen Hindley's portfolio website, built with [Eleventy](https://www.11ty.dev/) a
 - `site-source/` — Eleventy input. Articles for individual projects live here (`articles/`, plus `blogposts/`, `performances/`, `talks/`, `archive/`), with layouts in `_includes/` and assets in `static/`.
 - `scss/` — Sass source, compiled to `docs/css/main.css`.
 - `docs/` — compiled output, served by GitHub Pages. Don't edit it by hand.
-- `eleventy.config.js` — Eleventy configuration.
+- `.eleventy.js` — Eleventy configuration (Eleventy 1.x only loads this name, not `eleventy.config.js`). Defines the `awards` collection behind the About page's Awards & Nominations list, gathered from every article's `awards` front matter.
 
 ## Archive (full project & gig list)
 

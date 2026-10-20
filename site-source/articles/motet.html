@@ -10,6 +10,11 @@ skills: Touchdesigner
 class: works
 featured: true
 filter: stage screens spaces
+screeningsLabel: Performances
+credits:
+  - { role: "Sound (MOTET)", name: "Þorsteinn Eyfjörð Þórarinsson", url: "https://cargocollective.com/teyfjord" }
+  - { role: "Visuals (MOTET)", name: "Owen Hindley" }
+  - { role: "Label", name: "INNI Music", url: "https://innimusic.bandcamp.com/album/05" }
 ---
 
 <section class="full-width">
@@ -20,6 +25,9 @@ filter: stage screens spaces
 			allowfullscreen></iframe>
 	</div>
 </section>
+
+<div class="with-sidebar">
+<div class="main-column">
 
 <section>
 	<h3>
@@ -47,16 +55,6 @@ filter: stage screens spaces
 	</p>
 	<p> We also create installation work as a duo. Our first work was entitled <a href="./grex-lucis">Grex Lucis</a>, an
 		audiovisual light and sound installation which debuted at TONIK festival, Faroe Islands.</p>
-</section>
-<section>
-	<p>Performances :</p>
-	<ul>
-		<li>Extreme Chill Festival, Reykjavík, 2023</li>
-		<li>Mengi, Reykjavík, 2024</li>
-		<li>Upprásin, Harpa Concert Hall, Reykjavík, 2025</li>
-		<li>Iceland Airwaves, Smekkleysa, Reykjavík, 2025</li>
-		<li>Reykjavík Art Museum (Hafnarhúsið), Reykjavík, 2026</li>
-	</ul>
 </section>
 <section class="full-width">
 	<img src="../images/projects/motet-sunna-ben.jpg" alt="MOTET by Sunna Ben"/>
@@ -92,10 +90,12 @@ filter: stage screens spaces
 				<a href="http://instagram.com/mmmmotet" target="_blank">🔗</a>
 			</strong>
 		</li>
-		<li>
-			<strong>Þorsteinn Eyfjörð Þórarinsson:
-				<a href="https://cargocollective.com/teyfjord" target="_blank">🔗</a>
-			</strong>
-		</li>
 	</ul>
 </section>
+
+</div>
+
+<div class="side-column">
+	{% include "project-lists.liquid" %}
+</div>
+</div>

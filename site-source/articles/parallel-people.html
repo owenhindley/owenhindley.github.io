@@ -10,9 +10,23 @@ skills: Unity, Houdini, VR
 class: works
 featured: true
 filter: stage spaces
+screeningsLabel: Performances
+awards:
+  - { when: "2022", title: "Nominated, Best Immersive Performance", event: "Raindance Immersive, London", url: "https://www.raindanceimmersive.com/parallel-people/" }
+credits:
+  - { role: "Performers", name: "Nanna Gunnars & Ástþór Ágústsson" }
+  - { role: "Director & Design", name: "Owen Hindley" }
+  - { role: "Unity Programmer & Concept Development", name: "Torfi Ásgeirsson", url: "https://twitter.com/torfias" }
+  - { role: "Writer & Concept Development", name: "Steingerður Lóa Gunnars", url: "https://twitter.com/st1gerdur" }
+  - { role: "Composer", name: "Íris Thorarins", url: "https://www.facebook.com/iristhorarins/" }
+  - { role: "Supported by", name: "The Icelandic Artist Fund / Listamannalaun" }
+press:
+  - { when: "2022", title: "Parallel People", outlet: "Raindance Immersive, 2022", url: "https://www.raindanceimmersive.com/parallel-people/" }
+  - { when: "2022", title: "Tonight! A VR Performance At The National Theatre", outlet: "The Reykjavík Grapevine, April 2022", url: "https://grapevine.is/icelandic-culture/2022/04/21/tonight-a-vr-performance-at-the-national-theatre/" }
+  - { when: "2022", title: "VR performance in English", outlet: "Þjóðleikhúsið – National Theatre of Iceland, 2022", url: "https://leikhusid.is/frettir/vr-performance-in-english/" }
 ---
 
-<section>
+<section class="full-width">
 	<div class="video-wrapper">
 		<iframe
 			width="100%"
@@ -23,6 +37,9 @@ filter: stage spaces
 		></iframe>
 	</div>
 </section>
+
+<div class="with-sidebar">
+<div class="main-column">
 
 <section>
 	<h3>
@@ -82,34 +99,9 @@ filter: stage spaces
 	<img src="../images/projects/parallel-people-boxes.jpg" alt="Parallel People by Huldufugl"/>
 </section>
 
-<section>
-	<p>Performances:</p>
-	<ul>
-		<li>
-			Þjóðleikhúsið (The National Theatre of Iceland) - April 2022 (Sold out
-			run)
-		</li>
-		<li>
-			Raindance Immersive 2022 - November 2022 (Nominated for Best Immersive
-			Performance)
-		</li>
-	</ul>
-	<p>Creative Team:</p>
-	<ul>
-		<li>Performers : Nanna Gunnars & Ástþór Ágústsson</li>
-		<li>Director &amp; Design : Owen Hindley</li>
-		<li>
-			Unity programmer &amp; concept development :
-			<a href="https://twitter.com/torfias" target="_blank">Torfi Ásgeirsson</a>
-		</li>
-		<li>
-			Writer &amp; concept development :
-			<a href="https://twitter.com/st1gerdur" target="_blank">Steingerður Lóa Gunnars</a>
-		</li>
-		<li>
-			Composer :
-			<a href="https://www.facebook.com/iristhorarins/">Íris Thorarins</a>
-		</li>
-		<li>Supported by : The Icelandic Artist Fund / Listamannalaun</li>
-	</ul>
-</section>
+</div>
+
+<div class="side-column">
+	{% include "project-lists.liquid" %}
+</div>
+</div>

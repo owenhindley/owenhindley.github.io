@@ -9,9 +9,17 @@ role: Development
 skills: NodeJS, Max/MSP, DMX
 class: collaboration
 filter: spaces
+credits:
+  - { role: "Concept & production", name: "Atli Bollason" }
+  - { role: "Development", name: "Yuli Levtov (Reactify)", url: "http://reactifymusic.com" }
+  - { role: "Development", name: "Ragnar Ingi Hrafnkelsson (Reactify)", url: "http://reactifymusic.com" }
+  - { role: "Development", name: "Owen Hindley" }
+  - { role: "Build supervisor", name: "Jonas Johansson" }
+press:
+  - { when: "2016", title: "Play a Building Like an Instrument", outlet: "Vice / The Creators Project", url: "https://www.vice.com/en/article/aenpzz/play-a-building-like-an-instrument-reykjavik" }
 ---
 
-<section>
+<section class="full-width">
 	<div class="video-wrapper">
 		<iframe
 			src="https://player.vimeo.com/video/169834486?title=0&#038;badge=0&#038;byline=0&#038;portrait=0"
@@ -24,20 +32,10 @@ filter: spaces
 		></iframe>
 	</div>
 </section>
-<section>
-	<ul>
-		<li>
-			<strong>
-				Vice Magazine / The Creators Project :
-				<a
-					href="https://www.vice.com/en/article/aenpzz/play-a-building-like-an-instrument-reykjavik"
-					>🔗</a
-				>
-			</strong
-			>
-		</li>
-	</ul>
-</section>
+
+<div class="with-sidebar">
+<div class="main-column">
+
 <section>
 	<p>
 		<strong>
@@ -59,14 +57,10 @@ filter: spaces
 		with an optical performance.
 	</p>
 </section>
-<section>
-	<p>
-		Conceived &amp; produced by Atli Bollason.<br/>
-		Developed by:<br/>
-		Yuli Levtov, Reactify<br/>
-		Ragnar Ingi Hrafnkelsson, Reactify<br/>
-		Owen Hindley<br/>
-		Build supervisor:<br/>
-		Jonas Johansson
-	</p>
-</section>
+
+</div>
+
+<div class="side-column">
+	{% include "project-lists.liquid" %}
+</div>
+</div>

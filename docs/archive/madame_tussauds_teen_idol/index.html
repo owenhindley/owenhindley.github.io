@@ -104,5 +104,18 @@
 		</div>
 
 	</div>
+
+	<script>
+		// switches the tabs of the side column list (project-lists.liquid)
+		function ShowArchiveGroup(index) {
+			document.querySelectorAll('.archive-list [role=tabpanel]').forEach(function (s, i) {
+				s.hidden = i !== index;
+			});
+			document.querySelectorAll('.archive-tabs [role=tab]').forEach(function (b, i) {
+				b.classList.toggle('active', i === index);
+				b.setAttribute('aria-selected', i === index ? 'true' : 'false');
+			});
+		}
+	</script>
 </body>
 </html>

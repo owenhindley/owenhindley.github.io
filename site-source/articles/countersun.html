@@ -11,6 +11,12 @@ class: works
 featured: true
 large: false
 filter: spaces
+credits:
+  - { role: "Artists (Mercury Maze Studio)", name: "Katerina Blahutova", url: "https://www.katerinablahutova.com/" }
+  - { role: "Artists (Mercury Maze Studio)", name: "Þorsteinn Eyfjörð", url: "https://cargocollective.com/teyfjord" }
+  - { role: "Artists (Mercury Maze Studio)", name: "Owen Hindley" }
+  - { role: "Studio", name: "Mercury Maze Studio", url: "https://www.instagram.com/mercury_maze/" }
+  - { role: "Exhibited at", name: "Listasalur Mosfellsbæjar", url: "https://mos.is/mannlif/menning/listasalur/" }
 ---
 
 <section class="full-width">
@@ -19,6 +25,9 @@ filter: spaces
 		<source src="../images/projects/countersun-header-lq.mov"/>
 	</video>
 </section>
+
+<div class="with-sidebar">
+<div class="main-column">
 
 <section>
 	<h3>
@@ -67,22 +76,9 @@ filter: spaces
 	</video>
 </section>
 
-<section class="small">
-	<ul>
-		<li>
-			By Mercury Maze Studio :
-			<a href="https://www.instagram.com/mercury_maze/" target="_blank">Instagram</a>
-		</li>
-		<li>
-			Founded by :		<br/>
-			<a href="https://www.katerinablahutova.com/" target="_blank">Katerina Blahutova</a><br/>
-			<a href="https://cargocollective.com/teyfjord" target="_blank">Þorsteinn Eyfjörð</a><br/>
-			<a href="https://owenhindley.co.uk/" target="_blank">Owen Hindley</a><br/>
-		</li>
-		<li>
-			Exhibited at Listasalur Mosfellsbæjar:
-			<a href="https://mos.is/mannlif/menning/listasalur/" target="_blank">Lista­sal­ur</a>
-		</li>
+</div>
 
-	</ul>
-</section>
+<div class="side-column">
+	{% include "project-lists.liquid" %}
+</div>
+</div>

@@ -57,10 +57,14 @@
 					</p>
 				</header>
 				
-<section>
+<section class="full-width">
 	<img src="../images/projects/inki-header.jpg"
 		alt="INKI Album Release Concert at Tjarnarbío, visuals and lighting by Owen Hindley"/>
 </section>
+
+<div class="with-sidebar">
+<div class="main-column">
+
 <section>
 	<h4>
 		Visualising the sonic world of Ingibjörg Friðriksdóttir (INKI), through set design, visual content and lighting.
@@ -205,17 +209,66 @@
 		alt="INKI Album Release Concert at Tjarnarbío, visuals and lighting by Owen Hindley"/>
 </section>
 
-<section class="small">
-	<ul>
-		<li>Vocals &amp; Electronics : Inki</li>
-		<li>Synths &amp; Electronics : PALMR</li>
-		<li>Percussion : Höskuldur Eiríksson</li>
-		<li>Violin : Sigrún Harðardóttir</li>
-		<li>Viola : Karl James Pestka</li>
-		<li>Cello : Þórdís Gerður Jónsdóttir</li>
-		<li>Visuals, Set Design, Lighting : Owen Hindley</li>
-	</ul>
-</section>
+</div>
+
+<div class="side-column">
+	
+
+
+
+
+
+
+
+
+<aside class="archive-list credits-list">
+	<div class="archive-tabs"><h6>Credits</h6></div>
+	<ol>
+		
+		<li>
+			<span class="where">Vocals & Electronics</span>
+			<div><span class="what">Inki</span></div>
+		</li>
+		
+		<li>
+			<span class="where">Synths & Electronics</span>
+			<div><span class="what">PALMR</span></div>
+		</li>
+		
+		<li>
+			<span class="where">Percussion</span>
+			<div><span class="what">Höskuldur Eiríksson</span></div>
+		</li>
+		
+		<li>
+			<span class="where">Violin</span>
+			<div><span class="what">Sigrún Harðardóttir</span></div>
+		</li>
+		
+		<li>
+			<span class="where">Viola</span>
+			<div><span class="what">Karl James Pestka</span></div>
+		</li>
+		
+		<li>
+			<span class="where">Cello</span>
+			<div><span class="what">Þórdís Gerður Jónsdóttir</span></div>
+		</li>
+		
+		<li>
+			<span class="where">Visuals, Set Design, Lighting</span>
+			<div><span class="what">Owen Hindley</span></div>
+		</li>
+		
+	</ol>
+</aside>
+
+
+
+
+</div>
+</div>
+
 
 				<footer>
 					<p>© Owen Hindley, 2026</p>
@@ -226,5 +279,18 @@
 		</div>
 
 	</div>
+
+	<script>
+		// switches the tabs of the side column list (project-lists.liquid)
+		function ShowArchiveGroup(index) {
+			document.querySelectorAll('.archive-list [role=tabpanel]').forEach(function (s, i) {
+				s.hidden = i !== index;
+			});
+			document.querySelectorAll('.archive-tabs [role=tab]').forEach(function (b, i) {
+				b.classList.toggle('active', i === index);
+				b.setAttribute('aria-selected', i === index ? 'true' : 'false');
+			});
+		}
+	</script>
 </body>
 </html>

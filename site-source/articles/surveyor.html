@@ -10,9 +10,11 @@ skills:
 class: works
 filter: screens
 featured: true
+credits:
+  - { role: "Writer, developer, sound designer", name: "Owen Hindley" }
 ---
 
-<section>
+<section class="full-width">
 
 	<img
 		src="../images/projects/surveyor.jpg"
@@ -20,6 +22,10 @@ featured: true
 		class="alignleft"
 	/>
 </section>
+
+<div class="with-sidebar">
+<div class="main-column">
+
 <section>
 	<h3>A short story about a Surveyor, surveying a strange Land.</h3>
 </section>
@@ -48,3 +54,10 @@ featured: true
 		</li>
 	</ul>
 </section>
+
+</div>
+
+<div class="side-column">
+	{% include "project-lists.liquid" %}
+</div>
+</div>

@@ -11,9 +11,17 @@ class: works
 featured: true
 large: false
 filter: spaces screens
+credits:
+  - { role: "Concept, creative direction, production", name: "Atli Bollason" }
+  - { role: "Design, hardware, networking, programming", name: "Owen Hindley" }
+  - { role: "Sponsor", name: "Vodafone Iceland" }
+press:
+  - { when: "2014", title: "Icelanders Played a Massive Game of Pong on an Olafur Eliasson Building", outlet: "Vice", url: "https://www.vice.com/en/article/xy4ded/icelanders-played-a-massive-game-of-pong-on-an-olafur-eliasson-building" }
+  - { when: "2014", title: "Go Pong Harpa Now", outlet: "The Reykjavík Grapevine, August 2014", url: "http://grapevine.is/culture/art/2014/08/30/go-pong-harpa-now/" }
+  - { when: "2014", title: "Playing Pong on Harpa's 43.61 meter light wall", outlet: "Iceland Magazine", url: "http://www.icelandmag.com/article/playing-pong-harpas-concert-hall-43-61-meter-light-wall" }
 ---
 
-<section>
+<section class="full-width">
 	<div class="video-wrapper">
 		<iframe
 			width="100%"
@@ -24,6 +32,9 @@ filter: spaces screens
 		></iframe>
 	</div>
 </section>
+
+<div class="with-sidebar">
+<div class="main-column">
 
 <section>
 	<p>
@@ -60,40 +71,6 @@ filter: spaces screens
 
 <section>
 	<ul>
-		<li>
-			<strong
-				>Vice Magazine :
-				<a
-					href="https://www.vice.com/en/article/xy4ded/icelanders-played-a-massive-game-of-pong-on-an-olafur-eliasson-building"
-					>🔗</a
-				>
-			</strong
-			>
-		</li>
-		<li>
-			<strong
-				>Reykjavik Grapevine :
-				<a
-					href="http://grapevine.is/culture/art/2014/08/30/go-pong-harpa-now/"
-					target="_blank"
-					>🔗</a
-				>
-			</strong
-			>
-		</li>
-
-		<li>
-			<strong
-				>Iceland Magazine:
-				<a
-					href="http://www.icelandmag.com/article/playing-pong-harpas-concert-hall-43-61-meter-light-wall"
-					target="_blank"
-					>🔗</a
-				>
-			</strong
-			>
-		</li>
-
 		<li>
 			<strong
 				>Homepage :
@@ -143,3 +120,10 @@ filter: spaces screens
 		<a href="https://github.com/owenhindley/harpapong"> github</a>.
 	</p>
 </section>
+
+</div>
+
+<div class="side-column">
+	{% include "project-lists.liquid" %}
+</div>
+</div>

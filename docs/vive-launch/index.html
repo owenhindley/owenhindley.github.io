@@ -57,32 +57,16 @@
 					</p>
 				</header>
 				
-<section>
+<section class="full-width">
 	<div class="video-wrapper">
 		<iframe src="https://player.vimeo.com/video/163678193?color=ffffff&#038;title=0&#038;byline=0&#038;portrait=0"
         width="100%" height="610" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 	</div>
 </section>
 
-<section>
-	<ul>
-		<li>
-			<strong>FWA PCA of The Year (Nomination): <a
-            href="https://thefwa.com/editorial/the-fwa-peoples-choice-award-pca-2016-vote-now"
-            target="_blank">🔗</a>
-			</br>
-		</strong>
-	</li>
-	<li>
-		<strong>FWA Site of The Month: <a href="http://www.thefwa.com/site/get-vive-ready?c=SOTM"
-            target="_blank">🔗</a>
-		</strong>
-		<li>
-			<strong>Awwards SOTD : <a href="http://www.awwwards.com/sites/get-vive-ready" target="_blank">🔗</a>
-			</strong>
-		</li>
-	</ul>
-</section>
+<div class="with-sidebar">
+<div class="main-column">
+
 <section>
 	<p>>Get Vive Ready by HTC, Google and B-Reel was a WebGL experience that invites the user
     to test if they are &#8216;Vive&nbsp;Ready&#8217;, to promote the launch of
@@ -102,6 +86,90 @@
     the Month (which followed our project Mmorph&#8217;s award the previous month!)</p>
 </section>
 
+</div>
+
+<div class="side-column">
+	
+
+
+
+
+
+
+
+
+<aside class="archive-list credits-list">
+	<div class="archive-tabs"><h6>Credits</h6></div>
+	<ol>
+		
+		<li>
+			<span class="where">Client</span>
+			<div><span class="what">HTC / Google</span></div>
+		</li>
+		
+		<li>
+			<span class="where">Production</span>
+			<div><span class="what">B-Reel</span></div>
+		</li>
+		
+		<li>
+			<span class="where">Lead development</span>
+			<div><span class="what">Owen Hindley</span></div>
+		</li>
+		
+	</ol>
+</aside>
+
+
+
+<aside class="archive-list">
+	<div class="archive-tabs" role="tablist">
+		
+		<button type="button" role="tab" onclick="ShowArchiveGroup(0)" class="active" aria-selected="true">Awards</button>
+		
+	</div>
+	
+	
+	
+	<section role="tabpanel" aria-label="Awards">
+		<ol>
+			
+			<li>
+				<span class="when">2016</span>
+				<a href="https://thefwa.com/editorial/the-fwa-peoples-choice-award-pca-2016-vote-now" target="_blank">
+					<span class="what">Nominated, People's Choice Award of the Year</span>
+					<span class="where">The FWA</span>
+				</a>
+			</li>
+			
+			<li>
+				<span class="when">2016</span>
+				<a href="http://www.thefwa.com/site/get-vive-ready?c=SOTM" target="_blank">
+					<span class="what">Site of the Month</span>
+					<span class="where">The FWA</span>
+				</a>
+			</li>
+			
+			<li>
+				<span class="when">2016</span>
+				<a href="http://www.awwwards.com/sites/get-vive-ready" target="_blank">
+					<span class="what">Site of the Day</span>
+					<span class="where">Awwwards</span>
+				</a>
+			</li>
+			
+		</ol>
+	</section>
+	
+	
+	
+</aside>
+
+
+</div>
+</div>
+
+
 				<footer>
 					<p>© Owen Hindley, 2026</p>
 
@@ -111,5 +179,18 @@
 		</div>
 
 	</div>
+
+	<script>
+		// switches the tabs of the side column list (project-lists.liquid)
+		function ShowArchiveGroup(index) {
+			document.querySelectorAll('.archive-list [role=tabpanel]').forEach(function (s, i) {
+				s.hidden = i !== index;
+			});
+			document.querySelectorAll('.archive-tabs [role=tab]').forEach(function (b, i) {
+				b.classList.toggle('active', i === index);
+				b.setAttribute('aria-selected', i === index ? 'true' : 'false');
+			});
+		}
+	</script>
 </body>
 </html>

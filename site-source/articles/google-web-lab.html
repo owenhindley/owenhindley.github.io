@@ -9,9 +9,14 @@ endDate: 2013
 where: London
 class: collaboration
 filter: spaces
+credits:
+  - { role: "Client", name: "Google Creative Lab" }
+  - { role: "Production", name: "B-Reel" }
+  - { role: "Physical installation", name: "Tellart" }
+  - { role: "Front-end development", name: "Owen Hindley" }
 ---
 
-<section>
+<section class="full-width">
 	<div class="video-wrapper">
 		<iframe
             width="100%"
@@ -22,6 +27,10 @@ filter: spaces
         ></iframe>
 	</div>
 </section>
+
+<div class="with-sidebar">
+<div class="main-column">
+
 <section>
 
 	<p>
@@ -48,3 +57,10 @@ filter: spaces
         talented team at B-Reel, as well as Tellart and Google.
     </p>
 </section>
+
+</div>
+
+<div class="side-column">
+	{% include "project-lists.liquid" %}
+</div>
+</div>

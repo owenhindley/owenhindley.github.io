@@ -1,0 +1,117 @@
+@import "./colours.scss";
+
+// tabbed list (awards, screenings, credits) in a project page's side column,
+// built by site-source/_includes/project-lists.liquid; as on huldufugl.is
+// one group shows at a time, picked with the tabs at the top (ShowArchiveGroup in article.njk)
+.archive-list {
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+
+	.archive-tabs {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.25rem 1.25rem;
+		padding-bottom: 0.5rem;
+		border-bottom: 1px solid $lineColor;
+
+		button {
+			margin: 0;
+			padding: 0;
+			border: none;
+			border-radius: 0;
+			background: none;
+			cursor: pointer;
+			font-family: inherit;
+			font-size: var(--size--1);
+			letter-spacing: 0.02em;
+			color: $mutedTextColor;
+			transition: color 0.15s;
+
+			&:hover,
+			&.active {
+				color: $highlightColor;
+			}
+		}
+	}
+
+	// article sections are display: block, which would override [hidden]
+	section {
+		margin: 0 !important;
+		line-height: normal !important;
+
+		&[hidden] {
+			display: none !important;
+		}
+	}
+
+	ol {
+		margin: 0;
+		padding: 0;
+	}
+
+	li {
+		display: grid;
+		grid-template-columns: 3em minmax(0, 1fr);
+		column-gap: 0.75rem;
+		padding: 0.45rem 0;
+		margin: 0;
+		font-size: var(--size--2);
+		line-height: 1.4em;
+		letter-spacing: 0.02em;
+		list-style: none;
+		border-bottom: 1px solid $fainterLineColor;
+	}
+
+	// a fixed heading in place of tabs (Credits, About page's Awards & Nominations)
+	.archive-tabs h6 {
+		margin: 0;
+		font-size: var(--size--1);
+		font-weight: normal;
+		letter-spacing: 0.02em;
+		text-transform: none;
+		color: $highlightColor;
+	}
+
+	// credits: no date column, each role above its name
+	&.credits-list li {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.when {
+		color: $mutedTextColor;
+		font-variant-numeric: tabular-nums;
+	}
+
+	a,
+	div {
+		display: block;
+		min-width: 0;
+		border: none;
+		color: $textColor;
+		text-decoration: none;
+	}
+
+	a:hover {
+		border: none;
+
+		.what {
+			color: $highlightColor;
+			text-decoration: underline;
+			text-underline-offset: 0.2em;
+		}
+	}
+
+	.what,
+	.where {
+		display: block;
+	}
+
+	.what {
+		color: $textColor;
+	}
+
+	.where {
+		color: $mutedTextColor;
+	}
+}

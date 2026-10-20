@@ -66,6 +66,9 @@
 	<img src="../images/projects/Flækt_WEB-23.jpg" alt="Flækt by Juliette Louste"/>
 </section>
 
+<div class="with-sidebar">
+<div class="main-column">
+
 <section>
 	<h3>
 		"Growing up is not easy for everyone. Being human is not easy. Existence itself is complex and inflexible and
@@ -89,28 +92,6 @@
 		invited into the project to work on projected visual material.</p>
 </section>
 
-<section class="small">
-	<ul>
-		<li>
-			<strong>WINNER : GRÍMAN 2026 - Lýsing Ársins - Andreu Fabregas &amp; Owen Hindley</strong>
-		</li>
-		<li>
-			<em>(Icelandic Theatre Awards 2026 - Best Lighting)</em>
-		</li>
-	</ul>
-	<ul>
-		<li>Author, Choreographer - Juliette Louste </li>
-		<li>Artistic Director and Producer - Kara Hergils</li>
-		<li>Set &amp; Costume Design - Rebekka A. Ingimundardóttir</li>
-		<li>Dramaturg - Gígja Sara Björnsson</li>
-		<li>Composer - Íris Hrund Thorarinsdóttir</li>
-		<li>Assistant Choreographer - Selma Reynisdóttir</li>
-		<li>Lighting - Andreu Fàbregas Granes</li>
-		<li>Sound Design - Kristín Waage</li>
-		<li>Projections - Owen Hindley</li>
-		<li>Technician - Dariel Garcia</li>
-	</ul>
-</section>
 
 <section>
 	<div class="video-wrapper">
@@ -184,6 +165,114 @@
 			<img src="../images/projects/Flaekt-control.jpg" alt="Flækt by Juliette Louste"/>
 		</section>
 
+</div>
+
+<div class="side-column">
+	
+
+
+
+
+
+
+
+
+<aside class="archive-list credits-list">
+	<div class="archive-tabs"><h6>Credits</h6></div>
+	<ol>
+		
+		<li>
+			<span class="where">Author, Choreographer</span>
+			<div><span class="what">Juliette Louste</span></div>
+		</li>
+		
+		<li>
+			<span class="where">Artistic Director and Producer</span>
+			<div><span class="what">Kara Hergils</span></div>
+		</li>
+		
+		<li>
+			<span class="where">Set & Costume Design</span>
+			<div><span class="what">Rebekka A. Ingimundardóttir</span></div>
+		</li>
+		
+		<li>
+			<span class="where">Dramaturg</span>
+			<div><span class="what">Gígja Sara Björnsson</span></div>
+		</li>
+		
+		<li>
+			<span class="where">Composer</span>
+			<div><span class="what">Íris Hrund Thorarinsdóttir</span></div>
+		</li>
+		
+		<li>
+			<span class="where">Assistant Choreographer</span>
+			<div><span class="what">Selma Reynisdóttir</span></div>
+		</li>
+		
+		<li>
+			<span class="where">Lighting</span>
+			<div><span class="what">Andreu Fàbregas Granes</span></div>
+		</li>
+		
+		<li>
+			<span class="where">Sound Design</span>
+			<div><span class="what">Kristín Waage</span></div>
+		</li>
+		
+		<li>
+			<span class="where">Projections</span>
+			<div><span class="what">Owen Hindley</span></div>
+		</li>
+		
+		<li>
+			<span class="where">Technician</span>
+			<div><span class="what">Dariel Garcia</span></div>
+		</li>
+		
+		<li>
+			<span class="where">Funded By</span>
+			<div><span class="what">Viva Holding</span></div>
+		</li>
+		
+	</ol>
+</aside>
+
+
+
+<aside class="archive-list">
+	<div class="archive-tabs" role="tablist">
+		
+		<button type="button" role="tab" onclick="ShowArchiveGroup(0)" class="active" aria-selected="true">Awards</button>
+		
+	</div>
+	
+	
+	
+	<section role="tabpanel" aria-label="Awards">
+		<ol>
+			
+			<li>
+				<span class="when">2026</span>
+				<div>
+					<span class="what">Winner, Best Lighting (Lýsing Ársins)</span>
+					<span class="where">Gríman 2026, Icelandic Theatre Awards. Shared by Andreu Fàbregas & Owen Hindley</span>
+				</div>
+			</li>
+			
+		</ol>
+	</section>
+	
+	
+	
+</aside>
+
+
+</div>
+</div>
+
+
 				<footer>
 					<p>© Owen Hindley, 2026</p>
 
@@ -193,5 +282,18 @@
 		</div>
 
 	</div>
+
+	<script>
+		// switches the tabs of the side column list (project-lists.liquid)
+		function ShowArchiveGroup(index) {
+			document.querySelectorAll('.archive-list [role=tabpanel]').forEach(function (s, i) {
+				s.hidden = i !== index;
+			});
+			document.querySelectorAll('.archive-tabs [role=tab]').forEach(function (b, i) {
+				b.classList.toggle('active', i === index);
+				b.setAttribute('aria-selected', i === index ? 'true' : 'false');
+			});
+		}
+	</script>
 </body>
 </html>

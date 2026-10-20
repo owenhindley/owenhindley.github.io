@@ -11,9 +11,14 @@ class: works
 featured: true
 large: false
 filter: screens
+credits:
+  - { role: "Audio & Video", name: "MOTET (Owen Hindley & Þorsteinn Eyfjörð)", url: "../motet/" }
+  - { role: "Mastering", name: "Styrmir Hauksson (@styrmirhauks)" }
+  - { role: "Published by", name: "INNI Music (@innimusic)" }
+  - { role: "Special thanks", name: "Josie Anne Gaitens, Dorothea Olesen Halldorsdóttir, Nanna Gunnars, Colm O'Herlihy, Hafnarhaus" }
 ---
 
-<section>
+<section class="full-width">
 	<div class="video-wrapper">
 		<iframe src="https://www.youtube.com/embed/YzO-moWUiFg" width="100%" height="610" title="YouTube video player"
             frameborder="0"
@@ -22,29 +27,15 @@ filter: screens
 	</div>
 </section>
 
+<div class="with-sidebar">
+<div class="main-column">
+
 <section>
 	<p>
         Music video for the second single from MOTET's debut EP '0.5' - MOTET are Owen Hindley and Þorsteinn Eyfjörð
         (more about them <a href="../motet/">here</a>)
     </p>
-	<p>
-        Published by INNI music ( @innimusic )
-        Audio &amp; Video by MOTET
-        Mastering by Styrmir Hauksson ( @styrmirhauks )
-    </p>
 	<p></section>
-	<section class="small">
-		<p>
-        Special thanks to:
-    </p>
-		<ul>
-			<li>Josie Anne Gaitens</li>
-			<li>Dorothea Olesen Halldorsdóttir</li>
-			<li>Nanna Gunnars</li>
-			<li>Colm O'Herlihy</li>
-			<li>Hafnarhaus</li>
-		</ul>
-	</section>
 	<section>
 		<h4>Links :</h4>
 		<ul>
@@ -53,10 +44,12 @@ filter: screens
                 <a href="http://instagram.com/mmmmotet" target="_blank">🔗</a>
 				</strong>
 			</li>
-			<li>
-				<strong>Þorsteinn Eyfjörð Þórarinsson:
-                <a href="https://cargocollective.com/teyfjord" target="_blank">🔗</a>
-				</strong>
-			</li>
 		</ul>
 	</section>
+
+</div>
+
+<div class="side-column">
+	{% include "project-lists.liquid" %}
+</div>
+</div>

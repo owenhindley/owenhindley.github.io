@@ -12,14 +12,24 @@ class: collaboration
 featured: false
 large: true
 filter: spaces screens
+credits:
+  - { role: "Studio", name: "Field.io", url: "https://field.io/work/ibm-under-the-surface" }
+  - { role: "Client", name: "IBM Randori" }
+  - { role: "Development", name: "Owen Hindley" }
+  - { role: "Development", name: "Páll Pálsson" }
+  - { role: "Development", name: "Claus Helfenschneider, Seph Li" }
 ---
 
-<section>
+<section class="full-width">
 	<img
 		src="../images/projects/under-the-surface-01.jpg"
 		alt="Under The Surface by Field"
 	/>
 </section>
+
+<div class="with-sidebar">
+<div class="main-column">
+
 <section>
 	<h4>
 		An interactive spatial data experience by Field.io studio for IBM Randori,
@@ -66,3 +76,10 @@ filter: spaces screens
 		</ul>
 </ul>
 </section>
+
+</div>
+
+<div class="side-column">
+	{% include "project-lists.liquid" %}
+</div>
+</div>

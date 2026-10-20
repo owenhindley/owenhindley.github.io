@@ -2,35 +2,55 @@
 
 nav {
 
-	// large screen layout - fixed on left hand side
+	// large screen layout - horizontal bar fixed along the top
 	@media (min-width: 1025px) {
-		float: left;
-		width: 100%;
 		position: fixed;
-		width: 9em;
-		left: 1.5em;
-		top: 4em;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: 99999;
+		box-sizing: border-box;
 
-		#nav-toggle {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: baseline;
+		row-gap: 0.5em;
+		padding: 1.25em 1.5em;
+
+		background: rgba($backgroundColor, 0.9);
+		backdrop-filter: blur(8px);
+		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+		#nav-toggle,
+		#hamburger-lines,
+		br,
+		label input {
 			display: none;
 		}
 
+		// spacing goes between links only, so the centred group isn't offset
 		label {
-			clear: both;
-			width: 100%;
-			margin-bottom: var(--size-0);
-			text-align: right;
+			margin-right: 0;
+			margin-left: 3em;
+
+			&:first-of-type {
+				margin-left: 0;
+			}
 
 			span {
-				height: auto;
-				display: block;
 				letter-spacing: 0.02em;
-				font-size: 0.95em;
-				font-size: var(--size-0);
+				font-size: calc(var(--size-0) * #{$landing-scale});
 			}
 
 			&.subfilter {
-				margin-bottom: var(--size--2);
+				margin-left: 1.5em;
+			}
+
+			// space the "For ..." subfilter group off from the main links either side
+			&:not(.subfilter) + .subfilter,
+			&.subfilter + br + label {
+				margin-left: 3em;
 			}
 		}
 	}
@@ -52,8 +72,7 @@ nav {
 			padding: 0;
 			color: $textColor;
 			opacity: 0.65;
-			font-size: 1em;
-			font-size: var(--size-0);
+			font-size: calc(var(--size-0) * #{$landing-scale});
 			// font-weight: 500;
 			transition: opacity 0.2s ease;
 
@@ -73,7 +92,7 @@ nav {
 			opacity: 0.5;
 
 			span {
-				font-size: var(--size--1);
+				font-size: calc(var(--size--1) * #{$landing-scale});
 			}
 
 		}
@@ -137,11 +156,10 @@ nav {
 			margin-left: auto;
 			margin-right: auto;
 			padding-right: 2em;
-			margin-bottom: 1.2em;
+			margin-bottom: 1.2em * $landing-scale;
 
 			span {
-				font-size: 0.95em;
-				font-size: var(--size-0);
+				font-size: calc(var(--size-0) * #{$landing-scale});
 				font-weight: 500;
 			}
 		}
@@ -150,15 +168,6 @@ nav {
 			border: 1px solid rgba(255, 255, 255, 0.2);
 			background: $backgroundColor;
 		}
-	}
-
-	.single-article & {
-
-		@media (min-width: 1025px) {
-			left: 0;
-			top: 2rem;
-		}
-
 	}
 
 }

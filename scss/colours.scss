@@ -29,11 +29,19 @@ $c3: #f5f5f5;
 $c4: #f5f5f5;
 
 // Modern black and white palette
-$backgroundColor: #121212;
+// text colours are set by their contrast ratio against $backgroundColor;
+// if the background changes, recalculate them to keep the same ratios
+$backgroundColor: #0a0a0a;
 $sectionBackground: rgba(255, 255, 255, 0.08);
-$textColor: #ececec;
-$highlightColor: #ffffff;
-$textAltColor: #b0b0b0;
+$textColor: #9b9b9b; // 7:1
+$highlightColor: #f8f8f8; // 18.7:1
+$taglineColor: #afafaf; // 9:1
+$textAltColor: #ababab; // 8.6:1, links and project titles
+$linkHoverColor: #dadada; // 14.2:1
+$footerColor: #7c7c7c; // 5:1
+$mutedTextColor: $footerColor; // secondary text in lists
+$lineColor: rgba(255, 255, 255, 0.15);
+$fainterLineColor: rgba(255, 255, 255, 0.07);
 $codeBackground: #1a1a1a;
 $codeForeground: #e8e8e8;
 

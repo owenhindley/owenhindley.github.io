@@ -44,9 +44,14 @@
 	.taglines {
 		// display: block;
 		width: auto;
-		width: 60%;
+		// width: 60%;
 
 		line-height: 5.2em;
+		color: $taglineColor;
+
+		.inverted {
+			background-color: $taglineColor;
+		}
 
 		@media(max-width:1024px){
 			width:70%;

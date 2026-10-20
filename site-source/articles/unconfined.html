@@ -12,9 +12,21 @@ class: collaboration
 featured: false
 large: true
 filter: spaces
+credits:
+  - { role: "Concept & creative direction", name: "Universal Everything", url: "http://universaleverything.com/projects/unconfined/" }
+  - { role: "Architects", name: "Zaha Hadid Architects", url: "http://www.zaha-hadid.com/" }
+  - { role: "Client", name: "Samsung" }
+  - { role: "Lead Developer", name: "Chris Mullany", url: "http://chrismullany.com/" }
+  - { role: "Flocking motion & choreography", name: "Owen Hindley" }
+  - { role: "Additional Development", name: "Ponies And Light", url: "http://poniesandlight.co.uk/" }
+  - { role: "Music", name: "Simon Pyke / Freefarm" }
+press:
+  - { when: "2017", title: "Zaha Hadid Architects & Samsung: Unconfined installation, Milan Design Week", outlet: "Designboom, May 2017", url: "http://www.designboom.com/design/zaha-hadid-architects-samsung-unconfined-installation-milan-design-week-04-05-2017/" }
+  - { when: "2017", title: "Zaha Hadid Architects × Samsung: Unconfined digital art installation", outlet: "Hypebeast, April 2017", url: "https://hypebeast.com/2017/4/zaha-hadid-architects-samsung-unconfined-digital-art-installation" }
+  - { when: "2017", title: "Unconfined: Galaxy S8 design by Universal Everything, Zaha Hadid Architects & Samsung", outlet: "Design Week", url: "https://www.designweek.co.uk/inspiration/unconfined-galaxy-s8-design-universal-everything-zaha-hadid-architects-samsung/" }
 ---
 
-<section>
+<section class="full-width">
 	<div class="video-wrapper">
 		<iframe src="https://player.vimeo.com/video/212285861?color=ffffff&#038;title=0&#038;byline=0&#038;portrait=0"
     width="100%" height="610" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen
@@ -22,6 +34,9 @@ filter: spaces
 	</div>
 
 </section>
+
+<div class="with-sidebar">
+<div class="main-column">
 
 <section>
 	<h4>Interactive installation by Universal Everything and Zaha Hadid Architects, commissioned by Samsung.</h4>
@@ -41,23 +56,6 @@ filter: spaces
         press attention on the final result, so no small order.</p>
 </section>
 
-<section class="small">
-	<ul>
-		<li>
-			<a href="http://www.designboom.com/design/zaha-hadid-architects-samsung-unconfined-installation-milan-design-week-04-05-2017/"
-        target="_blank">Designboom</a>
-		</li>
-		<li>
-			<a href="https://hypebeast.com/2017/4/zaha-hadid-architects-samsung-unconfined-digital-art-installation"
-        target="_blank">Hype Beast</a>
-		</li>
-		<li>
-			<a href="https://www.designweek.co.uk/inspiration/unconfined-galaxy-s8-design-universal-everything-zaha-hadid-architects-samsung/"
-        target="_blank">Design Week</a>
-		</li>
-	</ul>
-</section>
-
 <section>
 	<p>
         With a tight timeline, the lead developer Chris Mullany and I developed a system for
@@ -75,21 +73,9 @@ filter: spaces
 
 </section>
 
-<section>
-	<ul>
+</div>
 
-		<li> Concept &amp; creative direction by <a href="http://universaleverything.com/projects/unconfined/"
-        target="_blank">Universal
-        Everything</a>
-		</li>
-		<li>Lead Developer : <a href="http://chrismullany.com/" target="_blank">Chris
-        Mullany</a>
-		</li>
-		<li>Additional Development : <a href="http://poniesandlight.co.uk/" target="_blank">Ponies
-        And Light</a>
-		</li>
-		<li>Architects : <a href="http://www.zaha-hadid.com/" target="_blank">Zaha
-        Hadid</a>
-		</li>
-	</ul>
-</section>
+<div class="side-column">
+	{% include "project-lists.liquid" %}
+</div>
+</div>

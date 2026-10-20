@@ -11,9 +11,30 @@ class: works
 featured: false
 large: true
 filter: stage
+screeningsLabel: Performances
+credits:
+  - { role: "Produced by", name: "Hikapee & Huldufugl", url: "http://www.hikapeetheatre.com/" }
+  - { role: "Co-Writer, Artistic Director", name: "Bryony Livesey-Casey" }
+  - { role: "Co-Writers, Performers", name: "Edd Livesey-Casey, Nanna Gunnars" }
+  - { role: "Co-Writer, Visual Design", name: "Owen Hindley" }
+  - { role: "Composer", name: "Íris Thorarins", url: "https://www.facebook.com/iristhorarins/" }
+  - { role: "Dramaturg", name: "Roland Smith" }
+  - { role: "Set Design", name: "Saz Moir" }
+  - { role: "Set Fabrication", name: "Tarn Aitken" }
+  - { role: "Costume Design", name: "Sarah Juliet Dearing" }
+  - { role: "Lighting Design", name: "Rachel Sampley, Saul Valiunas" }
+  - { role: "Lighting Consultant", name: "Jenni Pystynen" }
+  - { role: "Movement Consultants", name: "Catriona Giles, Gabbie Cook" }
+  - { role: "Company Manager", name: "Laura Overton-Harvey" }
+  - { role: "Head Rigger", name: "Jacob Hirsch-Holland" }
+  - { role: "Associate Rigger", name: "Chrissie Ardill" }
+  - { role: "Performers", name: "Sophie Northmore, Jen Robinson, Katie Hardwick, Tilly Mae, Lawrence Swaddle, Charlotte Greenstock" }
+  - { role: "R&D Performers", name: "Mim Wheeler, Hamish Tjoeng, Saku Mäkelä, Riia Kivimäki" }
+press:
+  - { when: "2022", title: "The Hidden People", outlet: "Total Theatre, May 2022", url: "https://totaltheatre.org.uk/the-hidden-people/" }
 ---
 
-<section>
+<section class="full-width">
 	<div class="video-wrapper">
 		<iframe
 			src="https://www.youtube.com/embed/lLLdEOiL298"
@@ -26,6 +47,9 @@ filter: stage
 		></iframe>
 	</div>
 </section>
+
+<div class="with-sidebar">
+<div class="main-column">
 
 <section>
 	<h4>
@@ -113,9 +137,12 @@ filter: stage
 			Show information:
 			<a href="http://huldufugl.is/hiddenpeople" target="_blank">🔗</a>
 		</li>
-		<li>
-			Hikapee Circus Theatre :
-			<a href="http://www.hikapeetheatre.com/" target="_blank">🔗</a>
-		</li>
 	</ul>
 </section>
+
+</div>
+
+<div class="side-column">
+	{% include "project-lists.liquid" %}
+</div>
+</div>

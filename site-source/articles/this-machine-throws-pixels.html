@@ -9,9 +9,11 @@ role: VJ
 skills: Touchdesigner, Unity
 class: works
 filter: stage spaces
+credits:
+  - { role: "VJ", name: "Owen Hindley" }
 ---
 
-<section>
+<section class="full-width">
 	<video
         id="vj-video"
         muted=""
@@ -23,6 +25,9 @@ filter: stage spaces
 		<source src="../images/video/vj-demo-2023-lq.mp4"/>
 	</video>
 </section>
+
+<div class="with-sidebar">
+<div class="main-column">
 
 <section>
 	<p>
@@ -66,3 +71,10 @@ filter: stage spaces
         moment.
     </p>
 </section>
+
+</div>
+
+<div class="side-column">
+	{% include "project-lists.liquid" %}
+</div>
+</div>

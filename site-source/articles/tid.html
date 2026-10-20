@@ -9,9 +9,15 @@ role: Design, development
 skills: Touchdesigner
 class: works
 filter: spaces
+credits:
+  - { role: "Artists", name: "Þorsteinn Eyfjörð Þórarinsson", url: "https://cargocollective.com/teyfjord" }
+  - { role: "Artists", name: "Owen Hindley" }
+  - { role: "Also exhibited in Hafnar.haus Hringekja", name: "Atli Bollason", url: "https://atlibollason.com/" }
+  - { role: "Also exhibited in Hafnar.haus Hringekja", name: "Heimir Freyr Hlöðversson", url: "https://www.nr10.is/" }
+  - { role: "Venue", name: "Hafnarhaus", url: "https://hafnar.haus/" }
 ---
 
-<section>
+<section class="full-width">
 	<img
 		src="../images/projects/tid-image-3.jpg"
 		alt="tíð-owen-hindley-þorsteinn-eyfjörð-vetrahátið-2024"
@@ -19,6 +25,9 @@ filter: spaces
 		height="374"
 	/>
 </section>
+
+<div class="with-sidebar">
+<div class="main-column">
 
 <section>
 	<h3>
@@ -85,37 +94,9 @@ filter: spaces
 	</div>
 </section>
 
-<section>
-	<ul>
-		<li>
-			<strong
-				>Hafnarhaus:
-				<a href="https://hafnar.haus/" target="_blank">🔗</a>
-			</strong
-			>
-		</li>
-		<li>
-			<strong
-				>Þorsteinn Eyfjörð Þórarinsson:
-				<a href="https://cargocollective.com/teyfjord" target="_blank"
-					>🔗</a
-				>
-			</strong
-			>
-		</li>
-		<li>
-			<strong
-				>Atli Bollason:
-				<a href="https://atlibollason.com/" target="_blank">🔗</a>
-			</strong
-			>
-		</li>
-		<li>
-			<strong
-				>Heimir Freyr Hlöðversson:
-				<a href="https://www.nr10.is/" target="_blank">🔗</a>
-			</strong
-			>
-		</li>
-	</ul>
-</section>
+</div>
+
+<div class="side-column">
+	{% include "project-lists.liquid" %}
+</div>
+</div>

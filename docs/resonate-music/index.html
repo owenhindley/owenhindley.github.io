@@ -57,12 +57,15 @@
 					</p>
 				</header>
 				
-<section>
+<section class="full-width">
 	<div class="video-wrapper">
 		<iframe src="//player.vimeo.com/video/118132518?color=ffffff&#038;title=0&#038;byline=0&#038;portrait=0" width="100%"
         height="610" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 	</div>
 </section>
+
+<div class="with-sidebar">
+<div class="main-column">
 
 <section>
 	<p>Resonate is a festival that brings together artists to drive a forward-looking
@@ -86,26 +89,57 @@
     Serbian national TV in the run-up to the festival opening.</p>
 
 </section>
-<section>
-	<ul>
+
+</div>
+
+<div class="side-column">
+	
+
+
+
+
+
+
+
+
+<aside class="archive-list credits-list">
+	<div class="archive-tabs"><h6>Credits</h6></div>
+	<ol>
+		
 		<li>
-			<strong>Resonate Festival: <a href="http://resonate.io" target="_blank">➩</a>
-			</strong>
+			<span class="where">Client</span>
+			<a href="http://resonate.io" target="_blank"><span class="what">Resonate Festival</span></a>
 		</li>
+		
 		<li>
-			<strong>Ragnar Hrafnkelsson / Reactify Music: <a href="http://reactifymusic.com" target="_blank">➩</a>
-			</strong>
+			<span class="where">Motion design</span>
+			<a href="http://field.io" target="_blank"><span class="what">FIELD</span></a>
 		</li>
+		
 		<li>
-			<strong>Antar Walker: <a href="http://rgblust.com/" target="_blank">➩</a>
-			</strong>
+			<span class="where">Director / designer</span>
+			<a href="http://rgblust.com/" target="_blank"><span class="what">Antar Walker</span></a>
 		</li>
+		
 		<li>
-			<strong>FIELD.io: <a href="http://field.io" target="_blank">➩</a>
-			</strong>
+			<span class="where">Music & sound design</span>
+			<div><span class="what">Owen Hindley</span></div>
 		</li>
-	</ul>
-</section>
+		
+		<li>
+			<span class="where">Music & sound design</span>
+			<a href="http://reactifymusic.com" target="_blank"><span class="what">Ragnar Hrafnkelsson (Reactify)</span></a>
+		</li>
+		
+	</ol>
+</aside>
+
+
+
+
+</div>
+</div>
+
 
 				<footer>
 					<p>© Owen Hindley, 2026</p>
@@ -116,5 +150,18 @@
 		</div>
 
 	</div>
+
+	<script>
+		// switches the tabs of the side column list (project-lists.liquid)
+		function ShowArchiveGroup(index) {
+			document.querySelectorAll('.archive-list [role=tabpanel]').forEach(function (s, i) {
+				s.hidden = i !== index;
+			});
+			document.querySelectorAll('.archive-tabs [role=tab]').forEach(function (b, i) {
+				b.classList.toggle('active', i === index);
+				b.setAttribute('aria-selected', i === index ? 'true' : 'false');
+			});
+		}
+	</script>
 </body>
 </html>

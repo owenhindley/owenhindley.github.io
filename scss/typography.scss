@@ -21,6 +21,8 @@
       }
 
 $mobile-scale: 1.25;
+// landing page project titles and nav, relative to the base heading sizes
+$landing-scale: 0.75;
 
 body,
 html {
@@ -133,13 +135,13 @@ h6 {
 }
 
 a {
-	color: #b0b0b0;
+	color: $textAltColor;
 	text-decoration: none;
 	transition: color 0.2s ease;
 
 	.single-article &:hover {
 		border-bottom: 1px solid #808080;
-		color: #e0e0e0;
+		color: $linkHoverColor;
 	}
 }
 
@@ -149,7 +151,7 @@ ul {
 	line-height: 1.7em;
 	font-size: 1.1em;
 	font-size: var(--size-0);
-	color: darken($textColor, 8);
+	color: $textColor;
 	font-weight: 400;
 	// margin: 0;
 	padding: 0;

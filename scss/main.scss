@@ -4,6 +4,7 @@
 @import "./nav-layout.scss";
 @import "./article.scss";
 @import "./archive-table.scss";
+@import "./archive-list.scss";
 @import "./site-header.scss";
 @import "./slideshow.scss";
 @import "./blogpost.scss";
@@ -48,10 +49,15 @@ li {
 	}
 
 	@media (min-width: 1025px) {
-		margin-left: 14em;
+		// centred on the page; text inside stays left-aligned
+		left: 0;
+		right: 0;
+		margin-left: auto;
+		margin-right: auto;
 		width: calc(100% - 15em);
 		max-width: 75vw;
-		margin-top: 4em;
+		// clear the fixed nav bar
+		margin-top: 7em;
 	}
 
 	footer {
@@ -59,7 +65,7 @@ li {
 		margin-top: 3em;
 		padding-top: 2em;
 		border-top: 1px solid rgba(255, 255, 255, 0.1);
-		color: #808080;
+		color: $footerColor;
 		font-size: 0.9em;
 	}
 }

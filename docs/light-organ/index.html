@@ -57,7 +57,7 @@
 					</p>
 				</header>
 				
-<section>
+<section class="full-width">
 	<div class="video-wrapper">
 		<iframe
 			src="https://player.vimeo.com/video/169834486?title=0&#038;badge=0&#038;byline=0&#038;portrait=0"
@@ -70,20 +70,10 @@
 		></iframe>
 	</div>
 </section>
-<section>
-	<ul>
-		<li>
-			<strong>
-				Vice Magazine / The Creators Project :
-				<a
-					href="https://www.vice.com/en/article/aenpzz/play-a-building-like-an-instrument-reykjavik"
-					>🔗</a
-				>
-			</strong
-			>
-		</li>
-	</ul>
-</section>
+
+<div class="with-sidebar">
+<div class="main-column">
+
 <section>
 	<p>
 		<strong>
@@ -105,17 +95,83 @@
 		with an optical performance.
 	</p>
 </section>
-<section>
-	<p>
-		Conceived &amp; produced by Atli Bollason.<br/>
-		Developed by:<br/>
-		Yuli Levtov, Reactify<br/>
-		Ragnar Ingi Hrafnkelsson, Reactify<br/>
-		Owen Hindley<br/>
-		Build supervisor:<br/>
-		Jonas Johansson
-	</p>
-</section>
+
+</div>
+
+<div class="side-column">
+	
+
+
+
+
+
+
+
+
+<aside class="archive-list credits-list">
+	<div class="archive-tabs"><h6>Credits</h6></div>
+	<ol>
+		
+		<li>
+			<span class="where">Concept & production</span>
+			<div><span class="what">Atli Bollason</span></div>
+		</li>
+		
+		<li>
+			<span class="where">Development</span>
+			<a href="http://reactifymusic.com" target="_blank"><span class="what">Yuli Levtov (Reactify)</span></a>
+		</li>
+		
+		<li>
+			<span class="where">Development</span>
+			<a href="http://reactifymusic.com" target="_blank"><span class="what">Ragnar Ingi Hrafnkelsson (Reactify)</span></a>
+		</li>
+		
+		<li>
+			<span class="where">Development</span>
+			<div><span class="what">Owen Hindley</span></div>
+		</li>
+		
+		<li>
+			<span class="where">Build supervisor</span>
+			<div><span class="what">Jonas Johansson</span></div>
+		</li>
+		
+	</ol>
+</aside>
+
+
+
+<aside class="archive-list">
+	<div class="archive-tabs" role="tablist">
+		
+		
+		<button type="button" role="tab" onclick="ShowArchiveGroup(0)" class="active" aria-selected="true">Press</button>
+	</div>
+	
+	
+	
+	
+	<section role="tabpanel" aria-label="Press">
+		<ol>
+			
+			<li>
+				<span class="when">2016</span>
+				<a href="https://www.vice.com/en/article/aenpzz/play-a-building-like-an-instrument-reykjavik" target="_blank">
+					<span class="what">Play a Building Like an Instrument</span>
+					<span class="where">Vice / The Creators Project</span>
+				</a>
+			</li>
+			
+		</ol>
+	</section>
+	
+</aside>
+
+
+</div>
+</div>
+
 
 				<footer>
 					<p>© Owen Hindley, 2026</p>
@@ -126,5 +182,18 @@
 		</div>
 
 	</div>
+
+	<script>
+		// switches the tabs of the side column list (project-lists.liquid)
+		function ShowArchiveGroup(index) {
+			document.querySelectorAll('.archive-list [role=tabpanel]').forEach(function (s, i) {
+				s.hidden = i !== index;
+			});
+			document.querySelectorAll('.archive-tabs [role=tab]').forEach(function (b, i) {
+				b.classList.toggle('active', i === index);
+				b.setAttribute('aria-selected', i === index ? 'true' : 'false');
+			});
+		}
+	</script>
 </body>
 </html>

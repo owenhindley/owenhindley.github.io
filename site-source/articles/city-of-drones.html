@@ -10,9 +10,15 @@ role: Audio and Physics developer
 skills: WebGL, WebAudio, DART
 class: collaboration
 filter: screens spaces
+credits:
+  - { role: "Music", name: "John Cale", url: "http://john-cale.com/" }
+  - { role: "Speculative architect", name: "Liam Young", url: "http://www.tomorrowsthoughtstoday.com/" }
+  - { role: "Digital artists", name: "FIELD", url: "http://www.field.io" }
+  - { role: "Additional audio", name: "BXFTYS", url: "http://www.boxoftoysaudio.com/" }
+  - { role: "Audio & physics development, HUD graphics", name: "Owen Hindley" }
 ---
 
-<section>
+<section class="full-width">
 	<div class="video-wrapper">
 		<iframe
 			src="//player.vimeo.com/video/100417527?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff"
@@ -25,6 +31,9 @@ filter: screens spaces
 		></iframe>
 	</div>
 </section>
+
+<div class="with-sidebar">
+<div class="main-column">
 
 <section>
 	<p>
@@ -68,36 +77,9 @@ filter: screens spaces
 	</p>
 </section>
 
-<section>
-	<ul>
-		<li>
-			<strong
-				>Field.io : <a href="http://www.field.io" target="_blank">🔗</a>
-			</strong
-			>
-		</li>
-		<li>
-			<strong
-				>Liam Young :
-				<a href="http://www.tomorrowsthoughtstoday.com/" target="_blank"
-					>🔗</a
-				>
-			</strong
-			>
-		</li>
-		<li>
-			<strong
-				>John Cale:
-				<a href="http://john-cale.com/" target="_blank">🔗</a>
-			</strong
-			>
-		</li>
-		<li>
-			<strong
-				>BXFTYS:
-				<a href="http://www.boxoftoysaudio.com/" target="_blank">🔗</a>
-			</strong
-			>
-		</li>
-	</ul>
-</section>
+</div>
+
+<div class="side-column">
+	{% include "project-lists.liquid" %}
+</div>
+</div>

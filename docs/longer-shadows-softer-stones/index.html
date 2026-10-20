@@ -71,6 +71,9 @@
 	</div>
 </section>
 
+<div class="with-sidebar">
+<div class="main-column">
+
 <section>
 	<h3>
 		A trio of music videos, directed by Antje Taiga Jandrig, for Icelandic composer Snorri Hallgrímsson.
@@ -126,37 +129,98 @@
 	</div>
 </section>
 
-<section class="small">
-	<ul>
-		<li>Director / DOP : Antje Taiga Jandrig</li>
-		<li>Director of Visual Art Projections : Owen Hindley</li>
-		<li>Colorist: Eliott Becheau</li>
-		<li>On Set Assistants: Josie Ann Gaitens, Brynja Bjarnadóttir, Katrin Hahner</li>
-		<li>String players in 'With Love, Despite The Pain': Sigrún Harðardóttir, Hafrún Birna Björnsdóttir, Helena Lee, Sigrún Kristbjörg Jónsdóttir, Júlía Mogensen, Unnur Jónsdóttir</li>
-	</ul>
+</div>
 
-</section>
+<div class="side-column">
+	
 
-<section>
-	<h3>Links :</h3>
-	<ul>
+
+
+
+
+
+
+
+<aside class="archive-list credits-list">
+	<div class="archive-tabs"><h6>Credits</h6></div>
+	<ol>
+		
 		<li>
-			<strong
-				>Snorri Hallgrímsson on Instagram:
-				<a href="http://instagram.com/snorri_hallgrimsson" target="_blank">🔗</a>
-			</strong
-			>
+			<span class="where">Music</span>
+			<a href="http://instagram.com/snorri_hallgrimsson" target="_blank"><span class="what">Snorri Hallgrímsson</span></a>
 		</li>
+		
 		<li>
-			<strong
-				>Antje Taiga Photography on Instagram:
-				<a href="http://instagram.com/antjetaigaphotography" target="_blank">🔗</a>
-			</strong
-			>
+			<span class="where">Director / DOP</span>
+			<a href="http://instagram.com/antjetaigaphotography" target="_blank"><span class="what">Antje Taiga Jandrig</span></a>
 		</li>
+		
+		<li>
+			<span class="where">Director of Visual Art Projections</span>
+			<div><span class="what">Owen Hindley</span></div>
+		</li>
+		
+		<li>
+			<span class="where">Editors</span>
+			<div><span class="what">Guy Davidi & Maja Friis</span></div>
+		</li>
+		
+		<li>
+			<span class="where">Colorist</span>
+			<div><span class="what">Eliott Becheau</span></div>
+		</li>
+		
+		<li>
+			<span class="where">On Set Assistants</span>
+			<div><span class="what">Josie Ann Gaitens, Brynja Bjarnadóttir, Katrin Hahner</span></div>
+		</li>
+		
+		<li>
+			<span class="where">String players in 'With Love, Despite The Pain'</span>
+			<div><span class="what">Sigrún Harðardóttir, Hafrún Birna Björnsdóttir, Helena Lee, Sigrún Kristbjörg Jónsdóttir, Júlía Mogensen, Unnur Jónsdóttir</span></div>
+		</li>
+		
+		<li>
+			<span class="where">Label</span>
+			<div><span class="what">Deutsche Grammophon</span></div>
+		</li>
+		
+	</ol>
+</aside>
 
-	</ul>
-</section>
+
+
+<aside class="archive-list">
+	<div class="archive-tabs" role="tablist">
+		
+		<button type="button" role="tab" onclick="ShowArchiveGroup(0)" class="active" aria-selected="true">Awards</button>
+		
+	</div>
+	
+	
+	
+	<section role="tabpanel" aria-label="Awards">
+		<ol>
+			
+			<li>
+				<span class="when">2025</span>
+				<div>
+					<span class="what">Nominated, Music Video of the Year</span>
+					<span class="where">Icelandic Music Awards (Íslensku tónlistarverðlaunin), 'With Love, Despite The Pain'</span>
+				</div>
+			</li>
+			
+		</ol>
+	</section>
+	
+	
+	
+</aside>
+
+
+</div>
+</div>
+
 
 				<footer>
 					<p>© Owen Hindley, 2026</p>
@@ -167,5 +231,18 @@
 		</div>
 
 	</div>
+
+	<script>
+		// switches the tabs of the side column list (project-lists.liquid)
+		function ShowArchiveGroup(index) {
+			document.querySelectorAll('.archive-list [role=tabpanel]').forEach(function (s, i) {
+				s.hidden = i !== index;
+			});
+			document.querySelectorAll('.archive-tabs [role=tab]').forEach(function (b, i) {
+				b.classList.toggle('active', i === index);
+				b.setAttribute('aria-selected', i === index ? 'true' : 'false');
+			});
+		}
+	</script>
 </body>
 </html>

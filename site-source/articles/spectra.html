@@ -12,9 +12,17 @@ class: collaboration
 featured: false
 large: true
 filter: spaces
+credits:
+  - { role: "Artwork", name: "FIELD", url: "https://www.field.io/project/spectra-2/" }
+  - { role: "Artwork", name: "Accept & Proceed", url: "http://acceptandproceed.com/" }
+  - { role: "Lead engineer", name: "Laurence Symonds", url: "http://laurencesymonds.wordpress.com/" }
+  - { role: "Collaborator", name: "Edu Prats Molner (jocabola)", url: "http://www.jocabola.com/" }
+  - { role: "Motor control software, electronics", name: "Owen Hindley" }
+press:
+  - { when: "2014", title: "Meteor impacts on the moon drive this elegant kinetic sculpture", outlet: "Vice / The Creators Project", url: "https://thecreatorsproject.vice.com/en_uk/blog/meteor-impacts-on-the-moon-drive-this-elegant-kinetic-sculpture" }
 ---
 
-<section>
+<section class="full-width">
 	<div class="video-wrapper">
 		<iframe
 			src="https://player.vimeo.com/video/141649361?title=0&#038;badge=0&#038;byline=0&#038;portrait=0"
@@ -27,53 +35,10 @@ filter: spaces
 		></iframe>
 	</div>
 </section>
-<section class="small">
-	<ul>
-		<li>
-			<strong
-				>Creators Project :
-				<a
-					href="https://thecreatorsproject.vice.com/en_uk/blog/meteor-impacts-on-the-moon-drive-this-elegant-kinetic-sculpture"
-					target="_blank"
-					>🔗</a
-				>
-			</strong
-			>
-		</li>
-		<li>
-			<strong
-				>Field.io :
-				<a href="https://www.field.io/project/spectra-2/" target="_blank"
-					>🔗</a
-				>
-			</strong
-			>
-		</li>
-		<li>
-			<strong
-				>Accept &#038; Proceed :
-				<a href="http://acceptandproceed.com/" target="_blank">🔗</a>
-			</strong
-			>
-		</li>
-		<li>
-			<strong
-				>Laurence Symonds :
-				<a href="http://http://laurencesymonds.wordpress.com//" target="_blank"
-					>🔗</a
-				>
-			</strong
-			>
-		</li>
-		<li>
-			<strong
-				>Edu Prats Molner (jocabola) :
-				<a href="http://www.jocabola.com/" target="_blank">🔗</a>
-			</strong
-			>
-		</li>
-	</ul>
-</section>
+
+<div class="with-sidebar">
+<div class="main-column">
+
 <section>
 	<p>
 		Spectra 2, a mesmerising kinetic sculpture by FIELD.io in collaboration with
@@ -104,3 +69,10 @@ filter: spaces
 		samples via OSC.
 	</p>
 </section>
+
+</div>
+
+<div class="side-column">
+	{% include "project-lists.liquid" %}
+</div>
+</div>

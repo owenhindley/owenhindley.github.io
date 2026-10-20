@@ -12,6 +12,12 @@ class: collaboration
 featured: true
 large: true
 filter: xr
+credits:
+  - { role: "Music & creative", name: "OK Go", url: "https://okgo.net/lambchild-superstar/" }
+  - { role: "Production", name: "Within", url: "https://www.with.in/" }
+  - { role: "Production", name: "Oculus Studios", url: "https://www.oculus.com/story-studio/" }
+  - { role: "Development", name: "Horizons Studio (Owen Hindley, Yuli Levtov, David Li)", url: "https://horizons.studio/" }
+  - { role: "Lead Developer", name: "Owen Hindley" }
 ---
 
 <section class="full-width">
@@ -27,6 +33,9 @@ filter: xr
 		></iframe>
 	</div>
 </section>
+
+<div class="with-sidebar">
+<div class="main-column">
 
 <section>
 	<h4>
@@ -96,23 +105,10 @@ filter: xr
 		this fantastic musical tool!
 	</p>
 </section>
-<section>
-	<ul>
-		<li>
-			Full project description on OKGO.net :
-			<a href="https://okgo.net/lambchild-superstar/" target="_blank">🔗</a>
-		</li>
-		<li>
-			Within / Supernatural :
-			<a href="https://www.with.in/" target="_blank">🔗</a>
-		</li>
-		<li>
-			Horizons Studio:
-			<a href="https://horizons.studio/" target="_blank">🔗</a>
-		</li>
-		<li>
-			Oculus Studios:
-			<a href="https://www.oculus.com/story-studio/" target="_blank">🔗</a>
-		</li>
-	</ul>
-</section>
+
+</div>
+
+<div class="side-column">
+	{% include "project-lists.liquid" %}
+</div>
+</div>

@@ -10,14 +10,24 @@ skills: Unity
 class: works
 large: true
 filter: screens
+credits:
+  - { role: "Design & Music", name: "Owen Hindley" }
+  - { role: "Character controller", name: "Torfi Ásgeirsson (@torfias)", url: "https://twitter.com/torfias" }
+  - { role: "Feedback & advice", name: "@joonturbo, Steingerður Lóa Gunnarsdóttir and the Isle of Games team", url: "http://isleofgames.is" }
+press:
+  - { when: "", title: "GALE playthrough", outlet: "Cianny, YouTube", url: "https://youtu.be/i42sfNoIrRY?t=1264" }
+  - { when: "", title: "GALE playthrough", outlet: "jellythecube, YouTube", url: "https://www.youtube.com/watch?v=hI58nv7lgLM&t=396s&ab_channel=jellythecube" }
 ---
 
-<section>
+<section class="full-width">
 	<img
 		src="../images/projects/gale3-portfolio.jpg"
 		alt="GALE game by Owen Hindley"
 	/>
 </section>
+
+<div class="with-sidebar">
+<div class="main-column">
 
 <section>
 	<h4>
@@ -63,33 +73,10 @@ filter: screens
 		></iframe>
 	</div>
 </section>
-<section>
-	<h6>Credits:</h6>
-	<ul>
-		<li>Design &amp; Music by Owen Hindley</li>
-		<li>Character controller magic by @torfias</li>
-		<li>
-			Feedback and general advice from @joonturbo, Steingerður Lóa Gunnarsdóttir
-			and the rest of the Isle of Games team.
-		</li>
-	</ul>
-</section>
 
-<section>
-	<h6>Playthroughs / Coverage :</h6>
+</div>
 
-	<ul>
-		<li>
-			<a href="https://youtu.be/i42sfNoIrRY?t=1264" target="_blank"
-				>Cianny / Youtube</a
-			>
-		</li>
-		<li>
-			<a
-				href="https://www.youtube.com/watch?v=hI58nv7lgLM&t=396s&ab_channel=jellythecube"
-				target="_blank"
-				>jellythecube / Youtube</a
-			>
-		</li>
-	</ul>
-</section>
+<div class="side-column">
+	{% include "project-lists.liquid" %}
+</div>
+</div>

@@ -12,12 +12,24 @@ class: collaboration
 featured: true
 large: false
 filter: stage
+credits:
+  - { role: "Vocals & Electronics", name: "Inki" }
+  - { role: "Synths & Electronics", name: "PALMR" }
+  - { role: "Percussion", name: "Höskuldur Eiríksson" }
+  - { role: "Violin", name: "Sigrún Harðardóttir" }
+  - { role: "Viola", name: "Karl James Pestka" }
+  - { role: "Cello", name: "Þórdís Gerður Jónsdóttir" }
+  - { role: "Visuals, Set Design, Lighting", name: "Owen Hindley" }
 ---
 
-<section>
+<section class="full-width">
 	<img src="../images/projects/inki-header.jpg"
 		alt="INKI Album Release Concert at Tjarnarbío, visuals and lighting by Owen Hindley"/>
 </section>
+
+<div class="with-sidebar">
+<div class="main-column">
+
 <section>
 	<h4>
 		Visualising the sonic world of Ingibjörg Friðriksdóttir (INKI), through set design, visual content and lighting.
@@ -162,14 +174,9 @@ filter: stage
 		alt="INKI Album Release Concert at Tjarnarbío, visuals and lighting by Owen Hindley"/>
 </section>
 
-<section class="small">
-	<ul>
-		<li>Vocals &amp; Electronics : Inki</li>
-		<li>Synths &amp; Electronics : PALMR</li>
-		<li>Percussion : Höskuldur Eiríksson</li>
-		<li>Violin : Sigrún Harðardóttir</li>
-		<li>Viola : Karl James Pestka</li>
-		<li>Cello : Þórdís Gerður Jónsdóttir</li>
-		<li>Visuals, Set Design, Lighting : Owen Hindley</li>
-	</ul>
-</section>
+</div>
+
+<div class="side-column">
+	{% include "project-lists.liquid" %}
+</div>
+</div>

@@ -57,7 +57,7 @@
 					</p>
 				</header>
 				
-<section>
+<section class="full-width">
 	<div class="video-wrapper">
 		<iframe
 			src="https://www.youtube.com/embed/w5QxJTnQ20U"
@@ -70,6 +70,9 @@
 		></iframe>
 	</div>
 </section>
+
+<div class="with-sidebar">
+<div class="main-column">
 
 <section>
 	<br />
@@ -137,16 +140,45 @@
 	</p>
 </section>
 
-<section>
-	<ul>
+</div>
+
+<div class="side-column">
+	
+
+
+
+
+
+
+
+
+<aside class="archive-list credits-list">
+	<div class="archive-tabs"><h6>Credits</h6></div>
+	<ol>
+		
 		<li>
-			<strong
-				>Dustin O'Halloran:
-				<a href="https://dustinohalloran.com/" target="_blank">🔗</a></strong
-			>
+			<span class="where">Music</span>
+			<a href="https://dustinohalloran.com/" target="_blank"><span class="what">Dustin O'Halloran</span></a>
 		</li>
-	</ul>
-</section>
+		
+		<li>
+			<span class="where">Label</span>
+			<div><span class="what">Deutsche Grammophon</span></div>
+		</li>
+		
+		<li>
+			<span class="where">Design, development</span>
+			<div><span class="what">Owen Hindley</span></div>
+		</li>
+		
+	</ol>
+</aside>
+
+
+
+
+</div>
+</div>
 
 
 				<footer>
@@ -158,5 +190,18 @@
 		</div>
 
 	</div>
+
+	<script>
+		// switches the tabs of the side column list (project-lists.liquid)
+		function ShowArchiveGroup(index) {
+			document.querySelectorAll('.archive-list [role=tabpanel]').forEach(function (s, i) {
+				s.hidden = i !== index;
+			});
+			document.querySelectorAll('.archive-tabs [role=tab]').forEach(function (b, i) {
+				b.classList.toggle('active', i === index);
+				b.setAttribute('aria-selected', i === index ? 'true' : 'false');
+			});
+		}
+	</script>
 </body>
 </html>

@@ -5,51 +5,7 @@ main section:not(.simple-list) article {
 	display: flex;
 	flex-direction: column;
 
-	// full-size mode
-	// large featured projects, 2-column mode
-
-	@media (min-width: 1025px) {
-		width: 45%;
-		max-width: 40em;
-
-		&.large {
-			max-width: 80em;
-
-			margin-bottom: 8em;
-
-			.thumbImg {
-				height: 25vw;
-			}
-		}
-
-		float: left;
-		padding-top: 1em;
-		margin-bottom: 8em;
-
-		// staggered spacing below each
-		:not(.large) &:nth-of-type(2n) {
-			margin-top: 8em;
-			margin-bottom: 10em;
-		}
-
-		:not(.large) &:nth-of-type(5n) {
-			margin-top: 2em;
-			margin-bottom: 6em;
-		}
-
-		.thumbImg {
-			width: 90%;
-			height: 13vw;
-			float: left;
-
-			margin-bottom: 1em;
-			background-size: cover;
-			background-position: 50% 50%;
-			// opacity: 0.75;
-			transition: 0.5s;
-			// filter: grayscale(100%);
-		}
-	}
+	// desktop layout (a regular 2-column grid) is at the end of this block
 
 	@media (max-width: 1024px) {
 		width: 100%;
@@ -95,16 +51,29 @@ main section:not(.simple-list) article {
 
 		z-index: 9999;
 
+		h3 {
+			font-size: calc(var(--size-3) * #{$landing-scale});
+
+			@media (max-width: 1024px) {
+				font-size: 24px * $landing-scale;
+			}
+		}
+
 		h4 {
 			display: block;
 			color: darken($textColor, 0);
+			font-size: calc(var(--size-2) * #{$landing-scale});
+
+			@media (max-width: 1024px) {
+				font-size: 16px * $landing-scale;
+			}
 		}
 
 		summary {
 			display: block;
 			margin-top: 0.25em;
 			margin-left: 0.2em;
-			color: darken($textColor, 10);
+			color: $textColor;
 
 			@media (max-width: 1024px) {
 				font-size: 0.8em;
@@ -156,19 +125,50 @@ main section:not(.simple-list) article {
 		}
 	}
 
+	// brighten the text, keeping the header background as it is
 	&:hover {
+		header * {
+			color: lighten($textColor, 15);
+		}
+	}
+
+	// desktop: every tile the same shape, caption overlapping the bottom of the thumbnail
+	@media (min-width: 1025px) {
+		>a {
+			display: flex;
+			flex-direction: column;
+		}
+
+		.thumbImg {
+			width: 100%;
+			aspect-ratio: 16 / 9;
+			background-size: cover;
+			background-position: 50% 50%;
+			transition: 0.5s;
+		}
+
 		header {
-			background-color: lighten($textColor, 20);
-			color: $backgroundColor;
+			position: relative;
+			top: auto;
+			left: auto;
+			align-self: flex-start;
+			margin-top: -1.5em;
+			margin-left: 2em;
+		}
+	}
+}
 
-			* {
-				color: $backgroundColor;
-			}
+// desktop: project tiles form a regular 2-column grid across the full container width
+main section:not(.simple-list) .article-collection:not(.archive-table-wrapper) {
+	@media (min-width: 1025px) {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		column-gap: 3em;
+		row-gap: 4em;
 
-			// transform: scale(1.02);
-			// h4, summary {
-			//     color:invert($textColor);
-			// }
+		// spacer left over from the old staggered layout
+		>article:empty {
+			display: none;
 		}
 	}
 }
@@ -261,6 +261,31 @@ main section.text-only article {
 	@media (max-width: 1024px) {
 		.social-link {
 			float: left;
+		}
+	}
+}
+
+// About page: text in the left 2/3 (itself two columns), Awards & Nominations list in the right 1/3
+main section.about article.about-layout {
+	@media (min-width: 1025px) {
+		grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+		align-items: start;
+
+		.main-column {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			grid-column-gap: 3em;
+
+			// the bio text runs across the whole 2/3 width
+			>section.bio {
+				grid-column: 1 / -1;
+			}
+		}
+	}
+
+	@media (max-width: 1024px) {
+		.side-column {
+			margin-top: 3em;
 		}
 	}
 }

@@ -57,7 +57,7 @@
 					</p>
 				</header>
 				
-<section>
+<section class="full-width">
 	<video
         id="vj-video"
         muted=""
@@ -69,6 +69,9 @@
 		<source src="../images/video/vj-demo-2023-lq.mp4"/>
 	</video>
 </section>
+
+<div class="with-sidebar">
+<div class="main-column">
 
 <section>
 	<p>
@@ -113,6 +116,37 @@
     </p>
 </section>
 
+</div>
+
+<div class="side-column">
+	
+
+
+
+
+
+
+
+
+<aside class="archive-list credits-list">
+	<div class="archive-tabs"><h6>Credits</h6></div>
+	<ol>
+		
+		<li>
+			<span class="where">VJ</span>
+			<div><span class="what">Owen Hindley</span></div>
+		</li>
+		
+	</ol>
+</aside>
+
+
+
+
+</div>
+</div>
+
+
 				<footer>
 					<p>© Owen Hindley, 2026</p>
 
@@ -122,5 +156,18 @@
 		</div>
 
 	</div>
+
+	<script>
+		// switches the tabs of the side column list (project-lists.liquid)
+		function ShowArchiveGroup(index) {
+			document.querySelectorAll('.archive-list [role=tabpanel]').forEach(function (s, i) {
+				s.hidden = i !== index;
+			});
+			document.querySelectorAll('.archive-tabs [role=tab]').forEach(function (b, i) {
+				b.classList.toggle('active', i === index);
+				b.setAttribute('aria-selected', i === index ? 'true' : 'false');
+			});
+		}
+	</script>
 </body>
 </html>

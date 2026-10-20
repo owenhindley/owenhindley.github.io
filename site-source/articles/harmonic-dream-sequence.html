@@ -12,9 +12,13 @@ class: works
 featured: true
 large: false
 filter: screens
+credits:
+  - { role: "Music", name: "Dustin O'Halloran", url: "https://dustinohalloran.com/" }
+  - { role: "Label", name: "Deutsche Grammophon" }
+  - { role: "Design, development", name: "Owen Hindley" }
 ---
 
-<section>
+<section class="full-width">
 	<div class="video-wrapper">
 		<iframe
 			src="https://www.youtube.com/embed/w5QxJTnQ20U"
@@ -27,6 +31,9 @@ filter: screens
 		></iframe>
 	</div>
 </section>
+
+<div class="with-sidebar">
+<div class="main-column">
 
 <section>
 	<br />
@@ -94,13 +101,9 @@ filter: screens
 	</p>
 </section>
 
-<section>
-	<ul>
-		<li>
-			<strong
-				>Dustin O'Halloran:
-				<a href="https://dustinohalloran.com/" target="_blank">🔗</a></strong
-			>
-		</li>
-	</ul>
-</section>
+</div>
+
+<div class="side-column">
+	{% include "project-lists.liquid" %}
+</div>
+</div>

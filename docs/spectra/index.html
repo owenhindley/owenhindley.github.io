@@ -57,7 +57,7 @@
 					</p>
 				</header>
 				
-<section>
+<section class="full-width">
 	<div class="video-wrapper">
 		<iframe
 			src="https://player.vimeo.com/video/141649361?title=0&#038;badge=0&#038;byline=0&#038;portrait=0"
@@ -70,53 +70,10 @@
 		></iframe>
 	</div>
 </section>
-<section class="small">
-	<ul>
-		<li>
-			<strong
-				>Creators Project :
-				<a
-					href="https://thecreatorsproject.vice.com/en_uk/blog/meteor-impacts-on-the-moon-drive-this-elegant-kinetic-sculpture"
-					target="_blank"
-					>🔗</a
-				>
-			</strong
-			>
-		</li>
-		<li>
-			<strong
-				>Field.io :
-				<a href="https://www.field.io/project/spectra-2/" target="_blank"
-					>🔗</a
-				>
-			</strong
-			>
-		</li>
-		<li>
-			<strong
-				>Accept &#038; Proceed :
-				<a href="http://acceptandproceed.com/" target="_blank">🔗</a>
-			</strong
-			>
-		</li>
-		<li>
-			<strong
-				>Laurence Symonds :
-				<a href="http://http://laurencesymonds.wordpress.com//" target="_blank"
-					>🔗</a
-				>
-			</strong
-			>
-		</li>
-		<li>
-			<strong
-				>Edu Prats Molner (jocabola) :
-				<a href="http://www.jocabola.com/" target="_blank">🔗</a>
-			</strong
-			>
-		</li>
-	</ul>
-</section>
+
+<div class="with-sidebar">
+<div class="main-column">
+
 <section>
 	<p>
 		Spectra 2, a mesmerising kinetic sculpture by FIELD.io in collaboration with
@@ -148,6 +105,83 @@
 	</p>
 </section>
 
+</div>
+
+<div class="side-column">
+	
+
+
+
+
+
+
+
+
+<aside class="archive-list credits-list">
+	<div class="archive-tabs"><h6>Credits</h6></div>
+	<ol>
+		
+		<li>
+			<span class="where">Artwork</span>
+			<a href="https://www.field.io/project/spectra-2/" target="_blank"><span class="what">FIELD</span></a>
+		</li>
+		
+		<li>
+			<span class="where">Artwork</span>
+			<a href="http://acceptandproceed.com/" target="_blank"><span class="what">Accept & Proceed</span></a>
+		</li>
+		
+		<li>
+			<span class="where">Lead engineer</span>
+			<a href="http://laurencesymonds.wordpress.com/" target="_blank"><span class="what">Laurence Symonds</span></a>
+		</li>
+		
+		<li>
+			<span class="where">Collaborator</span>
+			<a href="http://www.jocabola.com/" target="_blank"><span class="what">Edu Prats Molner (jocabola)</span></a>
+		</li>
+		
+		<li>
+			<span class="where">Motor control software, electronics</span>
+			<div><span class="what">Owen Hindley</span></div>
+		</li>
+		
+	</ol>
+</aside>
+
+
+
+<aside class="archive-list">
+	<div class="archive-tabs" role="tablist">
+		
+		
+		<button type="button" role="tab" onclick="ShowArchiveGroup(0)" class="active" aria-selected="true">Press</button>
+	</div>
+	
+	
+	
+	
+	<section role="tabpanel" aria-label="Press">
+		<ol>
+			
+			<li>
+				<span class="when">2014</span>
+				<a href="https://thecreatorsproject.vice.com/en_uk/blog/meteor-impacts-on-the-moon-drive-this-elegant-kinetic-sculpture" target="_blank">
+					<span class="what">Meteor impacts on the moon drive this elegant kinetic sculpture</span>
+					<span class="where">Vice / The Creators Project</span>
+				</a>
+			</li>
+			
+		</ol>
+	</section>
+	
+</aside>
+
+
+</div>
+</div>
+
+
 				<footer>
 					<p>© Owen Hindley, 2026</p>
 
@@ -157,5 +191,18 @@
 		</div>
 
 	</div>
+
+	<script>
+		// switches the tabs of the side column list (project-lists.liquid)
+		function ShowArchiveGroup(index) {
+			document.querySelectorAll('.archive-list [role=tabpanel]').forEach(function (s, i) {
+				s.hidden = i !== index;
+			});
+			document.querySelectorAll('.archive-tabs [role=tab]').forEach(function (b, i) {
+				b.classList.toggle('active', i === index);
+				b.setAttribute('aria-selected', i === index ? 'true' : 'false');
+			});
+		}
+	</script>
 </body>
 </html>
