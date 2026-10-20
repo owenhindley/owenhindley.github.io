@@ -20,7 +20,7 @@ main section.archive .archive-table-wrapper {
 		text-align: left;
 		vertical-align: top;
 		padding: 0.6em 1em 0.6em 0;
-		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+		border-bottom: 1px solid rgba($inkColor, 0.1);
 	}
 
 	th {
@@ -32,7 +32,7 @@ main section.archive .archive-table-wrapper {
 		text-transform: uppercase;
 		letter-spacing: 0.05em;
 		white-space: nowrap;
-		border-bottom-color: rgba(255, 255, 255, 0.3);
+		border-bottom-color: rgba($inkColor, 0.3);
 	}
 
 	td.date,
@@ -56,7 +56,7 @@ main section.archive .archive-table-wrapper {
 		td.title a {
 			color: $highlightColor;
 			font-weight: 600;
-			border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+			border-bottom: 1px solid rgba($inkColor, 0.4);
 
 			&::after {
 				content: " →";

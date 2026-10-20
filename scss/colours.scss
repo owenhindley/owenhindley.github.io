@@ -28,20 +28,37 @@ $c2: #f5f5f5;
 $c3: #f5f5f5;
 $c4: #f5f5f5;
 
-// Modern black and white palette
+// Black and white palette
 // text colours are set by their contrast ratio against $backgroundColor;
-// if the background changes, recalculate them to keep the same ratios
-$backgroundColor: #0a0a0a;
-$sectionBackground: rgba(255, 255, 255, 0.08);
-$textColor: #9b9b9b; // 7:1
-$highlightColor: #f8f8f8; // 18.7:1
-$taglineColor: #afafaf; // 9:1
-$textAltColor: #ababab; // 8.6:1, links and project titles
-$linkHoverColor: #dadada; // 14.2:1
-$footerColor: #7c7c7c; // 5:1
+// if the background changes, recalculate them to keep the same ratios.
+// Highlight blocks (.inverted) swap $textColor and $backgroundColor, so they follow the scheme.
+
+// light scheme: the dark scheme inverted, with the same contrast ratios
+$backgroundColor: #f5f5f5;
+$inkColor: #000000; // lines, borders and tints are this at low opacity
+$textColor: #525252; // 7:1
+$highlightColor: #050505; // 18.7:1
+$taglineColor: #434343; // 9:1
+$textAltColor: #464646; // 8.6:1, links and project titles
+$linkHoverColor: #242424; // 14.2:1
+$tileHoverColor: #373737; // 11:1, project tile text on rollover
+$footerColor: #6d6d6d; // 4.7:1
+
+// dark scheme (swap these in for the light scheme above)
+// $backgroundColor: #0a0a0a;
+// $inkColor: #ffffff;
+// $textColor: #9b9b9b; // 7:1
+// $highlightColor: #f8f8f8; // 18.7:1
+// $taglineColor: #afafaf; // 9:1
+// $textAltColor: #ababab; // 8.6:1
+// $linkHoverColor: #dadada; // 14.2:1
+// $tileHoverColor: #c1c1c1; // 11:1
+// $footerColor: #7c7c7c; // 4.7:1
+
+$sectionBackground: rgba($inkColor, 0.08);
 $mutedTextColor: $footerColor; // secondary text in lists
-$lineColor: rgba(255, 255, 255, 0.15);
-$fainterLineColor: rgba(255, 255, 255, 0.07);
+$lineColor: rgba($inkColor, 0.15);
+$fainterLineColor: rgba($inkColor, 0.07);
 $codeBackground: #1a1a1a;
 $codeForeground: #e8e8e8;
 

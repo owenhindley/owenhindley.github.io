@@ -64,7 +64,7 @@ li {
 		padding-bottom: 3em;
 		margin-top: 3em;
 		padding-top: 2em;
-		border-top: 1px solid rgba(255, 255, 255, 0.1);
+		border-top: 1px solid rgba($inkColor, 0.1);
 		color: $footerColor;
 		font-size: 0.9em;
 	}
@@ -131,6 +131,13 @@ main {
 		>.article-collection {
 			clear: both;
 			margin-top: 2.5em;
+		}
+
+		// section titles placed straight in the section (not in a header) need their own gap
+		&.about>h6,
+		&.contact>h6 {
+			display: inline-block;
+			margin-bottom: 2em;
 		}
 	}
 }
