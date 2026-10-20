@@ -1469,6 +1469,7 @@ body.blogpost section.alternate {
   float: left;
   margin-right: 2rem;
   margin-bottom: 1.5em;
+  filter: invert(1) hue-rotate(180deg);
 }
 .single-article article footer {
   display: block;

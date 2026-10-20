@@ -43,6 +43,7 @@ $textAltColor: #464646; // 8.6:1, links and project titles
 $linkHoverColor: #242424; // 14.2:1
 $tileHoverColor: #373737; // 11:1, project tile text on rollover
 $footerColor: #6d6d6d; // 4.7:1
+$invertLogos: true; // supporter logos are white artwork, so flip them to black
 
 // dark scheme (swap these in for the light scheme above)
 // $backgroundColor: #0a0a0a;
@@ -54,6 +55,7 @@ $footerColor: #6d6d6d; // 4.7:1
 // $linkHoverColor: #dadada; // 14.2:1
 // $tileHoverColor: #c1c1c1; // 11:1
 // $footerColor: #7c7c7c; // 4.7:1
+// $invertLogos: false;
 
 $sectionBackground: rgba($inkColor, 0.08);
 $mutedTextColor: $footerColor; // secondary text in lists

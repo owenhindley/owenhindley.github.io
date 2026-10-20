@@ -156,6 +156,11 @@
 					float: left;
 					margin-right: 2rem;
 					margin-bottom: 1.5em;
+
+					// white logos go black on the light scheme; the hue rotation keeps coloured accents their colour
+					@if $invertLogos {
+						filter: invert(1) hue-rotate(180deg);
+					}
 				}
 			}
 		}
