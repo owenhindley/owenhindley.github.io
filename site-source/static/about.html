@@ -32,21 +32,40 @@
 
 </div>
 
-<!-- built from every project's `awards` front matter (the "awards" collection in eleventy.config.js) -->
+<!-- built from every project's `awards` front matter (the "awards" collection in .eleventy.js),
+	split into two tabs: titles mentioning "Nominated" / "Nomination" go under Nominations -->
 <div class="side-column">
 	<aside class="archive-list">
-		<div class="archive-tabs"><h6>Awards &amp; Nominations</h6></div>
-		<ol>
-			{% for award in collections.awards %}
-			<li>
-				<span class="when">{{ award.when }}</span>
-				<a href="{{ award.projectUrl }}">
-					<span class="what">{{ award.title }}</span>
-					<span class="where">{{ award.project }} · {{ award.event }}</span>
-				</a>
-			</li>
-			{% endfor %}
-		</ol>
+		<div class="archive-tabs" role="tablist">
+			<button type="button" role="tab" onclick="ShowArchiveGroup(0)" class="active" aria-selected="true">Awards</button>
+			<button type="button" role="tab" onclick="ShowArchiveGroup(1)" aria-selected="false">Nominations</button>
+		</div>
+		<section role="tabpanel" aria-label="Awards">
+			<ol>
+				{% for award in collections.awards %}{% unless award.nomination %}
+				<li>
+					<span class="when">{{ award.when }}</span>
+					<a href="{{ award.projectUrl }}">
+						<span class="what">{{ award.title }}</span>
+						<span class="where">{{ award.project }} · {{ award.event }}</span>
+					</a>
+				</li>
+				{% endunless %}{% endfor %}
+			</ol>
+		</section>
+		<section role="tabpanel" aria-label="Nominations" hidden>
+			<ol>
+				{% for award in collections.awards %}{% if award.nomination %}
+				<li>
+					<span class="when">{{ award.when }}</span>
+					<a href="{{ award.projectUrl }}">
+						<span class="what">{{ award.title }}</span>
+						<span class="where">{{ award.project }} · {{ award.event }}</span>
+					</a>
+				</li>
+				{% endif %}{% endfor %}
+			</ol>
+		</section>
 	</aside>
 </div>
 

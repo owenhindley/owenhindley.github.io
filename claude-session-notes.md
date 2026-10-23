@@ -21,12 +21,12 @@ Context for resuming work with Claude. Project basics (structure, build commands
 ## Open items
 
 - **Four rows disappeared from the sheet** around the time the Sæskrímslabúrið row was deleted: Lava Show installation (Oct 2026), Hitavættur maintenance (Sep 2026), STRÓKUR (Nov 2025), Baby Rave / Kærleiks gjörð (Nov 2025). Not confirmed whether Owen removed them on purpose. They are not on the site either.
-- **Downloaded CSV not yet applied**: the CSV in `archive-list/` (174 rows) has removed MAGIC moment, Tribute To Me and the Tjarnarskóli graduation. Run `node scripts/import-archive.js --dry-run`, then without `--dry-run`, then rebuild.
+- **Sheet and archive in sync (20 Oct 2026)**: 202 rows; a dry run of `import-archive.js` against the live sheet creates and deletes nothing. How to keep them in step is in `CLAUDE.md`.
 - **Blank cells** that could be filled: artist for Dance World Class, The Hangmen, Rhinestone Cowboy, Nowhere; venue for Miami Towers, ViiV Progress Made Personal and the two consulting jobs.
 - **Year to check**: "Industry Expert Introduction" (Hyper Island) is listed under 2020, but the site's file is named `hyper-island-2022.html`.
 - **VRTO & VRUK, London** (Horizons VR, 2017) is one row as the CV lists it; VRTO is a Toronto event, so it may need splitting.
 - **The 0.5 EP's year** (2024) is inferred from the single Tek Tek Tek.
-- **Nothing committed yet**: changes to `site-source/` (archive files, `index.html`), `scss/` (new `archive-table.scss`), `docs/` (rebuilt), `scripts/import-archive.js`, `commands.txt` and `CLAUDE.md`.
+- **Committed**: the archive work, and the 19–20 Oct redesign (commit `bfa88c9`). Later changes (light colour scheme, nav weight and opacity, Surveyor press and exhibition, Parallel People XR filter, About/Contact heading spacing, Fallax logos) are not committed yet.
 
 ## Website changes made
 

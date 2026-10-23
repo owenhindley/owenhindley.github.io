@@ -73,6 +73,17 @@
 				.innerHTML = e.toUpperCase() + " ";
 		}
 
+		// About page's Awards / Nominations tabs (same as the project pages' side column, in article.njk)
+		function ShowArchiveGroup(index) {
+			document.querySelectorAll('.archive-list [role=tabpanel]').forEach(function (s, i) {
+				s.hidden = i !== index;
+			});
+			document.querySelectorAll('.archive-tabs [role=tab]').forEach(function (b, i) {
+				b.classList.toggle('active', i === index);
+				b.setAttribute('aria-selected', i === index ? 'true' : 'false');
+			});
+		}
+
 		function GoToBlogpost(name) {
 			document.location.href = document.location.origin + "/blogposts/" + name
 		}
